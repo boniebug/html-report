@@ -1,0 +1,25 @@
+body{
+    background-color: #000;
+}
+.container{
+    width: 400px;
+    aspect-ratio: 1/1;
+    border: 2px solid #FFF;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.items{
+    color: #FFF;
+    border: 2px solid red;
+    width: 100px;
+    height: 100px;
+}
+.row1,.row3{
+    display: flex;
+    justify-content: space-between;
+}
+.row2{
+    display: flex;
+    justify-content: center;
+}

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .container{
+        height: 800px;
+        background-color: white;
+        display: grid;
+        grid-gap:5px;
+        display: grid;
+        grid-template-columns: 8% 8% 8% 8% 8% 8% 8% 8% 8% 8% 8% 8%;
+        grid-template-rows: 8% 8% 8% 8% 8% 8% 8% 8% 8% 8% 8% 8%;
+        grid-template-areas: 
+        "one one one one one one one one one one one one"
+        " two two two two two two three three three three three three"
+        "four four four four five five five five six six six six"
+        "seven seven seven eight eight eight nine nine nine ten ten ten";
+      }
+      div{
+        background-color: lavenderblush;
+      }
+      .one{
+        grid-area: one;
+        border: 1px solid black;
+        padding: 10px;
+        text-align: center;
+        
+      }
+      .two{
+        grid-area: two;
+        border: 1px solid black;
+        padding: 10px;
+        text-align: center;
+      }
+      .three{
+        grid-area: three;
+        border: 1px solid black;
+        padding: 10px;
+        text-align: center;
+      }
+      .four{
+        grid-area: four;
+        border: 1px solid black;
+        padding: 10px;
+        text-align: center;
+      }
+      .five{
+        grid-area: five;
+        border: 1px solid black;
+        padding: 10px;
+        text-align: center;
+      }
+      .six{
+        grid-area: six;
+        border: 1px solid black;
+        text-align: center;
+      }
+      .seven{
+        grid-area: seven;
+        border: 1px solid black;
+        padding: 10px;
+        text-align: center;
+      }
+      .eight{
+        grid-area: eight;
+        border: 1px solid black;
+        padding: 10px;
+        text-align: center;
+      }
+      .nine{
+        grid-area: nine;
+        border: 1px solid black;
+        padding: 10px;
+        text-align: center;
+      }
+      .ten{
+        grid-area: ten;
+        border: 1px solid black;
+        padding: 10px;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="one">1</div>
+        <div class="two">2</div>
+        <div class="three">3</div>
+        <div class="four">4</div>
+        <div class="five">5</div>
+        <div class="six">6</div>
+        <div class="seven">7</div>
+        <div class="eight">8</div>
+        <div class="nine">9</div>
+        <div class="ten">10</div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,27 @@
+body{
+    padding: 0px;
+    margin: 0px;
+    background-color: whitesmoke;
+}
+.container{
+    display: flex;
+    width: 100%;
+}
+.info{
+    width: 60%;
+}
+.info p{
+    font-size: 25px;
+    
+    margin:0px;
+}
+.image{
+    width: 30%;
+}
+img{
+    margin-top: 150px;
+}
+.image img{
+    position: sticky;
+    top: 0px;
+}

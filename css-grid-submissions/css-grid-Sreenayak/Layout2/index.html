@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Q2</title>
+    <style>
+      body{
+       display: grid;
+       grid-template-areas: 
+       'header header'
+       'nav article'
+       'ads article'
+       'ads footer';
+       grid-template-rows: 10% 65% 15% 10%;
+       grid-template-columns: 20% 80%;
+       gap: 10px;
+       height: 630px;
+       margin: 0;
+      }
+      header,
+      article,
+      nav,
+      footer,
+     div{
+       background-color: rgb(146, 245, 212);
+     }
+      #header{
+       grid-area: header;
+      }
+      #nav{
+       grid-area: nav;
+       grid-row-start: ;
+      }
+      #ads{
+       grid-area: ads;
+ 
+      }
+      #footer{
+       grid-area: footer;
+      }
+      #article{
+       grid-area: article;
+      }
+   </style>
+  </head>
+  <body>
+    <header id="header">Header</header>
+      <article id="article">Article</article>
+      <nav id="nav">nav</nav>
+      <div id="ads">Ads</div>
+      <footer id="footer">Footer</footer>
+  </body>
+</html>

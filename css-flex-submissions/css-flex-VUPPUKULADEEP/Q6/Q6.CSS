@@ -1,0 +1,38 @@
+body{
+    background-color: black;
+}
+.container{
+    height:90vh;
+   width:100vh;
+    border:0.5vh solid white;
+   display:flex;
+   flex-direction:column;
+ justify-content: space-between;
+ 
+}
+.items{
+    font-size:250%;
+    background:#000;
+    border:0.5vh solid red;
+    color:white;
+    height:16vh;
+    aspect-ratio:1;
+}
+.row1{ 
+      display:flex;
+    justify-content:space-between;  
+   
+}
+.row3{
+     display:flex;     
+    align-content:space-between;
+    justify-content:space-between;  
+} 
+.row2{
+      display:flex;
+    align-self:center;
+
+} 
+
+
+

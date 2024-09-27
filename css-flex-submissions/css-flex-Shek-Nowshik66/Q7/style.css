@@ -1,0 +1,54 @@
+*{
+    background-color: rgb(85, 139, 241);
+}
+section{
+    width:100%;
+    max-width: 3000px;
+    aspect-ratio: 1;
+    display: flex;
+    justify-content: center;
+    margin-top: auto;
+    margin: 50px auto;
+}
+
+.f{
+    background-color: rgb(85, 139, 241);
+    border-radius: 0;
+}
+
+.c{
+    background-color: white;
+    border-radius: 50%;
+}
+
+.a{
+    width:100%;
+    aspect-ratio: 1;
+    display: flex;
+    justify-content:center;
+}
+
+.b{
+    width:100%;
+    aspect-ratio: 1;
+    max-width: 2120px;
+    align-self: center;
+    display: flex;
+    justify-content:center;
+}
+
+.d{
+    width: 100%;
+    max-width: 1200px;
+    aspect-ratio: 1;
+    align-self: center;
+    display: flex;
+    justify-content: center;
+}
+
+.e{
+    width: 100%;
+    max-width: 400px;
+    aspect-ratio: 1;
+    align-self: center;
+}

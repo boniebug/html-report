@@ -1,0 +1,95 @@
+body
+{
+    background-color: black;
+}
+#container {
+    padding: 50px;
+    margin:  10px 50px;
+    height: 300px;
+    width: 70%;
+}
+
+img {
+    height: 100px;
+    aspect-ratio: 1;
+}
+
+#container_top {
+    position: relative;
+    height: 100px;
+    width: 100%;
+}
+
+#image-one {
+    position: absolute;
+    bottom: 0;
+    left: 10%;
+}
+
+#image-two {
+    position: absolute;
+    bottom: 0;
+    left: 30%;
+}
+
+#image-three {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+}
+
+#image-four {
+    position: absolute;
+    bottom: 0;
+    left: 70%;
+}
+
+#container_middle {
+    position: relative;
+    border: 2px solid red;
+    height: 100px;
+    width: 100%;
+}
+
+#image-five {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+#image-six {
+    position: absolute;
+    bottom: 0;
+    left: 90%;
+}
+
+#container_bottom {
+    position: relative;
+    height: 100px;
+    width: 100%;
+
+}
+
+#image-seven {
+    position: absolute;
+    bottom: 0;
+    left: 80%;
+}
+
+#image-eight {
+    position: absolute;
+    bottom: 0;
+    left: 60%;
+}
+
+#image-nine {
+    position: absolute;
+    bottom: 0;
+    left: 40%;
+}
+
+#image-ten {
+    position: absolute;
+    bottom: 0;
+    left: 20%;
+}

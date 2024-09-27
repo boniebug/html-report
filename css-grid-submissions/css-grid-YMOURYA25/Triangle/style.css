@@ -1,0 +1,49 @@
+.tricont{
+    height: 200px;
+    width: 600px;
+    display: grid;
+    grid-template: 1fr 1fr 1fr 1fr/1fr;
+    gap: 4px;
+
+}
+
+.row2{
+    
+    grid-area: 2/1/3/2;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}.row3{
+    grid-area: 3/1/4/2;
+    display: grid;
+    grid-template: 1fr / 1fr 1fr 1fr;
+}
+.row4{
+    
+    grid-area: 4/1/5/2;
+    display: grid;
+    grid-template: 1fr /1fr 1fr 1fr 1fr;
+}
+
+.one,.two,.four,.seven{
+    grid-column: 1/2;
+}
+.three,.five,.eight{
+    grid-column: 2/3;
+}
+.six,.nine{
+    grid-column: 3/4;
+}
+.row2,.row3,.row4{
+    gap: 4px;
+}
+
+
+.ten{
+    grid-column: 4/5;
+}
+.one,.two,.three,.four,.five,.six,.seven,.eight,.nine,.ten{
+    background-color: rgb(170, 223, 253);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

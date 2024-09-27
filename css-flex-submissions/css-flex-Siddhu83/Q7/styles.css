@@ -1,0 +1,48 @@
+body{
+    background-color: rgba(0, 0, 0, 0.867);
+}
+
+.flex-items
+{
+    display: flex;
+    justify-content:center;
+    align-items: center;
+}
+
+#blue-box-large
+{
+    width: 50vw;
+    aspect-ratio: 4/3;
+    background-color: #5f84fe;
+    border: 10px solid black;
+}
+
+#white-cirle-large
+{
+    width: 35vw;
+    aspect-ratio: 1;
+    background-color: white;
+    border-radius: 100%;
+}
+
+#blue-box-medium
+{
+    width: 25vw;
+    aspect-ratio: 1;
+    background-color: #5f84fe;
+}
+
+#white-cirle-small
+{
+    width: 15vw;
+    aspect-ratio: 1;
+    border-radius: 100%;
+    background-color: white;
+}
+
+#blue-box-small
+{
+    width: 5vw;
+    aspect-ratio: 1;
+    background-color: #5f84fe;
+}

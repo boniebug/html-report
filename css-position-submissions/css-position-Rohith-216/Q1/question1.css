@@ -1,0 +1,47 @@
+body{
+    background-color: black;
+   margin: 5%;
+  }
+  .container{
+    display: flex;
+    width: 600px;
+    aspect-ratio: 8;
+    border: 1px solid orangered;
+    justify-content: space-between;
+  }
+  .img{
+    height: 70px;
+    width: 70PX;
+  }
+  .dinosaur1{
+    position: relative;
+    left: 70px;
+  }
+  .dinosaur2{
+      position: relative;
+      left: 110px;
+  }
+  .dinosaur3{
+    position: relative;
+    left: 150px;
+  }
+  .dinosaur4{
+    position: relative;
+    left: 190px;
+  }
+  .dinosaur7{
+    position: relative;
+    left: 120px;
+  }
+  .dinosaur8{
+      position: relative;
+      left: 160px;
+  }
+  .dinosaur9{
+    position: relative;
+    left: 200px;
+  }
+  .dinosaur10{
+    position: relative;
+    left: 240px;
+  }

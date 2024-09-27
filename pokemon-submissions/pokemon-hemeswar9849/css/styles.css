@@ -1,0 +1,81 @@
+ body {
+   background-color: aliceblue;
+ }
+
+ header {
+   position: sticky;
+   top: 0;
+   left: 0;
+
+   background-color: #000;
+   color: #fff;
+   padding: 10px;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+ }
+
+ #searchBar {
+   height: 30px;
+ }
+
+ .aPokemon {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   background-color: #000;
+   color: #fff;
+   width: 15vw;
+   padding: 10px 10px;
+   transition: all 400ms linear;
+ }
+
+ .aPokemon:hover {
+   transform: skew(1deg);
+   box-shadow: 5px 3px 20px rgba(0, 0, 0, 0.374);
+ }
+
+ .pokemonType {
+   padding: 10px;
+ }
+
+ .pokemonid {
+   background-color: white;
+   color: black;
+   padding: 0px 10px;
+ }
+
+ .pokemonName {
+  font-family: "Flexo-Demi", arial, sans-serif;
+  text-transform: none;
+ }
+
+ .groupedHeading {
+   grid-column: 5;
+ }
+
+ #containers {
+   margin-left: 20px;
+   display: grid;
+   grid-template-columns: repeat(5, 1fr);
+   justify-content: center;
+   gap: 10px;
+   justify-content: center;
+   margin-top: 10px;
+ }
+
+ .loading {
+   width: 100px;
+   height: 100px;
+   background-color: lightcyan;
+   margin: 100px auto;
+   border: 8px solid transparent;
+   border-radius: 50%;
+   border-top: 8px solid black;
+   border-style: groove;
+   animation: loading-animation 2s linear infinite;
+ }
+
+ .hide {
+   display: none;
+ }

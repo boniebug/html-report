@@ -1,0 +1,20 @@
+.paraBlock {
+  margin: 3%;
+  display: grid;
+  grid-template-areas: "para img";
+  grid-template-columns: 4fr, 1fr;
+  gap: 2rem;
+}
+
+.para {
+  font-size: 24px;
+  grid-area: para;
+}
+
+.image {
+  width: 250px;
+  height: 250px;
+  position: sticky;
+  margin-top: 160px;
+  top: 0;
+}

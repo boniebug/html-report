@@ -1,0 +1,21 @@
+.cont img{
+    position:sticky;
+    top: 0;
+    right: 0; 
+    margin-top: 200px;
+    width: 80%;
+}
+.cont{
+    font-size: x-large;
+    display: flex;
+    
+}
+body{
+    background-color:whitesmoke;
+}
+.text{
+    width: 70%;
+}
+.imcont{
+    width: 30%;
+}

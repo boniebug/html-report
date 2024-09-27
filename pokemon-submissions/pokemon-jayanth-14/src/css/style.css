@@ -1,0 +1,122 @@
+*{
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  box-sizing: border-box;
+}
+
+#cardContainer, #searchResults{
+  margin-top: 10vh;
+  padding: 10px 80px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(200px, 1fr));
+  gap: 10px 20px;
+  justify-content: center;
+  background-color: #e5e5e5;
+}
+.card{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 10px 20px;
+  background-color: #fff;
+  border: none;
+  border-radius:5% ;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+  max-height: 300px;
+}
+.cardImage{
+  background-color: #e5e5e5;
+  border-radius: 5px;
+  object-fit: cover;
+  margin-bottom: 5px;
+}
+.cardTitle{
+  border-top: 1px solid #000;
+  padding-top: 5px;
+  text-transform: capitalize;
+}
+.cardTitle, .cardId{
+  font-size: 18px;
+  font-weight: 500;
+}
+.cardTitle::before{
+  content: 'Name : ';
+  font-weight: 700;
+}
+.cardId::before{
+  content: 'Id : ';
+  font-weight: 700;
+}
+.cardTypes{
+  padding: 5px 3px;
+}
+.type{
+  padding: 2px 5px;
+  border-radius: 5px;
+  margin: 4px;
+  /* background-color: rgb(0, 60, 255); */
+}
+
+/* loading screen */
+#loader{
+  background-color: #fff;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#loader h1{
+  font-size: 20px;
+  font-weight: 700;
+  /* padding:; */
+}
+.hide{
+  display: none !important;
+}
+
+/* header styles */
+header{
+  width: 100vw;
+  height: 10vh;
+  background-color: #000;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 80px;
+  position: fixed;
+  top: 0px;
+}
+.logo{
+  display: flex;
+  align-items: center;
+}
+header .logo img{
+  width: 50px;
+  height: 90px;
+  object-fit: cover;
+}
+.search{
+  background-color: #fff;
+  border-radius: 5px;
+   display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#searchBox {
+  height: 40px;
+  width: 200px;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  padding: 5px 8px;
+  font-size: 1.12rem;
+}
+.searchIcon{
+  object-fit: cover;
+  object-position: center;
+}

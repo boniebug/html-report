@@ -1,0 +1,40 @@
+.container {
+    background-color: black;
+    height: 60vh;
+    aspect-ratio: 2;
+    padding: 4em;
+    overflow-x: hidden;
+
+    img {
+        position: relative;
+        height: 4.5em;
+        aspect-ratio: 1;
+    }
+}
+
+.second-row {
+    border: 1px solid red;
+    width: 70%;
+    position: relative;
+    .i-two {
+        position: absolute;
+        right: 0%;
+    }
+}
+
+.first-row {
+    width: 70%;
+    img {
+        left: 10%;
+        padding-right: 7%;
+        ;
+    }
+}
+
+.third-row {
+    width: 70%;
+    img {
+        left: 19%;
+        padding-right: 7%;
+    }
+}

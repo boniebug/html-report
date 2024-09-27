@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KIDS BOOK</title>
+      <style>
+        body {
+            font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            background-color:azure;
+         }
+        .header h1 {
+            margin: 0;
+        }
+        .header .icons {
+            display: flex;
+            gap: 20px;
+        }
+        .filters {
+            display: flex;
+            justify-content: space-around;
+            padding: 10px;
+            background-color:aliceblue;
+            outline: 1px  solid aliceblue ;
+        }
+        .filters div {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .categories {
+            display: flex;
+            justify-content: space-around;
+            padding: 10px;
+            background-color: #fff;
+        }
+        .categories div {
+            text-align: center;
+        }
+        .products {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            
+        }
+        .product {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+justify-items: flex-start;
+        }
+        .product img {
+            width: 100%;
+            height:300px;
+        }
+        .information {
+            padding:3px;
+        }
+        .information h2 {
+            margin: 0;
+            font-size:large;
+        }
+        .information p {
+            margin: 5px 0;
+    
+        }
+        .information .price {
+            font-size: 18px;
+            color: #000;
+        }
+        .information .offer {
+            color:#28a745;
+        }
+        .information .rating {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .information .rating span {
+            color: #28a745;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>KIDS BOOK</h1>
+        <div class="icons">
+            <span>🔍</span>
+            <span>❤</span>
+            <span>🛒</span>
+        </div>
+    </div>
+    <div class="filters">
+        <div>Sort</div>
+        <div>Category</div>
+        <div>Gender</div>
+        <div>Filters</div>
+    </div>
+    
+    <div class="products">
+        <div class="product">
+            <img src="./assets/books/kidb1.webp">
+            <div class="information">
+                <h2>Designer Exercise Books for Kids
+                </h2>
+                <p class="price">₹427</p>
+                <p>Free Delivery</p>
+                <div class="rating">
+                    <span>Rating:3.7</span>
+                    <span>(79) reviews</span>
+                </div>
+            </div>
+        </div>
+        <div class="product">
+            <img src="./assets/books/kidb2.webp">
+            <div class="information">
+                <h2>All in One Books For kids
+                </h2>
+                <p class="price">₹198</p>
+                   <p>Free Delivery</p>
+                <div class="rating">
+                    <span> Rating:3.8</span>
+                    <span>(109) Reviews</span>
+                </div>
+            </div>
+        </div>
+        <div class="product">
+            <img src="./assets/books/kidb3.webp">
+            <div class="information">
+                <h2>MY PADDED PICTURE BOOK Vegetables <br>
+                    | A Pictorial Journey of vegetables</h2>
+                <p class="price">₹139</p>
+                <p>₹79.00 Delivery</p>
+                <div class="rating">
+                    <span>Rating:3.7</span>
+                    <span>(849) Reviews</span>
+                </div>
+            </div>
+        </div>
+        <div class="product">
+            <img src="./assets/books/kidb4.webp">
+            <div class="information">
+                <h2>Children's attention Cut Paste Activity Book <br>
+                     for Kids - 6 + Activities
+                </h2>
+                <p class="price">₹285</p>
+                <p>Delivery ₹91</p>
+                <div class="rating">
+                    <span> Rating:3.1</span>
+                    <span>(7) reviews</span>
+                </div>
+                </div>
+                </div>
+                <div class="product">
+                    <img src="./assets/books/kidb5.webp">
+                    <div class="information">
+                        <h2>"All in one book for kids"
+
+                        </h2>
+                        <p class="price">₹365</p>
+                        <p>Free Delivery</p>
+                         <div class="rating">
+                            <span> Rating:3.7</span>
+                            <span>(1994) Reviews <span>
+                        </div>
+            </div>
+        </div>
+       
+    </div>
+</body>
+</html>

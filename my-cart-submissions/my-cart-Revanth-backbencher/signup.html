@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My-Cart</title>
+    <style>
+        label
+{
+    font-family: Arial, Helvetica, sans-serif;
+    color: blue;
+    text-decoration: underline gray;
+}
+button{
+background-color: skyblue;
+}
+button:hover
+{
+    color: gray;
+    background-color: white;
+}
+input
+{
+    color: rgb(17, 161, 244);
+}
+body
+{
+    background-color: gray;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+center
+{
+    background-color: antiquewhite;
+    border: 1px dashed rgb(191, 10, 10);
+    padding: 10px;
+}
+    </style>
+</head>
+<body>
+    <header>
+        <center>
+            <h1 style="color: black;">
+                SIGN UP PAGE
+            </h1>
+        </center>
+    </header>
+    <center>
+        <form action="index.html">
+            <label for="i1">profilepic</label>
+            <input type="file" name="profilepic" id="i1" required>
+            <br>
+            <label for="i2">username</label>
+            <input type="text" name="username" id="i2" required>
+            <br>
+            <label for="i3">password</label>
+            <input type="password" name="pass" id="i3" required>
+            <br>
+            <label for="i4">full name</label>
+            <input type="text" name="fullname" id="i4" required>
+            <br>
+            <label for="i5">email</label>
+            <input type="email" name="email" id="i5" value="" required>
+            <br>
+            <label for="i6">contact Number</label>
+            <input type="tel" name="phone" id="i6" required><br>
+            <label>premium membership or not</label><br>
+            <input type="radio" name="premium" value="yes">yes 
+            <input type="radio" name="premium" value="no">no <br>
+            <button type="submit">singup?</button>
+
+        </form>
+        or <br>
+        <a href="login.html">singin</a>
+    </center>
+</body>
+</html>

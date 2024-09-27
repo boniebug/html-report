@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .header{
+        grid-area: header; 
+      }
+      .article{
+        grid-area: artical;
+      }
+      .nav{
+        grid-area:nav;
+      }
+      .ads{
+        grid-area: ads;
+      }
+      .footer{
+        grid-area: footer;
+      }
+      .grid-container{
+        display: flex;
+        justify-content: center;
+        display: grid;
+        grid-template-areas:'header header header header header header header header header header '
+        'artical artical artical artical artical artical artical artical  nav ads'
+         'footer footer footer footer footer footer footer footer  nav ads';
+        
+        grid-gap:5px;
+        background-color:white;
+        border: 20px solid white;
+        margin: 20px 310px 10px 310px;     
+         
+      }
+      .grid-container >div {
+       background-color:rgb(228, 228, 244);
+      padding:0px 200px 200px 30px;
+      }
+      body{
+        background-color: black;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="grid-container">
+      <div class="header">HEADER</div>
+      <div class="article">ARTICLE</div>
+      <div class="nav">NAV</div>
+      <div class="ads"> ADS</div>
+      <div class="footer"> FOOTER</div>
+      
+
+    </div>
+  </body>
+</html>

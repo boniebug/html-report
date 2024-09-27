@@ -1,0 +1,44 @@
+#head {
+    grid-area: header;
+
+}
+
+#article {
+    grid-area: article;
+}
+
+#nav {
+    grid-area: nav;
+
+}
+
+#ads {
+    grid-area: ads;
+
+}
+
+#footer {
+    grid-area: footer;
+
+}
+
+.container {
+    display: grid;
+    grid-template-areas:
+        'header header header header header'
+        'article article article nav ads'
+        'footer footer footer nav ads';
+    grid-template-columns: 20% 22% 20% 20% 15%;
+    grid-template-rows: 60px 1fr 60px;
+    height: 700px;
+    grid-gap: 10px;
+    margin: 0;
+    border: 1px solid lavender;
+    background-color: white;
+
+}
+
+div {
+    background-color: lavender;
+    padding: 10px;
+}

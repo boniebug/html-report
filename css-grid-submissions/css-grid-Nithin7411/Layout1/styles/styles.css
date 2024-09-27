@@ -1,0 +1,32 @@
+.Container{
+    display: grid;
+     height:80vh;
+     width: 50vw;
+     grid-template-areas: 
+     "header header header"
+     "article nav ads"
+     "footer nav ads";  
+     grid-gap: 10px;
+  grid-template-rows: 1fr 6fr 1fr;
+  grid-template-columns: 4fr 2fr 1fr;
+  }
+  .Header, .Ads, .Article, .Footer, .Nav{
+    background-color: lightblue;
+   
+  }
+
+     .Header{
+       grid-area: header;
+     }
+   .Article{
+    grid-area: article;
+   }
+   .Nav{
+    grid-area: nav;
+   }
+   .Ads{
+    grid-area: ads;
+   }
+   .Footer{
+    grid-area:footer ;
+   }

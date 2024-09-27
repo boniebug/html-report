@@ -1,0 +1,119 @@
+/* ~blue~ rgb(91, 217, 255)*/
+/* ~Yellow~ rgb(255, 255, 103) */
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+
+body {
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+#header {
+  background-color: rgb(255, 255, 103);
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+#logo {
+  font-size: 2rem;
+}
+
+#search-bar {
+  padding: 6px;
+  font-size: 1.2rem;
+  border-radius: 8px;
+  background-color: rgb(91, 217, 255);
+  border: none;
+}
+
+#search-results {
+  position: absolute;
+  top: 75px;
+  right: 0;
+  background-color: rgb(184, 231, 245);
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  padding: 10px;
+  width: 50%;
+  max-height: 80vh;
+  min-height: 30px;
+  overflow-y: scroll;
+  box-shadow: -10px 35px 50px gray;
+  border-radius: 8px;
+  border: 2px solid rgb(255, 255, 103);
+}
+
+#all-pokemons {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+}
+
+.pokemonCard {
+  color: black;
+  border: 1px solid rgb(91, 217, 255);
+  margin: 10px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-evenly;
+  border-radius: 4px;
+  
+  img {
+    height: 100px;
+    align-self: center;
+  }
+}
+
+@keyframes loading {
+  0% {
+    transform: rotate(0deg);
+  }
+  
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+#loader-background {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(252, 255, 204, 0.541);
+}
+
+#loader {
+  width: 80px;
+  height: 80px;
+  border: 3px solid black;
+  border-bottom: 3px solid transparent;
+  animation: loading 2s infinite;
+  border-radius: 50%;
+}
+
+#loader::before {
+  content: '';
+  border: 2px solid;
+  background-color: black;
+  position: fixed;
+  right: 2px;
+  bottom: 7px;
+  transform: rotate(-9deg);
+  width: 10px;
+  height: 10px;
+}
+
+.hide{
+  display: none !important; 
+}

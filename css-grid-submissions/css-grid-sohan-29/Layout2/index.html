@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Layout2</title>
+    <style>
+
+      .container {
+        margin-left: auto;
+        margin-right: auto;
+        box-sizing: border-box;
+        display: grid;
+        height: 600px;
+        width: 700px;
+        border: 1px solid rgb(186, 184, 184);
+        grid-gap: 7px;
+        grid-template-areas:  "head head head head  "
+                              "nav article article article "
+                              "ads article article article "
+                              "ads footer footer footer ";
+        grid-template-columns:1fr 4fr ;
+        grid-template-rows: 2fr 13fr 3fr 2fr;
+      }
+      .cell
+      {
+        box-sizing: border-box;
+        background-color: rgb(211, 203, 243);
+      }
+      .head {
+        padding: 2.5%;
+        grid-area: head;
+      }
+      .article {
+        padding: 2%;
+        grid-area: article;
+      }
+      .nav {
+        padding: 7%;
+        grid-area: nav;
+      }
+      .ads {
+        padding: 7%;
+        grid-area: ads;
+      }
+      .footer {
+        padding: 3%;
+        grid-area: footer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="cell head">Header</div>
+      <article class="cell article">Article</article>
+      <nav class="cell nav">Nav</nav>
+      <div class="cell ads">Ads</div>
+      <footer class="cell footer">Footer</footer>
+  </div>
+  </body>
+</html>

@@ -1,0 +1,37 @@
+body{
+    background-color: #4d52be;
+    
+}
+.outcir{
+    width: 48%;
+    aspect-ratio: 1;
+    display: flex;
+    border-radius: 50%;
+    background-color: white;
+    margin-left: 400px;
+    align-items: center;
+    justify-content: center;
+}
+.bgrc{
+    height: 71%;
+    aspect-ratio: 1;
+    display: flex;
+    background-color:#4d52be;
+    align-items: center;
+    justify-content: center;
+}
+.incir{
+    width: 62%;
+    aspect-ratio: 1;
+    display: flex;
+    border-radius: 50%;
+    background-color: white;
+  
+    align-items: center;
+    justify-content: center;
+}
+.inrc{
+    height: 30%;
+    aspect-ratio: 1;
+    background-color:#4d52be;
+}

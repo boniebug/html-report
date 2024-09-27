@@ -1,0 +1,26 @@
+body {
+    background-color: black;
+    height: 100vh;
+}
+body,
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container {
+    border: 1px solid white;
+    height: 300px;
+    width: 300px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-content: space-between;
+}
+
+.box {
+    border: 1px solid red;
+    color: white;
+    height: 50px;
+    width: 50px;
+    font-size: 18px;
+}

@@ -1,0 +1,57 @@
+body
+{
+    background-color: black;
+}
+
+.flex{
+    display: flex;
+    height: 600px;
+    width: 600px;
+    border: 2px solid white;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+.item{
+    border: 2px solid red;
+    height: 100px;
+    aspect-ratio: 1;
+    color: white;
+    font-weight: 900;
+    font-size: 25px;
+    align-self: center ;
+}
+.row1{
+    display: flex;
+     width: 100%;
+     justify-content: space-between;
+}
+.row2{
+display: flex;
+justify-content: space-between;
+}
+.row3{
+    display: flex;
+    justify-content: center;
+    align-items: center;  
+}
+#a1{
+    align-self:flex-start;
+    justify-self: flex-start;
+}
+#a2{
+    align-self:center;
+    justify-self: center;
+}
+#a3{
+   
+}
+#a4{
+    align-self:flex-end;
+    justify-self:flex-start;
+}
+#a5{
+    align-self:flex-start;
+    justify-self: flex-end;
+}

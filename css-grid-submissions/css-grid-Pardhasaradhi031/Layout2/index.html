@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .grid-container {
+        height: 96vh;
+        width: 99vw;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+        gap: 9px;
+      }
+      .grid-items {
+        background-color: #E6E6FB;
+        color: black;
+        padding: 12px;
+      }
+      header {
+        grid-column-start: 1;
+        grid-column-end: 6;
+      }
+      article {
+        grid-column-start: 2;
+        grid-column-end: 6;
+        grid-row-start: 2;
+        grid-row-end: 5;
+      }
+      #nav-bar{
+        grid-row-start: 2;
+        grid-row-end: 4;
+        grid-column-start: 1;
+        grid-column-end: 2;
+      }
+      #ads-bar {
+        grid-row-start: 4;
+        grid-row-end: 6;
+        grid-column-start: 1;
+        grid-column-end: 2;
+      }
+      footer {
+        grid-column-start: 2;
+        grid-column-end: 6;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="grid-container">
+      <header class="grid-items"> Header </header>
+      <article class="grid-items"> Article </article>
+      <aside id="nav-bar" class="grid-items"> Nav</aside>
+      <aside id="ads-bar" class="grid-items"> Ads </aside>
+      <footer class="grid-items"> Footer </footer>
+      </div>
+    </div>
+  </body>
+</html>

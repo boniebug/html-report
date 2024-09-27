@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body{
+        display: grid;
+        grid-template-areas: 
+        'one one one one one one one one one one one one'
+        'two two two two two two three three three three three three'
+        'four four four four five five five five six six six six'
+        'seven seven seven eight eight eight nine nine nine ten ten ten';
+        grid-template-rows: 25% 25% 25% 25%;
+        grid-template-columns: repeat(12 1fr);
+        gap: 10px;
+        height: 500px;
+        margin: 6px;
+      }
+      div{
+        color: black;
+        background-color: aquamarine;
+        text-align: center;
+        padding: 20px;
+        align-content: center;
+        justify-content: center;
+        font-size: large;
+      }
+      #one{
+        grid-area: one;
+      }
+      #two{
+        grid-area: two;
+      }
+      #three{
+        grid-area: three;
+      }
+      #four{
+        grid-area: four;
+      }
+      #five{
+        grid-area: five;
+      }
+      #six{
+        grid-area: six;
+      }
+      #seven{
+        grid-area: seven;
+      }
+      #eight{
+        grid-area: eight;
+      }
+      #nine{
+        grid-area: nine;
+      }
+      #ten{
+        grid-area: ten;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="one">1</div>
+    <div id="two">2</div>
+    <div id="three">3</div>
+    <div id="four">4</div>
+    <div id="five">5</div>
+    <div id="six">6</div>
+    <div id="seven">7</div>
+    <div id="eight">8</div>
+    <div id="nine">9</div>
+    <div id="ten">10</div>
+  </body>
+</html>

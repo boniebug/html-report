@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        background-color: black;
+      }
+
+      .container {
+        border: 1px solid red;
+        margin: 10rem;
+        width: 60vw;
+      }
+
+      .pokemon {
+        width: 100px;
+      }
+
+      .pokemon:nth-child(odd) {
+        position: relative;
+        top: 100px;
+      }
+
+      .pokemon:nth-child(even) {
+        position: relative;
+        bottom: 100px;
+      }
+
+      .pokemon:nth-child(1),
+      .pokemon:nth-last-child(1) {
+        position: static;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <img src="./assets/charmander.png" alt="pokemon" class="pokemon">
+      <img src="./assets/charmander.png" alt="pokemon" class="pokemon">
+      <img src="./assets/charmander.png" alt="pokemon" class="pokemon">
+      <img src="./assets/charmander.png" alt="pokemon" class="pokemon">
+      <img src="./assets/charmander.png" alt="pokemon" class="pokemon">
+      <img src="./assets/charmander.png" alt="pokemon" class="pokemon">
+      <img src="./assets/charmander.png" alt="pokemon" class="pokemon">
+      <img src="./assets/charmander.png" alt="pokemon" class="pokemon">
+      <img src="./assets/charmander.png" alt="pokemon" class="pokemon">
+      <img src="./assets/charmander.png" alt="pokemon" class="pokemon">
+    </div>
+  </body>
+
+</html>

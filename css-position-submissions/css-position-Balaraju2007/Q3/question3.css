@@ -1,0 +1,67 @@
+.box{
+    height:900px;
+aspect-ratio: 1;
+display: flex;
+justify-content: center;
+align-items: center;
+margin-left:180px;
+
+  }
+.container{
+display:flex;
+height:800px;
+aspect-ratio: 1;
+border: 2px solid red;
+justify-content: center;
+align-items: center;
+
+}
+#second{
+height:600px;
+aspect-ratio: 1;
+border:1px solid red;    
+}
+#three{
+display:flex;
+height:400px;
+aspect-ratio: 1;
+border:1px solid red;
+}
+#four{
+display:flex;
+height:200px;
+aspect-ratio: 1; border:1px solid red;
+}
+.vaporeon1{
+position: relative;
+margin-left:-60px;
+right:10px;
+bottom:350px;
+} 
+.vaporeon2{
+position: relative;
+bottom:250px;
+left:480px;
+right:10PX;
+margin-left: -60px;
+}
+.vaporeon3{
+position: relative;
+margin-left: -80px;
+top:165px;
+left:300px 
+}
+
+.vaporeon4{
+position: relative;
+top:60px;
+right:40px;
+}
+.vaporeon5{
+position: relative;
+right:20px;
+}
+
+  body{
+    background-color: black;
+  }

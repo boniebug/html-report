@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body{       
+        display: grid;
+        grid-gap: 10px;
+        grid-template-areas: 'one one one one one one one one one one one one'
+                             'two two two two two two three three three three three three'
+                             'four four four four five five five five six six six six'
+                             'seven seven seven eight eight eight nine nine nine ten ten ten';
+        grid-template-columns: repeat(12 1fr);
+        grid-template-rows: repeat(4 1fr);   
+        margin: 10%;        
+      }
+      div{
+        height: 50px;
+        background-color: rgb(167, 167, 248);       
+        padding: 15px;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        text-align: center;
+        justify-content: center;
+        align-content: center;        
+      }
+      #one{
+        grid-area: one;
+      }
+      #two{
+        grid-area: two;
+      }
+      #three{
+        grid-area: three;
+      }
+      #four{
+        grid-area: four;
+      }
+      #five{
+        grid-area: five;
+      }
+      #six{
+        grid-area: six;
+      }
+      #seven{
+        grid-area: seven;
+      }
+      #eight{
+        grid-area: eight;
+      }
+      #nine{
+        grid-area: nine;
+      }#ten{
+        grid-area: ten;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="one"> 1 </div>
+    <div id="two"> 2 </div>
+    <div id="three"> 3 </div>
+    <div id="four"> 4 </div>
+    <div id="five"> 5 </div>
+    <div id="six"> 6 </div>
+    <div id="seven"> 7 </div>
+    <div id="eight"> 8 </div>
+    <div id="nine"> 9 </div>
+    <div id="ten"> 10 </div>
+
+  <body>
+</html>

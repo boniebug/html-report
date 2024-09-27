@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body{
+        display: grid;
+        grid-gap: 10px;
+        grid-template-rows: repeat(4,40%);
+        grid-template-columns: repeat(12,5%);
+        justify-content: center;
+       
+      }
+      .one{
+        background-color: lightblue;
+        grid-column: span 12;
+        text-align: center;
+      }
+      .two,.three{
+        
+        background-color: lightblue;
+        grid-column: span 6;
+        text-align: center;
+      }
+     
+      .four,.five,.six{
+       
+        background-color: lightblue;
+        grid-column: span 4;
+        text-align: center;
+      }
+     
+      .seven,.eight,.nine,.ten{
+        
+        background-color: lightblue;
+        grid-column: span 3;
+        text-align: center;
+      }
+     
+    </style>
+  </head>
+  <body>
+    <div class="one">1</div>
+    <div class="two">2</div>
+    <div class="three">3</div>
+    <div class="four">4</div>
+    <div class="five">5</div>
+    <div class="six">6</div>
+    <div class="seven">7</div>
+    <div class="eight">8</div>
+    <div class="nine">9</div>
+    <div class="ten">10</div>
+  </body>
+</html>

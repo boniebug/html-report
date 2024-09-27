@@ -1,0 +1,25 @@
+body {
+    margin: 0%;
+    padding: 30px;
+}
+
+p {
+    font-size: 2em;
+}
+
+.page {
+    display: grid;
+    grid-template-columns: 80% 20%;
+}
+
+img {
+    width: 240px;
+    padding-left: 20px;
+    margin-top: 60%;
+
+}
+
+.monkey {
+    position: sticky;
+    top: -25%;
+}

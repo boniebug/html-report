@@ -1,0 +1,24 @@
+.main {
+    background-color:aqua;
+    color:orange;
+}
+#thing {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight:50px ;
+    color:yellowgreen;
+    background-color: yellow;
+}
+body{
+    background-color:hotpink;
+}
+div:hover;
+#div{
+    line-height:25%;
+}
+a{
+    text-decoration: none;
+    columns: ;
+}
+.five{
+    margin-right: 1.5%;
+}

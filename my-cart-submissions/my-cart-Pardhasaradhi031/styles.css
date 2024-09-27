@@ -1,0 +1,99 @@
+* {
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+}
+body {
+   box-sizing: border-box;
+   background-color: whitesmoke;
+}
+ 
+h1 {
+    font-size: 50px;
+    font-weight: bolder;
+    color: rgb(54,69,79);
+    margin-top: 15px;
+}
+
+p {
+    margin: 25px;
+}
+
+section img {
+    mix-blend-mode: multiply;
+}
+
+a {
+    background-color: white;
+    color: #363738;
+    text-decoration: none;
+    padding: 6px;
+    border-radius: 8px;
+    border: 2px solid rgb(98, 95, 95);
+    margin-right: 15px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    box-shadow: 3px 3px 3px 3px;
+}
+
+a.current {
+    background-color: #363738;
+    color: white;
+}
+
+a:hover {
+    background-color:  #363738;
+    color: white;
+}
+
+article a {
+    background-color: #363738;
+    color: white;
+}
+
+.links {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    justify-content: center;
+    margin-bottom: 4px;
+    border-bottom: 2px solid rgb(98, 95, 95);
+}
+.product-links {
+    display: flex;
+    flex-direction: row;
+    gap: 25px;
+    justify-content: center;
+    margin-bottom: 60px;
+}
+
+.form {
+    margin: 5px 0px 20px 0px;
+}
+
+
+footer {
+    display: flex;
+    flex-direction: column;
+    border-top: 2px solid rgb(98, 95, 95) ;
+    justify-content: center;
+}
+
+section {
+    margin-bottom: 10px;
+    margin-top: 10px;
+    border-bottom: 2px solid rgb(98, 95, 95);
+}
+
+.product-links a{
+    background-color: white;
+    color: #363738;
+    box-shadow: 3px 3px 3px 3px;
+}
+
+.product-links a:hover {
+    background-color: #363738;
+    color: white;
+    
+}
+

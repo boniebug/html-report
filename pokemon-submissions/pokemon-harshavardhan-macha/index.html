@@ -1,0 +1,31 @@
+<html>
+  <head>
+    
+    <link rel="stylesheet" href="src\css\pokemon.css">
+    <script src="src\js\pokemon.js"></script>
+  </head>
+  <header>
+    <h1>pokemon overview</h1>
+    <div id="searchCOntainer">
+    <label for="search">search : </label>
+    <input type="search" id="search" placeholder="search ----->">
+    
+  <select id="searchType">
+  <option value="id">By ID</option>
+  <option value="name">By Name</option>
+  <option value="type">By Type</option>
+  </select>
+
+    <button type="submit" id="searchButton">🔍</button>
+    </div>
+    </header>
+    <hr>
+
+  <body>
+    
+    <div id="loader"><h2>Loading ......</h2></div>
+  <div id="container"></div>
+
+  
+  </body>
+</html>

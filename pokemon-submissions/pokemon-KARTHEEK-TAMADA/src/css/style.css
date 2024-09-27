@@ -1,0 +1,72 @@
+body {
+  font-family: Arial, sans-serif;
+}
+
+h1 {
+  text-align: center;
+}
+
+.pokemon-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.pokemon-card {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  margin: 10px;
+  padding: 10px;
+  width: 150px;
+  text-align: center;
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.pokemon-card img {
+  width: 100px;
+  height: 100px;
+}
+
+.pokemon-name {
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.pokemon-id {
+  font-size: 1em;
+  color: #666;
+}
+
+.pokemon-type {
+  font-size: 0.9em;
+  color: #555;
+}
+
+.search-box {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.search-box input {
+  width: 250px;
+  height: 40px;
+  border: 2px solid #ddd;
+  border-radius: 20px;
+  font-size: 18px;
+  padding: 0 15px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.search-box input:focus {
+  border-color: #007bff;
+}
+nav{
+  position: sticky;
+  top:0;
+  background-color: white;
+  padding-bottom: 3px;
+  padding-top: 5px;
+}

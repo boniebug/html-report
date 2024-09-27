@@ -1,0 +1,9 @@
+h2:hover{
+    background-color: black;
+    color: white;
+    text-align: center;
+    height: 50px;
+}
+a:hover{
+    color: green;
+}

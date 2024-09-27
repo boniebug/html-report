@@ -1,0 +1,68 @@
+*{
+  background-color: black;
+}
+.box{
+  display: flex;
+}
+.container_one{
+ height: 700px;
+ aspect-ratio: 1;
+ display: flex;
+ border:1px solid red;
+ justify-content: center;
+ align-items: center;
+}
+.vaporeon_one{
+  position: relative;
+  bottom: 320px;
+  margin-left: -70px;
+}
+.container_two{
+ height: 550px;
+ aspect-ratio: 1;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ border:1px solid red;
+}
+.vaporeon_two{
+  position: relative;
+  bottom: 240px;
+  left: 430px;
+}
+.container_three{
+ height: 400px;
+ aspect-ratio: 1;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ border:1px solid red;
+ margin-left: -40px;
+}
+.vaporeon_three{
+  position: relative;
+ top: 170px;
+ left: 270px;
+}
+.container_four{
+ height: 250px;
+ aspect-ratio: 1;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ border:1px solid red;
+ margin-left: -50px;
+}
+.vaporeon_four{
+    position: relative;
+    top: 100px;
+    right: 70px;
+}
+.vaporeon_five{
+  position: relative;
+  right: 20px;
+}
+img{
+  height: 50px;
+  aspect-ratio: 1;
+}

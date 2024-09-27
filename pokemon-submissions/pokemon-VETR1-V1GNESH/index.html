@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<head>
+    <title>Pokemon Assignment</title>
+    <link rel="stylesheet" href="./src/css/style.css">
+    <script src="./src/js/script.js"></script>
+</head>
+<body>
+    <nav class="nav-bar"> 
+        <h1>Pokémon Website</h1>
+        <div class="search-feature">
+            <input id="search-bar" type="text" placeholder="Search Pokemon">
+            <button onclick="searchPokemon();">Search</button>
+            <button class="home-button" onclick="openHomePage();">Home</button>
+        </div>
+    </nav>
+    <div id="page-loader" class="page-loader">
+        <div class="loading-animation"></div>
+    </div> 
+    <div id="main-container" class="main-container"></div>
+</body>
+</html>

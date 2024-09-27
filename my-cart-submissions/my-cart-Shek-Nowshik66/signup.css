@@ -1,0 +1,26 @@
+body
+{
+    background-color: lightgray;
+    text-align:center;
+}
+
+a{
+    color:rgb(6, 6, 203);
+    text-decoration: none;
+    font-family:sans-serif;
+}
+
+.i{
+    border-top:1px solid black;
+    margin:20px;
+    padding-top:10px;
+}
+
+#user{
+    margin-bottom: 5px;
+}
+
+.a{
+    margin-top: 10px;
+    border-radius: 10px;
+}

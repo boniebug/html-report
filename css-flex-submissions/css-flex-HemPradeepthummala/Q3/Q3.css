@@ -1,0 +1,19 @@
+*{
+    background-color: black;
+}
+.outercontainer{
+    border:1px solid white;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-content: space-between;
+    color:white;
+    width:300px;
+    aspect-ratio: 1;
+    margin:10% auto;
+}
+.box{
+    height:50px;
+    width:50px;
+    border:1px solid red;
+}

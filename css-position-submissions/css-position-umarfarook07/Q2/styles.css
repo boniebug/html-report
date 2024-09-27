@@ -1,0 +1,21 @@
+.container {
+    display: flex;
+    padding: 50px;
+    gap: 10px;
+    font-size: 22px;
+    position: relative;
+}
+
+img {
+    width: 300px;
+}
+
+.right-section {
+    margin-top: 130px;
+}
+
+.right-section img {
+    position: sticky;
+    top: 0;
+}
+

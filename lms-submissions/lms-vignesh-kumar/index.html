@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Library Books</title>
+    <link rel="stylesheet" href="./src/css/style.css" />
+    <script src="./src/js/script.js"></script>
+  </head>
+
+  <body>
+    <div id="background-blur"></div>
+    <nav class="navigation-bar">
+      <div class="page-logo">
+        <h1>Library</h1>
+        <img src="./src/Image/logo.png" alt="" />
+      </div>
+
+      <div class="features">
+        <button id="categorise-button" class="Categorize-genre">Categorize Genre</button>
+        <div id="categorise-container" class="hide">
+          <div id="all-books" class="categorise-options">All Books</div>
+          <div id="genre" class="categorise-options">genre</div>
+          <div id="author" class="categorise-options">Author</div>
+        </div>
+        
+        <button id="search-button" class="search-button">Search Genre</button>
+        <div id="search-container" class="hide">
+          <div class="search-options" id="adventure" onclick="displayGenre(id)">Adventure</div>
+          <div class="search-options" id="fantasy" onclick="displayGenre(id)">Fantasy</div>
+          <div class="search-options" id="comedy" onclick="displayGenre(id)">Comedy</div>
+          <div class="search-options" id="history" onclick="displayGenre(id)">History</div>
+        </div>
+        <button id="add-button">Add Book</button>
+      </div>
+    </nav>
+    
+    <div id="pop-up" class="hide">
+      <p id="close-button" onclick="displaypopup()">&times</p>
+      <label for="book-name">Book Name: </label>
+      <input type="text" id="book-name" />
+      <label for="book-year">Year: </label>
+      <input type="number" id="book-year" />
+      <label for="book-author">Author: </label>
+      <input type="text" id="book-author" />
+      <label for="book-genre">Genre: </label>
+      <input type="text" id="book-genre" />
+      <p id="popup-error"></p>
+      <button onclick="addBook()">Add Book</button>
+    </div>
+
+    <div id="categories-container"></div>
+    <h1 id="results-header" class="container-header"></h1>
+    <div id="searched-genre" class="hide"></div>
+    <h1 class="container-header">Explore Books</h1>
+    <div id="books-container"></div>
+
+    <footer>
+      <span> contact us: </span>
+      <h3><span>Mail:</span> superman@tw.com,</h3>
+      <h3><span>Phone:</span> xxxxx xxxxx,</h3>
+      <h3><span>Address:</span> Times Square, New York City</h3>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My Cart</title>
+    <link rel="stylesheet" href="./sy.css">
+  </head>
+  <body>
+    <header>
+        <h1>My Cart</h1>
+        <nav>
+          <table>
+              <tr>
+                <td><a href="./signin.html">Login</a></td>
+                  <td><a href="./index.html">Home</a></td>
+                  <td><a href="./mobiles.html">mobiles</a></td>
+                  <td><a href="./Books.html">Books</a></td>
+                  <td><a href="./Laptops.html">Laptops</a></td>
+                  <td><a href="./Electronics.html">Electronics</a></td>
+                  <td><a href="./Furniture.html">Furniture</a></td>
+                  <td><a href="./Fashion.html">Fashion</a></td>
+                  <td><a href="./Beauty.html">Beauty</a></td>
+                  <td><a href="./Toys.html">Toys</a></td>
+                  <td><a href="./profile.html">profile</a></td>
+              </tr>
+          </table>
+        </nav>
+        <div id="hl"></div>
+      </header>
+      <main>
+            <h3>Sign Up</h3>
+            <form action="./index.html">
+              <ul>
+                <li>
+                  <label for="urne">username:</label>
+                  <input type="text" name="urne" id="urne">
+                </li>
+                <li>
+                  <label for="furne">full name:</label>
+                  <input type="text" name="furne" id="furne">
+                </li>
+                <li>
+                  <label for="gen">Gender:</label>
+                  <select name="gen" id="gen">
+                    <option value="select" selected>Select</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                  </select>
+                </li>
+                <li>
+                  <label for="email">Email:</label>
+                  <input type="email" name="email" id="email">
+                </li>
+                <li>
+                  <label for="mob">Mobile:</label>
+                  <input type="number" name="mob" id="mob">
+                </li>
+                <li>
+                  <label for="psw">Password:</label>
+                  <input type="password" name="psw" id="psw">
+                </li>
+                <li>
+                  Do you want premium membership:
+                  <input type="radio" id="yes" name="pm">
+                  <label for="yes">Yes</label>
+                  <input type="radio" id="no" name="pm">
+                  <label for="no">No</label>
+                </li>
+                <li>
+                  <label for="pic">Choose profile pic</label>
+                  <input type="file" id="pic">
+                </li>
+                <li><button type="submit">sign up</button></li>
+              </ul>
+            </form>
+            <p>Or</p>
+            <a href="./signin.html">Sign In</a>
+      </main>
+    <footer>
+      <div id="hl"></div>
+      <p>Contact us at +91 XXXXX-XXXXX or my-cart-support@gmail.com</p>
+    </footer>
+  </body>
+</html>    

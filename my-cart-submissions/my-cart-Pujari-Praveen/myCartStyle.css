@@ -1,0 +1,507 @@
+* {
+   padding: 0;
+   margin: 0;
+   box-sizing: border-box;
+
+}
+
+/* Navigation bar */
+
+#navbar {
+   height: 65px;
+   border-top-color: #146ef5;
+   box-sizing: border-box;
+   box-shadow: 2px 2px 5px #888888;
+   border-top-style: solid;
+   border-top-width: 5px;
+   position: absolute;
+   top: 0;
+   left: 0;
+   right: 0;
+   display: flex;
+   background-color: #FFFFFF;
+   position: relative;
+
+}
+
+/* Navigation bar: My Cart logo */
+#myCart-logo {
+   display: flex;
+   align-items: center;
+   padding-left: 100px;
+   font-family: ubuntu, sans-serif;
+}
+
+#imgLogo,
+#imgProfile {
+   height: 25px;
+}
+
+/* Navigation bar: Nav Menu list */
+.items {
+   display: flex;
+
+   justify-content: flex-start;
+   width: 500px;
+   align-items: center;
+}
+
+/* Navigation bar: Nav left Menu list */
+
+#navLeftList {
+   display: flex;
+   justify-content: space-evenly;
+   align-items: center;
+   width: 500px;
+}
+
+#navLeftList li {
+   display: flex;
+   justify-content: space-around;
+   height: 65px;
+   list-style: none;
+}
+
+.items li a {
+   align-self: center;
+   text-decoration: none;
+   color: #5a5a5a;
+   font-size: 20px;
+   font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Navigation bar: buttons in list */
+.items li .btn {
+   color: #5a5a5a;
+   font-size: 20px;
+   background-color: inherit;
+   border: none;
+   position: relative;
+   cursor: pointer;
+}
+
+.navigation:hover {
+   cursor: pointer;
+}
+
+.navigation:hover #homeAnchor {
+   color: #146ef5;
+
+}
+
+.navigation:hover button {
+   color: #146ef5;
+
+}
+
+.navigation:hover {
+   border-bottom-style: solid;
+   border-bottom-width: 4px;
+   border-bottom-color: #146ef5;
+}
+
+/* Navigation bar: Nav right Menu list */
+#navRightList {
+   display: flex;
+   width: 300px;
+   position: absolute;
+   right: 40px;
+   justify-content: flex-end;
+}
+
+#navRightList li {
+
+   list-style: none;
+   display: flex;
+   height: 65px;
+   align-items: center;
+   margin-left: auto;
+}
+
+#navRightList #navMenu-profile {}
+
+body #navRightList #signupBtn {
+   color: #FFFFFF;
+   text-align: center;
+   cursor: pointer;
+   background-color: #146ef5;
+   border: none;
+   border-radius: 4px;
+   padding: 10px 15px;
+   font-weight: 700;
+
+}
+
+#signupBtn a {
+   color: #FFFFFF;
+}
+
+#signupBtn a p {
+   display: inline-block;
+}
+
+#btnPart {
+   font-weight: 100;
+}
+
+/* Navigation bar: Dropdown Menu */
+.dropdown {
+   display: flex;
+   align-items: center;
+
+}
+
+.dropdown-content {
+   display: none;
+   position: absolute;
+   top: 70%;
+   background-color: #f9f9f9;
+   min-width: 160px;
+   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+   margin-top: 20px;
+}
+
+.navigation:hover .dropdown-content {
+   display: block;
+
+}
+
+.dropdown-content a {
+   display: block;
+   padding: 10px 15px;
+   text-align: left;
+
+}
+
+.dropdown-content a:hover {
+   background-color: #146ef5;
+   color: #FFFFFF
+}
+
+/* Signin and Signup forms */
+.credential-container {
+
+   
+   background-color: white;
+   padding: 20px;
+   border-radius: 5px;
+   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+   max-width: 400px;
+   height: auto;
+   margin-left: auto;
+   margin-right: auto;
+   margin-top: 100px;
+   
+}
+
+#signinHeading,
+#signupHeading {
+   text-align: center;
+}
+
+#profilePicture {
+   margin-right: -10px;
+   margin-bottom: 20px;
+   margin-top: 20px;
+}
+
+
+#signinForm {
+   padding: 20px;
+   text-align: center;
+}
+
+#signupForm {
+   padding: 20px;
+   text-align: center;
+
+}
+
+.gender {
+   font-family: sans-serif;
+   padding: 10px;
+
+}
+
+.form-input {
+
+   margin-bottom: 10px;
+   width: 100%;
+   padding: 10px;
+   border: 1px solid #ddd;
+   border-radius: 5px;
+}
+
+.form-input:focus {
+   border-color: #5cb85c;
+   outline: none;
+}
+
+.form-button {
+   width: 100%;
+   padding: 5px 5px;
+   margin: 0px;
+   border-radius: 10px;
+   font-size: large;
+   color: white;
+   background-color: #5cb85c;
+   cursor: pointer;
+
+}
+
+.form-button:hover {
+   background-color: #4cae4c;
+}
+
+.option {
+   text-align: center;
+}
+
+.fieldset {
+   border-radius: 5px;
+   border: 1px solid #ddd;
+   margin-bottom: 10px;
+   width: 100%;
+   text-align: center;
+   display: flex;
+   justify-content: center;
+   
+}
+
+fieldset .genderLegend {
+   font-family: sans-serif;
+   color: #11151c7a
+}
+
+/* Home banner */
+#homeBanner {
+   display: flex;
+   flex-direction: column;
+   width: 850px;
+   margin: auto;
+   padding-top: 130px;
+}
+
+.content {
+   text-align: center;
+   font-family: sans-serif;
+}
+
+#mainContent-span1 {
+   font-size: 60px;
+   font-weight: 600;
+   line-height: 1.2em;
+   text-shadow: 0 0 1px rgba(255, 245, 255, .7), 0 0 3px rgba(255, 245, 255, .6), 0 0 9px rgba(255, 245, 255, .4), 0 0 29px rgba(255, 245, 255, .3);
+   color: white;
+}
+
+
+#mainContent-span2 {
+   color: #767dda;
+   font-size: 60px;
+   font-weight: 600;
+   line-height: 1.2em;
+   text-shadow: 0 0 1px rgba(255, 245, 255, .7), 0 0 3px rgba(255, 245, 255, .6), 0 0 9px rgba(255, 245, 255, .4), 0 0 29px rgba(255, 245, 255, .3);
+
+}
+
+#section-1 {
+   background-color: #146ef5;
+   height: 700px;
+   background: linear-gradient(#5397ff, skyblue);
+
+}
+
+#shopnowBtn {
+   margin-top: 20px;
+   width: 20%;
+   border: 2px solid #146ef5;
+   border-radius: 20px;
+   padding: 10px 15px;
+   font-family: sans-serif;
+   align-self: center;
+   background-color: inherit;
+   cursor: pointer;
+   font-size: 20px;
+   font-weight: 700;
+
+}
+
+#shopnowBtn:hover {
+   background-color: #146ef5;
+}
+
+#shopnowBtn a {
+   text-decoration: none;
+   color: #000000;
+
+}
+
+/* products category */
+
+.category {
+   
+   height: auto;
+   width: auto;
+   margin-top: 20px;
+   display: flex;
+   justify-content: flex-start;
+   flex-wrap: wrap;
+   margin-left: 60px;
+   margin-right: 60px;
+   row-gap: 20px;
+   gap: 70px;
+}
+
+.categoryName{
+   margin-left: 60px;
+   margin-right: 60px;
+   margin-top: 100px;
+}
+
+.imgHolder{
+   margin-top: 15px;
+   height: 300px;
+   width: 90%;
+   display: flex;
+   justify-content: center;
+   border: 2px solid #f4f4f4;
+}
+
+.prodImg{
+   height: 100%;
+   padding: 10px 0px;
+   
+}
+
+.product{
+   border: none;
+   box-shadow: 20px 10px 20px rgba(0, 0, 0, .05), 0 2px 5px rgba(0, 0, 0, .05);
+   border-radius: 10px;
+   width: 350px;
+   height: auto;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+
+   
+}
+
+details{
+   border: 1px solid #3c6469;
+   width: 85%;
+   text-align: center;
+   border-radius: 3px;
+   margin: 10px;
+   cursor: pointer;
+}
+
+details summary {
+   list-style: none; 
+   font-family: Arial, Helvetica, sans-serif;
+   padding: 5px;
+   font-weight: 500;   
+}
+
+
+.productName{
+   margin: 10px;
+   font-family:Arial, Helvetica, sans-serif;
+   text-align: center;
+}
+
+.productCost{
+   margin: 10px;
+   font-family: monospace, sans-serif;
+}
+
+/* profile page */
+#profileContainer{
+   display: flex;
+   max-width: 500px;
+   justify-content: center;
+   align-items: center;
+   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+   flex-direction: column;
+   padding: 30px 50px;
+   margin: auto;
+   background-color: #FFFFFF;
+}
+
+.profileField{
+   border-radius: 5px;
+   border: 1px solid #ddd;
+   margin-bottom: 10px;
+   width: 100%;
+   padding: 10px;
+   position: relative;
+   text-align: center;
+   display: flex;
+   justify-content: center;
+   margin: 20px;
+}
+
+#profileImg{
+   height: 150px;
+}
+
+/* Footer: Contact Us */
+#contactUs{
+   background-color: #FFFFFF;
+   margin-top: 50px;
+   margin-right: 60px;
+   margin-left: 60px;
+   display: flex;
+   flex-direction: column;
+   border-top: 1px solid rgba(0, 0, 0, .1);
+   padding-top: 40px;
+
+}
+
+#contactPara{
+   display: flex;
+   flex-direction: column;
+   justify-content: flex-start;
+   padding-bottom: 40px;
+   font-family: sans-serif;
+   padding-left: 50px;
+   line-height: 30px;
+   width: 100%;
+}
+
+#contactUs-span{
+   display: inline-block;
+   margin: 20px 0px;
+   font-size: 60px;
+   font-weight: 600;
+   letter-spacing: -2px;
+   color: #5397ff;
+}
+
+#contact{
+   width: 40%;
+
+}
+
+#contactInfo{
+   margin-top: 60px;
+   position: absolute;
+   right: 400px;
+}
+
+#contactMail, #contactPhone{
+   display: flex;
+   flex-direction: row;
+   
+}
+
+#mailIcon{
+   height: 25px;
+   margin-right: 10px;
+}
+
+#phoneIcon{
+   height: 25px;
+   margin-right: 10px;
+
+}

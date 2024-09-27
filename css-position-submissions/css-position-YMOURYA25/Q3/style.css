@@ -1,0 +1,56 @@
+body{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.box{
+aspect-ratio: 1;
+height: 900px;
+display: flex;
+align-items: center;
+justify-content: center;
+position: relative;
+}
+.container{
+    border: 1px solid red;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    height: 75%;
+    width: 75%;
+
+}
+img{
+    height: 40px;
+    aspect-ratio: 1;
+   
+}
+
+.one{
+    position: absolute;
+    top:0;
+    left: 0;
+}
+.two{
+position: absolute;
+ right: 0;
+ top: 0;
+}
+.three{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+.four{
+    position: absolute;
+    top: 40%;
+    right: 40%;
+}
+.five{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}

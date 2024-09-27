@@ -1,0 +1,18 @@
+*{
+    background-color: black;
+}
+.outercontainer{
+    border:1px solid white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color:white;
+    width:300px;
+    aspect-ratio: 1;
+    margin:10% auto;
+}
+.box{
+    height:50px;
+    width:50px;
+    border:1px solid red;
+}

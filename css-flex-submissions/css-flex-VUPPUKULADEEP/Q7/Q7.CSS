@@ -1,0 +1,45 @@
+.container{
+    height:70vh;
+   width:90vh;
+   
+   background-color:  #597dfb;
+   display:flex;
+   flex-direction:row;
+    justify-content: center;
+    align-items: center;
+}
+.wcircle1{
+    height:60vh;
+    width:60vh; 
+    background-color: white;
+    border-radius: 50%;
+    display:flex;
+   flex-direction:row;
+    justify-content: center;
+    align-items: center;
+}
+
+.square1{
+    height:42.7vh;
+    width:42.7vh;
+    background-color: #597dfb;
+    display:flex;
+   flex-direction:row;
+    justify-content: center;
+    align-items: center;
+}
+.wcircle2{
+    height:28vh;
+    width:28vh;
+    background-color: white;
+    border-radius: 50%;
+    display:flex;
+    flex-direction:row;
+     justify-content: center;
+     align-items: center;
+ }
+.square2{
+    height:9vh;
+    width:9vh;
+    background-color: #597dfb;
+}

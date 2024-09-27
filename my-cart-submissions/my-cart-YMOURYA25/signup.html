@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Cart - Sign Up</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <header>
+        <h1>My Cart</h1>
+        <nav>
+            <a href="./login.html">Login</a>
+            <a href="./index.html">Home</a>
+            <a href="./mobiles.html">Mobiles</a>
+            <a href="./books.html">Books</a>
+            <a href="./laptops.html">Laptops</a>
+            <a href="./electronics.html">Electronics</a>
+            <a href="./furniture.html">Furniture</a>
+            <a href="./fashion.html">Fashion</a>
+            <a href="./beauty.html">Beauty</a>
+            <a href="./toys.html">Toys</a>
+            <a href="./profile.html">Profile</a>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Sign Up</h1>
+        <form>
+            <label for="username">Username:</label>
+            <input type="text" id="username" required>
+
+            <label for="fullname">Fullname:</label>
+            <input type="text" id="fullname">
+
+            <label for="gender">Gender:</label>
+            <select id="gender" required>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="others">Others</option>
+            </select>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email">
+
+            <label for="mobile">Mobile:</label>
+            <input type="number" id="mobile" required maxlength="12" minlength="10">
+
+            <label for="password">Password:</label>
+            <input type="password" id="password">
+
+            <label for="premium">Do you want premium membership:</label>
+            <div class="radio-group">
+                <input type="radio" name="premium" value="Yes" id="premium_yes">
+                <label for="premium_yes">Yes</label>
+                <input type="radio" name="premium" value="No" id="premium_no">
+                <label for="premium_no">No</label>
+            </div>
+
+            <label for="profile">Choose profile pic:</label>
+            <input type="file" id="profile">
+
+            <button type="submit">Sign Up</button>
+           <p></p> <a href="login.html">Sign in</a></p>
+        </form>
+    </main>
+
+    <footer>
+        <p>Contact us at +91 XXXXX XXXXX or my-card-support@gmail.com</p>
+    </footer>
+</body>
+</html>

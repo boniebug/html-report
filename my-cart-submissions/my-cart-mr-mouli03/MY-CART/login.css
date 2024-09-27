@@ -1,0 +1,73 @@
+*
+{
+    text-align: center;
+}
+.login
+{
+    background-color: lightblue;
+    border-radius: 10px;
+    margin: 0 35% 0 35%;
+    border: 2px blue solid;
+    box-shadow: 0 0 10px blue;
+}
+.name
+{
+    border-radius: 5px;
+    border-color: black;
+    word-wrap: break-word;
+}
+#h
+{
+    font-size: 30px;
+}
+.name
+{
+    padding: 0px;
+}
+.name:focus
+{
+    box-shadow:0 0 20px black;
+}
+.butt
+{
+    color: aliceblue;
+    background-color: green;
+   margin-bottom: 2%;
+    border-color: black;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size-adjust: 4px;
+    padding-bottom: 1px;
+}
+.butt:hover
+{
+  transform: scale(1.2);
+}
+.input
+{
+    word-wrap: break-word;
+    margin:1%;
+    line-break: auto;
+}
+
+.haveAcc
+{
+    color: red;
+}
+.labels
+{
+line-break: 20px;
+}
+.sign-in,.sign-up
+{
+    margin-bottom: 2%;
+    margin-top: 2%;
+}
+.or
+{
+    margin: 0%;
+}
+.file
+{
+    margin-left: 60px;
+}

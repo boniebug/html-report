@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Our Library</title>
+  <link rel="stylesheet" href="src/css/index.css" />
+  <script async src="src/js/csvData.js"></script>
+  <script async src="src/js/index.js"></script>
+  <script async src="src/js/addBook.js"></script>
+  <script async src="src/js/categorise.js"></script>
+</head>
+
+<body>
+
+  <header id="pageHeader">
+    <div id="pageTitleContainer">
+      <img src="./src/images/bookLogo.png">
+      <h1 id="pageTitle">Knowledge Hub</h1>
+    </div>
+    <div id="headerButtons">
+      <div id="addBook">+ Add Book</div>
+    </div>
+  </header>
+
+  <main>
+    <section id="mainSection"></section>
+  </main>
+
+  <form id="addBookDetails" action="index.html">
+    <h1>Add a NewBook</h1>
+    <div id="formInputs"></div>
+    <div id="formButtonsContainer">
+      <button type="submit" id="submit" value="Add Book">Add Book</button>
+      <img src="./src/images/refresh.png" id="refreshButton" title="Refresh">
+      <button id="closeForm" value="Close Form">Close Form</button>
+    </div>
+  </form>
+
+</body>
+
+</html>

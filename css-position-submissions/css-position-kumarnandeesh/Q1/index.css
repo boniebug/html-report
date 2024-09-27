@@ -1,0 +1,23 @@
+body{
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; 
+}
+img{
+    height: 120px;
+    width: 120px;
+}
+.container{
+    /* display: flex; */
+    border: 1px solid red;
+}
+#top{
+    position: relative;
+    bottom: 120px;
+}
+#bottom{
+    position: relative;
+    top: 130px;
+}

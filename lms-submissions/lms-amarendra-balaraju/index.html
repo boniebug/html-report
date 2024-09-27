@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="./src/css/style.css">
+     <script src="./src/js/script.js"></script>
+  </head>
+  <body id="body">
+      <header> <h1 id="top-heading">LIBRARY</h1> <button onclick = "addBook()" class="addBook" >add Book</button>
+        <label for="genres">Genre: </label>
+        <select id="genres" onchange = "catgorise(event)">
+          <option class="genre">--choose Genre  --</option>
+        </select>
+        <button id="catgorised"> convert
+         </button>
+      </header> 
+      <main>    
+        <section class="newBook">
+          Book name : <input type="text" id="bookName" class="bookDetails">
+          published Year: <input type="number" id="publishYear" class="bookDetails" >
+          Genre : <input type="text" id="genre" class="bookDetails" >
+          Author : <input type="text" id="author" class="bookDetails" >
+          <button onclick="submitBookDetails()">submit</button>
+        </section>   
+      </main>
+  </body>
+ </html>

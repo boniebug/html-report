@@ -1,0 +1,29 @@
+body {
+  background-color: black;
+  color: white;
+}
+
+.container {
+  height: 600px;
+  width: 600px;
+  border: 1px solid white;
+
+  margin: 10% auto;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  font-size: 30px;
+}
+
+.inner-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.box {
+  height: 100px;
+  width: 100px;
+  border: 1px solid red;
+}

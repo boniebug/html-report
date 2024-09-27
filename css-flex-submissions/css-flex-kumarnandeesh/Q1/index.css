@@ -1,0 +1,21 @@
+body{
+    display: flex;
+    justify-content: center;
+    background-color: black;
+    color: white;
+    
+}
+section{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 700px;
+    width: 700px;
+    border: 2px solid white;
+}
+.box{
+    height: 120px;
+    width: 120px;
+    border: 2px solid red;
+    font-size: 30px;
+}

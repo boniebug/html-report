@@ -1,0 +1,47 @@
+<html>
+
+<head>
+  <script src="./source/js/library.js"></script>
+  <link rel="stylesheet" href="./source/css/library.css">
+  <link rel="icon" href="./source/images/bookMartLgo.png">
+  <title>VIDYAVANI</title>
+</head>
+
+<body>
+  <header id="header">
+    GRANTHALAYA
+    <img src="./source/images/book.png" alt="book icon" id="bookIcon">
+    <button id="addBook">ADD BOOK</button>
+    <select name="⇅ SORT" id="sortOptions">
+      <option value="default" id="defaultCategorise" class="options">⇅ Default</option>
+      <option value="genre" id="genreCategorise" class="options">Genre</option>
+      <option value="author" id="authorCategorise" class="options">Author</option>
+    </select>
+  </header>
+
+  <section id="newBookForm">
+    <div id="userForm">
+      <fieldset>
+        <legend>Book-info</legend>
+        <label for="book-pic"> Book Picture: </label>
+        <input type="image" id="book-pic" src="./source/images/defaultbook.png" style="height: 180px; width: 130px;"
+          class="formInput">
+        <label for="bookName">Book Name : </label>
+        <input type="text" id="bookName" class="formInput" placeholder="Enter Book Name...">
+        <label for="authorName">authorName :</label>
+        <input type="text" id="authorName" class="formInput" placeholder="Enter Author Name...">
+        <label for="genre">Genre :</label>
+        <input type="text" id="genre" class="formInput" placeholder="Enter Genre Name...">
+        <label for="year">Year :</label>
+        <input type="number" id="year" class="formInput" placeholder="Enter Year...">
+        <input type="submit" value="submit" id="submit" disabled>
+        <div id="message">Fill the information about new book</div>
+      </fieldset>
+    </div>
+  </section>
+
+  <section id="books">
+  </section>
+</body>
+
+</html>

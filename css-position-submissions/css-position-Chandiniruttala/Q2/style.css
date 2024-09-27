@@ -1,0 +1,19 @@
+* {
+    background-color: #f6f6f6;
+}
+
+.container {
+    display: flex;
+}
+
+img {
+    margin-top: 200px;
+    height: 200px;
+    aspect-ratio: 1;
+    position: sticky;
+    top: 0px;
+}
+
+p {
+    font-size: 40px;
+}

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Library</title>
+  <link rel="stylesheet" href="./src/css/style.css">
+  <script src="./src/js/booksCsv.js"></script>
+  <script src="./src/js/destructureCsv.js"></script>
+  <script src="./src/js/setEvents.js"></script>
+  <script src="./src/js/categorize.js"></script>
+  <script src="./src/js/createBook.js"></script>
+  <script src="./src/js/form.js"></script>
+  <script src="./src/js/script.js"></script>
+</head>
+
+<body>
+
+  <header>
+    <div id="title">
+      <h1>Book Heaven</h1>
+    </div>
+    <div id="nav-bar">
+      <nav>        
+        <select title="category" name="category" id="select-category">
+          <option value="All Books">All Books</option>
+        </select>
+        <button id="add-book-button">Add Book</button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section id="popup-container" class="hide">
+      <div id="popup">
+        <form id="new-book-form">
+          <button type="button" id="close-button">X</button>
+          <h1 class="title">Add Book</h1>
+          <button type="submit" id="submit">Add Book</button>
+        </form>
+      </div>
+    </section>
+
+    <section id="books-container">
+      <div id="books-wraper">
+        <div class="books">
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+
+</html>

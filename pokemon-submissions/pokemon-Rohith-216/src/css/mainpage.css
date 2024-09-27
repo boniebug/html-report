@@ -1,0 +1,43 @@
+#header {
+    height: 150px;
+    width: 100%;
+    background-color: rgb(43, 43, 43);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: sticky;
+    top: 0;
+}
+
+h1 {
+    text-align: center;
+    color: orangered;
+    padding-top: 60px;
+}
+
+#mainpage {
+    display: flex;
+    height: auto;
+    width: auto;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    padding-left: 10px;
+    gap: 5px;
+    margin-top: 2px;
+}
+
+.pokemon {
+    height: 300PX;
+    width: 250px;
+    box-shadow: rgb(38, 38, 38);
+    padding: auto;
+    border: 1px solid grey;
+}
+
+#search {
+    position: absolute;
+    top: 70px;
+    right: 50px;
+    height: 30px;
+}

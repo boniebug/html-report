@@ -1,0 +1,21 @@
+body{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+.content{
+    
+    display: flex;
+  }
+  p{
+    font-size: 25px;
+  }
+  .image{
+    position: relative;
+    top: 100px;
+  }
+  img{
+    width: 350px;
+    position: sticky;
+    top: 0;
+  }

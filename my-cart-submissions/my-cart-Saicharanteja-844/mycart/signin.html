@@ -1,0 +1,64 @@
+<html>
+    <head>
+        <title>
+
+            signin page 
+        </title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div align="center" id="signin" >
+            <form>
+                <legend>
+                       SIGNIN
+                </legend><br><BR></BR>
+             <tr>
+                <td>
+                    <label>
+                        USERNAME :
+                    </label> 
+                </td>
+                <TD style="padding-left: 15px;"><input type="text" title="enter your username" placeholder="username" id="usname"></TD>
+             </tr><br><BR>
+
+            <tr>
+                <td>
+                    <label>
+                        PASSSWORD :
+                    </label> 
+                </td>
+                <TD style="padding-left: 14px;"><input type="text" title="password must have more than or equal to 8 characters" placeholder=" password" id="pass"></TD>
+             </tr><br><br>
+             <script>
+                function validateForm() {
+                  const username = document.getElementById("usname").value;
+                  const password = document.getElementById("pass").value;
+              
+                  if (username.trim() === "") {
+                    alert("Please enter a valid username.");
+                    return false;
+                  }
+              
+                  if (password.length < 8) {
+                    alert("Password must have at least 8 characters.");
+                    return false;
+                  }
+              
+                  // Additional validation checks can be added here
+              
+                  return true; // Form is valid
+                }
+              </script>
+           <button type="button" onclick="validateForm()" ondblclick="location.href='home.html'"  title="make a double click to singin and single click to validate the user name " align="center">  signin</button>
+          
+          
+           <br><br>
+           <STRONG align="center">[OR]</STRONG><br><br>
+           <button type="button" onclick="location.href='signup.html'" align="center">  signup</button>
+              
+             </button>
+            </form>
+        </div>
+
+    </body>
+</html>

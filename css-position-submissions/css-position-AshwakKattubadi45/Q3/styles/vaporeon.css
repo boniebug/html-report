@@ -1,0 +1,55 @@
+body {
+
+    display: flex;
+    justify-content: center;
+
+}
+
+.box {
+    width: 50%;
+    aspect-ratio: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+}
+
+.container {
+    width: 70%;
+    border: solid 1px red;
+    aspect-ratio: 1;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+}
+
+img {
+    width: 35px;
+    height: 35px;
+}
+
+.pokemon_one {
+    position: absolute;
+    top: 19%;
+    left: 34%;
+}
+
+.pokemon_two {
+    position: absolute;
+    top: 28%;
+    left: 59%;
+}
+
+.pokemon_three {
+    position: absolute;
+    bottom: 31%;
+    right: 41%;
+}
+
+.pokemon_four {
+    position: absolute;
+    bottom: 36%;
+    right: 53%;
+}

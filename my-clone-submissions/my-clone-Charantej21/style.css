@@ -1,0 +1,126 @@
+.bodystyle{
+    background-color: rgb(27, 24, 24);
+    text-align: center;
+     border-top: 2px solid yellow;
+     font-family:sans-serif;
+    color: white;
+    position: static;
+    line-height: normal;
+}
+strong{
+    text-align: center;
+}
+.size{
+    padding-top:6px;
+    color:rgb(177, 169, 169);
+}
+.heder-size{
+    font-size: 20px;
+    padding-top: 10px; 
+}
+.buttons{
+    background-color: white;
+    border-radius:8px;
+    border-color: white;
+    color: black;
+    padding:10px 20px;
+    display: inline-block;
+    margin: 5px 3px;
+    font-size: medium;
+}
+.buttons:hover{
+    background-color: yellow;
+    border-radius:8px;
+    border-color:yellow;
+    color: black;
+    padding:10px 20px;
+    display: inline-block;
+    margin: 5px 3px;
+    font-size: medium;
+}
+.movies{
+    padding-top:50px;
+}
+*{
+    box-sizing: border-box;
+    position:static;
+    font-family: Arial, Helvetica, sans-serif;
+}
+#ibomma-size{
+    height:80;!
+     width:200;!
+}
+.rows{
+    display:flex;
+    flex-direction:row;
+    justify-content:space-around;
+    flex-wrap:wrap;
+    align-content: flex-start;
+    gap: 1em;
+}
+.images{
+    width: 15%; 
+   /*border: 3px solid #f1f1f1;*/
+}
+img{
+    width:200px;
+    height:250px;
+}
+p{
+    color: yellow;
+    background-color:#31363F;
+    border:#31363F;
+    display:block;
+    width:40px;
+}
+b:hover{
+    color: grey;
+}
+p{
+    text-align: left;
+}
+ #lftr{
+    text-align:left;
+    display: block;
+ }
+ #rftr{
+text-align: right;
+display: block;
+ }
+ #img-size2{
+    width: 200px;
+    height:70px;
+    padding-left: 20px;
+ }
+ .bodystylemain{
+    background-color: black;
+    color: white;
+    margin-left: 37%;
+    position:static;
+ }
+ .box{
+    text-align:left;
+    background-color: rgb(46, 42, 42);
+    width: 300px;
+    border:1px solid rgb(46, 42, 42);
+    margin: 20px;
+    padding: 40px;
+    padding-right: 20px;
+ }
+ .button-e{
+    background-color:yellow;
+    border-radius:5px;
+    border-color:yellow;
+    color: black;
+    padding:10px 80px;
+    display: inline-block;
+    margin: 7px 3px;
+    font-size: medium;
+ }
+ #rftr:hover{
+    color: grey;
+ }
+ #lftr:hover{
+    color: grey;
+ }
+ 

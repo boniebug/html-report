@@ -1,0 +1,174 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  background-color: #121212;
+  color: #e0e0e0;
+}
+
+header {
+  text-align: center;
+  padding: 20px;
+  background-color: #1d1d1d;
+  color: #ffffff;
+  font-size: 32px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Pokémon Grid */
+#pokemon-grid,
+#loader{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 20px;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-top: 140px;
+}
+
+.pokemon-card { 
+  background-color: #1f1f1f;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1); 
+  text-align: center;
+  transition: transform 0.3s, background-color 0.3s;
+}
+
+.pokemon-card:hover {
+  transform: scale(1.05);
+  background-color: #333;
+}
+
+.pokemon-img {
+  width: 100px;
+  height: 100px;
+}
+.pokemon-name {
+  font-weight: bold;
+  margin: 10px 0;
+  color: #e0e0e0;
+}
+
+.pokemon-id {
+  font-size: 16px;
+  color: #bbbbbb;
+  margin-bottom: 8px;
+}
+.pokemon-id::before {
+  content: 'ID: ';
+  font-size: 16px;
+}
+.pokemon-types {
+  display: flex;
+  justify-content: center;
+}
+.pokemon-type {
+  background-color: #ef5350;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 15px;
+  margin: 0 5px;
+}
+
+.spinner {
+  border: 8px solid rgba(255, 255, 255, 0.3);
+  border-top: 8px solid #ef5350;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  animation: spin 1s linear infinite;
+  display: none; 
+  margin: 150px auto;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* search bar styles */
+#search-bar {
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+  align-items: center;
+  /* gap: 10px; */
+}
+
+#search {
+  padding: 10px;
+  font-size: 16px;
+  border: 2px solid #ddd;
+  border-radius: 4px 0 0 4px;
+  outline: none;
+  width: 300px;
+  transition: border-color 0.3s ease;
+}
+#search:focus {
+  border-color: #ef5350;
+}
+#search::placeholder {
+  color: #888888;
+  font-size: 16px;
+}
+
+#search-btn {
+  padding: 10px 20px;
+  font-size: 16px;
+  color: white;
+  background-color: #ef5350;
+  border: 2px solid #ef5350;
+  border-radius: 0 4px 4px 0;
+  cursor: pointer;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+#search-btn:hover {
+  background-color: #d32f2f;
+  border-color: #d32f2f;
+}
+
+#search-btn:active {
+  background-color: #c62828;
+  border-color: #c62828;
+}
+
+#search-btn:focus {
+  outline: none;
+}
+.search-bar button, 
+.search-bar input {
+  height: 100%;
+}
+
+body::-webkit-scrollbar {
+  width: 12px;
+}
+
+body::-webkit-scrollbar-track {
+  background: #121212;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #d32f2f;
+  border-radius: 6px;
+  border: 3px solid #121212;
+}

@@ -1,0 +1,57 @@
+.header{
+    text-align: center;
+    background-color: black;
+    color: white;
+    font-size: xx-large;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border: 2px rgb(255, 169, 9) solid;
+    
+  }
+  .icon{
+    height: 60px;
+    width: auto;
+    border: 2px black solid;
+    border-radius: 25ch;
+    
+}
+
+.coll{
+       font-style: italic ;
+       font-weight: 800;
+      
+       font-size: larger;
+}
+#sign1{
+    padding-top: 20px;
+       margin-left: 400px;
+       margin-right: 400px;
+        background-color: rgb(170, 255, 251);
+        border-radius: 15% ;
+        border: 2px dotted rgb(0, 0, 0); 
+}
+.input{
+       border: 2px black soild;
+       border-radius: 25ch;
+}
+.signin{
+    text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
+    letter-spacing: -.3;
+    background-color: black;
+    color: white;
+    padding: 5px;
+    border: 2px solid;
+    border-radius: 25ch;
+
+}
+.submit{
+    font-family: Arial, Helvetica, sans-serif;
+    letter-spacing: -.3;
+    background-color: black;
+    color: white;
+    padding: 5px;
+    border: 2px solid;
+    border-radius: 25ch;
+}
+

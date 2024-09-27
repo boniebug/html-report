@@ -1,0 +1,130 @@
+* {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+#buttonContainer {
+    margin: 30px;
+}
+body {
+    background-color: #dee0e7;
+}
+h1 {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 40px;
+}
+img {
+    width: 400px;
+    height: 400px;
+}
+#pokemonsContainer {
+    padding: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-top: 30px;
+    justify-content: space-around;
+}
+#pokemonsContainer p {
+    padding: 10px;
+}
+#pokemonsContainer img{
+    width: 150px;
+    height: 150px;
+}
+.pokemonDiv {
+    text-align: center;
+    background-color: white;
+    border-radius: 20px;
+    border: 2px solid white;
+}
+.pokemonDiv #water {
+    color: black;
+    background-color: rgba(194, 221, 231, 0.959);
+}
+.pokemonDiv #fire {
+    color: black;
+    background-color: rgb(255, 145, 0);
+}
+.pokemonDiv #grass {
+    color: black;
+    background-color: green;
+}
+.pokemonDiv #bug {
+    color: black;
+    background-color: lightgreen;
+}
+.pokemonDiv #normal{
+    color: black;
+    background-color: rgba(46, 14, 14, 0.712);
+}
+.pokemonDiv  #ground{
+    color: black;
+    background-color: rgba(61, 21, 21, 0.712);
+}
+.pokemonDiv  #fighting{
+    color: black;
+    background-color: rgba(71, 32, 32, 0.712);
+}
+.pokemonDiv #electric{
+    color: black;
+    background-color: yellow;
+}
+.pokemonDiv #fairy{
+    color: black;
+    background-color: pink;
+}
+.pokemonDiv #psychic{
+    color: black;
+    background-color: rgb(107, 19, 19);
+}
+.pokemonDiv #ice{
+    color: black;
+    background-color: skyblue;
+}
+.pokemonDiv #dragon{
+    color: black;
+    background-color: orangered;
+}
+.pokemonDiv #ghost{
+    color: black;
+    background-color: rgb(82, 18, 18);
+}
+.pokemonDiv #dark{
+    color: black;
+    background-color: rgb(87, 9, 9);
+}
+
+.pokemonID {
+    text-align: right;
+    margin-left: 170px;
+    width: 55px;
+    background-color: #dee0e7;
+}
+#searchBar {       
+    margin-top: 50px;
+    margin-left: 500px;
+    margin-bottom: 30px;
+}
+#searchBar input {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    width: 500px;
+    height: 40px;
+    padding: 15px;
+    border-radius: 20px;
+}
+button {
+    font-family: Arial, Helvetica, sans-serif;
+    cursor: pointer;
+    padding: 5px;
+    margin-left: 700px;
+    margin-bottom: 30px;
+}
+.loadingMessageContainer {
+    display: none;
+    font-size: 20px;
+    text-align: center;
+}
+
+.hide {
+    display: none;
+}

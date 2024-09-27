@@ -1,0 +1,119 @@
+body {
+    padding: 0;
+    margin: 0;
+    text-transform: capitalize;
+    font-family: sans-serif;
+}
+
+/* header */
+#header {
+    display: flex;
+    border-bottom: 1px solid #DEE2FF;
+    padding-bottom: 10px;
+    position: sticky;
+    background-color: #DEE2FF;
+    border-radius: 5px;
+    top: 0;
+    left: 0;
+    display: none;
+}
+
+#logo {
+    width: 250px;
+    margin-left: 40px;
+}
+
+/* main */
+.main {
+    margin-top: 20%;
+    margin-left: 40%;
+
+    #loading-symbol {
+        border: 5px solid #9e9d9d;
+        border-right: 5px solid #f7f7f7;
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        position: relative;
+        left: 10%;
+        bottom: 50%;
+        animation: spin 2s linear infinite;
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+#outer-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+    padding: 40px;
+    padding-top: 20px;
+}
+
+.pokemon-container {
+    box-shadow: 0px 2px 3px 0px rgba(5, 5, 5, 0.15);
+    border: 2px solid #9e9d9d;
+    border-radius: 5px;
+    padding-left: 40px;
+    height: 60vh;
+    background-color: #fbfefb;
+}
+
+.pokemon-container:hover {
+    background-color: #DEE2FF;
+    box-shadow: none;
+}
+
+.image {
+    width: 180px;
+    aspect-ratio: 1;
+    background-color: white;
+    border-radius: 3px;
+}
+
+.pokemon-id::before {
+    content: 'Id: ';
+}
+
+.pokemon-type::before {
+    content: 'Type: ';
+}
+
+.pokemon-id::before,
+.pokemon-type::before {
+    font-weight: bold;
+    color: #556f7a;
+    font-size: 20px;
+}
+
+.pokemon-id,
+.pokemon-type {
+    font-size: 20px;
+}
+
+.pokemon-name {
+    margin-left: 10%;
+    color: #556f7a;
+    font-size: 1.8rem;
+}
+
+#search {
+    width: 400px;
+    height: 50px;
+    margin-left: 35%;
+    margin-top: 20px;
+    padding: 5px;
+    background-color: #fdf4fb;
+    border: 2px solid rgb(254, 216, 4);
+    border-radius: 3px;
+    font-size: 15px;
+}

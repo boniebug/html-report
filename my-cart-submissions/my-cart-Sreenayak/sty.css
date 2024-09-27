@@ -1,0 +1,54 @@
+body{
+    background: linear-gradient(to right,lightskyblue,yellowgreen);
+   }
+        h3{
+            color: black;
+            text-transform: uppercase;
+        }
+        .button{
+             border-radius: 20px;
+             padding: 20px;
+             margin-left: 20px;
+             border:2px blue !important;
+             display: flexbox;
+             transition: all 0.3s ease 0s;
+             box-shadow:0 0 5px cyan;
+        }
+        .button:hover{
+           box-shadow: 0 0 10px navy,0 0 10px pink;
+           background: violet;
+      }
+      #hr{
+        border-bottom: 1px solid #888;
+      }
+      .content::after{
+         content: "\a";
+         white-space: pre;
+         display: block;
+      }
+      .bold{
+          font-size: larger;
+      } 
+      .content1::before{
+        content: "\a";
+        white-space: pre;
+        display: block;
+     } 
+     .shift{
+        margin-left: 30px;
+   }
+   .left{
+       margin-left: 5px;
+   }
+   #top{
+       margin-left: 60px;
+   }
+   .input:hover{
+    background-color: gray;
+ }
+ #shift{
+    margin-left: 15px;
+}
+.submit{
+  margin-left: 30px;
+}

@@ -1,0 +1,168 @@
+
+#d1{
+display:flex;
+align-items:center;
+
+
+}
+
+
+#d2{
+margin-left:8;
+margin-right:10 ;
+}
+#d3{
+width:10px;
+}
+#b1{
+width:71px;
+height:31px;
+border:2px solid rgb(0, 29, 251);
+border-radius:30px 30px;
+font-size:15px;
+text-align:center;
+background-color:white;
+color:blue;
+font-family:times new roman;
+}
+#d4{
+border-left:2px solid black;
+height:31px;
+margin-left:7;
+}
+#d8{
+
+margin-left:750px;
+display:inline-block;
+text-align:center
+}
+.img{
+margin-left:19px;
+display:inline-block;
+text-align:center
+}
+
+#d9{
+
+margin-left:10px;
+
+}
+#he2{
+color:blue;
+font-family:century gothic;
+
+}
+#sp1{
+color:white;
+background-color:blue;
+}
+.sp2{
+display:block;
+}
+#d10{
+
+margin-left:10px;
+margin-top:50px;
+font-family:century gothic;
+font-weight:normal;
+font-size:40px;
+color:brown;
+display:block;
+}
+#d13{
+display:flex;
+display:inline-block;
+}
+#d11{
+
+
+font-weight:bold;
+display:flex;
+flex-direction:column;
+gap:20px;
+align-items:flex-start;
+}
+
+#username{
+width:350px;
+height:30px;
+margin-top:5px;
+}
+#password{
+width:350px;
+height:30px;
+margin-top:5px;
+margin-bottom:7px;
+}
+
+#he1{
+font-size:15px;
+}
+#he2{
+font-size:35px;
+}
+#b2{
+margin-left:100px;
+border:1px solid blue;
+width:350px;
+height:40px;
+border-radius:30px 30px;
+background-color:blue;
+color:white;
+font-family:century gothic;
+font-size:20px;
+font-weight:bold;
+margin-bottom:30px;
+
+}
+#hr1{
+width:170px;
+margin-left:100px;
+border-top:3px solid black;
+}
+#d12{
+display:flex;
+align-content:center;
+margin-right:1040px;
+margin-bottom: 21px;
+}
+#p1{
+margin-left:7px;
+font-size:20px;
+font-weight:bold;
+}
+#hr2{
+width:170px;
+margin-left:5px;
+border-top:3px solid black;
+}
+
+#d15{
+display:flex;
+display:inline-block;
+justify-content:center;
+}
+#container{
+display:flex;
+flex-direction:row;
+gap:300px;
+margin-top:90px;
+
+}
+#img3{
+    height:450px;
+    width:500px;
+margin-bottom: 30px;
+}
+#img4{
+height:450px;
+width:500px;
+margin-top: 20px;
+opacity: 1;
+}
+body{
+background:white;
+}
+#lbps{
+    margin-left: 40px;
+}

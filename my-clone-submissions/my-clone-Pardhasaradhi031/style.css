@@ -1,0 +1,274 @@
+* {
+    border: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #000;
+    color: #fff;
+}
+
+.bground {
+    width: 100%;
+    height: 95vh;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.648), rgba(0, 0, 0, 0.33)), url(./assets/img/bground.png);
+    background-size:cover;
+    background-position: center;
+    padding: 10px 10%;
+    position: relative;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    width: 150px;
+    cursor: pointer;
+}
+
+nav button {
+    background-color: red;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    padding: 6px 12px;
+    margin-left: 8px;
+}
+
+.language-btn {
+    align-items: center;
+    background: transparent;
+    border: 1px solid #fff;
+    padding: 7px 10px;
+}
+
+.language-btn img {
+    width: 10px;
+    margin-left: 10px;
+}
+
+.header-content {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.header-content h1 {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    font-size: 44px;
+    width: 150%;
+    font-weight: 700;
+    margin-top: 150px;
+}
+
+.header-content h3 {
+    font-size: 24px;
+    margin-bottom: 24px;
+}
+
+.email-signup {
+    border-radius: 4px;
+    display: flex;
+    flex-direction: row;
+    margin-top: 30px;
+    align-items: center;
+    overflow: hidden;
+    background-color: rgba(23, 23, 23, 0.6);
+    color: gray;
+}
+
+form {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 10px;
+    padding-left: 44px;
+}
+
+form input {
+    width: 80%;
+    border: 0;
+    outline: 0;
+    padding-left: 25px;
+    border: 1px solid white;
+    background-color: rgba(23, 23, 23, 0.6);
+    color: white;
+    max-width: 20vw;
+    margin-left: 100px;
+}
+
+form button {
+    background: red;
+    border: 0;
+    outline: 0;
+    color: #fff;
+    font-size: 16px;
+    padding: 15px;
+}
+
+/*-----features---- */
+.features {
+    padding: 50px 12%;
+    font-size: 22px;
+}
+
+.features .row {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    padding: 50px 0;
+}
+
+.text-columns {
+    margin-bottom: 20px;
+}
+
+.img-column {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.img-column img {
+    display: block;
+    width: 90%;
+    margin: auto;
+}
+
+.features h2 {
+    font-size: 50px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.video-container {
+    position: relative;
+    max-width: fit-content;
+    margin: 0 auto;
+}
+
+.video-container img {
+    position: relative;
+    width: 100%;
+    z-index: 23;
+}
+
+.video-container video {
+    position: absolute;
+    top: 10%;
+    left: 20%;
+    width: 60%;
+    height: 44%;
+    object-fit: contain;
+    border-radius: 10px;
+    z-index: 2;
+}
+
+.video-tv {
+    position: relative;
+    max-width: fit-content;
+    margin: 0 auto;
+}
+
+.video-tv img {
+    position: relative;
+    width: 100%;
+    display: block;
+    z-index: 55;
+}
+
+.video-tv video {
+    position: absolute;
+    top: 17%;
+    left: 13%;
+    width: 72%;
+    height: 63%;
+    object-fit: contain;
+    border-radius: 10px;
+    mix-blend-mode: screen;
+    z-index: 5;
+}
+
+
+.faq {
+    background-color: #000;
+    color: #fff;
+    padding: 24px;
+}
+
+.faq h2 {
+    text-align: center;
+    font-size: 48px;
+}
+
+.faq-box {
+    display: flex;
+    justify-content: space-between;
+    background-color: rgb(51, 50, 50);
+    padding: 24px;
+    max-width: 40vw;
+    margin: 34px auto;
+    cursor: pointer;
+}
+
+.login-end {
+   position: relative;
+}
+
+.login-end form {
+    width: 40%;
+    margin-top: 8px;
+    margin-left: 25%;
+}
+
+/* ------------------footer----------------------- */
+.foot {
+    padding: 80px 15% 10px;
+    border-top: 6px solid #333;
+    color: #b7b3b3;
+}
+
+.foot h2 {
+    font-size: 18px;
+    font-weight: 400;
+    margin-bottom: 30px;
+
+}
+
+.foot .col {
+    display: flex;
+}
+
+
+.foot .col a {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-basis: 200px;
+    text-decoration: none;
+    color: #b7b3b3;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.foot .language-btn {
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 3px;
+    margin-top: 20px;
+}
+
+.foot span {
+    display: block;
+    margin-top: 15px;
+}

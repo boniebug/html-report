@@ -1,0 +1,23 @@
+#container{
+    display:flex;
+    margin-left: auto;
+    margin-right:auto ;
+    border:1px solid black;
+}
+#text{
+    width:700px;
+   aspect-ratio:1;
+   margin-left:200px;
+}
+img{
+    height:300px;
+    width:200px;
+    margin-top: 80px;;
+    position:sticky;
+    top:0px;
+}
+#image{
+
+    position:sticky;
+    top:40px;
+}

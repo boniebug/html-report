@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>My Cart</title>
+    <style>
+      .cat-container{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      @media  screen and (max-width:768px) {
+        .catagories{
+            grid-template-columns: 1fr;
+        }
+        
+    }
+    </style>
+</head>
+<body align="center">
+    <header>
+        <a href="index.html"><h1>My Cart</h1></a>
+        <nav class="nav">
+            <a href="index.html">Home</a>
+            <a href="profile.html">Profile</a>
+            <a href="sign-in.html">Login</a>
+        </nav>
+    </header>
+    <main>
+       <h2>Catagories</h2>
+       <div class="cat-container">
+        <div class="catagories" id="catagories">
+            <a href="fasion.html"><section class="cat" id="fasion">
+                <div class="imge"> <img src="./assets/mensalloverprintedfithalfsleeveshirt.jpg" alt=""></div>
+                 <div class="cat-info"><h2>Fashion</h2></div>
+             </section></a>
+             <a href="beauty.html"><section class="cat" id="beauty">
+                <div class="imge"> <img src="./assets/swissbeautyliquidhighliter forface.jpg" alt=""></div>
+                 <div class="cat-info"><h2>Beauty</h2></div>
+             </section></a>
+             <a href="books.html"><section class="cat" id="books">
+                <div class="imge"><img src="./assets/thebooktheif.jpg" alt=""></div>
+                <div class="cat-info"><h2>Books</h2></div>
+            </section></a>
+            <a href="mobiles.html"><section class="cat" id="mobiles">
+                <div class="imge"><img src="./assets/iphone13.jpg" alt=""></div>
+                <div class="cat-info"><h2>Mobiles</h2></div>
+            </section></a>
+            <a href="laptops.html"><section class="cat" id="laptops"">
+                <div class="imge"><img src="./assets/asusvivobook15.jpg" height="200px"></div>
+                <div class="cat-info"><h2>Laptops</h2></div>
+            </section></a>
+           
+            <a href="electronics.html"><section class="cat" id="electronics">
+               <div class="imgre"> <img src="./assets/daikinac.jpg" alt=""></div>
+                <div class="cat-info"><h2>Electronics</h2></div>
+            </section></a>
+            <a href="furniture.html"><section class="cat" id="furniture">
+               <div class="imge"> <img src="./assets/nikamalmanualrecliner.jpg" alt=""></div>
+                <div class="cat-info"><h2>Furniture</h2></div>
+            </section></a>
+            
+            
+            <a href="toys.html"><section class="cat" id="toys">
+               <div class="imge"> <img src="./assets/tectavakkalrobottoy.jpg" alt=""></div>
+                <div class="cat-info"><h2>Toys</h2></div>
+            </section></a>
+           </div>
+       </div>
+    </main>
+    <footer>
+        <p>Contact us as +91 XXXXX-XXXXX or my card support@gmail.com</p>
+    </footer>
+</body>
+</html>

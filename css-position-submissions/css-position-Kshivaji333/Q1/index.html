@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      padding: 0px;
+      margin: 0px;
+    }
+    .container {
+      background-color: black;
+      width: 70%;
+      height: 50vh;
+      position: relative;
+      top:25vh;
+      left:15%;
+    }
+    .container div{
+      position: absolute; 
+    }
+    .top-div{
+      width: 80%;
+      height: 30%;
+      right: 5rem;
+      top:0px;
+    }
+    .bottom-div{
+      width: 80%;
+      height: 30%;
+      bottom: 0px;
+      left: 5rem;
+    }
+    .middle-div{
+      width: 90%;
+      height: 30%;
+      top:35%;
+      right: 5%;
+      border:2px solid red;
+    }
+    .container img{
+      height: 100%;
+    }
+    .top{
+      margin-right:11%;
+    }
+    .middle1{
+      position: absolute;
+      left: 0px;
+    }
+    .middle2{
+      position: absolute;
+      right: 0px;
+    }
+    .bottom{
+      margin-left:11% ;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="top-div">
+      <img src="assets/charmander.png" class="top" alt="">
+      <img src="assets/charmander.png" class="top" alt="">
+      <img src="assets/charmander.png" class="top" alt="">
+      <img src="assets/charmander.png" class="top" alt="">
+    </div>
+    <div class="middle-div">
+      <img src="assets/charmander.png" class="middle1" alt="">
+      <img src="assets/charmander.png"  class="middle2" alt="">
+    </div>
+    <div class="bottom-div">
+      <img src="assets/charmander.png" class="bottom" alt="">
+      <img src="assets/charmander.png" class="bottom" alt="">
+      <img src="assets/charmander.png" class="bottom" alt="">
+      <img src="assets/charmander.png" class="bottom" alt="">
+    </div>
+  </div>
+</body>
+
+</html>

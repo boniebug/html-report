@@ -1,0 +1,22 @@
+.pokemon{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px;
+}
+.pokemon div{
+    border: 1px solid black;
+    padding: 10px;
+    margin: 20px;
+    width: 130px;
+}
+#loading{
+    padding: 20% 45%;
+    font-size: 2rem;
+}
+input{
+    padding: 8px;
+}
+header{
+    position: fixed;
+    top: 5px;
+}

@@ -1,0 +1,55 @@
+body {
+    background-color: black;
+    height: 155vh;
+}
+
+.box {
+
+    width: 500px;
+    aspect-ratio: 1;
+    box-sizing: border-box;
+    margin: auto;
+    margin-top: 10%;
+}
+
+.container {
+    border: 1px solid red;
+    position: relative;
+    width: 80%;
+    margin: auto;
+    aspect-ratio: 1;
+}
+
+.one {
+    position: relative;
+    top: 0%;
+}
+
+.two {
+    position: relative;
+    left: 90%;
+}
+
+.three {
+    position: relative;
+    left: 90%;
+    top: 90%;
+}
+
+.four {
+    position: relative;
+    top: 85%;
+}
+
+.five {
+    position: relative;
+    top: 30%;
+    left: 40%;
+}
+
+.Fix {
+    position: fixed;
+    
+    bottom: 0;
+    left: 25%; 
+}

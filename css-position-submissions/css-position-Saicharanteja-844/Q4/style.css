@@ -1,0 +1,60 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  body{
+    display: flex;
+    justify-content: center;
+    background-color: black;
+    height: 900px;
+  }
+  img{
+    width: 55px;
+    aspect-ratio: 1;
+  }
+  .box{
+    
+    width: 700px;
+    aspect-ratio: 1;
+    padding: 30px;
+  }
+
+  .container{
+    border: 1px solid red;
+    padding: 65px;
+    height: 100%;
+    aspect-ratio: 1;
+    position: relative;
+  }
+
+  .pokemon img{
+    position: absolute;
+  }
+  .one img{
+    top: 10px;
+    left: 10px;
+  }
+  .two img{
+    top: 10px;
+    right: 10px;
+  }
+  .three img{
+    bottom: 10px;
+    right: 10px;
+  }
+  .four img{
+    bottom: 10px;
+    left: 10px;
+  }
+
+ 
+  .five img{
+    top: 40%;
+    left: 40%;
+  }
+.bottom{
+  position: fixed;
+  top: 680px;
+  left: 250px;
+}

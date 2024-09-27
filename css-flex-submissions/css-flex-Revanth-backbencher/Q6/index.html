@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Question 6</title>
+  <style>
+   
+    body
+    {
+      background-color: black;
+    }
+    .out {
+      height: 400px;
+      aspect-ratio: 1;
+      border: 1px solid white;
+      display: flex;
+      flex-direction: column;
+      color: white;
+      justify-content: space-between;
+      
+      
+    }
+   #box3
+   {
+   
+   align-self: center;
+   }
+
+  
+   .up
+   {
+    flex-direction: row;
+    display: flex;
+    justify-content:space-between;
+    
+   }
+   .down
+   {  
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    
+   }
+
+   .Box
+    {
+      
+      border: 1px solid red;
+      height: 50px;
+      width: 50px;
+      /* aspect-ratio: 1; */
+    }
+  </style>
+</head>
+<body>
+  <div class="out">
+    <div class="up">
+    <div class="Box" id="box">Box1</div>
+    <div class="Box" id="box">Box2</div>
+    </div>
+    
+    <div class="Box" id="box3">Box</div>
+    <div class="down">
+    <div class="Box" id="box">Box4</div>
+    <div class="Box" id="box">Box5</div>
+   </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" href="./src/css/style.css">
+  <script src="./src/js/script.js"></script>
+  <script src="./src/js/categorise.js"></script>
+  <script src="./src/js/intializeBooks.js"></script>
+  <script src="./src/js/search.js"></script>
+  <script src="./src/js/appendBook.js"></script>
+  <script src="./src/js/availableBooks.js"></script>
+</head>
+
+<body>
+  <header id="pageHeader">
+    <h1>The Library of Dreams</h1>
+    <div>
+      <input id="searchBookName" placeholder="  Search Book ">
+      <div>
+        <select id="categoriseOption">
+          <option value="default">default</option>
+          <option value="name">Book Name</option>
+          <option value="publishedYear">Published Year</option>
+          <option value="author">Author</option>
+          <option value="genre">Genre</option>
+        </select>
+        <button id="categoriseButton">Categorize</button>
+        <button id="addingBook">Add New Book</button>
+      </div>
+    </div>
+  </header>
+  <main>
+    <section id="start">
+      <a href="#end"><button>Go To End</button></a>
+    </section>
+    <section id="defaultBooks" class="bookDetails">
+    </section>
+    <section id="categoriseBooks" class="bookDetails">
+    </section>
+    <section id="newBookDetails">
+      <button id="closeNewBookWindow">close</button>
+      <form id="newBookData">
+        <fieldset>
+          <legend>New book</legend>
+          <label for="bookName">Enter Book Name:</label> <br>
+          <input type="text" id="bookName" required> <br>
+          <label for="bookPublishYear">Enter the Published Year:</label> <br>
+          <input type="text" id="bookPublishYear"> <br>
+          <label for="bookType">Enter the Book Genre:</label> <br>
+          <input type="text" id="bookType"> <br>
+          <label for="authorName">Enter Author Name:</label> <br>
+          <input type="text" id="authorName"> <br>
+          <button type="submit">add book</button>
+        </fieldset>
+      </form>
+    </section>
+    <section id="end">
+      <a href="#start"><button>Go To Start</button></a>
+    </section>
+  </main>
+  <footer>
+    <p>contact us at TheLibraryofDreams@gmail.com</p>
+  </footer>
+</body>
+
+</html>
