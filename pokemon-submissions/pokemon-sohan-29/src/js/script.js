@@ -12,7 +12,7 @@ const searchBy = (searchInput, card) => {
   if (!type.includes(searchInput) && !id.includes(searchInput) && !name.includes(searchInput)) {
     card.style.display = 'none';
   }
-}
+};
 
 const search = async () => {
   const searchInput = document.getElementById('search').value.toLowerCase();
@@ -45,13 +45,13 @@ const createCard = (pokemon, name, id, type, image) => {
 const createPokeCard = (pokemons) => {
   const pokedex = document.getElementById('pokemons');
   pokedex.innerText = '';
-  pokemons.map(pokemon => {
+  pokemons.forEach(pokemon => {
     const name = document.createElement('span');
     const id = document.createElement('p');
     const type = document.createElement('p');
     const image = document.createElement('img');
     const pokeCard = createCard(pokemon, name, id, type, image);
-    pokedex.append(pokeCard)
+    pokedex.append(pokeCard);
   });
 };
 
@@ -61,14 +61,14 @@ const getType = async (id) => {
     const typeData = await types.json();
     const image = typeData.sprites.front_default;
     const numberOfTypes = [];
-      typeData.types.map(types => {
+    typeData.types.forEach(types => {
       numberOfTypes.push(types.type.name);
     })
     return {
       id: id,
       type: numberOfTypes,
       imagesrc: image
-    }
+    };
   } catch (error) {
     console.error('error: images and types are not found')
     return {

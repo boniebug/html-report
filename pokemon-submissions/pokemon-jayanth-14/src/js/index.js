@@ -27,7 +27,9 @@ const getPokemons = () => {
       });
     })
     .then(() => {
+      setTimeout(() => {
         document.getElementById('loader').classList.add('hide');
+      }, 15000);
     });
 };
 

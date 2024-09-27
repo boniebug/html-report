@@ -1,4 +1,5 @@
 let allPokemons = [];
+
 const fetchPokemonData = async function (loader, pokemonList) {
   loader.style.display = 'block';
   const limit = 100;
@@ -11,19 +12,27 @@ const fetchPokemonData = async function (loader, pokemonList) {
       allPokemons = allPokemons.concat(data.results);
       count += limit;
     }
-    const promises = allPokemons.map(async (pokemon) => {
-      try {
-        const res = await fetch(pokemon.url);        
-        const pokeData = await res.json();
-        return pokeData;
-      } catch (error) {
-        console.error(`Error fetching Pokémon details for ${pokemon.name}:`, error);
-        return null;
+    const promises = [];
+    allPokemons.forEach(pokemon => {
+      promises.push(
+        fetch(pokemon.url)
+        .then(res => {
+          return res.json();
+        })
+        .catch(error => {
+          console.error(`Error fetching Pokemon details for ${pokemon.name}:`, error);
+          return null;
+        })
+     );
+    });
+    const pokemons = await Promise.all(promises);
+    const validPokemons = [];
+    pokemons.forEach(pokemon => {
+      if (pokemon !== null) {
+        validPokemons.push(pokemon);
       }
     });
-    const pokemons = await Promise.all(promises);    
-    const validPokemons = pokemons.filter(pokemon => pokemon !== null);
-    allPokemons = validPokemons;       
+    allPokemons = validPokemons; 
     loader.style.display = 'none';
     displayPokemon(allPokemons, pokemonList);
   } catch (error) {
@@ -34,7 +43,7 @@ const fetchPokemonData = async function (loader, pokemonList) {
 };
 
 const displayPokemon = function (pokemons, pokemonList) {
-  pokemonList.textContent = '';
+  pokemonList.innerHTML = '';
   pokemons.forEach((pokemon) => {
     const pokemonDiv = document.createElement('div');
     pokemonDiv.classList.add('pokemonBox');
@@ -49,20 +58,34 @@ const displayPokemon = function (pokemons, pokemonList) {
     pokemonID.textContent = `ID: ${pokemon.id}`;
     pokemonDiv.appendChild(pokemonID);
     const pokemonTypes = document.createElement('p');
-    const types = pokemon.types.map(typeInfo => typeInfo.type.name).join(', ');
+    let types = '';
+    pokemon.types.forEach((typeInfo, index) => {
+      types += typeInfo.type.name;
+      if (index < pokemon.types.length - 1) {
+        types += ', ';
+      }
+    });
     pokemonTypes.textContent = `Type: ${types}`;
     pokemonDiv.appendChild(pokemonTypes);
-
     pokemonList.appendChild(pokemonDiv);
   });
 };
 
 const searchPokemon = function (searchTerm, pokemonList) {
-  const filteredPokemons = allPokemons.filter((pokemon) => {
-    const types = pokemon.types.map(typeInfo => typeInfo.type.name).join(', ');
-    return pokemon.name.toLowerCase().includes(searchTerm) || 
-           pokemon.id.toString() === searchTerm || 
-           types.toLowerCase().includes(searchTerm);
+  const filteredPokemons = [];
+  allPokemons.forEach((pokemon) => {
+    let types = '';
+    pokemon.types.forEach((typeInfo, index) => {
+      types += typeInfo.type.name;
+      if (index < pokemon.types.length - 1) {
+        types += ', ';
+      }
+    });
+    if (pokemon.name.toLowerCase().includes(searchTerm) || 
+      pokemon.id.toString() === searchTerm || 
+      types.toLowerCase().includes(searchTerm)) {
+        filteredPokemons.push(pokemon);
+    }
   });
   displayPokemon(filteredPokemons, pokemonList);
 };
@@ -72,6 +95,7 @@ window.onload = () => {
   const pokemonList = document.getElementById('pokemonList');
   const searchInput = document.getElementById('searchInput');
   const searchButton = document.getElementById('searchButton');
+
   fetchPokemonData(loader, pokemonList);
   searchButton.addEventListener('click', () => {
     const searchTerm = searchInput.value.trim().toLowerCase();

@@ -67,6 +67,6 @@ const getResults = (query) =>{
 const addSearchFunctionality = () => {
   const search = document.getElementById('searchBox');
   search.oninput = () => {
-    getResults(search.value);
+    getResults(search.value.trim());
   };
 };
