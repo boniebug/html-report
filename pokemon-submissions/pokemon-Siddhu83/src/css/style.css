@@ -1,104 +1,214 @@
 body {
-	font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 #pokemon-header {
-	width: 100%;
-	height: 70px;
-	position: fixed;
-	top: 0;
-	left: 0;
-	padding: 0 0 10px 20px;
-	background-color: black;
-	color: white;
-	z-index: 1;
-	font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  width: 100%;
+  height: 70px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 0 0 10px 20px;
+  background-color: black;
+  color: white;
+  z-index: 2;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 .search-unit {
-	position: fixed;
-	top: 30px;
-	right: 20px;
+  position: fixed;
+  top: 30px;
+  right: 20px;
 }
 
 .pokemon-main-container {
-	margin-top: 80px;
-	display: flex;
-	flex-flow: row wrap;
-	justify-content: space-around;
+  margin-top: 80px;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
 }
 
 .pokemon-unit {
-	border: 1px solid brown;
-	border-radius: 15px;
-	height: 210px;
-	width: 150px;
-	box-sizing: border-box;
-	margin: 10px;
-	display: flex;
-	flex-direction: column;
-	background-color: white;
+  border: 1px solid brown;
+  border-radius: 15px;
+  height: 210px;
+  width: 150px;
+  box-sizing: border-box;
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
 }
 
 .pokemon-unit:hover {
-	scale: 102%;
-	font-weight: 500;
-	box-shadow: 1px 1px 1px 1px lightgrey;
+  scale: 102%;
+  font-weight: 500;
+  box-shadow: 1px 1px 1px 1px lightgrey;
 }
 
 .pokemon-image {
-	height: 100px;
-	width: 100px;
-	align-self: center;
+  margin-top: 5px;
+  height: 85px;
+  width: 85px;
+  align-self: center;
 }
 
 .pokemon-name,
 .pokemon-id,
 .pokemon-type {
-	margin: 2px;
-	padding-left: 3px;
+  margin: 2px;
+  padding-left: 3px;
 }
 
 .pokemon-name {
-	font-weight: 500;
+  font-weight: 500;
+  text-wrap: wrap;
 }
 
 .pokemon-id {
-	font-size: small;
-	font-family: sans-serif;
+  font-size: small;
+  font-family: sans-serif;
 }
 
 .pokemon-type {
-	box-sizing: content-box;
-	font-size: small;
+  box-sizing: content-box;
+  font-size: small;
 }
 
 .load-message,
 .wait-popup {
-	box-shadow: 2px 2px 2px 2px lightgrey;
-	border-radius: 10px;
-	margin-top: 25vh;
-	padding: 10px;
-	width: 300px;
-	font-size: large;
-	text-align: center;
-	text-wrap: wrap;
-	background-color: whitesmoke;
+  box-shadow: 2px 2px 2px 2px lightgrey;
+  border-radius: 10px;
+  margin-top: 25vh;
+  padding: 10px;
+  width: 300px;
+  font-size: large;
+  text-align: center;
+  text-wrap: wrap;
+  background-color: whitesmoke;
 }
 
-.disbled{
-	pointer-events: none;
-	opacity: 0.1;
+.disabled {
+  pointer-events: none;
+  opacity: 0.19;
 }
 
-.wait-popup{
-	position: absolute;
-	top: 90px;
-	right: 20px;
-	width: 150px;
-	margin: 0;
-	font-size: small;
-	padding: 2px;
-	border-radius: 2px;
-	box-shadow: 1px 1px 1px 1px lightgrey;	
+.wait-popup {
+  position: absolute;
+  top: 90px;
+  right: 20px;
+  width: 150px;
+  margin: 0;
+  font-size: small;
+  padding: 2px;
+  border-radius: 2px;
+  box-shadow: 1px 1px 1px 1px lightgrey;
+}
+
+.pokemon-detail-unit {
+  border: 1px solid black;
+  opacity: 200 !important;
+  position: fixed;
+  top: 90px;
+  left: 30vw;
+  z-index: 1;
+  width: 500px;
+  height: 500px;
+  margin: auto;
+  padding: 10px;
+  background-color: white;
+}
+
+.detail-unit-image {
+  height: 150px;
+  aspect-ratio: 1;
+  position: relative;
+  top: 25px;
+}
+
+#detail-unit-close {
+  position: absolute;
+  right: 10px;
+  border-radius: 100%;
+  background-color: red;
+  height: 25px;
+  width: 25px;
+  border: none;
+}
+
+.detail-unit-name {
+  position: absolute;
+  top: 0;
+  left: 20px;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-size: large;
+  font-weight: 400;
+}
+
+.detail-unit-id {
+  position: absolute;
+  right: 100px;
+  top: -5px;
+  font-size: larger;
+  font-weight: 500;
+}
+
+.detail-unit-type {
+  position: absolute;
+  left: 200px;
+  top: 60px;
+}
+
+.detail-unit-moves {
+  border: 1px solid black;
+  font-size: small;
+  width: 310px;
+  max-height: 200px;
+  position: absolute;
+  right: 10px;
+  top: 100px;
+  text-wrap: wrap !important;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.detail-unit-heigth,
+.detail-unit-weight {
+  font-size: small;
+  margin-top: 25px;
+  margin-left: 20px;
+  width: fit-content;
+  color: green;
+}
+
+.detail-unit-weight {
+  margin-top: 5px;
+}
+
+.detail-unit-abilities {
+  position: absolute;
+  bottom: 0;
+  border: 1px solid black;
+  width: 500px;
+  height: 70px;
+}
+
+.detail-unit-weakness {
+  border: 1px solid black;
+  margin-top: 10px;
+  width: 180px;
+  height: fit-content;
+  text-wrap: wrap;
+  word-break:break-all;
+}
+
+
+.detail-unit-stats {
+  border: 1px solid black;
+  margin-top: 10px;
+  position: absolute;
+  bottom:100px;
+  height: fit-content;
+  text-wrap: wrap;
+  word-break:break-all;
 }

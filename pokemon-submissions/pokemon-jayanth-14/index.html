@@ -7,6 +7,9 @@
   <title>pokemon</title>
   <!-- links -->
   <link rel="stylesheet" href="./src/css/style.css">
+  <link rel="stylesheet" href="./src/css/info.css">
+  <script src="./src/js/details.js"></script>
+  <script src="./src/js/promis.js"></script>
   <script src="./src/js/colors.js"></script>
   <script src="./src/js/search.js"></script>
   <script src="./src/js/add.js"></script>
@@ -24,15 +27,39 @@
       <img src="./src/images/search-regular-24.png" alt="" class="searchIcon">
     </div>
   </header>
-  <section id="cardContainer">
-
-  </section>
+  <section id="cardContainer"></section>
   <section id="loader">
     <h1>Data is being loaded...</h1>
   </section>
-  <section id="searchResults">
-
-  </section>
+  <section id="searchResults"></section>
+  <div id="searchPopUp" class="hide">
+    <h1>Pokemon Not Found</h1>
+    <button class="searchPopUpButton">OK</button>
+  </div>
+  <section id="detailsPopUp" class="hide">
+    <img src="./src/images/x-regular-24.png" alt="" id="detailsButton">
+    <section id="fullDetails">
+        <div class="sideRow">
+            <div class="imageDiv"></div>
+            <div class="minorDetails"></div>
+            <div class="characteristics"></div>
+        </div>
+        <div class="row">
+        <div class="column">
+            <h2>Moves :</h2>
+            <ul id="moves"></ul>
+        </div>
+        <div class="column">
+            <h2>Abilities :</h2>
+            <ul id="abilities"></ul>
+        </div>
+        <div class="column">
+            <h2>Weakness :</h2>
+            <ul id="weakness"></ul>
+        </div>
+    </section>
+</div>
+</section>
 </body>
 
 </html>

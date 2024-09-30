@@ -34,7 +34,13 @@ const getPokemons = () => {
 };
 
 window.onload = () => {
-  getPokemons();
+  // getPokemons();
   addSearchFunctionality();  
   // getResults();
+    getData();
+    // pokemonDataArray.forEach((data) => {
+    //   console.log(data);
+    // })
+    // console.log(pokemonDataArray);
+    
 }

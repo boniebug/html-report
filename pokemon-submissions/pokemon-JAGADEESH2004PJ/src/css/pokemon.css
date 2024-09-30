@@ -5,17 +5,29 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 120px;
+  padding-top: 105px;
 }
 
 .header {
   width: 100%;
-  height: 120px;
+  height: 100px;
   background-color: black;
   top: 0;
   position: fixed;
   display: flex;
   align-items: center;
+  justify-content: space-between;
+}
+
+.popup {
+  position: fixed;
+  top: 45%;
+  left: 42%;
+  background-color: rgb(221, 216, 216);
+  color: black;
+  padding: 20px;
+  border-radius: 10px;
+  display: none;
 }
 
 h1 {
@@ -28,7 +40,7 @@ h1 {
   margin: 25px;
   display: grid;
   grid-template-columns: repeat(6, 1fr);
-  gap: 20px;
+  gap: 15px;
   width: 100%;
   max-width: 1200px;
 }
@@ -49,6 +61,11 @@ h1 {
   padding: 10px;
   text-align: center;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  justify-content: space-between;
+
 }
 
 .pokemonCard h2 {
@@ -58,24 +75,24 @@ h1 {
 
 .pokemonCard p {
   margin: 2px 0;
-  font-size: 0.9em;
+  font-size: 1em;
 }
 
 .pokemonImage {
-  width: 100px;
-  height: auto;
+  width: 158px;
 }
 
 .searchBox {
-  position: absolute;
-  left: 65%;
   border-radius: 10px;
   height: 40px;
   width: 300px;
   font-size: 15px;
+  outline: none;
+  padding-right: 60px;
+  margin-right: 140px;
 }
 
-#pikachuImage {
+#titleImage {
   width: 50px;
   height: 50px;
   border-radius: 15px;
@@ -87,9 +104,71 @@ h1 {
   color: red;
 }
 
-.stillLoading {
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  font-size: 15px;
-  float: right;
+.moreDetailsBtn{
+  border: none;
+  background-color: white;
+  color: #007bff;
+}
 
+.popupOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.popup {
+  position: fixed;
+  top: 15%;
+  left: 15%;
+  background-color: white;
+  border-radius: 10px;
+  padding: 20px;
+  width: 900px;
+  max-height: 80vh;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  display: flex;
+}
+
+.popupContent {
+  display: flex;
+  width: 100%;
+}
+
+.popupImageContainer {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.popupDetailsContainer {
+  flex: 2;
+  padding-left: 20px;
+}
+
+.popup img {
+  max-width: 100%;
+  height: auto;
+}
+
+.popup h2 {
+  text-align: left;
+}
+
+.popup p {
+  margin: 10px 0;
+}
+.popupImage {
+  max-width: 170px;
+}
+
+.closeBtn {
+  float: right;
+  width: 60px;
+  height: 40px;
+  background-color: black;
+  color: white;
 }

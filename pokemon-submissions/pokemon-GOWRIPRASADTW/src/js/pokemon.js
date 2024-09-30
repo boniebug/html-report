@@ -1,13 +1,9 @@
 'use strict';
-const loader = document.getElementById('Loader');
 
 const fetchPokemon = async () => {
-  const response = await fetch('https://pokeapi.co/api/v2/pokemon?limit=1000');
+  const response = await fetch('https://pokeapi.co/api/v2/pokemon?limit=1031');
   const data = await response.json();
-  setTimeout(() =>   
-    displayPokemon(data.results), 5000);
-displayPokemon(data.results)
-
+    displayPokemon(data.results)    
 };
 
 const displayPokemon = async (pokemonData) => {
@@ -20,23 +16,33 @@ const displayPokemon = async (pokemonData) => {
         <img src="${details.sprites.front_default}">
         <h2>${details.name}</h2>
         <p>ID: ${details.id}</p>
-        <p>Type: ${details.types.map(fetchType => fetchType.type.name).join(', ')}</p
+        <p>Type: ${details.types.map(fetchType => fetchType.type.name).join(', ')}</p>
+        <div class='hiddenDetails'>
+          <p>weight: ${details.weight}</p>
+          <p>Height: ${details.height}</p>
+          <div> <strong>Statistics:  </strong>
+            <p>hp: ${details.stats[0].base_stat} </p>
+            <p>attack: ${details.stats[1].base_stat} </p>
+            <p>defense: ${details.stats[2].base_stat} </p>
+            <p>specialAttack: ${details.stats[3].base_stat} </p>
+            <p>specialdefence: ${details.stats[4].base_stat} </p>
+            <p>speed: ${details.stats[5].base_stat} </p>
+          </div>
+        </div>
       </div>
     `;
     container.innerHTML += pokemons;
   }
 };
 
-// const searchPokemon = document.getElementById('search')
-// const searchPokemons = () => {
-//   const searchTerm = searchPokemon.value.toLowerCase();
-//   const allPokemons = Array.from(document.querySelectorAll('.detail'));
-//   allPokemons.forEach(pokemon => {
-//       const name = pokemon.querySelector('h2').innerText.toLowerCase();
-//       pokemon.style.display = name.includes(searchTerm) ? 'block' : 'none';
-//   });
-// };
+const searchPokemons = () => {
+  const searchPokemon = document.getElementById('search')
+  const searchTerm = searchPokemon.value.toLowerCase();
+  const allPokemons = document.querySelectorAll('.detail');
+  allPokemons.forEach(pokemon => {
+    const name = pokemon.querySelector('h2').innerText.toLowerCase();
+    pokemon.style.display = name.includes(searchTerm) ? 'block' : 'none';
+  });
+};
 
-// searchPokemon.addEventListener('input', searchPokemons);   
-
-  fetchPokemon();
+fetchPokemon();

@@ -1,36 +1,49 @@
 'use strict';
 
-const allPokemonsData = [];
+const dataOfAllpokemons = {};
 
-const getNamesOfAllPokemons = async () => {
-  const response = await fetch('https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0');
-  const pokemonsNames = await response.json();
+const fetchData = async (fetching, url) => {
+  const fetchedData = [];
+  const response = await fetch(url);
+  const data = await response.json();
 
-  return pokemonsNames;
-};
-
-const createPokemonsData = async () => {
-  console.log('in creat start');
-  const allPokemons = await getNamesOfAllPokemons();
-  const length = allPokemons.results.length
-  // for(const pokemon of allPokemons.results){
-  //   const data = await getPokemonDetails(pokemon.name);
-  //   allPokemonsData.push(data);
-  //   console.log('in loop')
-  // }
-  for(let index = 0; index < 150; index++){
-    const data = await getPokemonDetails(allPokemons.results[index].name);
-    allPokemonsData.push(data);
-    console.log('in loop')
+  for (const element of data.results) {
+    if (fetching === 'types') {
+      fetchedData.push(element);
+    } else {
+      fetchedData.push(element.name);
+    }
   }
-  console.log('in creat start');
+
+  return fetchedData;
 };
 
-const getPokemonDetails = async (name) => {
-  const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`);
-  const pokemon = await response.json();
-  const id = pokemon.id;
-  const type = pokemon.types[0].type.name;
-  const imageUrl = pokemon.sprites.front_shiny;
-  return {id,name,imageUrl,type};
+const fetchNamesAndTypes = async () => {
+  const typeUrl = 'https://pokeapi.co/api/v2/type';
+  const nameUrl = 'https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0';
+  dataOfAllpokemons.types = await fetchData('types', typeUrl);
+  dataOfAllpokemons.names = await fetchData('name', nameUrl);
 };
+
+const createPokemonsData = async (startingPoint = 0, endingPoint = 100) => {
+  const shortListedPokemons = [];
+  for (let index = startingPoint; index < endingPoint; index++) {
+    const data = await getPokemonDetails(dataOfAllpokemons.names[index]);
+    shortListedPokemons.push(data);
+  }
+
+  return shortListedPokemons;
+};
+
+const getPokemonDetails = async (pokemonNameOrID) => {
+  const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonNameOrID}`);
+  const pokemon = await response.json();
+  const name = pokemon.name;
+  const id = pokemon.id;
+  const imageUrl = pokemon.sprites.other['official-artwork'].front_shiny;
+
+  
+  return { id, name, imageUrl};
+};
+
+

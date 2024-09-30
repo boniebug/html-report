@@ -10,6 +10,10 @@ const closeResults = () => {
 };
 
 const appendToResults = (results) => {
+  if(results.length === 0) {
+    toggleSearchPopUp();
+    return;
+  }
   const resultsContainer = document.getElementById('searchResults');
   const cardContainer = document.getElementById('cardContainer');
   cardContainer.classList.add('hide');
@@ -38,18 +42,23 @@ const isSearchEmpty = (query) => {
   return false;
 };
 
+const toggleSearchPopUp = () => {
+  document.querySelector('.searchPopUp').classList.toggle('hide');
+  document.querySelector('.searchPopUpButton').onclick = toggleSearchPopUp;
+}
 
 const getResults = (query) =>{
-  const data = document.querySelectorAll('.card');
+  const data = document.querySelectorAll('#cardContainer .card');
   if ( isSearchEmpty(query)) {
     changeSearchIcon(false)
     closeResults();
     return;
   }
   const results = [];
-  data.forEach((card) => {
-    const name = card.querySelector('.cardTitle').innerText;
-    const id = card.querySelector('.cardId').innerText;
+  data.forEach((orgCard) => {
+    const card = orgCard.cloneNode(true); 
+    const name = card.querySelector('.cardTitle').innerText.toLowerCase();
+    const id = card.querySelector('.cardId').innerText.toLowerCase();
     const types = card.querySelectorAll('.cardTypes .type');
     if (name.includes(query) || id.includes(query)) {
       results.push(card);
@@ -67,6 +76,6 @@ const getResults = (query) =>{
 const addSearchFunctionality = () => {
   const search = document.getElementById('searchBox');
   search.oninput = () => {
-    getResults(search.value.trim());
+    getResults(search.value);
   };
 };

@@ -1,67 +1,49 @@
-const getPokemonData = async (apiUrl) => {
+const fetchPokemonsData = async (apiUrl) => {
   try {
     const response = await fetch(apiUrl);
-    const responseJson = await response.json();
-    return responseJson;
+    const pokemonsData = await response.json();
+    return pokemonsData;
   } catch (error) {
-    return null;
+    if (error.message === 'Unexpected end of JSON input') {
+      return null;
+    }
+    throw error;
   }
 };
 
 const setupLoader = () => {
   const textMessage = 'Loading....';
   const loaderContainer = createLoadingPopup(textMessage, 'loader-container');
-  togglePopup(false, loaderContainer);
+  toggleContainer(false, loaderContainer, 'block');
   return loaderContainer;
 };
 
-const checkMatchings = function (searchText, pokemonsInfoList) {
-  for (const pokemonInfo of pokemonsInfoList) {
-    const keys = Object.keys(pokemonInfo);
-    for (let index = 0; index < keys.length - 1; index++) {
-      const key = keys[index];
-      if (pokemonInfo[key].match(searchText)) {
-        console.log(pokemonInfo['pokemonContainer'])
-        pokemonInfo['pokemonContainer'].style.cssText = 'display: flex';
-      } else {
-        pokemonInfo['pokemonContainer'].style.cssText = 'display: none';
-      }
-    }
-  }
-};
-
-const setUpList = (searchBox) => {
-  const pokemonsInfoList = [];
+const setUpList = (searchText) => {
   const pokemonsContainer = document.querySelectorAll('.pokemon-container')
   const pokemonsNames = document.querySelectorAll('.pokemon-name');
   const pokemonsTypes = document.querySelectorAll('.pokemon-type');
   const pokemonsIds = document.querySelectorAll('.pokemon-id');
-  pokemonsNames.forEach((element, index) => {
-    const tempObj = {};
-    tempObj.pokemonName = pokemonsNames[index].innerText.toLowerCase();
-    tempObj.pokemonType = pokemonsTypes[index].innerText.toLowerCase();
-    tempObj.pokemonId = pokemonsIds[index].innerText.toLowerCase();
-    tempObj.pokemonContainer = pokemonsContainer[index];
-    console.log('ok' + tempObj.pokemonContainer)
-    pokemonsInfoList.push(tempObj);
+  pokemonsContainer.forEach((_, index) => {
+    const pokemonInfo = {};
+    pokemonInfo.pokemonName = pokemonsNames[index].innerText.toLowerCase();
+    pokemonInfo.pokemonType = pokemonsTypes[index].innerText.toLowerCase();
+    pokemonInfo.pokemonId = pokemonsIds[index].innerText.toLowerCase();
+    pokemonInfo.pokemonContainer = pokemonsContainer[index];
+    checkMatchings(searchText, pokemonInfo);
   });
-  checkMatchings(searchBox.value.toLowerCase(), pokemonsInfoList);
 };
 
-const setEventsForSearchBox = () => {
+const setSearchBoxEvent = () => {
   const searchBox = document.querySelector('.search-box');
-  searchBox.addEventListener('input', () => {
-    setUpList(searchBox);
-  });
+  searchBox.addEventListener('input', () => setUpList(searchBox.value.toLowerCase()));
 };
 
 const main = async () => {
-  setEventsForSearchBox();
   const loaderContainer = setupLoader();
-  const initialData = await getPokemonData(`https://pokeapi.co/api/v2/pokemon/?limit=1&&offset=0`);
-  const allpokemonsData = await getPokemonData(`https://pokeapi.co/api/v2/pokemon/?limit=${initialData.count}&&offset=0`);
-  togglePopup(true, loaderContainer);
-  processPokemonData(allpokemonsData.results, loaderContainer);
+  const initialData = await fetchPokemonsData(`https://pokeapi.co/api/v2/pokemon/?limit=1&&offset=0`);
+  const allpokemonsData = await fetchPokemonsData(`https://pokeapi.co/api/v2/pokemon/?limit=${initialData.count}&&offset=0`);
+  setSearchBoxEvent();
+  processPokemonsData(allpokemonsData.results, loaderContainer);
 };
 
 window.onload = main;

@@ -9,6 +9,7 @@ body {
 
 header {
   position: sticky;
+  z-index: 5;
 }
 
 #header {
@@ -19,7 +20,7 @@ header {
   justify-content: space-between;
   align-items: center;
   background-color: #6f4e37;
-  margin-bottom: 20px;
+  margin-bottom: 5px;
   padding: 0px 20px;
 
   img {
@@ -27,7 +28,7 @@ header {
   }
 }
 
-#searchBar{
+#searchBar {
   border-radius: 5px;
   border: none;
   padding: 5px;
@@ -37,30 +38,44 @@ header {
 #main {
   display: none;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 5px;
+  padding: 2px;
 }
 
 .pokemon {
   background-color: white;
-  border-radius: 10px;
-  padding: 30px;
-  width: 250px;
-  height: 300px;
-  margin: 30px;
+  border-radius: 7px;
+  padding: 15px;
+  width: 145px;
+  height: 180px;
+  margin: 5px;
+  box-sizing: content-box;
+  box-shadow: 0px 1px 0.5px #6f4e37;
+
 }
 
-.pokemon-images-div{
+.pokemon:hover {
+  transform: scale(1.01);
+  box-shadow: 0px 3px 3px #6f4e37;
+}
+
+.pokemon-images-div {
   display: flex;
   justify-content: center;
 }
 
 .pokemon-images {
-  height: 170px;
+  height: 120px;
 }
 
 .pokemon-name {
-  font-size: 24px;
+  font-size: 0.85rem;
   color: #6f4e37;
+}
+
+.pokemon-id,
+.pokemon-type {
+  font-size: 0.7rem;
 }
 
 .loading {
@@ -110,4 +125,57 @@ header {
   padding: 10px;
   border: none;
   border-radius: 5px;
+}
+
+.pokemon-main-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(88, 88, 88, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
+.pokemon-popup {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 50%;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.7);
+}
+
+.close-btn {
+  background-color: red;
+  color: white;
+  cursor: pointer;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  float: right;
+}
+
+.pokemon-popup {
+  img {
+    height: 250px;
+  }
+
+  h1 {
+    font-size: 1.7rem;
+    margin-bottom: 10px;
+  }
+
+  h3,
+  p {
+    font-size: 1rem;
+    font-weight: bold;
+  }
+}
+
+.pokemon-abilities, .pokemon-moves, .pokemon-statistics, .pokemon-weaknesses {
+  margin-top: 15px;
+  text-align: left;
 }

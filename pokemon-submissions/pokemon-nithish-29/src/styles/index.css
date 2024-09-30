@@ -1,3 +1,7 @@
+* {
+  margin: 0px;
+}
+
 header {
   height: 70px;
   width: 100%;
@@ -18,7 +22,8 @@ header {
 
 .search {
   position: relative;
-  right: 15%;
+  right: 0%;
+  left: 10%;
   width: 50%;
   display: flex;
   flex-direction: row;
@@ -34,7 +39,7 @@ header {
 
 #search {
   padding: 5px;
-  width: 80%;
+  width: 45%;
   border-radius: 20px;
   font-size: 1rem;
   background-color: #FEFADC;
@@ -43,24 +48,30 @@ header {
 #allpokemons {
   display: grid;
   padding: 15px;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   gap: 5px;
 }
 
 .pokemon {
   border-radius: 20px;
-  height: 280px;
+  height: 220px;
   border: 10px solid #F3B391;
   background-color: #FEFADC;
   display: flex;
   flex-direction: column;
+  gap: 0px;
   justify-content: center;
   align-items: center;
 }
 
-.pokemon img {
-  height: 50%;
+.pokemon img , #showMoreDetails div img{
+  height: 40%;
   aspect-ratio: 1;
+  margin-bottom: 5px;
+}
+
+.pokemon h1 {
+  margin-bottom: 10px;
 }
 
 #loader {
@@ -79,4 +90,48 @@ header {
   left: 30%;
   right: 50%;
   background-color: white;
+}
+
+#showMoreDetails {
+  position: fixed;
+  top: 0px;
+  display: none;
+  height: 100vh;
+  width: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(128, 128, 128, 0.269);
+}
+
+#showMoreDetails div {
+  border-radius: 20px;
+  height: 88%;
+  width: 55%;
+  border: 10px solid #F3B391;
+  background-color: #FEFADC;
+  display: flex;
+  flex-direction: column;
+  row-gap: 7px;
+  position: fixed;
+  top:7%;
+  left: 25%;
+  justify-content: center;
+  align-self: flex-end;
+  align-items: center;
+}
+
+button {
+  background-color: #F3B391;
+  border-radius: 10px;
+  font-size: 1rem;
+  width: 60%;
+  padding: 3px;
+  margin-top: 5px;
+  border: 0px;
+}
+
+#showMoreDetails div button {
+  width: 30%;
+  margin: 0px;
 }

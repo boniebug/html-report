@@ -16,44 +16,64 @@ const pokemonNotFound = (pokemonFound) => {
   }
 }
 
-const searchPokemons = () => {
-  const searchInput = document.getElementById('searchBar');
-  searchInput.addEventListener('click', () => {
-    if (document.querySelector('.loading')) {
-      const popupDiv = createElementWithClass('div', 'popup');
-      const popupText = createElementWithClass('h3', '', 'Please wait while Pokemons are loading...!!!');
-      popupDiv.appendChild(popupText);
-      document.body.appendChild(popupDiv);
+const isPokemonMatching = (pokemon, searchTerm) => {
+  const pokemonName = pokemon.querySelector('.pokemon-name').innerText.toLowerCase();
+  const pokemonId = pokemon.querySelector('.pokemon-id').innerText.toLowerCase();
+  const pokemonType = pokemon.querySelector('.pokemon-type').innerText.toLowerCase();
 
-      setTimeout(() => {
-        popupDiv.remove();
-      }, 2000);
+  return pokemonName.includes(searchTerm) || pokemonId.includes(searchTerm) || pokemonType.includes(searchTerm);
+};
+
+const filterPokemons = (searchTerm) => {
+  const allPokemons = document.querySelectorAll('.pokemon');
+  let pokemonFound = false;
+
+  allPokemons.forEach(pokemon => {
+    if (isPokemonMatching(pokemon, searchTerm)) {
+      pokemon.style.display = 'block';
+      pokemonFound = true;
+    } else {
+      pokemon.style.display = 'none';
     }
   });
 
+  return pokemonFound;
+};
+
+const handleSearchInput = () => {
+  const searchInput = document.getElementById('searchBar');
   searchInput.addEventListener('input', () => {
     if (document.querySelector('.loading')) {
       searchInput.value = '';
     } else {
       const searchTerm = searchInput.value.toLowerCase();
-      const allPokemons = document.querySelectorAll('.pokemon');
-
-      let pokemonFound = false;
-      allPokemons.forEach(pokemon => {
-        const pokemonName = pokemon.querySelector('.pokemon-name').innerText.toLowerCase();
-        const pokemonId = pokemon.querySelector('.pokemon-id').innerText.toLowerCase();
-        const pokemonType = pokemon.querySelector('.pokemon-type').innerText.toLowerCase();
-
-        if (pokemonName.includes(searchTerm) || pokemonId.includes(searchTerm) || pokemonType.includes(searchTerm)) {
-          pokemon.style.display = 'block';
-          pokemonFound = true;
-        } else {
-          pokemon.style.display = 'none';
-        }
-      });
+      const pokemonFound = filterPokemons(searchTerm);
       pokemonNotFound(pokemonFound);
     }
   });
+};
+
+const showLoadingPopup = () => {
+  if (document.querySelector('.loading')) {
+    const popupDiv = createElementWithClass('div', 'popup');
+    const popupText = createElementWithClass('h3', '', 'Please wait while Pokemons are loading...!!!');
+    popupDiv.appendChild(popupText);
+    document.body.appendChild(popupDiv);
+
+    setTimeout(() => {
+      popupDiv.remove();
+    }, 2000);
+  }
+};
+
+const handleSearchInputClick = () => {
+  const searchInput = document.getElementById('searchBar');
+  searchInput.addEventListener('click', showLoadingPopup);
+};
+
+const searchPokemons = () => {
+  handleSearchInputClick();
+  handleSearchInput();
 };
 
 const createElementWithClass = (tag, className, textContent = '') => {
@@ -63,16 +83,11 @@ const createElementWithClass = (tag, className, textContent = '') => {
   return element;
 };
 
-const fetchPokemonName = (pokemonResults, i) => {
-  const name = pokemonResults[i].name;
-  return createElementWithClass('h1', 'pokemon-name', `Name: ${name}`);
-};
-
 const fetchPokemonImage = (pokemonsDetails) => {
-  const pokemonImage = pokemonsDetails.sprites.front_default || 'src/images/pokemon-logo-black-transparent.png';
+  const pokemonImage = pokemonsDetails.sprites.other.home.front_shiny
+    || pokemonsDetails.sprites.other.home.front_default || 'src/images/pokemon-logo-black-transparent.png';
   const image = createElementWithClass('img', 'pokemon-images');
   image.src = pokemonImage;
-
   const imageDiv = createElementWithClass('div', 'pokemon-images-div');
   imageDiv.appendChild(image);
   return imageDiv;
@@ -91,42 +106,132 @@ const fetchPokemonType = (pokemonsDetails) => {
   return createElementWithClass('h3', 'pokemon-type', `Type: ${types}`);
 };
 
+const fetchPokemonName = (pokemonResults, i) => {
+  const name = pokemonResults[i].name;
+  return createElementWithClass('h1', 'pokemon-name', `Name: ${name}`);
+};
+
+const fetchTypeDetails = async (typeInfo) => {
+  const response = await fetch(typeInfo.type.url);
+  return await response.json();
+};
+
+const extractWeaknesses = (typeDetails) => {
+  return typeDetails.damage_relations.double_damage_from.map(type => type.name);
+};
+
+const fetchPokemonWeaknesses = async (types) => {
+  const typeWeaknesses = [];
+  for (const typeInfo of types) {
+    const typeDetails = await fetchTypeDetails(typeInfo);
+    typeWeaknesses.push(...extractWeaknesses(typeDetails));
+  }
+  return [...new Set(typeWeaknesses)]; 
+};
+
+const createCloseButton = (pokemonMainPopup) => {
+  const closeBtn = createElementWithClass('button', 'close-btn', 'Close');
+  closeBtn.addEventListener('click', () => {
+    pokemonMainPopup.remove(); 
+  });
+  return closeBtn;
+};
+
+const createPokemonDataElements = (pokemonDetails) => {
+  const pokemonImage = fetchPokemonImage(pokemonDetails);
+  const pokemonId = fetchPokemonId(pokemonDetails);
+  const pokemonType = fetchPokemonType(pokemonDetails);
+  const pokemonName = createElementWithClass('h1', 'pokemon-name', `Name: ${pokemonDetails.name}`);
+  return [pokemonImage, pokemonName, pokemonId, pokemonType];
+};
+
+const createPokemonDetailsElements = (pokemonDetails) => {
+  const pokemonHeight = createElementWithClass('p', 'pokemon-height', `Height: ${pokemonDetails.height}`);
+  const pokemonWeight = createElementWithClass('p', 'pokemon-weight', `Weight: ${pokemonDetails.weight}`);
+  let abilities = '';
+  pokemonDetails.abilities.forEach((abilityInfo, index) => {
+    abilities += abilityInfo.ability.name;
+    if (index < pokemonDetails.abilities.length - 1) abilities += ', ';
+  });
+  const pokemonAbilities = createElementWithClass('p', 'pokemon-abilities', `Abilities: ${abilities}`);
+  return [pokemonHeight, pokemonWeight, pokemonAbilities];
+};
+
+const createPokemonMovesElement = (pokemonDetails) => {
+  let moves = '';
+  pokemonDetails.moves.slice(0, 7).forEach((moveInfo, index) => {
+    moves += moveInfo.move.name;
+    if (index < pokemonDetails.moves.length - 1) moves += ', ';
+  });
+  return createElementWithClass('p', 'pokemon-moves', `Moves: ${moves}`);
+};
+
+const createPokemonstatisticsElement = (pokemonDetails) => {
+  let statistics = '';
+  pokemonDetails.stats.forEach((statInfo, index) => {
+    statistics += `${statInfo.stat.name}: ${statInfo.base_stat}`;
+    if (index < pokemonDetails.stats.length - 1) statistics += ', ';
+  });
+  return createElementWithClass('p', 'pokemon-statistics', `Statistics: ${statistics}`);
+};
+
+const createPokemonWeaknessesElement = async (pokemonDetails) => {
+  const weaknesses = await fetchPokemonWeaknesses(pokemonDetails.types);
+  return createElementWithClass('p', 'pokemon-weaknesses', `Weaknesses: ${weaknesses.join(', ')}`);
+};
+
+const displayPokemonPopup = async (pokemonDetails) => {
+  const pokemonMainPopup = createElementWithClass('div', 'pokemon-main-popup');
+  const popupDiv = createElementWithClass('div', 'pokemon-popup');
+
+  const closeButton = createCloseButton(pokemonMainPopup);
+  const pokemonDataElements = createPokemonDataElements(pokemonDetails);
+  const pokemonDetailsElements = createPokemonDetailsElements(pokemonDetails);
+  const pokemonMovesElement = createPokemonMovesElement(pokemonDetails);
+  const pokemonstatisticsElement = createPokemonstatisticsElement(pokemonDetails);
+  const pokemonWeaknessesElement = await createPokemonWeaknessesElement(pokemonDetails);
+
+  popupDiv.append(
+    closeButton,
+    ...pokemonDataElements,
+    ...pokemonDetailsElements,
+    pokemonMovesElement,
+    pokemonstatisticsElement,
+    pokemonWeaknessesElement
+  );
+  pokemonMainPopup.append(popupDiv);
+  document.body.appendChild(pokemonMainPopup);
+};
+
+
 const displayPokemons = async (pokemonResults) => {
   const main = document.querySelector('#main');
   for (let i = 0; i < pokemonResults.length; i++) {
     const pokemon = createElementWithClass('div', 'pokemon');
-
     try {
       const response = await fetch(pokemonResults[i].url);
       const pokemonsDetails = await response.json();
-
+      
       const pokemonName = fetchPokemonName(pokemonResults, i);
       const pokemonType = fetchPokemonType(pokemonsDetails);
       const pokemonId = fetchPokemonId(pokemonsDetails);
       const pokemonImage = fetchPokemonImage(pokemonsDetails);
-
       pokemon.append(pokemonImage, pokemonName, pokemonId, pokemonType);
       main.appendChild(pokemon);
+
+      pokemon.addEventListener('click', async () => {
+        await displayPokemonPopup(pokemonsDetails);
+      });
     } catch (error) {
-      console.error(`Error fetching Pokemon details: ${error.message}`);
     }
   }
 };
 
-const showLoader = () => {
-  const loading = createElementWithClass('div', 'loading');
-  const loadingText = createElementWithClass('h1', '', 'Loading Pokemons');
-  const loadAnimation = createElementWithClass('p', 'loadAnimation');
-
-  loading.append(loadingText, loadAnimation);
-  document.body.appendChild(loading);
-};
-
 const hideLoader = () => {
   const loading = document.querySelector('.loading');
-  if (loading){
+  if (loading) {
     loading.remove();
-  } 
+  }
   document.querySelector('#main').style.display = 'flex';
 };
 
@@ -137,10 +242,17 @@ const fetchPokemons = async () => {
     const pokemonList = await response.json();
     await displayPokemons(pokemonList.results);
   } catch (error) {
-    console.error(`Error fetching Pokemon list: ${error.message}`);
   } finally {
     hideLoader();
   }
+};
+
+const showLoader = () => {
+  const loading = createElementWithClass('div', 'loading');
+  const loadingText = createElementWithClass('h1', '', 'Loading Pokemons');
+  const loadAnimation = createElementWithClass('p', 'loadAnimation');
+  loading.append(loadingText, loadAnimation);
+  document.body.appendChild(loading);
 };
 
 window.onload = () => {

@@ -1,62 +1,170 @@
-function createPokemon(pokemonListElement, pokemonData, pokemonCard, index) {
-  const pokemonImage = pokemonData.sprites.front_default;
+function createElement(element ,innerText , parentElement){
+  const childElement = document.createElement(element);
+  childElement.innerText = innerText;
+  parentElement.appendChild(childElement);
+}
+
+function createCloseButton(pokemonMorecontent){
+  const closeButtonElement = document.createElement('button'); 
+  closeButtonElement.innerText = 'x';
+  pokemonMorecontent.appendChild(closeButtonElement);
+  closeButtonElement.classList.add('closeButton');
+}
+
+function createMoreDetails(pokemonMoreContent, pokemonInfo){
+createCloseButton(pokemonMoreContent);
+
+pokemonCardContent(pokemonInfo,pokemonMoreContent);
+
+const moves =`Moves: ${pokemonInfo.moves.map(move => move.move.name).join(', ')}`;
+
+const abilities = `Abilities: ${pokemonInfo.abilities.map(ability => ability.ability.name).join(', ')}`;
+
+const statistics = `Statistics: ${pokemonInfo.stats.map(stat => `${stat.stat.name}: ${stat.base_stat}`).join(', ')}`;
+
+createElement('p', `Height: ${pokemonInfo.height}`, pokemonMoreContent);
+createElement('p', `Weight: ${pokemonInfo.weight}`, pokemonMoreContent);
+createElement('p', `${moves}`, pokemonMoreContent);
+createElement('p', `${abilities}`, pokemonMoreContent);
+createElement('p', `${statistics}`, pokemonMoreContent);
+}
+
+function closeMoreDetailsContainer(moreDetailsContainer, header, pokemonList){
+  moreDetailsContainer.remove();
+  header.classList.remove('disabled');
+  pokemonList.classList.remove('disabled');
+}
+
+function pokemonMoreDetails(pokemonInfo){
+
+  const header = document.querySelector('.navBar');
+  header.classList.add('disabled');
+
+  const pokemonList = document.querySelector('.pokemonList');
+  pokemonList.classList.add('disabled');
+
+  const moreDetailsContainer = document.createElement('div');
+  moreDetailsContainer.classList.add('moreDetailsContainer');
+
+  const pokemonMoreContent = document.createElement('div');
+  pokemonMoreContent.classList.add('moreContent');
+
+  moreDetailsContainer.appendChild(pokemonMoreContent);
+
+  document.body.appendChild(moreDetailsContainer);
+
+  createMoreDetails(pokemonMoreContent, pokemonInfo);
+
+  closeButtonClick = document.querySelector('.closeButton');
+
+  closeButtonClick.addEventListener('click',() => {
+     closeMoreDetailsContainer(moreDetailsContainer, header, pokemonList);
+  });
+}
+
+function pokemonCardContent(pokemonInfo, pokemonCard){
+  const pokemonImage = pokemonInfo.sprites.other.home.front_shiny;
   let pokemonTypes = '';
-  pokemonData.types.forEach(types => {
-    pokemonTypes += types.type.name + '';
+  pokemonInfo.types.forEach(types => {
+    pokemonTypes += types.type.name + ' ';
   });
 
-  const pokemonTitleElement = document.createElement('h2');
-  pokemonTitleElement.innerText = `${pokemonData.name} (#${index + 1})`;
-  pokemonCard.appendChild(pokemonTitleElement);
+  createElement('h2', `${pokemonInfo.name} (#${pokemonInfo.id})`, pokemonCard);
 
   const pokemonImageElement = document.createElement('img');
   pokemonImageElement.src = `${pokemonImage}`;
-  pokemonImageElement.alt = `${pokemonData.name}`;
+  pokemonImageElement.alt = `${pokemonInfo.name}`;
   pokemonCard.appendChild(pokemonImageElement);
 
-  const pokemonTypeElement = document.createElement('p');
-  pokemonTypeElement.innerText = `Type: ${pokemonTypes}`;
-  pokemonCard.appendChild(pokemonTypeElement);
-
-  pokemonListElement.appendChild(pokemonCard);
+  createElement('p', `Type: ${pokemonTypes}`, pokemonCard);
 }
 
-const createLoader = () => {
+function createPokemonCard(pokemonListElement, pokemonInfo) {
+  const pokemonCard = document.createElement('div');
+  pokemonCard.classList.add('pokemon');
+
+  pokemonCardContent(pokemonInfo,pokemonCard);
+
+  pokemonListElement.appendChild(pokemonCard);
+
+  pokemonCard.addEventListener('click',() => {
+    pokemonMoreDetails(pokemonInfo);
+  });
+};
+
+function createLoader() {
   const loader = document.createElement('div');
   loader.classList.add('loading');
   loader.innerText = 'Loading...';
-
-  document.body.appendChild(loader);
-
+  const pokemonListElement = document.querySelector('.pokemonList');
+  pokemonListElement.appendChild(loader);
   return loader;
 };
 
-window.onload = function () {
-  const loader = createLoader();
-  setTimeout(() => {
-    loader.remove();
-    pokemon();
-  }, 5000);
+function createSearchBar() {
+  const searchInput = document.createElement('input');
+  searchInput.placeholder = 'Search Pokemon';
+  searchInput.classList.add('searchBar');
+  const header = document.querySelector('.navBar');
+  header.appendChild(searchInput);
+  return searchInput;
 };
 
-async function pokemon() {
-  const pokemonListElement = document.querySelector('.pokemonList');
+function searchPokemon(pokemonListElement, pokemonDataArray, dataToSearch) {
+  pokemonListElement.innerText = '';
+
+  pokemonDataArray.forEach((pokemonInfo) => {
+    if (
+      pokemonInfo.name.toLowerCase().includes(dataToSearch.toLowerCase()) ||
+      pokemonInfo.id.toString().includes(dataToSearch) ||
+      pokemonInfo.types.some((type) => type.type.name.toLowerCase().includes(dataToSearch.toLowerCase()))
+    ) {
+      createPokemonCard(pokemonListElement, pokemonInfo);
+    }
+  });
+};
+
+async function fetchPokemonListData() {
   const response = await fetch('https://pokeapi.co/api/v2/pokemon/?offset=0&limit=1302');
-  const data = await response.json();
-  const pokemonList = data.results;
+  return response.json();
+};
 
-  for (let i = 0; i < pokemonList.length; i++) {
-    const pokemon = pokemonList[i];
-    const pokemonCard = document.createElement('div');
-    pokemonCard.classList.add('pokemon');
+async function fetchPokemonDetails(pokemonInfoList) {
+  let pokemonDataArray = [];
+
+  const promises = pokemonInfoList.map(async (pokemon) => {
     const pokemonResponse = await fetch(pokemon.url);
-    const pokemonData = await pokemonResponse.json();
-    createPokemon(pokemonListElement, pokemonData, pokemonCard, i);
-  }
-}
+    return pokemonResponse.json();
+  });
 
+  pokemonDataArray = await Promise.allSettled(promises);
+  const finalPokemonArray = pokemonDataArray
+    .filter((result) => result.status === 'fulfilled')
+    .map((result) => result.value);
+  return finalPokemonArray;
+};
 
+async function pokemonInfoList(searchInput, loader) {
 
+  const data = await fetchPokemonListData();
+  const pokemonInfoList = data.results;
+  const pokemonDataArray = await fetchPokemonDetails(pokemonInfoList);
+  console.log(pokemonDataArray)
+  loader.remove();
 
+  pokemonDataArray.forEach((pokemonInfo) => {
+    createPokemonCard(document.querySelector('.pokemonList'), pokemonInfo);
+  });
 
+  searchInput.addEventListener('input', (e) => {
+    searchPokemon(document.querySelector('.pokemonList'), pokemonDataArray, e.target.value);
+  });
+};
 
+function pokemon() {
+  const loader = createLoader();
+  const searchInput = createSearchBar();
+  pokemonInfoList(searchInput, loader);
+};
+
+window.onload = pokemon;

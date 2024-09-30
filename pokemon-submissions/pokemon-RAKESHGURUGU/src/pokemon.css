@@ -34,14 +34,14 @@ body {
   margin-right: 10px;
   margin-left: 0px;
   padding: 10px;
-  border: none;
+  border: 2px solid rgb(244, 244, 81);
   border-bottom-right-radius: 5px;
   border-top-right-radius: 5px;
   width: 200px;
 }
 
 #select {
-  border: none;
+  border: 2px solid rgb(244, 244, 81);
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
   background-color: rgb(244, 244, 81);
@@ -62,18 +62,19 @@ body {
 #pokemons {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-evenly;
-  margin: 70px 10px;
+  justify-content: center;
+  margin-top: 70px;
 }
 
 .pokemonInfo {
-  padding: 20px;
+  padding-left: 15px;
   border-radius: 10px;
   width: 200px;
-  height: 300px;
-  margin: 20px;
+  height: 350px;
+  margin: 10px 10px;
   background-color: white;
-  box-shadow: 2px 2px 2px 2px rgba(64, 64, 64, 0.69);
+  box-shadow: 1px 1px 15px rgba(89, 89, 89, 0.507);
+  border: none;
 }
 
 .pokemonName {
@@ -82,27 +83,118 @@ body {
 }
 
 .pokemonId {
-  font-size: larger;
-  font-weight: 600;
+  font-size: large;
+  margin: 0px;
+  font-weight: 500;
+}
+
+.pokemonTypeContainer {
+  font-size: large;
+  font-weight: 500;
+  margin: 0px;
 }
 
 .pokemonType {
-  font-size: larger;
-  font-weight: 600;
+  font-size: large;
+  font-weight: 500;
+  margin: 0px 0px 3px 0px;
+}
+
+.printPokemonList {
+  margin: 2px 0px 8px 0px;
+}
+
+.pokemonMoveContainer {
+  margin: 8px 0px 8px 0px;
+  display: flex;
+  flex-wrap: wrap;
+  font-size: small;
+  font-weight: 500;
+}
+
+.pokemonStatContainer {
+  margin: 8px 0px 8px 0px;
+  display: flex;
+  flex-wrap: wrap;
+  font-size: small;
+  font-weight: 500;
+}
+
+.pokemonAbilityContainer {
+  margin: 8px 0px 8px 0px;
+  display: flex;
+  flex-wrap: wrap;
+  font-size: small;
+  font-weight: 500;
+}
+
+.pokemonWeaknessContainer {
+  font-size: small;
+  font-weight: 500;
+}
+
+.PokemonMove {
+  margin: 0px 10px;
 }
 
 .image {
+  margin: 0px;
   height: 150px;
   aspect-ratio: 1;
+}
+
+.readMoreInfo {
+  color: blue;
+  cursor: pointer;
+}
+
+.readMoreInfo:hover {
+  text-decoration: underline;
+}
+
+.pokemonHeight {
+  font-size: large;
+  font-weight: 500;
+  margin: 5px 0px 0px 0px;
+}
+
+.pokemonWeight {
+  font-size: large;
+  font-weight: 500;
+  margin: 0px 0px 5px 0px;
 }
 
 #loader {
   background-color: white;
   border-radius: 10px;
-  color: black;
+  color: red;
   position: fixed;
   top: 50px;
-  right: 42%;
+  right: 33%;
   border: 1px solid black;
   padding: 20px 40px;
+}
+
+#pokemonMoreInfo {
+  background-color: white;
+  border-bottom-left-radius: 10px;
+  border-top-left-radius: 10px;
+  position: fixed;
+  top: 60px;
+  right: 0px;
+  border: none;
+  padding: 20px 40px;
+  width: 95.84%;
+}
+
+#popCloseButton {
+  padding: 5px 10px;
+  margin: 10px;
+  background-color: royalblue;
+  color: white;
+  font-size: large;
+  font-weight: 500;
+  border: none;
+  border-radius: 5px;
+  letter-spacing: 2px;
 }

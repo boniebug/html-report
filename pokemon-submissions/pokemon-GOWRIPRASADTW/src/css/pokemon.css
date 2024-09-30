@@ -1,6 +1,7 @@
 *{
   padding: 0px;
   margin: 0px;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 header{    
@@ -21,7 +22,6 @@ header div{
 #search{
   height: 30px;
   border-radius: 10px;
-  
 }
 #container{  
   display: flex;
@@ -38,4 +38,12 @@ header div{
 }
 .detail p{
   padding: 5px;
+}
+#loader {
+  text-align: center;
+}
+.detail img{
+  background-color: rgb(226, 232, 238);
+  border-radius: 15px;
+  width: 100%;
 }

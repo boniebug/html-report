@@ -15,7 +15,6 @@ body {
     border-radius: 5px;
     top: 0;
     left: 0;
-    display: none;
 }
 
 #logo {
@@ -23,22 +22,26 @@ body {
     margin-left: 40px;
 }
 
-/* main */
-.main {
-    margin-top: 20%;
-    margin-left: 40%;
+mark {
+    border-radius: 5px;
+}
 
-    #loading-symbol {
-        border: 5px solid #9e9d9d;
-        border-right: 5px solid #f7f7f7;
-        border-radius: 50%;
-        width: 30px;
-        height: 30px;
-        position: relative;
-        left: 10%;
-        bottom: 50%;
-        animation: spin 2s linear infinite;
-    }
+/* main */
+
+#loading-section {
+    margin-left: 40%;
+}
+
+#loading-symbol {
+    border: 5px solid #9e9d9d;
+    border-right: 5px solid #f7f7f7;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    left: 10%;
+    bottom: 50%;
+    animation: spin 2s linear infinite;
 }
 
 @keyframes spin {
@@ -53,19 +56,20 @@ body {
 
 #outer-container {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(7, 1fr);
     gap: 10px;
     padding: 40px;
     padding-top: 20px;
 }
 
 .pokemon-container {
+    display: grid;
     box-shadow: 0px 2px 3px 0px rgba(5, 5, 5, 0.15);
     border: 2px solid #9e9d9d;
     border-radius: 5px;
-    padding-left: 40px;
-    height: 60vh;
+    padding-left: 30px;
     background-color: #fbfefb;
+    cursor: pointer;
 }
 
 .pokemon-container:hover {
@@ -74,10 +78,11 @@ body {
 }
 
 .image {
-    width: 180px;
+    width: 120px;
     aspect-ratio: 1;
     background-color: white;
     border-radius: 3px;
+    padding: 5px;
 }
 
 .pokemon-id::before {
@@ -85,25 +90,37 @@ body {
 }
 
 .pokemon-type::before {
-    content: 'Type: ';
+    content: 'Types: ';
+}
+
+.pokemon-ability::before {
+    content: 'Abilities: ';
+}
+
+.pokemon-statistics::before {
+    content: 'Statistics: ';
+}
+
+.pokemon-height::before {
+    content: 'Height: ';
+}
+
+.pokemon-weight::before {
+    content: 'Weight: ';
 }
 
 .pokemon-id::before,
-.pokemon-type::before {
+.pokemon-type::before,
+.pokemon-ability::before,
+.pokemon-statistics::before,
+.pokemon-height::before,
+.pokemon-weight::before {
     font-weight: bold;
     color: #556f7a;
-    font-size: 20px;
-}
-
-.pokemon-id,
-.pokemon-type {
-    font-size: 20px;
 }
 
 .pokemon-name {
-    margin-left: 10%;
     color: #556f7a;
-    font-size: 1.8rem;
 }
 
 #search {
@@ -116,4 +133,91 @@ body {
     border: 2px solid rgb(254, 216, 4);
     border-radius: 3px;
     font-size: 15px;
+}
+
+/* pop up */
+.popup-container {
+    width: 300px;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    background-color: whitesmoke;
+    border: 1px solid grey;
+    border-radius: 5px;
+    padding: 20px;
+    font-size: larger;
+    p {
+        text-align: center;
+        font-weight: bold;
+        font-size: x-large;
+        font-family: monospace;
+    }
+}
+.moves-container{
+    position: fixed;
+    top: 25%;
+    left: 60%;
+    width: 400px;
+    height: fit-content;
+    z-index: 100;
+    background-color: whitesmoke;
+    border: 1px solid grey;
+    padding: 20px;
+    border-radius: 5px;
+}
+/* pokemon-popup */
+.pokemon-popup-container {
+    width: 30vw;
+    position: fixed;
+    bottom: 30%;
+    left: 25%;
+    background-color: whitesmoke;
+    border: 1px solid grey;
+    border-radius: 5px;
+    padding: 20px;
+    display: grid;
+    z-index: 10;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.left-div,
+.right-div,
+.pokemon-details-div {
+    display: flex;
+    flex-direction: column;
+}
+
+.height-weight-div , .moves-weakness{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+/* overlay */
+#overlay {
+    background-color: rgba(0, 0, 0, 0.5);
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 9;
+    display: none;
+}
+.close-button {
+    width: 30px;
+    aspect-ratio: 1;
+    border-radius: 3px;
+    background-color: #DEE2FF;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    cursor: pointer;
+}
+.moves-btn, .weakness-btn{
+    background-color: #DEE2FF;
+    height: 30px;
+    aspect-ratio: 1;
+    border-radius: 3px;
+    padding: 3px;
+    cursor: pointer;
 }

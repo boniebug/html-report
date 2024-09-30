@@ -17,7 +17,6 @@ const removePopup = popup => {
 };
 
 const createPopup = () => {
-  console.log(1234567)
   const popup = createPTag('Kindly wait until the content is loaded', 'wait-popup');
   const parent = document.getElementsByClassName('pokemon-main-container')[0];
   parent.appendChild(popup);

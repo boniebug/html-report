@@ -9,7 +9,7 @@ const isTypeIncluded = (typesArray, inputText) => {
 };
 
 const performSearch = (event) => {
-  const inputText = event.target.value;
+  const inputText = event.target.value.toLowerCase();
   if (inputText) {
     const matchedElements = [];
     for (const element of POKEMON) {

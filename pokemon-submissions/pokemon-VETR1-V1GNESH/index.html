@@ -9,10 +9,12 @@
         <h1>Pokémon Website</h1>
         <div class="search-feature">
             <input id="search-bar" type="text" placeholder="Search Pokemon">
-            <button onclick="searchPokemon();">Search</button>
-            <button class="home-button" onclick="openHomePage();">Home</button>
+            <button id="search-button">Search</button>
+            <button id="home-button" class="home-button">Home</button>
         </div>
     </nav>
+    <div id="details-modal" class="details-modal"><p id="close-modal">&times;</p></div>
+    <div id="error-message"></div>
     <div id="page-loader" class="page-loader">
         <div class="loading-animation"></div>
     </div> 

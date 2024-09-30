@@ -1,135 +1,220 @@
-let button = document.querySelector('button');
-let main = document.querySelector('main');
-let pokemonsContainer = document.querySelector('#pokemonsContainer');
-let increment = 0;
-let namesContainer = [];
-let searchInput = document.querySelector('#searchInput');
+let urlsContainer = [];
+let allPokemonsContainer = document.querySelector('#allPokemonsContainer');
+let typesContainer = [];  
+let seachBar = document.querySelector('#searchBar');
+let loadingMessage = document.querySelector('#loadingMessage');;
+let loadingMessageContainer = document.querySelector('#loadingMessageContainer');
+let pokemonAbilities = [];
+let damageDisplayContainer;
+let movesDisplayContainer ;
 
 
 
-button.addEventListener('click', displayPokemons)
-searchInput.addEventListener('input', filterPokemons)
-
-function displayPokemons () {
-  let loadingPTag = document.createElement('p');
-  loadingPTag.setAttribute('class', 'loadingMessage');
-  loadingPTag.innerText = 'Pokemons Loading...Please Wait';
-  let loadingMessage = document.querySelector('.loadingMessage');
-  let loadingMessageDiv = document.querySelector('.loadingMessageContainer');
-  loadingMessageDiv.style.display = 'block';
-  loadingMessageDiv.append(loadingPTag);
-
-setTimeout(() => {
-
-  increment = increment + 500;
-fetch(`https://pokeapi.co/api/v2/pokemon-form/?offset=0&limit=${increment}`)
-  .then((data) => {
-    return data.json();
-  })
-  .then((data) => {
-    return data;
-  })
-  .then((data) => {
-    return data.results;
-  })
-  .then((data) => {
-    for (let i = 0; i < data.length; i++) {
-    fetch(data[i].url)
-      .then((data) => {
-        return data.json();
-      })
-      .then((data) => {
-        let pokemonID = document.createElement('p');
-        let typesContainer = [];
-        let pokemonType;
-        //  console.log(data)
-        for (let i = 0; i < data.types.length; i++ ) {
-          typesContainer.push(data.types[i].type.name);
-        }
-        for (let i = 0; i < typesContainer.length; i++) {
-         pokemonType = document.createElement('p');
-          pokemonType.innerText = `Type: ${typesContainer}`;
-          if (typesContainer[i] === 'water') {
-            pokemonType.setAttribute('id', 'water');
-          }
-          if (typesContainer[i] === 'fire' || typesContainer[i] === 'flying') {
-            pokemonType.setAttribute('id', 'fire');
-          }
-          if (typesContainer[i] === 'grass' || typesContainer[i] === 'poison') {
-            pokemonType.setAttribute('id', 'grass');
-          }
-          if (typesContainer[i] === 'bug') {
-            pokemonType.setAttribute('id', 'bug');
-          }
-          if (typesContainer[i] === 'normal') {
-            pokemonType.setAttribute('id', 'normal');
-          }
-          if (typesContainer[i] === 'electric' || typesContainer[i] === 'steel') {
-            pokemonType.setAttribute('id', 'electric');
-          }
-          if (typesContainer[i] === 'ground' || typesContainer[i] === 'rock') {
-            pokemonType.setAttribute('id', 'ground');
-          }
-          if (typesContainer[i] === 'ghost') {
-            pokemonType.setAttribute('id', 'ghost');
-          }
-          if (typesContainer[i] === 'dark') {
-            pokemonType.setAttribute('id', 'dark');
-          }
-          if (typesContainer[i] === 'dragon') {
-            pokemonType.setAttribute('id', 'dragon');
-          }
-          if (typesContainer[i] === 'fairy') {
-            pokemonType.setAttribute('id', 'fairy');
-          }
-          if (typesContainer[i] === 'fighting') {
-            pokemonType.setAttribute('id', 'fighting');
-          }
-          if (typesContainer[i] === 'ice') {
-            pokemonType.setAttribute('id', 'ice');
-          }
-          if (typesContainer[i] === 'psychic') {
-            pokemonType.setAttribute('id', 'psychic');
-          }
-        }
-        let pokemonNamesContainer = [];
-        pokemonNamesContainer.push(data.name);
-        namesContainer.push(pokemonNamesContainer);
-        // for (let i = 0; i < pokemonNamesContainer.length; i++) {
-        //  // console.log(pokemonNamesContainer[i]);
-        // }
-        let divContainer = document.createElement('div');
-        divContainer.setAttribute('class', 'pokemonDiv');
-        let imageContainer = document.createElement('img');
-        imageContainer.setAttribute('class', 'pokemonImage');
-        let pokemonName = document.createElement('p');
-        pokemonName.setAttribute('class', 'pokemonName');
-        pokemonName.innerText = `Name: ${pokemonNamesContainer}`;
-        pokemonID.innerText = `ID: ${data.id}`;
-        pokemonID.setAttribute('class', 'pokemonID');
-        imageContainer.src = data.sprites.front_default;
-        main.append(pokemonsContainer);
-        pokemonsContainer.append(divContainer);
-        divContainer.append(pokemonID);           
-        divContainer.append(imageContainer);
-        divContainer.append(pokemonName);
-        divContainer.append(pokemonType);
-      })
-    }
-  })
-  loadingMessageDiv.style.display = 'none';
-  loadingPTag.innerText = '';
-},2000)
-}
+loadingMessage.style.display = 'block';
+allPokemonsContainer.style.display = 'none';
+seachBar.disabled = true;
+seachBar.addEventListener('input', filterPokemons)
 
 function filterPokemons (e) {
-  let pokemons = document.querySelectorAll('.pokemonDiv');
-  pokemons.forEach((pokemon) => {
-    if (!pokemon.innerText.includes(e.target.value)) {
+  let allPokemons = document.querySelectorAll('.pokemonContainer');
+  allPokemons.forEach((pokemon) => {
+    let inputContainer = e.target.value.toLowerCase();
+    if (!pokemon.innerText.includes(inputContainer)) {
       pokemon.classList.add('hide');
     } else {
       pokemon.classList.remove('hide');
     }
-  });
-};
+  })
+}
+
+fetch('https://pokeapi.co/api/v2/pokemon/?offset=0&limit=10')
+.then((data) => {
+  return data;
+})
+.then((data) => {
+  return data.json();
+})
+.then((data) => {
+  return data.results;
+})
+.then((data) => {
+  for (let i = 0; i < data.length; i++) {
+    urlsContainer.push(data[i].url);
+  }
+  return urlsContainer;
+})
+
+.then((data) => {
+let container = [];
+for (let i = 0; i < data.length; i++) {
+container.push( fetch(data[i])
+.then((data) => {
+  return data.json();
+})
+
+.then((data) => {
+  let defenceContainer = [];
+  for (let i = 0; i < data.forms.length; i++) {
+    defenceContainer.push(data.forms[0].url)
+  }
+
+  fetch(defenceContainer)
+  .then((data) => {
+    return data.json();
+  })
+  .then((data) => {
+    return data.types;
+  })
+  .then((data) => {
+    for (let i = 0; i < data.length; i++) {
+      return data[i].type;
+    }
+  })
+  .then((data) => {
+    return data.url;  
+  })
+  .then((data) => {
+    fetch(data)
+    .then((data) => {
+      return data.json();
+    })
+    .then((data) => { 
+      console.log(data.moves)
+      
+      movesDisplayContainer = document.createElement('div');
+      movesDisplayContainer.classList.add('movesContainer');
+      for (let i = 0; i < data.moves.length; i++) {
+        let movesTag = document.createElement('p');
+        movesTag.classList.add('moves');
+        movesTag.innerText = `${data.moves[i].name}`;
+        movesDisplayContainer.append(movesTag);
+      }
+      pokemonDataContainer.append(movesDisplayContainer);
+
+
+     damageDisplayContainer = document.createElement('div');
+      damageDisplayContainer.classList.add('damageDisplay');
+      for (let i = 0; i < data.damage_relations.double_damage_from.length; i++) {
+        let damageType = document.createElement('p');
+        damageType.classList.add('defense');
+        damageType.innerText = `${data.damage_relations.double_damage_from[i].name},`;
+        damageDisplayContainer.append(damageType);
+      }
+      pokemonDataContainer.append(damageDisplayContainer);
+    })
+  })
+
+  //height and weight
+  let pokemonHeight = document.createElement('p');
+  pokemonHeight.innerText = `Height: ${data.height}`;
+  pokemonHeight.classList.add('height');
+  let pokemonWeight = document.createElement('p');
+  pokemonWeight.classList.add('weight');
+  pokemonWeight.innerText = `Weight: ${data.weight}`;
+  let someContainer = [];
+
+  let pokemonTypes ;
+  for (let i = 0; i < data.types.length; i++) {
+    someContainer.push(data.types[i].type.name);
+  }
+  for (let i = 0; i < someContainer.length; i++) {
+    pokemonTypes = document.createElement('p');
+    pokemonTypes.classList.add('pokemonType');
+    pokemonTypes.innerText = `Type: ${someContainer}`;
+    pokemonTypes.style.textAlign = 'center';
+  }
+  //height and weight end
+
+
+//abilities
+  let ability1 = [];
+  for (let i = 0; i < data.abilities.length; i++) {
+    ability1.push(data.abilities[i])
+  }
+  let ability2 = [];
+  for (let i = 0; i < ability1.length; i++) {
+    ability2.push(ability1[i].ability.name)
+  }
+  let abilityContainer ;
+  for (let i = 0; i < ability2.length; i++) {
+    abilityContainer = document.createElement('p');
+    abilityContainer.classList.add('ability');
+    abilityContainer.innerText = `Ability: ${ability2}`;
+  }
+  //end of abilities
+
+
+  //stats
+  let stats1 = [];
+  for (let i = 0; i < data.stats.length; i++) {
+    stats1.push(data.stats[i])
+  }
+  let stats2 = [];
+  let typeStats2 = [];
+  for (let i = 0; i < stats1.length; i++) {
+    stats2.push(stats1[i].base_stat);
+    typeStats2.push(stats1[i].stat.name);
+  }
+  let statsContainer = [];
+  for (let i = 0; i < stats2.length; i++) {
+    statsContainer.push(`${typeStats2[i]}:${stats2[i]}`)
+  }
+
+  let statsOfPokemons ;
+  for (let i = 0; i < statsContainer.length ; i++) {
+    statsOfPokemons = document.createElement('p');
+    statsOfPokemons.classList.add('stats');
+    statsOfPokemons.innerText = `${statsContainer}`;
+  }
+  //end of stats
+
+  let pokemonDiv = document.createElement('div');
+  let smallPokemonContainer = document.createElement('div');
+  smallPokemonContainer.classList.add('smallPokemonContainer');
+  let imageDiv = document.createElement('div');
+  imageDiv.classList.add('imageDiv');
+  let pokemonDataContainer = document.createElement('div');
+  pokemonDataContainer.classList.add('pokemonDataContainer');
+  smallPokemonContainer.style.display = 'flex';
+
+  pokemonDiv.classList.add('pokemonContainer');
+  let pokemonID = document.createElement('h4');
+  pokemonID.classList.add('pokemonID');
+  let pokemonImage = document.createElement('img');
+  pokemonImage.classList.add('pokemonImage');
+  let pokemonName = document.createElement('p');
+  pokemonName.classList.add('pokemonName');
+  pokemonName.innerText = `Name: ${data.name}`;
+  pokemonID.innerText = data.id;
+  pokemonImage.src = data.sprites.other["official-artwork"].front_default;
+  pokemonImage.alt = data.name;
+  pokemonImage.title = data.name;
+
+  allPokemonsContainer.append(pokemonDiv);
+  pokemonDiv.append(pokemonID);
+
+  pokemonDiv.append(smallPokemonContainer);
+  smallPokemonContainer.append(imageDiv);
+  smallPokemonContainer.append(pokemonDataContainer);
+  imageDiv.append(pokemonImage);
  
+  pokemonDataContainer.append(pokemonName);
+  pokemonDataContainer.append(pokemonWeight);
+  pokemonDataContainer.append(pokemonHeight);
+  pokemonDataContainer.append(abilityContainer);
+  pokemonDataContainer.append(pokemonTypes);
+  pokemonDiv.append(statsOfPokemons);
+})
+ )
+}
+  return Promise.all(container);
+})
+
+.then(() =>{
+  loadingMessage.style.display = 'none';
+  allPokemonsContainer.style.display = 'flex';
+  seachBar.disabled = false;
+})
+.catch(() => {
+  console.log('Error Occured');
+})

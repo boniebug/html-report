@@ -9,7 +9,7 @@
     margin-top: 10px;
 }
 
-#heading{
+#heading {
     font-size: xx-large;
 }
 
@@ -28,7 +28,7 @@
 
 #search {
     margin-right: 30px;
-    color:aliceblue;
+    color: black;
     font-size: medium;
     margin-left: auto;
 }
@@ -59,4 +59,17 @@
 #pokemonImages {
     display: flex;
     flex-wrap: wrap;
+}
+
+.moreDetailsButton{
+border: none;
+margin-bottom: 10px;
+font-size: large;
+background-color:#dee6eb ;
+}
+.moreDetails{
+margin-top: 20px;
+display:flex;
+justify-content: center;
+align-items: center;
 }

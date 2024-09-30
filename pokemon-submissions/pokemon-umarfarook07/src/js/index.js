@@ -6,7 +6,10 @@ const capitalizeFirstLetter = (textContent) => {
 
 const createPokemonImage = (pokemon) => {
   const pokemonImage = document.createElement('img');
-  pokemonImage.src = pokemon.sprites.front_default || 'src/images/no-image.webp';
+  pokemonImage.src =
+    pokemon.sprites.other.dream_world.front_default ||
+    pokemon.sprites.other.home.front_default ||
+    'src/images/no-image.webp';
   pokemonImage.alt = pokemon.name;
   pokemonImage.classList.add('pokemon-img');
   return pokemonImage;
@@ -27,9 +30,11 @@ const createPokemonIdElement = (pokemon) => {
 };
 
 const createPokemonTypeElement = (typeInfo) => {
+  const typeName = typeInfo.type.name;
   const typeElement = document.createElement('div');
   typeElement.classList.add('pokemon-type');
-  typeElement.textContent = capitalizeFirstLetter(typeInfo.type.name);
+  typeElement.classList.add(typeName);
+  typeElement.textContent = capitalizeFirstLetter(typeName);
   return typeElement;
 };
 
@@ -43,7 +48,94 @@ const createPokemonTypesElement = (pokemon) => {
   return pokemonTypesElement;
 };
 
-const createPokemonCard = (pokemon) => {
+const createDetailElement = (label, value) => {
+  const detailContainer = document.createElement('div');
+  const detailLabel = document.createElement('h3');
+  const detailValue = document.createElement('p');
+
+  detailLabel.textContent = `${label}:`;
+  detailValue.textContent = value;
+
+  detailContainer.appendChild(detailLabel);
+  detailContainer.appendChild(detailValue);
+
+  return detailContainer;
+};
+
+const createDetailList = (label, values) => {
+  const detailContainer = document.createElement('div');
+  const detailLabel = document.createElement('h3');
+  const detailValue = document.createElement('ul');
+
+  detailLabel.textContent = `${label}:`;
+
+  values.forEach(value => {
+    const item = document.createElement('li');
+    item.textContent = value;
+    detailValue.appendChild(item);
+  });
+
+  detailContainer.appendChild(detailLabel);
+  detailContainer.appendChild(detailValue);
+
+  return detailContainer;
+};
+
+const createPokemonDetailsContent = (pokemon) => {
+  const detailsContainer = document.createElement('div');
+  detailsContainer.classList.add('pokemon-details-content');
+
+  const name = createDetailElement('Name', capitalizeFirstLetter(pokemon.name));
+  const id = createDetailElement('ID', pokemon.id);
+
+  const imageContainer = document.createElement('div');
+  imageContainer.classList.add('pokemon-image-container');
+  const pokemonImage = createPokemonImage(pokemon);
+  imageContainer.appendChild(pokemonImage);
+
+  const types = createPokemonTypesElement(pokemon);
+
+  const height = createDetailElement('Height', pokemon.height);
+  const weight = createDetailElement('Weight', pokemon.weight);
+
+  const pokemonAbilities = getAbilities(pokemon);
+  const abilities = createDetailList('Abilities', pokemonAbilities);
+
+  const pokemonMoves = getPokemonMoves(pokemon);
+  const moves = createDetailList('Moves', pokemonMoves.slice(0, 5));
+
+  const pokemonsStats = getPokemonStats(pokemon);
+  const stats = createDetailList(
+    'Stats',
+    pokemonsStats.map((s) => `${capitalizeFirstLetter(s.name)}: ${s.value}`)
+  );
+
+  detailsContainer.appendChild(name);
+  detailsContainer.appendChild(id);
+  detailsContainer.appendChild(imageContainer);
+  detailsContainer.appendChild(types);
+  detailsContainer.appendChild(height);
+  detailsContainer.appendChild(weight);
+  detailsContainer.appendChild(abilities);
+  detailsContainer.appendChild(moves);
+  detailsContainer.appendChild(stats);
+  getPokemonWeakness(pokemon).then((weaknesses) => {
+    const weaknessArray = weaknesses
+      .map((weak) =>
+        weak.damage_relations.double_damage_from.map((w) => w.name)
+      )
+      .reduce((acc, curr) => acc.concat(curr), []);
+    const weaknessesElement = createDetailList(
+      'Weaknesses',
+      weaknessArray
+    );
+    detailsContainer.appendChild(weaknessesElement);
+  });
+
+  return detailsContainer;
+};
+
+const createPokemonCard = (pokemon, pokemonDetailsPopup) => {
   const pokemonCard = document.createElement('div');
   pokemonCard.classList.add('pokemon-card');
 
@@ -52,59 +144,11 @@ const createPokemonCard = (pokemon) => {
   pokemonCard.appendChild(createPokemonIdElement(pokemon));
   pokemonCard.appendChild(createPokemonTypesElement(pokemon));
 
+  pokemonCard.addEventListener('click', () => {
+    pokemonDetailsPopup.showModal();
+  });
+
   return pokemonCard;
-};
-
-const isMatchingSearchValue = (value, searchValue) => {
-  return value.trim().toLowerCase().includes(searchValue);
-};
-
-const isNameMatch = (pokemonName, searchValue) => {
-  return isMatchingSearchValue(pokemonName, searchValue);
-};
-const isIdMatch = (pokemonId, searchValue) => {
-  return isMatchingSearchValue(pokemonId, searchValue);
-};
-const isTypeMatch = (pokemonTypes, searchValue) => {
-  return pokemonTypes.some((type) => isMatchingSearchValue(type, searchValue));
-};
-
-const getPokemonName = (card) => {
-  return card.querySelector('.pokemon-name').textContent.toLowerCase()
-};
-const getPokemonId = (card) => {
-  return card.querySelector('.pokemon-id').textContent;
-};
-const getPokemonTypes = (card) => {
-  const types = [];
-  card.querySelectorAll('.pokemon-type').forEach((type) => {
-    types.push(type.textContent.toLowerCase());
-  });
-  return types;
-};
-
-const handleSearch = () => {
-  const searchValue = getSearchValue();
-  const pokemonCards = document.querySelectorAll('.pokemon-card');
-  pokemonCards.forEach((card) => {
-    const isMatch = isPokemonMatch(card, searchValue);
-    card.style.display = isMatch ? '' : 'none';
-  });
-};
-
-const getSearchValue = () => {
-  const searchElement = document.getElementById('search');
-  return searchElement.value.trim().toLowerCase();
-};
-
-const isPokemonMatch = (card, searchValue) => {
-  const pokemonName = getPokemonName(card);
-  const pokemonId = getPokemonId(card);
-  const pokemonTypes = getPokemonTypes(card);
-  const isNameMatched = isNameMatch(pokemonName, searchValue);
-  const isIdMatched = isIdMatch(pokemonId, searchValue);
-  const areTypesMatched = isTypeMatch(pokemonTypes, searchValue);
-  return isNameMatched || isIdMatched || areTypesMatched;
 };
 
 const fetchPokemonDetails = async (pokemon) => {
@@ -113,37 +157,30 @@ const fetchPokemonDetails = async (pokemon) => {
   return parsedPokemonDetails;
 };
 
+const renderPokemons = async (pokemons) => {
+  const pokemonGrid = document.getElementById('pokemon-grid');
+  pokemonGrid.innerHTML = '';
+  const pokemonFetchPromises = pokemons.map(async (pokemon) => {
+    try {
+      const pokemonDetails = await fetchPokemonDetails(pokemon);
+      const pokemonDetailsPopup = createPokemonDetailsPopup(pokemonDetails);
+      const pokemonCard = createPokemonCard(pokemonDetails, pokemonDetailsPopup);
+      pokemonGrid.appendChild(pokemonCard);
+    } catch (error) {
+      showPopup(`Error fetching details for Pokémon ${pokemon.name}:`);
+      console.error(error)
+    }
+  });
+  await Promise.all(pokemonFetchPromises);
+  hideLoadingIndicator();
+};
+
+
 const fetchPokemons = async () => {
   showLoadingIndicator();
   const response = await fetch('https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0');
   const pokemons = await response.json();
   return pokemons.results;
-};
-
-const addSearchButtonEventListener = () => {
-  const searchElement = document.getElementById('search');
-  const searchButton = document.getElementById('search-btn');
-  searchButton.onclick = handleSearch;
-  searchElement.addEventListener('keydown', (event) => {
-    if (event.key === 'Enter') {
-      handleSearch();
-    }
-  });
-};
-
-const renderPokemons = async (pokemons) => {
-  const pokemonGrid = document.getElementById('pokemon-grid');
-  pokemonGrid.innerHTML = '';
-  
-  const pokemonFetchPromises = pokemons.map(async (pokemon) => {
-    const pokemonDetails = await fetch(pokemon.url);
-    const parsedPokemonDetails = await pokemonDetails.json();
-    const pokemonCard = createPokemonCard(parsedPokemonDetails);
-    pokemonGrid.appendChild(pokemonCard);
-  });
-
-  await Promise.all(pokemonFetchPromises);
-  hideLoadingIndicator();
 };
 
 const main = async () => {

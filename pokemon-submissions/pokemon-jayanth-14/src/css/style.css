@@ -9,8 +9,8 @@
   margin-top: 10vh;
   padding: 10px 80px;
   display: grid;
-  grid-template-columns: repeat(auto-fit,minmax(200px, 1fr));
-  gap: 10px 20px;
+  grid-template-columns: repeat(auto-fit,minmax(180px, 1fr));
+  gap: 10px 10px;
   justify-content: center;
   background-color: #e5e5e5;
 }
@@ -22,14 +22,18 @@
   background-color: #fff;
   border: none;
   border-radius:5% ;
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
-  max-height: 300px;
+  box-shadow: 7px 7px 5px rgba(0, 0, 0, 0.4);
+  max-height: 250px;
+  max-width: 200px;
 }
 .cardImage{
+  width: 90%;
+  height: 70%;
   background-color: #e5e5e5;
   border-radius: 5px;
-  object-fit: cover;
+  object-fit: contain;
   margin-bottom: 5px;
+  align-self: center;
 }
 .cardTitle{
   border-top: 1px solid #000;
@@ -37,7 +41,7 @@
   text-transform: capitalize;
 }
 .cardTitle, .cardId{
-  font-size: 18px;
+  font-size: 15px;
   font-weight: 500;
 }
 .cardTitle::before{

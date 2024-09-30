@@ -1,109 +1,176 @@
- const loader = () => {
-  const loading = document.getElementById('loader');
-  setTimeout(() => {
-    fetchPokemon();
-    loading.style.display = 'none'
-  },5000)
- };
- 
- async function  fetchPokemon() {
+async function fetchPokemon() {
+  let loading = true;
+  const loader = document.getElementById('loader');
+  const pokemonContainer = document.getElementById('mainContainer');
   try {
-  const  pokemonContainer = document.getElementById('container');
-  await fetch('https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0')
-    .then((response) => response.json())
-    .then((data) => {
-       data.results.map((cartoon) => {
-        try{
-            fetch(cartoon.url)
-            .then((response) =>response.json())
-            .then((pokemonData) => {
-                const pokemonElement = document.createElement("div");
-                const imageElement = document.createElement("img");
-                imageElement.src = pokemonData.sprites.front_default;
-                imageElement.alt = pokemonData.name;
-                pokemonElement.appendChild(imageElement);
-
-                const nameElement = document.createElement("h2");
-                nameElement.textContent ='NAME :'+ pokemonData.name;
-                pokemonElement.appendChild(nameElement);
-
-                const idElement = document.createElement("p");
-                idElement.textContent = "ID :" + pokemonData.id;
-                pokemonElement.appendChild(idElement);
-
-                const typeElement = document.createElement("p");
-                typeElement.textContent = " TYPE :" +pokemonData.types.map((pokemonType) => pokemonType.type.name);
-                pokemonElement.appendChild(typeElement);
-                pokemonContainer.appendChild(pokemonElement);
-              });}
-            catch(error){
-              console.error(error);
-            }
-          });
-        });}catch (error) {
-          console.log(error);
-        }
- };
-
- const fetchSearch =  () => {
-  const  searchInput = document.getElementById('search').value;
-  const searchType = document.getElementById('searchType').value;
-  const pokemonContainer = document.getElementById('container');
-  pokemonContainer.textContent = '';
-
-  fetch('https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0')
-    .then((response) => response.json())
-    .then((data) => {
-      const pokemonList = data.results;
-      if(searchType === 'id') {
-        pokemonList.map((cartoon) => {
-          if (cartoon.url.split('/')[cartoon.url.split('/').length - 2] === searchInput) {
-            fetch(cartoon.url)
-              .then((response) => response.json())
-              .then((pokemonData) => {
-                displayPokemon(pokemonData, pokemonContainer);
-              })
-          }
-        })
-      } else if(searchType === 'name') {
-        pokemonList.map((cartoon) => {
-          if (cartoon.name.includes(searchInput.toLowerCase())) {
-            fetch(cartoon.url)
-              .then((response) => response.json())
-              .then((pokemonData) => {
-                displayPokemon(pokemonData, pokemonContainer);
-              })
-          }
-        })
+    const response = await fetch('https://pokeapi.co/api/v2/pokemon?limit=1032&offset=0');
+    const data = await response.json();
+    for (const element of data.results) {
+      try {
+        const pokemonResponse = await fetch(element.url);
+        const pokemonData = await pokemonResponse.json();
+        const pokemonName = pokemonData.name;
+        const pokemonId = pokemonData.id;
+        const pokemonImgRefSrc = pokemonData.sprites.other['official-artwork']['front_shiny'];
+        const pokemonImgSrc = pokemonImgRefSrc || pokemonData.sprites['front_default'];
+        const pokemonRefType = pokemonData.types;
+        let pokemonType;
+        pokemonRefType.forEach((element) => {
+        pokemonType = element.type.name;
+        });
+        displayPokemon(pokemonName, pokemonId, pokemonImgSrc, pokemonType,loading,loader);
+      } catch (error) {
+        console.log(error);
       }
-    })
-    .catch((error) => {
-      console.error(error);
-    })
+    }
+   
+     loader.style.display = 'none';
+     pokemonContainer.style.display = 'block';
+  } catch (error) {
+    console.log(error);
+  }
 };
 
-const displayPokemon = (pokemonData, pokemonContainer) => {
+function displayPokemon(name, id, imgSrc, type,loadingStatus,loader) { 
+  const pokemonContainer = document.getElementById('container');
   const pokemonElement = document.createElement("div");
+  pokemonElement.setAttribute('class','pokemonDetailer');
   const imageElement = document.createElement("img");
-  imageElement.src = pokemonData.sprites.front_default;
-  imageElement.alt = pokemonData.name;
+  imageElement.src = imgSrc;
+  imageElement.alt = 'image is not available';
   pokemonElement.appendChild(imageElement);
 
   const nameElement = document.createElement("h2");
-  nameElement.textContent ='NAME :' + pokemonData.name;
+  nameElement.textContent = 'NAME :' + name;
   pokemonElement.appendChild(nameElement);
 
   const idElement = document.createElement("p");
-  idElement.textContent = "ID :" + pokemonData.id;
+  idElement.textContent = "ID :" + id;
   pokemonElement.appendChild(idElement);
 
   const typeElement = document.createElement("p");
-  typeElement.textContent = " TYPE :" + pokemonData.types.map((pokemonType) => pokemonType.type.name);
+  typeElement.textContent = " TYPE :" + type;
   pokemonElement.appendChild(typeElement);
+
+pokemonElement.addEventListener('click',() => detailInView(idElement.textContent,pokemonContainer));
+
   pokemonContainer.appendChild(pokemonElement);
+  if(loadingStatus) {
+    loader.style.display = 'block';
+    document.getElementById('mainContainer').style.display = 'none';
+  }
+}
+
+function fetchSearch() {
+  const loaderContext = document.getElementById('loaderContext');
+  const loader = document.getElementById('loader');
+  const searchType = document.getElementById('searchType').value;
+  const searchValue = document.getElementById('search').value;
+  const pokemonContainer = document.getElementById('container');
+  pokemonContainer.textContent = '';
+  if(searchType === 'name or id') {
+   fetch('https://pokeapi.co/api/v2/pokemon/'+searchValue+'/')
+   .then((response) => response.json())
+   .then((data) => { 
+   searchValue.innerTEXT = ''
+   const  pokemonName = data.name;
+   const pokemonId = data.id;
+   const  pokemonType = data.types.forEach((element) =>element.type.name);
+   const  pokemonImgRefSrc = data.sprites.other['official-artwork']['front_shiny'];
+   const  pokemonImgSrc = pokemonImgRefSrc || data.sprites['front_default'];
+   loader.style.display = 'none';
+   displayPokemon(pokemonName, pokemonId, pokemonImgSrc, pokemonType);
+   }).catch((error) => {
+     pokemonContainer.textContent = '';
+    loaderContext.textContent = 'incorrect details';
+    loader.style.display = 'block';
+    setTimeout(() => {
+      loader.style.display = 'none';
+      loaderContext.textContent = 'loading...';
+      fetchPokemon();
+    },2000)
+   })
+  } else {
+      fetch('https://pokeapi.co/api/v2/type/'+searchValue+'/')
+      .then((response) => response.json())
+      .then((data) => {
+      const pokemonDetails = data.pokemon;
+      for (element of pokemonDetails){
+        fetch(element.pokemon.url)
+        .then((response) => response.json())
+        .then((data) => { 
+        searchValue.innerTEXT = '';
+        const  pokemonName = data.name;
+        const pokemonId = data.id;
+        const pokemonType = data.types.map((element) => element.type.name);
+        const  pokemonImgRefSrc = data.sprites.other['official-artwork']['front_shiny'];
+        const  pokemonImgSrc = pokemonImgRefSrc || data.sprites['front_default'];
+        loader.style.display = 'none';
+        displayPokemon(pokemonName, pokemonId, pokemonImgSrc, pokemonType);
+   }).catch(() => {
+      pokemonContainer.textContent = '';
+      loaderContext.textContent = 'incorrect details';
+      loader.style.display = 'block';
+      setTimeout(() => {
+      loader.style.display = 'none';
+      loaderContext.textContent = 'LOADING..'
+      fetchPokemon();
+    },2000)
+   })
+          }
+   }).catch(() => {
+    pokemonContainer.textContent = '';
+    loaderContext.textContent = 'incorrect details';
+    loader.style.display = 'block';
+    setTimeout(() => {
+    loader.style.display = 'none';
+    loaderContext.textContent = 'LOADING..'
+    fetchPokemon();
+    },2000)
+   })
+  }
 };
-window.onload = () => {
-  loader();
-  const searchButton = document.getElementById('searchButton');
-  searchButton.addEventListener('click', () => {fetchSearch()});
-  };
+
+function closeSearch() {
+  fetchPokemon();
+};
+
+function detailInView(id,pokemonContainer) {
+  document.getElementById('deatilButton').style.display = 'block';
+  const pokemonDetailer = document.getElementById('detailViewer');
+  const pokemonHeight = document.createElement('p');
+  const pokemonWeight = document.createElement('p');
+  const pokemonAbilities = document.createElement('p');
+  const pokemonMoves = document.createElement('p');
+  const pokemonStats = document.createElement('p');
+  let pokemonWeakness = document.createElement('p');
+  pokemonDetailer.style.display = 'block';
+  pokemonContainer.style.pointerEvents = 'none';
+  pokemonContainer.style.opacity = '0.4';
+ fetch('https://pokeapi.co/api/v2/pokemon/'+id.substring(4)+'/')
+   .then((response) => response.json())
+   .then((data) => { 
+   pokemonHeight.textContent = 'height :'+data.height;
+   pokemonWeight.textContent = 'weight :'+data.weight;
+   pokemonAbilities.textContent = 'abilites :'+data.abilities.map((element) => element.ability.name);
+   pokemonMoves.textContent = 'moves :'+data.moves.map((element) => element.move.name);
+   pokemonStats.textContent = 'stats :'+data.stats.map((element) => element.stat.name);
+   data.types.forEach((element) => fetch(element.type.url)
+   .then((response) => response.json())                    
+   .then((data) => pokemonWeakness.textContent = 'weakness :'+data.damage_relations.double_damage_from.map((element) => element.name)))
+   })
+   pokemonDetailer.appendChild(pokemonHeight);
+   pokemonDetailer.appendChild(pokemonWeight);
+   pokemonDetailer.appendChild(pokemonAbilities);
+   pokemonDetailer.appendChild(pokemonMoves);
+   pokemonDetailer.appendChild(pokemonStats);
+   pokemonDetailer.appendChild(pokemonWeakness);
+};
+ 
+ function closeDetailer () {
+  document.getElementById('detailViewer').style.display = 'none';
+  document.getElementById('container').style.opacity = '1';
+  document.getElementById('container').style.pointerEvents = 'auto';
+ };
+
+window.onload = fetchPokemon;

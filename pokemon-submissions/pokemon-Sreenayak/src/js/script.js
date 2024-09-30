@@ -1,42 +1,24 @@
+'use strict';
+
 const pokemonContainer = document.getElementById('pokemonContainer');
 const searchInput = document.getElementById('searchInput');
 const searchButton = document.getElementById('searchButton');
 const loadingSymbol = document.getElementById('loadingSymbol');
-
+const modal = document.getElementById('modal');
+const modalInfo = document.getElementById('modal-info');
+const closeModal = document.querySelector('.close');
 
 async function fetchPokemons() {
     showLoading(true);
-    try {
-        pokemonContainer.innerHTML = ''; // Clear previous results
-        for (let i = 1; i <= 230; i++) {
-            const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${i}`);
-            const data = await response.json();
-            displayPokemon(data);
-        }
-        alert('Pokémon data successfully loaded!');
-    } catch (error) {
-        console.error('Error fetching Pokémon:', error);
-    } finally {
-        hideLoading();
-    }
-}
-async function searchPokemons(query) {
-    showLoading(true);
-    try {
-        const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${query}`);
+    const pokemons = [];
+    for (let i = 1; i <= 20; i++) {
+        const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${i}`);
         if (response.ok) {
-            const data = await response.json();
-            pokemonContainer.innerHTML = ''; // Clear previous results
-            displayPokemon(data);
-        } else {
-            alert('No Pokémon found!');
+            pokemons.push(await response.json());
         }
-    } catch (error) {
-        alert('An error occurred while searching for Pokémon.');
-        console.error('Search error:', error);
-    } finally {
-        hideLoading();
     }
+    hideLoading();
+    return pokemons;
 }
 
 function displayPokemon(pokemon) {
@@ -48,36 +30,110 @@ function displayPokemon(pokemon) {
 
     const pokemonName = document.createElement('div');
     pokemonName.classList.add('pokemon-name');
-    pokemonName.textContent = `Name: ${pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}`;
+    pokemonName.textContent = pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1);
 
     const pokemonId = document.createElement('div');
     pokemonId.textContent = `ID: ${pokemon.id}`;
 
-    const pokemonTypes = document.createElement('div');
-    pokemonTypes.textContent = `Type: ${pokemon.types.map(type => type.type.name).join(', ')}`;
+    const pokemonType = document.createElement('div');
+    pokemonType.textContent = `Type: ${pokemon.types.map(t => t.type.name).join(', ')}`;
 
-    pokemonBox.appendChild(pokemonImage);
-    pokemonBox.appendChild(pokemonName);
-    pokemonBox.appendChild(pokemonId);
-    pokemonBox.appendChild(pokemonTypes);
+    const detailsButton = document.createElement('button');
+    detailsButton.textContent = 'Extra details';
+    detailsButton.onclick = () => showDetails(pokemon);
 
+    pokemonBox.append(pokemonImage, pokemonName, pokemonId, pokemonType, detailsButton);
     pokemonContainer.appendChild(pokemonBox);
 }
+
+function showDetails(pokemon) {
+    const title = document.createElement('h2');
+    title.textContent = `${pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}`;
+
+    const height = document.createElement('p');
+    height.textContent = `Height: ${pokemon.height / 10} m`;
+
+    const weight = document.createElement('p');
+    weight.textContent = `Weight: ${pokemon.weight / 10} kg`;
+
+    let stats = '';
+    pokemon.stats.forEach(s => {
+        stats += `${s.stat.name}: ${s.base_stat}, `;
+    });
+    stats = stats.slice(0, -2);
+    const statsElement = document.createElement('p');
+    statsElement.textContent = `Stats: ${stats}`;
+
+    let abilities = '';
+    pokemon.abilities.forEach(a => {
+        abilities += `${a.ability.name}, `;
+    });
+    abilities = abilities.slice(0, -2);
+    const abilitiesElement = document.createElement('p');
+    abilitiesElement.textContent = `Abilities: ${abilities}`;
+
+    const weaknesses = getWeaknesses(pokemon.types).join(', ');
+    const weaknessesElement = document.createElement('p');
+    weaknessesElement.textContent = `Weaknesses: ${weaknesses}`;
+
+    modalInfo.innerHTML = '';
+    modalInfo.appendChild(title);
+    modalInfo.appendChild(height);
+    modalInfo.appendChild(weight);
+    modalInfo.appendChild(abilitiesElement);
+    modalInfo.appendChild(statsElement);
+    modalInfo.appendChild(weaknessesElement);
+
+    modal.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+}
+
+
+function getWeaknesses(types) {
+    const typeWeaknesses = {
+        fire: ['water', 'rock', 'ground'],
+        water: ['electric', 'grass'],
+        grass: ['fire', 'bug', 'flying', 'ice', 'poison'],
+        // Add more types and their weaknesses...
+    };
+
+    const weaknesses = new Set();
+    types.forEach(type => {
+        const typeName = type.type.name;
+        if (typeWeaknesses[typeName]) {
+            typeWeaknesses[typeName].forEach(weakness => weaknesses.add(weakness));
+        }
+    });
+    return Array.from(weaknesses);
+}
+
 function showLoading(isLoading) {
     loadingSymbol.style.display = isLoading ? 'block' : 'none';
 }
 
 function hideLoading() {
-    setTimeout(() => {
-        loadingSymbol.style.display = 'none';
-    }, 5000); // Keeps loading for 5 seconds
+    loadingSymbol.style.display = 'none';
 }
 
+fetchPokemons().then(pokemons => {
+    pokemons.forEach(displayPokemon);
+});
+
 searchButton.addEventListener('click', () => {
-    const query = searchInput.value.toLowerCase();
+    const query = searchInput.value.trim();
     if (query) {
-        searchPokemons(query);
+        pokemonContainer.innerHTML = '';
+        fetchPokemons().then(pokemons => {
+            const filteredPokemons = pokemons.filter(p => p.name.toLowerCase().includes(query.toLowerCase()));
+            filteredPokemons.forEach(displayPokemon);
+        });
+    } else {
+        pokemonContainer.innerHTML = '';
+        fetchPokemons().then(pokemons => pokemons.forEach(displayPokemon));
     }
 });
 
-fetchPokemons();
+closeModal.onclick = () => {
+    modal.classList.add('hidden');
+    document.body.style.overflow = '';
+};

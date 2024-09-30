@@ -1,19 +1,29 @@
 <!DOCTYPE html>
 <head>
+  <link rel="stylesheet" href="src/images/logo.png">
   <title>pokemon</title>
   <link rel="stylesheet" href="src/css/index.css">
   <script src="src/js/data.js"></script>
-  <script src="src/js/createCard.js"></script>
+  <script src="src/js/search.js"></script>
+  <script src="src/js/displayDetails.js"></script>
+  <script src="src/js/appendCards.js"></script>
   <script src="src/js/index.js"></script>
 </head>
+
 <body>
-<header>
-  <label for="searchBar" class="lableForSearch">search:</label>
-  <input type="text" id="searchBar" placeholder="name,type,id...">
-  <h1 id="pageTitle"><img src="src/images/title.png" alt=""></h1>
+  <header>
+    <form action="">
+      <div>
+        <label for="searchBar" class="lableForSearch">search:</label>
+        <input type="text" id="searchBar" placeholder="by name,type or id...">
+        <img src="src/images/searchIcon2.png" alt="searchIcon" class="searchIcon">
+      </div>
+    </form>
+    <h1 id="pageTitle"><img src="src/images/title.png" alt=""></h1>
 </header>
 <main>
-  <div id="pokemonsContainer"></div>
+  <div id="pokemonsContainer" class="showContainer"></div>
+  <div id="searchedElements" class="hide"></div>
 </main>
 </body>
 </html>

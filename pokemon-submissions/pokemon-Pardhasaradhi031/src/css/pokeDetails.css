@@ -1,0 +1,21 @@
+
+.pokeInfoButton {
+  padding: 5px 7px;
+}
+
+.pokemonDataContainer {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  height: 243px;
+  border: 2px solid black;
+  aspect-ratio: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.pokemonDataContainer img {
+  height: 120px;
+}

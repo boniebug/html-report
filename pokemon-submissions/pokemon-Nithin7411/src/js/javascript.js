@@ -1,95 +1,115 @@
 "use strict";
 
 const allPokemons = [];
-
 const hideLoader = function () {
   const loader = document.getElementById("loader");
-  if (loader) {
-    loader.style.display = "none";
-  }
+  if (loader) loader.style.display = "none";
 };
 
 const fetchPokeDetails = async function (allPokemons) {
-  let url = "https://pokeapi.co/api/v2/pokemon?limit=100";
-
+  const url = "https://pokeapi.co/api/v2/pokemon?limit=100";
   await fetchAllPokemons(url, allPokemons);
-  console.log(allPokemons);
+  hideLoader();
+  document.getElementById("container").style.display = "flex";
+  document.getElementById("SearchBox").style.display = "block";
 };
 
 const fetchAllPokemons = async function (url, allPokemons) {
   while (url) {
     try {
-      let response = await fetch(url);
-      let data = await response.json();
-      for (let pokemon of data.results) {
-        await fetchPokeInfo(pokemon.url, allPokemons);
+      const response = await fetch(url);
+      const data = await response.json();
+      for (const pokemon of data.results) {
+        await fetchPokeInfo(pokemon.url, allPokemons, data.count);
       }
       url = data.next;
     } catch (error) {
-      console.error("Error fetching Pokémon data:", error);
+      console.error("Error fetching Pokemon data:", error);
       break;
     }
   }
-    document.getElementById('SearchBox').style.display = 'block';
-  hideLoader();
 };
 
-const fetchPokeInfo = async function (url, allPokemons) {
+const fetchPokeInfo = async function (url, allPokemons, totalCount) {
   try {
     const response = await fetch(url);
     const data = await response.json();
-    allPokemons.push(getData(data));
-
-    displayPokemon(data);
+    const pokemonData = getData(data);
+    allPokemons.push(pokemonData);
+    test(data);
+    textOnLoader(allPokemons.length, totalCount);
+    displayPokemon(pokemonData);
   } catch (error) {
-    console.error("Error fetching Pokémon info:", error);
+    console.error("Error fetching Pokemon info:", error);
   }
 };
 
 const displayPokemon = function (data) {
-  const container = document.getElementById("container");
+  const poke = document.createElement("div");
+  poke.classList.add("poke");
+
+  const pokemon = appendPokemon(data);
+  const expander = appendExpander(data);
+  poke.append(pokemon);
+  poke.append(expander);
+
+  document.getElementById("container").append(poke);
+};
+const appendPokemon = function (data) {
   const pokemon = document.createElement("div");
   pokemon.className = "pokemon";
-  data = getData(data);
   appendPokeImage(data, pokemon);
   appendPokeId(data, pokemon);
   appendPokeName(data, pokemon);
   appendPokeType(data, pokemon);
 
-  container.append(pokemon);
+  return pokemon;
 };
 
-const getData = function (data) {
-  return {
-    ImgSrc: data.sprites.front_default,
-    id: data.id,
-    Name: data.name,
-    Types: data.types.map((type) => type.type.name).join(", "),
+  const getData = function (data) {
+    return {
+      ImgSrc: data.sprites.other["official-artwork"].front_default,
+      id: data.id,
+      Name: data.name,
+      Types: data.types.map(type => type.type.name).join(", "),
+      height: data.height,
+      weight: data.weight,
+      EXP: data.base_experience,
+      moves: data.moves.map(move => move.move.name),
+      abilities: data.abilities.map(ability => ability.ability.name),
+      stats: data.stats.map(stat => ({
+        name: stat.stat.name,
+        base_stat: stat.base_stat
+      }))
+    };
   };
+  
+
+const textOnLoader = function (pokeCount, totalCount) {
+  const percent = ((pokeCount / totalCount) * 100).toFixed(2);
+  const loaderText = document.getElementsByClassName("loadingText");
+  loaderText[0].innerText = `${percent}% is done. Please wait`;
 };
 
-const appendPokeName = function (data, pokemon) {
-  const name = document.createElement("div");
-  name.innerText = "Name: " + data.Name;
-  pokemon.append(name);
+const displayDetails = function (data) {
+  const detailsHolder = document.getElementById("detailsContainer");
+  while (detailsHolder.firstChild) {
+    detailsHolder.removeChild(detailsHolder.firstChild);
+  }
+  appendToDisplayDetails(data , detailsHolder);
+
 };
 
-const appendPokeId = function (data, pokemon) {
-  const pokeId = document.createElement("div");
-  pokeId.innerText = `ID: ${data.id}`;
-  pokemon.append(pokeId);
+const test = async function (data) {
+  const types = data.types.map(type => type.type.url);
+
+  for (const url of types) {
+      const response = await fetch(url);
+      const typeData = await response.json();
+      console.log(typeData.damage_relations["double_damage_from"]);
+  } 
 };
 
-const appendPokeImage = function (data, pokemon) {
-  const pokeImg = document.createElement("img");
-  pokeImg.src = data.ImgSrc;
-  pokemon.append(pokeImg);
-};
-
-const appendPokeType = function (data, pokemon) {
-  const types = document.createElement("div");
-  types.innerText = "Types: " + data.Types;
-  pokemon.append(types);
-};
 
 fetchPokeDetails(allPokemons);
+

@@ -4,6 +4,22 @@ body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
+.error-message {
+  background-color: white;
+  color: black;
+  width: 400px;
+  position: fixed;
+  top: 5%;
+  right: 50%;
+  transform: translateX(50%);
+  border: 3px solid red;
+  border-radius: 30px;
+  padding: 15px;
+  z-index: 200;
+  font-size: 30px;
+  text-align: center;
+}
+
 .nav-bar {
   position: sticky;
   top: 0;
@@ -14,6 +30,7 @@ body {
   align-items: center;
   padding: 0px 80px;
   height: 70px;
+  z-index: 200;
 }
 
 .search-feature input {
@@ -35,7 +52,7 @@ body {
   margin-left: 1px;
 }
 
-.search-feature .home-button{
+.search-feature .home-button {
   padding: 12px 20px;
   background-color: #cd1515;
   color: white;
@@ -70,25 +87,101 @@ body {
   to {transform: rotate(1turn);}
 }
 
+.details-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 300;
+  background-color: white;
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  border: 1px solid black;
+  padding: -400px;
+}
+
+.details-modal img {
+  height: 250px;
+  width: 250px;
+  margin: 30px;
+}
+
+.modal-pokemon-details div {
+  height: 40px;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+
+.modal-pokemon-details p {
+  margin: 0;
+  text-align: center;
+  margin-left: 15px;
+  font-size: 30px;
+}
+
+.modal-pokemon-details h3 {
+  margin: 0;
+  text-align: center;
+  margin-left: 15px;
+  font-size: 30px;
+}
+
+#close-modal {
+  font-size: 30px;
+  position: absolute;
+  margin: 0;
+  top: 0;
+  right: 10px;
+  cursor: pointer;
+}
+
 .main-container {
   background-color: white;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: flex-start;
+  margin: 20px 40px;
 }
 
 .pokemon-container {
-  border: 1px solid black;
+  background-color: white;
+  border: 1px solid rgb(157, 157, 157);
+  cursor: pointer;
   border-radius: 8px;
-  margin: 10px;
-  padding: 20px;
+  margin: 8px;
+  padding: 10px 0px;
   width: 220px;
-  text-align: left;
+  text-align: center;
+  transition: all ease-in-out 0.3s;
+}
+
+.pokemon-container div {
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pokemon-container div p {
+  margin: 0;
+  text-align: center;
+  margin-left: 5px;
+  font-size: 18px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.pokemon-container:hover {
+  background-color: #eee;
+  transform: scale(1.02);
 }
 
 .pokemon-image {
-  height: 96px;
-  width: 96px;
+  height: 100px;
+  width: 100px;
 }
 
 .hide {

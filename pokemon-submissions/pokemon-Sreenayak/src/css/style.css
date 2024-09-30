@@ -50,7 +50,6 @@ button:hover {
     max-width: 1200px;
     margin: auto;
     text-align: center;
-    border-bottom: 1rex solid white;
 }
 
 .pokemon-container {
@@ -79,11 +78,40 @@ button:hover {
     text-transform: uppercase;
     font-style: inherit;
 }
-#loadingSymbol {
-    position: fixed;
-    top: 47%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 24px;
+.loading {
+    display: none;
+    margin: 20px auto;
+    width: 50px;
+    height: 50px;
     color: blue;
+}
+.modal {
+    display: flex;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.modal-content {
+    background-color: black;
+    padding: 20px;
+    border-radius: 10px;
+    width: 80%;
+    color: #f0f0f0;
+    max-width: 500px;
+}
+
+.close {
+    cursor: pointer;
+    float: right;
+    color: red;
+    font-size: 35px;
+}
+
+.hidden {
+    display: none;
 }

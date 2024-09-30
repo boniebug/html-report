@@ -1,4 +1,7 @@
 const showLoadingIndicator = () => {
+  removeEventListeners();
+  setEventListeners('addLoading');
+
   const loadingSpinner = document.getElementById('loading-spinner');
   loadingSpinner.style.display = 'block';
 };
@@ -6,4 +9,8 @@ const showLoadingIndicator = () => {
 const hideLoadingIndicator = () => {
   const loadingSpinner = document.getElementById('loading-spinner');
   loadingSpinner.style.display = 'none';
+
+  hidePopup();
+  removeEventListeners();
+  setEventListeners('removeLoading');
 };

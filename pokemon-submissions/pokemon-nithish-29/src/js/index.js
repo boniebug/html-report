@@ -1,58 +1,79 @@
 'use strict';
 
-const insertData = (pokemonDiv, name, image, id, type , data) => {
- name.textContent = `${data.name}`;
- image.src = `${data.sprites.front_default}`;
- id.textContent = `ID: ${data.id}`;
- type.textContent = `TYPE: ${data.types.map(typeInfo => typeInfo.type.name)}`;
- pokemonDiv.appendChild(name);
- pokemonDiv.appendChild(image);
- pokemonDiv.appendChild(id);
- pokemonDiv.appendChild(type);
- return pokemonDiv;
-};
-
-const createPokemonDiv = (data) => {
-  const container = document.getElementById('allpokemons');
-  let pokemonDiv = document.createElement('div');
-  const name = document.createElement('h1');
-  const image = document.createElement('img');
-  const id = document.createElement('h4');
-  const type = document.createElement('h4');
-  pokemonDiv.className = 'pokemon';
-  const appendDiv = insertData(pokemonDiv, name, image, id, type, data);
-  container.appendChild(appendDiv);
-};
-
-const renderPokemonData = async (id) => {
-  const url = `https://pokeapi.co/api/v2/pokemon/${id}`;
-  const response = await fetch(url);
-  const data = await response.json();
-  return data;
-};
-
-const fetchpokemonData = async () => {
-  const totalPokemons = 500;
-  let allPokemonsData = [];
-  for (let id = 1; id <= totalPokemons; id++) {
-    const data = await renderPokemonData(id);
-    allPokemonsData.push(data);
-  }
-  return allPokemonsData;
-};
+let allPokemonsData = [];
 
 const onloadPokemons = (displayType) => {
   const loader = document.getElementById('loader');
   loader.style.display = displayType;
 };
 
+const insertData = (pokemonDiv, name, image, id, type, details, data) => {
+ name.textContent = `${data.name}`;
+ image.src = `${data.sprites.other.home.front_default}`;
+ id.textContent = `ID: ${data.id}`;
+ type.textContent = `TYPE: ${data.types.map(typeInfo => typeInfo.type.name)}`;
+ details.textContent = `More`;
+ pokemonDiv.appendChild(name);
+ pokemonDiv.appendChild(image);
+ pokemonDiv.appendChild(id);
+ pokemonDiv.appendChild(type);
+ pokemonDiv.appendChild(details);
+ return pokemonDiv;
+};
+
+const createPokemonDiv = async (data) => {
+  const container = document.getElementById('allpokemons');
+  let pokemonDiv = document.createElement('div');
+  const name = document.createElement('h1');
+  const image = document.createElement('img');
+  const id = document.createElement('h4');
+  const type = document.createElement('h4');
+  const details = document.createElement('button');
+  details.onclick = () => showDetails(data);
+  pokemonDiv.className = 'pokemon';
+  const appendDiv = await insertData(pokemonDiv, name, image, id, type, details, data);
+  container.appendChild(appendDiv);
+};
+
+const displayPokemon = async () => {
+  for(const pokemon of allPokemonsData) {
+    createPokemonDiv(pokemon);
+  }
+};
+
+const renderPokemonData = async (name) => {
+  try {
+    const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`);
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Failed to parse JSON:", error);
+  }
+};
+
+const fetchpokemonData = async (setofPokemons) => {
+  const fetchResloved = [];
+  for (const pokemon of setofPokemons) {
+    const reslove = renderPokemonData(pokemon.name)
+    .then(data => allPokemonsData.push(data));
+    fetchResloved.push(reslove);
+  }
+  await Promise.all(fetchResloved);
+};
+
+
+const loadAllPokemonData = async (url) => {
+  const response = await fetch(url);
+  const data = await response.json();
+  await fetchpokemonData(data.results);
+};
+
 const loadPokimons = async () => {
-  let renderPokemon = 'pending';
   onloadPokemons('flex');
-  renderPokemon = await fetchpokemonData();
-  renderPokemon.forEach(pokemon => createPokemonDiv(pokemon));
+  await loadAllPokemonData(`https://pokeapi.co/api/v2/pokemon?offset=0&limit=1010`);
+  await displayPokemon();
   onloadPokemons('none');
-  document.getElementById('searchPokemon').addEventListener('click', setupSearch);
+  document.getElementById('search').addEventListener('input', setupSearch);
 };
 
 window.onload = loadPokimons;

@@ -1,46 +1,54 @@
 
 const showLoader = () => {
-  const container = document.querySelector('main')
-  const loadIcon = document.createElement('div')
-  loadIcon.className = 'loading-icon';
-  container.appendChild(loadIcon);
-};
-
-const appendCards = () => {
-  const container = document.getElementById('pokemonsContainer');
-  for (const pokemon of allPokemonsData) {
-    const card = createCard(pokemon);
-    container.appendChild(card);
-  }
-};
-
-const filterPokemons = () => {
-  const searchedData = document.getElementById('searchBar').value;
-  for(const pokemon of allPokemonsData){
-    const pokemonCard =   document.getElementById(pokemon.id)
-    if(pokemon.name.includes(searchedData) || pokemon.type.includes(searchedData)){
-      pokemonCard.style.display = 'none'
-    }else{
-      pokemonCard.style.display = 'flex'
-    }
-  }
-};
-
-window.onload = () => {
-  showLoader()
   const container = document.querySelector('main');
-  const loader = document.querySelector('.loading-icon')
-  document.getElementById("searchBar").addEventListener('keypress',filterPokemons);
-  createPokemonsData().then(() => {
-    appendCards();
+  const loader = document.createElement('div');
+  loader.className = 'loader';
+  container.appendChild(loader);
+};
+
+const fetchAndAppendPokemons = async (count) => {
+  const container = document.getElementById('pokemonsContainer');
+  const shortList = await createPokemonsData(count - 100, count);
+  appendCards(shortList, container);
+};
+
+const loadShortList = () => {
+  let count = 200;
+  let length = dataOfAllpokemons.names.length;
+  
+  window.onscroll = () => {
+    const documentHeight = document.documentElement.scrollHeight;
+    if (window.scrollY + window.innerHeight >= documentHeight && count <= length) {
+      fetchAndAppendPokemons(count);
+      count += 100;
+      if (count > length) {
+        count = length - 1;
+        fetchAndAppendPokemons(count).then(() => {
+          removeLoader();
+        })
+        window.onscroll = null;
+      }
+    }
+  };
+
+};
+
+const removeLoader = () => {
+  const container = document.querySelector('main');
+  const loader = document.querySelector('.loader');
+  if (loader) {
     container.removeChild(loader);
-  })
+  }
 }
 
-// window.onscroll = () => {
-//   // console.log('reached end')
-// if(window.scrollY = window.innerHeight >= document.documentElement.scrollHeight){
-//   console.log('reached end');
-//   appendCards()
-// }
-// }
+
+
+
+window.onload = async () => {
+  showLoader();
+  await fetchNamesAndTypes()
+  await fetchAndAppendPokemons(100)
+  loadShortList();
+
+  document.querySelector('.searchIcon').addEventListener('click', getSerachResults);
+};

@@ -10,8 +10,9 @@
     width: 130px;
 }
 #loading{
-    padding: 20% 45%;
+    padding: 40% 45%;
     font-size: 2rem;
+    height: auto;
 }
 input{
     padding: 8px;

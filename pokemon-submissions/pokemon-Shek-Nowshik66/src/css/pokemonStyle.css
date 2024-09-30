@@ -11,7 +11,7 @@ header{
     background-color: black;
     color: white;
     margin: -25px -10px;
-    padding: 10px;
+    padding: 5px;
 }
 
 .webHeader{
@@ -24,24 +24,25 @@ header{
     text-align: center;
 }
 
-.pokemonData{
+.pokemonData, .morePokemonData{
     margin-top: 50px;
     display: flex;
     flex-wrap: wrap;
     gap: 15px;
 }
 
-.pokemonData section {
+.pokemonData section ,.morePokemonData section{
     border: 1px solid black;
     display: flex;
     flex-direction: column;
     justify-content: end;
     align-items: center;
+    flex-wrap: wrap;
     gap: 5px;
     border-radius: 10px;
     padding: 10px;
-    width: 150px;
-    height: 200px;
+    width: 180px;
+    height: max-content;
 }
 
 .loader{
@@ -63,6 +64,29 @@ header{
 
 .searchContainer{
     margin-left: 100px;
+}
+
+.morePokemonData {
+    display: none;
+}
+
+.morePokemonData section{
+    width: 700px;
+    height: max-content;
+    justify-content: start;
+}
+
+.morePokemonData section img {
+    align-self: center;
+    height: 150px;
+    width: 150px;
+}
+
+button{
+    border: none;
+    color: blue;
+    text-decoration: underline;
+    background-color: white;
 }
 
 @keyframes spin{

@@ -3,17 +3,19 @@
   font-family:Arial, Helvetica, sans-serif;
   color: #3a3a3a;
   box-sizing: border-box;
+  letter-spacing: 0.5px;
 }
 
 header {
   position: sticky;
   top: 0px;
+  z-index: 10;
 }
 
 .heading {
   width: 100%;
   height: 100px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
   background-color: #fff;
   display: flex;
   justify-content: space-between;
@@ -36,28 +38,49 @@ header {
 }
 
 .pokemon-name {
-  font-weight: bold;
+  font-weight: 600;
+  font-size: 18px;
+  text-transform: capitalize;
+}
+
+.pokemon-id {
+  color: #666666;
+  font-size: 16px;
+}
+
+.pokemon-types {
+  font-size: 14px;
 }
 
 .pokemon-details {
   background-color: #faf9f9;
   padding: 0.5rem;
-  height: 45%;
+  height:50%;
   width:100%;
+  border-radius: 0px 0px 10px 10px;
+  line-height: 26px;
 }
 
 .pokemon-image {
-  width: 100%;
-  height: 55%;
+  width: 96px;
+  aspect-ratio: 1/1;
   background-color: #fff;
 }
 
+.more-details {
+  font-size: 12px;
+  color: #007BFF;
+  cursor: pointer;
+}
+
 .card {
-  width: 150px;
-  height: 250px;
+  width: min-content;
+  height: fit-content;
   box-shadow: 0 7px 10px 0px rgba(100, 100, 111, 0.2);
+  border-radius: 10px;
   margin: 0.5rem;
   background-color: #fff;
+  text-align: center;
 }
 
 .cards-container {
@@ -66,6 +89,7 @@ header {
   justify-content: space-evenly;
   gap: 10px;
 }
+
 .search-area {
   position: relative;
 }
@@ -86,4 +110,74 @@ header {
   right: 0px;
   border-radius: 0px 20px 20px 0px;
   border: none;
+}
+
+.overlay {
+  background-color: #3b3a3a7d;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top:0;
+  z-index: 15;
+}
+
+.pop-up {
+  width: max-content;
+  max-width: 80vw;
+  height: fit-content;
+  display: grid;
+  grid-template-columns: 30% 1fr;
+  grid-template-rows: repeat(2, 1fr);
+  background-color: #fff;
+  z-index: 20;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 2rem;
+  border-radius: 10px;
+}
+
+.pop-up span {
+  margin: 0 0.5rem;
+}
+
+.pop-up-images {
+  grid-area: 1/1/2/2;
+}
+
+.pokemon-images img{
+  margin: 1rem;
+}
+
+.pop-up-details {
+  grid-area: 1/2/2/3;
+  padding: 1rem;
+  position: relative;
+}
+
+.pop-up-moves {
+  grid-area: 2/1/3/3;
+}
+
+.pop-up-moves, .pop-up-details{
+  line-height: 22px;
+}
+
+.pop-up-label,
+.pokemon-Default,
+.pokemon-Shiny {
+  font-weight: bold;
+  margin: 0;
+}
+
+.close-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0.5rem 1rem;
+  background-color: tomato;
+  border: none;
+  color: #fff;
+  border-radius: 0px 10px 0px 0px ;
 }

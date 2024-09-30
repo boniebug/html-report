@@ -1,0 +1,40 @@
+body {
+  font-family: Arial, sans-serif;
+}
+h1 {
+  position: fixed;
+  text-align: center;
+  color: blue;
+  padding-left: 600px;
+  padding-bottom: 10px;
+}
+.pokemon-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+.pokemon-box {
+  width: 160px;
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  text-align: center;
+}
+.pokemon-box img {
+  width: 60px;
+  height: 60px;
+}
+.details {
+  display: none;
+  margin-top: 100px;
+}
+.loading {
+  font-size: 20px;
+  color: red;
+}
+.search-container {
+  margin-bottom: 20px;
+}
+.search-container {
+  position: fixed;
+  border: 2px solid black;
+}

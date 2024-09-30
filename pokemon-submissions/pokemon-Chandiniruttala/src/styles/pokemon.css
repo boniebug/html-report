@@ -1,42 +1,92 @@
 *{
-    margin: 0;
-    text-align: center;
-  }
-  body {
-    font-family: Arial, sans-serif;
-  }
-  .navBar{
-    background-color: black;
-    color: white;
-    height: 80px;
-    width: 100%;
-    position: fixed;
-    top: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .pokemonList {
-    margin-top: 100px;
-    margin-left: 10px;
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 20px;
-  }
-  .pokemon {
-    background-color: #f3efef;
-    padding: 20px;
-    border-radius: 10px;
-  }
-  .pokemon img {
-    height: 180px;
-    aspect-ratio: 1;
-  }
+  margin: 0;
+  text-align: center;
+}
+body {
+  font-family: Arial, sans-serif;
+}
+.navBar{
+  background-color: black;
+  color: white;
+  height: 80px;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.pokemonList {
+  margin-top: 90px;
+  margin-left: 10px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+}
+.pokemon {
+  background-color: #f3efef;
+  padding: 20px;
+  border-radius: 10px;
+}
 
-  .loading{
-    font-size: 40px;
-    margin-top: 250px;
-    margin-left: 620px;
-    position: fixed;
-    top: 130px;
-  }
+.pokemon img {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  height: 170px;
+  aspect-ratio: 1;
+}
+
+.loading{
+  font-size: 40px;
+  margin-top: 250px;
+  margin-left: 620px;
+  position: fixed;
+  top: 130px;
+}
+
+.searchBar{
+  margin-right: 120px;
+  height: 30px;
+}
+
+.title{
+  margin-left: 90px;
+}
+
+.moreDetailsContainer {
+  position: fixed;
+  top: 100px;
+  right: 150px;
+  left: 150px;
+  overflow-y: auto;
+  max-height: 500px; 
+  background-color: black;
+  color: white;
+}
+
+.moreDetailsContainer p{
+  margin-bottom: 10px;
+}
+
+.moreDetailsContainer img {
+  display: none;
+}
+
+.displayNone {
+  display: none;
+}
+
+.disabled {
+  pointer-events: none;
+  opacity: 25%;
+}
+
+.closeButton{
+  margin-top: 8px;
+  margin-left: 1040px;
+  background-color: red;
+}
+
+.moreContent{
+  padding: 10px;
+}

@@ -5,26 +5,30 @@
     <script src="src\js\pokemon.js"></script>
   </head>
   <header>
-    <h1>pokemon overview</h1>
-    <div id="searchCOntainer">
-    <label for="search">search : </label>
-    <input type="search" id="search" placeholder="search ----->">
-    
-  <select id="searchType">
-  <option value="id">By ID</option>
-  <option value="name">By Name</option>
+  <h1>pokemon overview</h1>
+  <div id="searchCOntainer">
+  <label for="search">search : </label>
+  <input type="search" id="search" placeholder="search ----->" >
+    <button type="submit" id="closeButton" onclick="closeSearch()">❌</button>
+  <select id="searchType" name=""> 
+  <option value="name or id">By Name Or Id</option>
   <option value="type">By Type</option>
   </select>
-
-    <button type="submit" id="searchButton">🔍</button>
-    </div>
-    </header>
-    <hr>
+  
+  <button type="submit" id="searchButton" onclick="fetchSearch()">🔍</button>
+  </div>
+  </header>
+  <hr>
 
   <body>
-    
-    <div id="loader"><h2>Loading ......</h2></div>
+    <div id="loader"><h2 id="loaderContext">Loading ......</h2></div>
+    <div id="mainContainer"> 
   <div id="container"></div>
+  <div id="detailViewer">
+    <button type="submit" id="deatilButton" onclick="closeDetailer()">❌</button>
+      </div>
+  
+   </div>
 
   
   </body>

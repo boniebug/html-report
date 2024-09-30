@@ -1,13 +1,13 @@
 body {
     font-family: Arial, sans-serif;
-    background-color:#e2cece;
+    background-color:#464040;
 }
 header{
     top: 0;
     height: 100px;
     display: flex;
     font-weight: bold;
-    background-color:beige ;
+    background-color:rgb(200, 200, 190) ;
     position:fixed;
     padding: 10px;
     width: 2000px;
@@ -18,13 +18,13 @@ header{
 }
 
 #searchContainer{
-    margin-left: 500px;
+    margin-left: 300px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-#search-type {
-  width: 100px;
+#searchtype {
+  width: 150px;
   height: 40px;
   padding: 10px;
   border: 1px solid #ccc;
@@ -34,7 +34,7 @@ header{
 
 #search-type option {
   padding: 10px;
-  font-size: 16px;
+  font-size: 13px;
 }
 
 header label{
@@ -45,6 +45,12 @@ header label{
 #search {
     height: 40px;
     width: 300px;
+    font-size: 20px;
+}
+
+#searchType option{
+    height: 40px;
+    width: 100px;
     font-size: 20px;
 }
 
@@ -85,7 +91,7 @@ header h1 {
     border-radius: 10px;
     text-align: center;
     background-color: white;
-
+    display: block;
 }
 
 #container div img{
@@ -108,8 +114,32 @@ left: 350px;
 top: 150px;
 font-size: 70px;
 display: flex;
-justify-content: center;
 align-items: center;
 color: #333;
 }
 
+#loader h2{
+position: relative;
+top: 130px;
+left: 40px;
+}
+
+#closeButton {
+    height: 40px;
+}
+
+#detailViewer {
+    height: auto;
+    width: 600px;
+    z-index: 1;
+    position: fixed;
+    top: 150px;
+    left: 500px;
+    background-color: #ffffff;
+}
+
+#deatilButton{
+display: none;
+position: relative;
+z-index: 1;
+}

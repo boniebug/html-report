@@ -24,28 +24,21 @@ h1 {
 }
 
 .pokemon-card img {
-  width: 100px;
-  height: 100px;
+  width: 130px;
+  height: 130px;
+  object-fit: cover;
 }
+
 
 .pokemon-name {
-  font-size: 1.2em;
+  font-size: 1.4em;
   font-weight: bold;
-}
-
-.pokemon-id {
-  font-size: 1em;
-  color: #666;
-}
-
-.pokemon-type {
-  font-size: 0.9em;
-  color: #555;
 }
 
 .search-box {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   margin-bottom: 20px;
 }
 
@@ -63,10 +56,66 @@ h1 {
 .search-box input:focus {
   border-color: #007bff;
 }
-nav{
+
+nav {
   position: sticky;
-  top:0;
+  top: 0;
   background-color: white;
   padding-bottom: 3px;
   padding-top: 5px;
+}
+
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.popup-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: left;
+  max-width: 400px;
+  width: 80%;
+}
+
+.popup-content button {
+  margin-top: 10px;
+}
+.pokemon-card button {
+  background-color: #216ec0;
+  color: white;              
+  border: none;             
+  border-radius: 5px;      
+  padding: 8px 10px;      
+  cursor: pointer;           
+  font-size: 14px;        
+  transition: background-color 0.3s ease;
+}
+
+.pokemon-card button:hover {
+  background-color: #0056b3;
+}
+
+.popup-content button {
+  background-color: #dc3545; 
+  color: white;            
+  border: none;              
+  border-radius: 5px;      
+  padding: 10px 15px;       
+  cursor: pointer;           
+  font-size: 14px;       
+  transition: background-color 0.3s ease;
+}
+
+.popup-content button:hover {
+  background-color: #c82333;
 }

@@ -1,37 +1,59 @@
 'use strict';
 const renderPokemon = async(url) => {
-  const response = await fetch(url);
-  const pokemonData = await response.json();
-  return pokemonData;
+  try{
+    const response = await fetch(url);
+    const pokemonData = await response.json();
+    return pokemonData;
+  } catch (error){
+    console.log(error);
+  }
+};
+
+const createElement = () => {
+  const imageContainer = document.createElement('img');
+  const nameContainer = document.createElement('p');
+  const id = document.createElement('p');
+  const type = document.createElement('p');
+  const height = document.createElement('p');
+  return { image:imageContainer, name: nameContainer,id: id, type: type, height: height }
+};
+
+const addClassToDetails = (detailsContainer) => {
+  detailsContainer.name.setAttribute('class', 'name');
+  detailsContainer.type.setAttribute('class', 'type');
+  detailsContainer.id.setAttribute('class', 'id');
+  detailsContainer.height.setAttribute('class', 'pokemonHeight');
 };
 
 const appendDetails = (details) => {
-  const imageContainer = document.createElement('img');
-  const nameContainer = document.createElement('p');
-  const nameId = document.createElement('p');
-  const nametype = document.createElement('p');
-  imageContainer.src = details.imageUrl;
-  nameContainer.innerText = details.name;
-  nameId.innerText = details.pokenonId;
-  nametype.innerText = details.pokemonType;
-  nameContainer.setAttribute('class', 'name');
-  nametype.setAttribute('class', 'type');
-  nameId.setAttribute('class', 'id');
-  const element = {image: imageContainer, name: nameContainer, id: nameId, type: nametype};
+  const detailsContainer = createElement();
+  detailsContainer.height.innerText = details.height;
+  detailsContainer.image.src = details.imageUrl;
+  detailsContainer.name.innerText = details.name;
+  detailsContainer.id.innerText = details.pokenonId;
+  detailsContainer.type.innerText = details.pokemonType;
+  addClassToDetails(detailsContainer);
+  const element = {image: detailsContainer.image, name: detailsContainer.name, id: detailsContainer.id, type: detailsContainer.type, height: detailsContainer.height};
   return element;
 };
 
 const createPokemon = async (pokemon, index) => {
   const pokemonName = pokemon.name;
   const pokemonContainer = document.createElement('div');
-  const url = 'https://pokeapi.co/api/v2/pokemon/'+ pokemonName;
-  const pokemonData = await renderPokemon(url);
-  const details = {name: pokemonName, imageUrl: pokemonData.sprites.front_default, pokenonId: pokemonData.id, pokemonType: pokemonData.types[0].type.name}
-  const element = appendDetails(details);
-  pokemonContainer.append(element.image,element.name, element.id, element.type);
-  pokemonContainer.setAttribute('class', 'pokemon');
-  pokemonContainer.setAttribute('id', index);
-  return pokemonContainer;
+  const url = pokemon.url;
+  let pokemonData
+  try{
+    pokemonData = await renderPokemon(url);
+    const details = {name: pokemonName, imageUrl: pokemonData.sprites.front_default, pokenonId: pokemonData.id, pokemonType: pokemonData.types[0].type.name, height: pokemonData.height}
+    const element = appendDetails(details);
+    pokemonContainer.append(element.image,element.name, element.id, element.type, element.height);
+    pokemonContainer.addEventListener('click', ()=> {showPopup(element, pokemonContainer)});
+    pokemonContainer.setAttribute('class', 'pokemon');
+    pokemonContainer.setAttribute('id', index);
+    return pokemonContainer;
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 const appendPokemon = async (pokemons) => {
@@ -40,22 +62,25 @@ const appendPokemon = async (pokemons) => {
   container.classList.add('pokemonContainer');
   let pokemon;
   for (let index = 0; index < pokemons.length; index++) {
-    pokemon= await createPokemon(pokemons[index], index)
-    container.appendChild(pokemon);
+    try{
+      pokemon= await createPokemon(pokemons[index], index);
+      container.appendChild(pokemon);
+    } catch (error) {
+      console.log(error);
+    }
   }
   document.body.removeChild(loading);
   document.body.appendChild(container);
  };
 
 const fetchPokemons = async() => {
-  const url = 'https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0';
+  const url = 'https://pokeapi.co/api/v2/pokemon?limit=1300&offset=0';
   const response = await fetch(url);
   const pokemonsData = await response.json();
   const pokemons = pokemonsData.results;
   try {
     appendPokemon(pokemons);
-  }
-  catch (error) {
+  } catch (error) {
     console.log(error);
   }
 };
@@ -72,14 +97,51 @@ const checker = (name, id, type, pokemon) => {
 
 const search = () => {
   const pokemons = document.querySelectorAll('.pokemon');
-   for(let index = 0; index < pokemons.length; index++) {
-    const pokemon = document.getElementById(index);
-    const details = pokemon.querySelectorAll('p');
-    const pokemonName = details[0].innerText.toLowerCase();
-    const pokemonid = details[1].innerText.toLowerCase();
-    const pokemonType = details[2].innerText.toLowerCase();
-    checker(pokemonName, pokemonid, pokemonType, pokemon)
+  for(let index = 0; index <= pokemons.length; index++) {
+    try {
+      const pokemon = document.getElementById(index);
+      const details = pokemon.querySelectorAll('p');
+      const pokemonName = details[0].innerText.toLowerCase();
+      const pokemonid = details[1].innerText.toLowerCase();
+      const pokemonType = details[2].innerText.toLowerCase();
+      checker(pokemonName, pokemonid, pokemonType, pokemon)
+    } catch (error) {
+      console.log(error);
+    }
   }
+};
+
+const tyesting = async() => {
+  try{
+    const url = 'https://pokeapi.co/api/v2/move/2/';
+    const response = await fetch(url);
+    const pokemonData = await response.json();
+    console.log(pokemonData);
+    return pokemonData;
+  } catch (error){
+    console.log(pokemonData);
+  }
+};
+
+const removePopup = (pokemonContainer, details) => {
+  pokemonContainer.append(details.image,details.name, details.id, details.type, details.height);
+  const popup = document.querySelector('.more');
+  document.body.removeChild(popup);
+};
+
+const showPopup = (details, pokemonContainer) => {
+  const container = document.createElement('div');
+  const pokemon = document.createElement('div');
+  const cancleButton = document.createElement('button');
+  cancleButton.innerText = 'cancle';
+  cancleButton.classList.add('canclebutton');
+  pokemon.classList.add('presentPokemon')
+  pokemon.append(details.image,details.name, details.id, details.type, details.height, cancleButton);
+  container.append(pokemon);
+  container.classList.add('more')
+  cancleButton.classList.add('cancle');
+  cancleButton.addEventListener('click', () =>{removePopup(pokemonContainer, details)});
+  document.body.append(container);
 };
 
 window.onload = () => {

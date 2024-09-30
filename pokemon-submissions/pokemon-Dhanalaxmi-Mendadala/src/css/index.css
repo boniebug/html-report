@@ -32,7 +32,7 @@ main {
     width: 200px;
     padding: 3px;
     border: 1px solid rgb(230, 108, 128);
-    border-radius: 10px;
+    border-radius: 5px;
     align-content: center;
     text-align: left;
     box-shadow: 0px 0px 4px black;
@@ -112,4 +112,25 @@ h1 {
     padding: 5px;
     border-radius: 22px;
     border:2px solid white;
+}
+#popUpBox{
+    border:8px double white;
+    padding: 10px;
+    display: none;
+    border-radius: 20px 0px 20px 0px;
+    height:fit-content;
+    width:max-content;
+    position: absolute;
+    top:20%;
+    font-size: 20px;
+    left:30%;
+    background-color:rgb(230, 108, 128);
+    color:white;
+ }
+#pokemon{
+    display: none;
+    height: max-content;
+    width: fit-content;
+    align-content: center;
+    justify-content: center;
 }

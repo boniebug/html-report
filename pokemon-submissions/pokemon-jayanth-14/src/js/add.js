@@ -46,5 +46,6 @@ const addPokemon = (data) => {
   const card = document.createElement('div');
   card.classList.add('card');
   addDetails(data, card);
+  card.addEventListener('click', () => { getFullDetails(data)})
   document.getElementById('cardContainer').appendChild(card);
 };

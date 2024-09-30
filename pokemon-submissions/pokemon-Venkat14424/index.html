@@ -3,25 +3,25 @@
 <head>
   <title>Pokemon</title>
   <link rel="stylesheet" href="./src/css/style.css">
-  <script src="./src/js/index.js"></script>
+  <script src="./src/js/pokemon.js"></script>
   <script src="./src/js/search.js"></script>
+  <script src="./src/js/pokemonDetails.js"></script>
 </head>
 
 <body>
   <header>
-  <h1>Pokemons</h1>
-  <select id="searchOption">
-    <option>Search All</option>
-    <option value="name">Search by Name</option>
-    <option value="id">Search by ID</option>
-    <option value="type">Search by Type</option>
-  </select>
-  <input id="searchPokemon" oninput="searchPokemon()" placeholder="search" />
-</header>
-<main>
-  <div id="loadingMessage" style="display: none;">Loading Pokémon...</div>
-  <section id="pokemonContainer"></section>
-</main>
+    <h1>Pokemons</h1>
+    <select id="searchOption">
+      <option>Search All</option>
+      <option value="name">Search by Name</option>
+      <option value="id">Search by ID</option>
+      <option value="type">Search by Type</option>
+    </select>
+    <input id="searchPokemon" oninput="searchPokemonInContainer()" placeholder="  search" />
+  </header>
+  <main>
+    <section id="pokemonContainer"></section>
+  </main>
 </body>
 
 </html>

@@ -40,14 +40,19 @@
     margin-top: 60px;
     margin-left: 40px;
     width: 200px;
-    height: 340px;
+    height: auto;
     background-color: white;
     margin-bottom: 40px;
     border-radius: 20px;
+    cursor: pointer;
+  }
+  .newPokemon:hover {
+    background-color:peachpuff;
   }
   h1 {
     font-size: 20px;
     margin-left: 10px;
+    top: 1%;
     font-family: monospace;
   }
   p {
@@ -100,4 +105,32 @@
 .search-input:focus {
   width: 300px;
   border-color: #007BFF;
+}
+.invisibleElement {
+  display: none;
+}
+.pokemon-detail-box {
+  position: fixed;
+  left: 80%;
+  top: 0;
+  width: 280px;
+  border: 1px solid #ccc;
+  background-color: rgb(255, 255, 255);
+  padding: 10px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  display: none;
+}
+#closeWindow {
+  width: 20px;
+  height: 20px;
+}
+.newPokemon img {
+  width: 150px;
+  height: 150px;
+  margin-left: 25px;
+  margin-top: 15px;
+}
+.detail-image-size {
+  width: 100px;
+  height: 200px;
 }

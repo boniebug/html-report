@@ -1,5 +1,5 @@
 #header {
-    height: 150px;
+    height: 100px;
     width: 100%;
     background-color: rgb(43, 43, 43);
     display: flex;
@@ -23,21 +23,26 @@ h1 {
     align-items: center;
     flex-wrap: wrap;
     padding-left: 10px;
-    gap: 5px;
+    gap: 10px;
     margin-top: 2px;
 }
 
 .pokemon {
-    height: 300PX;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 200PX;
     width: 250px;
     box-shadow: rgb(38, 38, 38);
     padding: auto;
-    border: 1px solid grey;
+    border-radius: 5px;
+    box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, 0.5);
 }
 
 #search {
     position: absolute;
-    top: 70px;
+    top: 40px;
     right: 50px;
     height: 30px;
 }

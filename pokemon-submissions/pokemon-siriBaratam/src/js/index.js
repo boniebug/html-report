@@ -3,26 +3,46 @@ const createPokemonObject = (pokemonData) => {
   const object = {
     name: pokemonData.name,
     id: pokemonData.id,
+    weight: pokemonData.weight,
+    height: pokemonData.height,
+    types: pokemonData.types,
     type: pokemonData.types[0].type.name,
-    imageUrl: pokemonData.sprites.front_default
+    imageUrl: pokemonData.sprites.other.home.front_default || './src/images/noImage.png',
+    imageOnHover: pokemonData.sprites.other.home.front_shiny || './src/images/noImage.png',
+    abilities: pokemonData.abilities,
+    statistics: pokemonData.stats,
+    moves: pokemonData.moves
   }
   return object;
 };
 
-const fetchPokemons = async () => {
-  const pokemonsResponse = await fetch('https://pokeapi.co/api/v2/pokemon?limit=100&offset=0');
-  const pokemonsData = await pokemonsResponse.json();
-  const pokemons = pokemonsData.results;
+const fetchEachPokemon = async (pokemons) => {
   const array = [];
+  const count = document.getElementById('count');
   for (const pokemon of pokemons) {
-    const pokemonResponse = await fetch(pokemon.url);
-    const pokemonData = await pokemonResponse.json();
-    const object = createPokemonObject(pokemonData);
-    array.push(object);
-  };
-  return new Promise((resolve, reject) => {
-    resolve(array)
-  });
+    count.innerText = parseInt(count.innerText) + 1;
+    try {
+      const pokemonResponse = await fetch(pokemon.url);
+      const pokemonData = await pokemonResponse.json();
+      const object = createPokemonObject(pokemonData);
+      array.push(object);
+    }
+    catch (err) { console.log(`error:${err}`) }
+  }
+  return array;
+};
+
+const fetchPokemons = async () => {
+  try {
+    const pokemonsResponse = await fetch('https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0');
+    const pokemonsData = await pokemonsResponse.json();
+    const pokemons = pokemonsData.results;
+    const array = fetchEachPokemon(pokemons);
+    return new Promise((resolve, reject) => {
+      resolve(array);
+    });
+  }
+  catch (err) { console.log(`error:${err}`) }
 };
 
 const generateNewArray = (searchValue, array) => {
@@ -50,28 +70,39 @@ const filterPokemons = (search, array) => {
 
 const addSearchAction = (array) => {
   const search = document.getElementById('search');
+  search.removeAttribute('readonly');
   search.addEventListener('input', () => { filterPokemons(search, array) });
+};
+
+const removeLoader = () => {
+  const loader = document.getElementById('loading-section');
+  loader.style.display = 'none';
 };
 
 const displayPokemons = (array) => {
   array.forEach(pokemon => {
     createPokemonContainer(pokemon);
+    const popup = createPopupContainer(pokemon);
+    const pokemonContainer = document.getElementById(pokemon.name);
+    pokemonContainer.addEventListener('click', () => {
+      showPopupContainer(popup);
+      const movesBtn = document.getElementById(`${pokemon.name}-moves-btn`);
+      movesBtn.addEventListener('click', () => { displayMoves(pokemon.moves, 'move', 'name') });
+    });
+
+    const image = document.getElementById(`${pokemon.name}-image`);
+    image.addEventListener('mouseover', () => { displayImageOnHover(pokemon, image) });
+    image.addEventListener('mouseleave', () => { displayImageOnLeave(pokemon, image) });
   });
 };
 
-const afterFetchActions = () => {
-  const main = document.getElementById('main');
-  main.removeAttribute('class', 'main');
-  const outerContainer = document.getElementById('outer-container');
-  outerContainer.innerText = '';
-  const header = document.getElementById('header');
-  header.style.display = 'block';
-};
-
 const start = async () => {
+  const popup = createPopup();
+  popupAction(popup);
   const array = await fetchPokemons();
-  afterFetchActions();
   displayPokemons(array);
+  removeLoader();
+  removeWaitPopup(popup);
   addSearchAction(array);
 };
 

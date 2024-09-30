@@ -1,58 +1,65 @@
-const originalData = async () => {
-  const data = document.querySelectorAll('.content');
-  return data;
+const getContentElements = () => {
+  const contentElements = document.querySelectorAll('.content');
+  return contentElements;
 }
 
-const searchaddevent = async function () {
-  const searchBar = document.getElementById('search-box');
-  const data = await originalData();
-  searchBar.addEventListener('input', () => {
-    search(searchBar.value, data);
+const addSearchEvent = async function () {
+  const searchInputField = document.getElementById('search-box');
+  const contentElements = await getContentElements();
+  searchInputField.addEventListener('input', () => {
+    search(searchInputField.value, contentElements);
   })
 };
 
-const search = function (searchvalue, data) {
-  const value = getValue(searchvalue);
-  if(value === '') {
-    printOrgData(data)
+const search = function (searchValue, contentElements) {
+  const value = getLowerCaseValue(searchValue);
+  if (value === null) {
+    printOriginalData(contentElements)
   }
-  else{
-    searchValue(value, data);
+  else {
+    filterContent(value, contentElements);
   }
 };
 
-const getValue = function(value) {
-  return value;
+const getLowerCaseValue = function (value) {
+  return value.toLowerCase();
 }
 
-const searchValue = function (value, contents) {
-  const array = [];
+const filterContent = function (value, contents) {
+  const filteredContent = [];
   for (let index = 0; index < contents.length; index++) {
-    const contentArray = contents[index];
-    for (let index = 1; index < contentArray.children.length; index++) {
-      if (contentArray.children[index].innerText.includes(value)) {
-        array.push(contentArray)
+    const contentElement = contents[index];
+    for (let childIndex = 1; childIndex < contentElement.children.length; childIndex++) {
+      if (contentElement.children[childIndex].innerText.includes(value)) {
+        filteredContent.push(contentElement)
       }
     }
   }
-  print(array);
+  printResults(filteredContent);
 }
 
-const printOrgData = function(data) {
+const printOriginalData = function (contentElements) {
   let container = document.querySelector('.container');
-  for(let index = 0; index < data.length; index++) {
-    container.appendChild(data[index]);
+  const noResults = document.querySelector('.no-results');
+  if (noResults) {
+    container.removeChild(noResults);
+  }
+  for (let index = 0; index < contentElements.length; index++) {
+    container.appendChild(contentElements[index]);
   }
 }
 
-const print = function (array) {
+const printResults = function (filteredContent) {
   const container = document.querySelector('.container');
-  if(array.length === 0) {
-    container.innerText = 'NO RESULTS FOUND';
+  const noResults = document.createElement('p');
+  noResults.innerText = 'NO RESULTS FOUND';
+  noResults.className = 'no-results';
+  container.innerText = null;
+  if (filteredContent.length === 0) {
+    container.append(noResults)
     return;
   }
-  container.innerText = null;
-  for (let index = 0; index < array.length; index++) {
-    container.appendChild(array[index]);
+  for (let index = 0; index < filteredContent.length; index++) {
+    container.appendChild(filteredContent[index]);
   }
 }

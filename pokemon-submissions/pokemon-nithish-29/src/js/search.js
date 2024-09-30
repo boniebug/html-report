@@ -1,15 +1,16 @@
 'use strict';
 
 const searchPokemon = async (searchedItem) => {
-  onloadPokemons('flex');
-  const allPokemonsData = await fetchpokemonData(); 
-  onloadPokemons('none');
   const searchedPokemons = allPokemonsData.filter(pokemon => {
     const nameMatches = pokemon.name.toLowerCase().includes(searchedItem);
     const idMatches = pokemon.id.toString().includes(searchedItem);
-    const typeMatches = pokemon.types.some(typeInfo => 
-      typeInfo.type.name.toLowerCase().includes(searchedItem)
-    );
+    let typeMatches = false;
+    for (const typeInfo of pokemon.types) {
+      if (typeInfo.type.name.includes(searchedItem)) {
+        typeMatches = true;
+        break;
+      }
+    }
     return nameMatches || idMatches || typeMatches;
   });
   searchedPokemons.forEach(pokemon => createPokemonDiv(pokemon));
