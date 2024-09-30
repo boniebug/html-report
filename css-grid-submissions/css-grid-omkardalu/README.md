@@ -1,2 +1,0 @@
-# css-grid
-Assignment
