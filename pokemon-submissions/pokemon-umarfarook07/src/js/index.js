@@ -4,14 +4,20 @@ const capitalizeFirstLetter = (textContent) => {
   return textContent.charAt(0).toUpperCase() + textContent.slice(1);
 };
 
+const createNewElement = (tag, className, textContent = '') => {
+  const element = document.createElement(tag);
+  element.classList.add(className);
+  if (textContent) element.textContent = textContent;
+  return element;
+};
+
 const createPokemonImage = (pokemon) => {
-  const pokemonImage = document.createElement('img');
+  const pokemonImage = createNewElement('img','pokemon-img');
   pokemonImage.src =
     pokemon.sprites.other.dream_world.front_default ||
     pokemon.sprites.other.home.front_default ||
     'src/images/no-image.webp';
   pokemonImage.alt = pokemon.name;
-  pokemonImage.classList.add('pokemon-img');
   return pokemonImage;
 };
 
@@ -88,12 +94,8 @@ const createPokemonDetailsContent = (pokemon) => {
   const name = createDetailElement('Name', capitalizeFirstLetter(pokemon.name));
   const id = createDetailElement('ID', pokemon.id);
 
-  const imageContainer = document.createElement('div');
-  imageContainer.classList.add('pokemon-image-container');
-  const pokemonImage = createPokemonImage(pokemon);
-  imageContainer.appendChild(pokemonImage);
-
-  const types = createPokemonTypesElement(pokemon);
+  const pokemonImageContainer = createPokemonImageContainer(pokemon);
+  const pokemonTypes = createPokemonTypesElement(pokemon);
 
   const height = createDetailElement('Height', pokemon.height);
   const weight = createDetailElement('Weight', pokemon.weight);
@@ -112,19 +114,16 @@ const createPokemonDetailsContent = (pokemon) => {
 
   detailsContainer.appendChild(name);
   detailsContainer.appendChild(id);
-  detailsContainer.appendChild(imageContainer);
-  detailsContainer.appendChild(types);
+  detailsContainer.appendChild(pokemonImageContainer);
+  detailsContainer.appendChild(pokemonTypes);
   detailsContainer.appendChild(height);
   detailsContainer.appendChild(weight);
   detailsContainer.appendChild(abilities);
   detailsContainer.appendChild(moves);
   detailsContainer.appendChild(stats);
+
   getPokemonWeakness(pokemon).then((weaknesses) => {
-    const weaknessArray = weaknesses
-      .map((weak) =>
-        weak.damage_relations.double_damage_from.map((w) => w.name)
-      )
-      .reduce((acc, curr) => acc.concat(curr), []);
+    const weaknessArray = getWeaknessArray(weaknesses);
     const weaknessesElement = createDetailList(
       'Weaknesses',
       weaknessArray
@@ -133,6 +132,23 @@ const createPokemonDetailsContent = (pokemon) => {
   });
 
   return detailsContainer;
+};
+
+const createPokemonImageContainer = (pokemon) => {
+  const imageContainer = document.createElement('div');
+  imageContainer.classList.add('pokemon-image-container');
+  const pokemonImage = createPokemonImage(pokemon);
+  imageContainer.appendChild(pokemonImage);
+
+  return imageContainer;
+};
+
+const getWeaknessArray = (weaknesses) => {
+  return weaknesses
+    .map((weak) =>
+      weak.damage_relations.double_damage_from.map((w) => w.name)
+    )
+    .reduce((acc, curr) => acc.concat(curr), []);
 };
 
 const createPokemonCard = (pokemon, pokemonDetailsPopup) => {

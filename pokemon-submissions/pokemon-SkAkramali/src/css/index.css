@@ -102,3 +102,9 @@ body{
   margin-left: 280px;
   margin-top: 15px;
 }
+.weight::before{
+  content: 'weight: ';
+}
+.moreDetails {
+  display: none;
+}

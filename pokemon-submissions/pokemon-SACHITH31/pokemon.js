@@ -27,7 +27,7 @@ function filterPokemons (e) {
   })
 }
 
-fetch('https://pokeapi.co/api/v2/pokemon/?offset=0&limit=10')
+fetch('https://pokeapi.co/api/v2/pokemon/?offset=0&limit=1000')
 .then((data) => {
   return data;
 })
@@ -89,7 +89,7 @@ container.push( fetch(data[i])
         movesTag.innerText = `${data.moves[i].name}`;
         movesDisplayContainer.append(movesTag);
       }
-      pokemonDataContainer.append(movesDisplayContainer);
+      // pokemonDataContainer.append(movesDisplayContainer);
 
 
      damageDisplayContainer = document.createElement('div');
@@ -100,7 +100,7 @@ container.push( fetch(data[i])
         damageType.innerText = `${data.damage_relations.double_damage_from[i].name},`;
         damageDisplayContainer.append(damageType);
       }
-      pokemonDataContainer.append(damageDisplayContainer);
+      // pokemonDataContainer.append(damageDisplayContainer);
     })
   })
 
@@ -183,6 +183,9 @@ container.push( fetch(data[i])
   let pokemonImage = document.createElement('img');
   pokemonImage.classList.add('pokemonImage');
   let pokemonName = document.createElement('p');
+  let moreInfo = document.createElement('button');
+  moreInfo.innerText = 'More Info';
+  moreInfo.classList.add('moreInfo');
   pokemonName.classList.add('pokemonName');
   pokemonName.innerText = `Name: ${data.name}`;
   pokemonID.innerText = data.id;
@@ -203,7 +206,8 @@ container.push( fetch(data[i])
   pokemonDataContainer.append(pokemonHeight);
   pokemonDataContainer.append(abilityContainer);
   pokemonDataContainer.append(pokemonTypes);
-  pokemonDiv.append(statsOfPokemons);
+  pokemonDiv.append(moreInfo)
+  // pokemonDiv.append(statsOfPokemons);
 })
  )
 }

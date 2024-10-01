@@ -15,14 +15,18 @@ const createElement = () => {
   const id = document.createElement('p');
   const type = document.createElement('p');
   const height = document.createElement('p');
-  return { image:imageContainer, name: nameContainer,id: id, type: type, height: height }
+  const weight = document.createElement('p');
+  const moreDetails = document.createElement('div');
+  return { image: imageContainer, name: nameContainer,id: id, type: type, height: height, weight: weight, moreDetails: moreDetails }
 };
 
 const addClassToDetails = (detailsContainer) => {
-  detailsContainer.name.setAttribute('class', 'name');
-  detailsContainer.type.setAttribute('class', 'type');
-  detailsContainer.id.setAttribute('class', 'id');
-  detailsContainer.height.setAttribute('class', 'pokemonHeight');
+  detailsContainer.name.classList.add('name');
+  detailsContainer.type.classList.add('type');
+  detailsContainer.id.classList.add('id');
+  detailsContainer.height.classList.add('pokemonHeight');
+  detailsContainer.weight.classList.add('weight');
+  detailsContainer.moreDetails.classList.add('moreDetails');
 };
 
 const appendDetails = (details) => {
@@ -32,8 +36,10 @@ const appendDetails = (details) => {
   detailsContainer.name.innerText = details.name;
   detailsContainer.id.innerText = details.pokenonId;
   detailsContainer.type.innerText = details.pokemonType;
+  detailsContainer.weight.innerText = details.weight;
   addClassToDetails(detailsContainer);
-  const element = {image: detailsContainer.image, name: detailsContainer.name, id: detailsContainer.id, type: detailsContainer.type, height: detailsContainer.height};
+  detailsContainer.moreDetails.append(detailsContainer.height, detailsContainer.weight);
+  const element = {image: detailsContainer.image, name: detailsContainer.name, id: detailsContainer.id, type: detailsContainer.type, moreDetails: detailsContainer.moreDetails};
   return element;
 };
 
@@ -44,9 +50,9 @@ const createPokemon = async (pokemon, index) => {
   let pokemonData
   try{
     pokemonData = await renderPokemon(url);
-    const details = {name: pokemonName, imageUrl: pokemonData.sprites.front_default, pokenonId: pokemonData.id, pokemonType: pokemonData.types[0].type.name, height: pokemonData.height}
+    const details = {name: pokemonName, imageUrl: pokemonData.sprites.front_default, pokenonId: pokemonData.id, pokemonType: pokemonData.types[0].type.name, height: pokemonData.height, weight: pokemonData.weight};
     const element = appendDetails(details);
-    pokemonContainer.append(element.image,element.name, element.id, element.type, element.height);
+    pokemonContainer.append(element.image,element.name, element.id, element.type, element.moreDetails);
     pokemonContainer.addEventListener('click', ()=> {showPopup(element, pokemonContainer)});
     pokemonContainer.setAttribute('class', 'pokemon');
     pokemonContainer.setAttribute('id', index);
@@ -111,20 +117,9 @@ const search = () => {
   }
 };
 
-const tyesting = async() => {
-  try{
-    const url = 'https://pokeapi.co/api/v2/move/2/';
-    const response = await fetch(url);
-    const pokemonData = await response.json();
-    console.log(pokemonData);
-    return pokemonData;
-  } catch (error){
-    console.log(pokemonData);
-  }
-};
-
 const removePopup = (pokemonContainer, details) => {
-  pokemonContainer.append(details.image,details.name, details.id, details.type, details.height);
+  details.moreDetails.style.display = 'none';
+  pokemonContainer.append(details.image,details.name, details.id, details.type, details.moreDetails);
   const popup = document.querySelector('.more');
   document.body.removeChild(popup);
 };
@@ -135,8 +130,9 @@ const showPopup = (details, pokemonContainer) => {
   const cancleButton = document.createElement('button');
   cancleButton.innerText = 'cancle';
   cancleButton.classList.add('canclebutton');
-  pokemon.classList.add('presentPokemon')
-  pokemon.append(details.image,details.name, details.id, details.type, details.height, cancleButton);
+  pokemon.classList.add('presentPokemon');
+  details.moreDetails.style.display = 'block';
+  pokemon.append(details.image,details.name, details.id, details.type, details.moreDetails, cancleButton,);
   container.append(pokemon);
   container.classList.add('more')
   cancleButton.classList.add('cancle');

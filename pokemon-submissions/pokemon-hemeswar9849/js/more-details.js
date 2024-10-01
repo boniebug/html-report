@@ -28,8 +28,8 @@ const appendCloseButton = (moreDetailsContainer) => {
   backgroundDiv.setAttribute('id', 'popupBackground');
   closeButton.innerHTML = '&times';
   closeButton.setAttribute('id', 'closeButton');
+  backgroundDiv.setAttribute('onclick', 'closePopup()');
   closeButton.setAttribute('onclick', 'closePopup()');
-  
   moreDetailsContainer.append(closeButton, backgroundDiv);
 };
 

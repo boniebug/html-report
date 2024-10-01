@@ -4,13 +4,8 @@ const searchPokemon = async (searchedItem) => {
   const searchedPokemons = allPokemonsData.filter(pokemon => {
     const nameMatches = pokemon.name.toLowerCase().includes(searchedItem);
     const idMatches = pokemon.id.toString().includes(searchedItem);
-    let typeMatches = false;
-    for (const typeInfo of pokemon.types) {
-      if (typeInfo.type.name.includes(searchedItem)) {
-        typeMatches = true;
-        break;
-      }
-    }
+    const typeMatches = pokemon.types
+    .some(typeInfo => typeInfo.type.name.includes(searchedItem));
     return nameMatches || idMatches || typeMatches;
   });
   searchedPokemons.forEach(pokemon => createPokemonDiv(pokemon));

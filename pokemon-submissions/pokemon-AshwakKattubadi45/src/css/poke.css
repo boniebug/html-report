@@ -30,11 +30,6 @@ body {
     border-radius: 8px;
 }
 
-.pokemon img {
-    width: 100px;
-    height: 100px;
-}
-
 #searchBar {
     margin-bottom: 20px;
 }
@@ -46,4 +41,8 @@ body {
 #searchButton {
     width: 70px;
     height: 35px;
+}
+.pokemonBox img {
+    width: 200px;
+    height: auto;
 }

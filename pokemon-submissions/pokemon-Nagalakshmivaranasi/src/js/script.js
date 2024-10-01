@@ -35,7 +35,7 @@ const createObject = (pokemonData) => {
     abilities: [],
     stastics: []
   };
-  for (let index = 0; index < pokemonData.moves.length; index++) {
+  for (let index = 0; index < pokemonData.moves.length && index < 5; index++) {
     pokemonInfo.moves.push(pokemonData.moves[index].move.name);
   }
   for (let index = 0; index < pokemonData.abilities.length; index++) {

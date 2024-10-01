@@ -72,7 +72,18 @@ const getOtherData = (pokemonData, responseData) => {
   responseData.moves.forEach((eachMove) => {
     pokemonData.moves.push(eachMove.move.name);
   })
+  
 }
+
+const getWeaknessData = async (pokemonData, url) => {
+  pokemonData.weakness = [];
+  const response = await fetch(url);
+  const responseData = await response.json();
+  const weaknessList = responseData.damage_relations.double_damage_from;
+  weaknessList.forEach((weakness) => {
+    pokemonData.weakness.push(weakness.name);
+  });
+};
 
 const getSpecificData = async function (endpoint) {
   const noImageUrl = './src/images/no-image-available.jpg',
@@ -87,6 +98,7 @@ const getSpecificData = async function (endpoint) {
     || responseData.sprites.front_default || noImageUrl;
   pokemonData.type = responseData.types[0].type.name;
   getOtherData(pokemonData, responseData);
+  await getWeaknessData(pokemonData, responseData.types[0].type.url);
   return pokemonData;
 };
 
@@ -132,6 +144,12 @@ const showMoves = (moves) => {
   });
 };
 
+const showWeakness = (weaknessList) => {
+  const weaknessSpan = document.querySelector('.weakness');
+  weaknessSpan.innerHTML = '';
+  weaknessList.forEach((weakness) => weaknessSpan.append(weakness + ', '));
+};
+
 const showPrimaryData = (pokemonData) => {
   document.querySelector(".id").innerText = pokemonData.id;
   document.querySelector(".name").innerText = pokemonData.name;
@@ -141,13 +159,14 @@ const showPrimaryData = (pokemonData) => {
   document.querySelector(".full-image").src = pokemonData.imageUrl;
 };
 
-const showDetails = function (pokemon, allPokemonData) {
+const showDetails = async function (pokemon, allPokemonData) {
       const id = parseInt(pokemon.children[1].firstElementChild.innerText);
       const pokemonData = allPokemonData.find((eachPokeonData) => eachPokeonData.id === id);
       showPrimaryData(pokemonData);
       showAbilities(pokemonData.abilities);
       showStats(pokemonData.stats);
       showMoves(pokemonData.moves);
+      showWeakness(pokemonData.weakness);
 };
 
 const CreateDetailsAction = function (allPokemonData) {
