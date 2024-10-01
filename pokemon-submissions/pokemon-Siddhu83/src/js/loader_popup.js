@@ -9,21 +9,12 @@ const displayLoader = async () => {
   return;
 };
 
-const removePopup = popup => {
-  const header = document.getElementsByTagName('header')[0];
-  header.classList.remove('disabled');
-
-  popup.remove();
-};
-
 const createPopup = () => {
   const popup = createPTag('Kindly wait until the content is loaded', 'wait-popup');
   const parent = document.getElementsByClassName('pokemon-main-container')[0];
   parent.appendChild(popup);
 
-  const header = document.getElementsByTagName('header')[0];
-  header.classList.add('disabled');
   setTimeout(() => {
-    removePopup(popup)
+    popup.remove()
   }, 1500);
 };

@@ -1,64 +1,63 @@
 'use strict'
 
 const toAppendName = (name) => {
-    const nameContainer = document.createElement('h3');
-    nameContainer.innerText = name;
-    return nameContainer;
+  const nameContainer = document.createElement('h3');
+  nameContainer.innerText = name;
+  return nameContainer;
 };
 
 const toAppendId = (id) => {
-    const idContainer = document.createElement('p');
-    idContainer.innerText = id;
-    return idContainer;
+  const idContainer = document.createElement('p');
+  idContainer.innerText = id;
+  return idContainer;
 };
 
 const toAppendImage = (url) => {
-    const imageContainer = document.createElement('img');
-    imageContainer.classList.add('imageContainer');
-    imageContainer.src = url || './src/images/no-image2 - Copy.jpg';
-    imageContainer.style.display = 'flex';
-    return imageContainer;
+  const imageContainer = document.createElement('img');
+  imageContainer.classList.add('imageContainer');
+  imageContainer.src = url || './src/images/no-image2 - Copy.jpg';
+  imageContainer.style.display = 'flex';
+  return imageContainer;
 };
 
 const toAppendTypes = (types) => {
-    const typeContainer = document.createElement('div');
-    const typeElements = types.map((typeObj) => {
-        const typeName = typeObj.type.name;
-        const typeElement = document.createElement('span');
-        typeElement.innerText = typeName;
-        return typeElement;
-    });
+  const typeContainer = document.createElement('div');
+  const typeElements = types.map((typeObj) => {
+    const typeName = typeObj.type.name;
+    const typeElement = document.createElement('span');
+    typeElement.innerText = typeName;
+    return typeElement;
+  });
 
-    typeElements.forEach((element, index) => {
-        typeContainer.appendChild(element);
-        if (index < typeElements.length - 1) {
-            const comma = document.createElement('span');
-            comma.innerText = ', ';
-            typeContainer.appendChild(comma);
-        }
-    });
-
-    return typeContainer;
+  typeElements.forEach((element, index) => {
+    typeContainer.appendChild(element);
+    if (index < typeElements.length - 1) {
+      const comma = document.createElement('span');
+      comma.innerText = ', ';
+      typeContainer.appendChild(comma);
+    }
+  });
+  return typeContainer;
 };
 
 const toAppendData = (dataArray, property, containerTitle) => {
-    const container = document.createElement('div');
-    const title = document.createElement('h4');
-    title.innerText = containerTitle;
-    container.appendChild(title);
-    const itemsList = document.createElement('p');
-    itemsList.innerText = '';
-    let index = 0;
-    const limit = dataArray.length < 5 ? dataArray.length : 5;
-    while (index < limit) {
-        itemsList.innerText += dataArray[index][property].name;
-        index++;
-        if (index < limit) {
-            itemsList.innerText += ', ';
-        }
+  const container = document.createElement('div');
+  const title = document.createElement('h4');
+  title.innerText = containerTitle;
+  container.appendChild(title);
+  const itemsList = document.createElement('p');
+  itemsList.innerText = '';
+  let index = 0;
+  const limit = dataArray.length < 5 ? dataArray.length : 5;
+  while (index < limit) {
+    itemsList.innerText += dataArray[index][property].name;
+    index++;
+    if (index < limit) {
+      itemsList.innerText += ', ';
     }
-    container.appendChild(itemsList);
-    return container;
+  }
+  container.appendChild(itemsList);
+  return container;
 };
 
 const toAppendStats = (stats) => {
@@ -106,12 +105,14 @@ const toDisplay = () => {
 };
 
 const displayInfo = async (pokemonData) => {
+  const mainContainer = document.getElementById('main');
     const pokemonDataContainer = document.getElementById('pokemonDetails');
-    const closeButton = document.createElement('p');
+    const pokemonContainerCover = document.createElement('div');
+    pokemonContainerCover.classList.add('displayCover');
+    const closeButton = document.createElement('button');
     pokemonDataContainer.classList.remove('hide');
     closeButton.classList.add('button');
     closeButton.innerText = 'Close';
-    console.log(closeButton);
     pokemonDataContainer.textContent = '';
     pokemonDataContainer.classList.add('pokemonInformation')
     const data = pokemonData;
@@ -136,8 +137,11 @@ const displayInfo = async (pokemonData) => {
     const weaknessContainer = await toAppendWeakness(pokemonData.types);
     pokemonDataContainer.append(weaknessContainer);
     pokemonDataContainer.appendChild(closeButton);
-    closeButton.addEventListener('click', function (){
+    mainContainer.appendChild(pokemonContainerCover);
+    closeButton.addEventListener('click', function () {
         pokemonDataContainer.classList.add('hide');
+        pokemonContainerCover.classList.remove('displayCover');
+
     });
 };
 
@@ -162,12 +166,12 @@ const toFetchApi = async () => {
             pokemonContainer.appendChild(toAppendImage(image));
 
             const pokemonId = data.id;
-            pokemonContainer.appendChild(toAppendId(pokemonId));
+            pokemonContainer.appendChild(toAppendId(`ID : ${pokemonId}`));
 
             const type = data.types;
             pokemonContainer.appendChild(toAppendTypes(type));
             mainContainer.appendChild(pokemonContainer);
-            
+
             pokemonContainer.addEventListener('click', () => displayInfo(data));
         });
     } catch (error) {
@@ -204,5 +208,5 @@ window.onload = async () => {
     await toFetchApi();
     toDisplay();
     document.getElementById('searchBar').addEventListener('input', search);
-    document.getElementsByClassName('pokemonContainer').addEventListener('click', displayInfo);
+    // document.getElementsByClassName('pokemonContainer').addEventListener('click', displayInfo);
 };

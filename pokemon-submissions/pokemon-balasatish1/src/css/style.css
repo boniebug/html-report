@@ -176,6 +176,9 @@ header {
   height: 75%;
   border: 1px solid black;
 }
+.details-box ul li {
+  margin-left: 5px;
+}
 
 .stats-moves {  
   height: 27.5%;

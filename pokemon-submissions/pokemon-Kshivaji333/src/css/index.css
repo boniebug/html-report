@@ -3,18 +3,99 @@
   padding: 0px;
   box-sizing: border-box;
 }
-.detailsPopUp{
-  position: fixed;
-  height: 100vh;;
-  width: 40%;
-  top: 0vh;
-  right: 3%;
-  border: solid yellow;
-  border-radius: 10%;
-  box-shadow: 0px 0px 10px gray;
-  backdrop-filter: blur(10px);
+#closePopUp {
+  height: 50px;
+  width: 50px;
+  border: solid black;
 }
 
+/* header form {
+  position: fixed;
+  top: 0px;
+  z-index: 1;
+} */
+.popUpContainer{
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  height: 100vh;
+  width: 100%;
+  top:0px;
+  left: 0px;
+}
+
+#closePopUp{
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  background-color: blue;
+  border: solid yellow;
+  color: yellow;
+  border-radius: 5px 5px 5px 15px;
+  font-size: 1.5em;
+  height: 35px;
+  width: 40px;
+}
+
+.popUpCard{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: 95vh;
+  width: 30%;
+  border: solid yellow;
+  border-radius: 2%;
+  box-shadow: 0px 0px 10px gray;
+  backdrop-filter: blur(30px);
+  margin: 10px;
+  overflow:auto;
+  padding: 20px;
+}
+.popUpCard .name {
+  text-align: center;
+  font-size: 2em;
+  margin: 6px;
+}
+.popUpCard img {
+  height: 200px;
+}
+.typeContainer{
+  align-self: center;
+}
+.typeContainer img{
+  margin: 5px;
+  height: 25px;
+}
+.statistics{
+  border: solid ;
+  width: 100%;
+  font-size: 1.2em;
+  text-align: center;
+  font-weight: bold;
+  margin: 5px;
+}
+.abilities, .weakness , .popUpCard > p,.moves{
+  border: solid ;
+  width: 100%;
+  font-size: 1.5em;
+  text-align: center;
+  font-weight: bold;
+  margin: 5px;
+}
+span{
+  color: red;
+}
+.ABILITIES,.WEAKNESS,.STASTISTICS {
+ font-size: 1em;
+ font-weight: bolder;
+ font-family: sans-serif;
+ margin-bottom: 5px;
+};
+.height{
+  font-size: 1.4em;
+}
 #searchTitle{
   position: absolute;
   top: 100px;
@@ -31,9 +112,7 @@ header div{
   margin-left: 20px;
   font-size: 1.5em;
 }
-/* .searchIcon:hover{
 
-} */
 .typeIcon{
   margin: 0px 2px;
 }
@@ -131,7 +210,6 @@ header {
 
 #pageTitle img {
   width: 300px;
-  /* border: solid; */
 }
 
 main {

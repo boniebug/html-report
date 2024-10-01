@@ -102,18 +102,26 @@ img {
   margin: 10px auto;
   cursor: progress;
 }
-.expander {
+.expander , #expanderClose{
   font-size: 25px;
   display: flex;
   align-items: center;
+  justify-content: center;
   cursor: pointer;
   height: auto;
   width: 30px;
+  border-radius: 8px;
+  
 }
 .expander:hover{
-  background-color: rgb(113, 113, 113);
+  background-color: rgb(102, 255, 0);
   color: white;
 }
+#expanderClose:hover{
+  background-color: rgb(255, 85, 0);
+  color: white;
+}
+
 .poke {
   display: flex;
   border-radius: 9px;
@@ -134,9 +142,20 @@ img {
   display: none;
   flex-direction: column;
   overflow-y: auto; 
+  text-align: center;
 }
 .detailsHeadings{
   font-size: 30px;
   text-decoration: underline;
   font-weight: bold;
+}
+
+#close{
+  color: red;
+  position: fixed;
+  top: 11%;
+  right: 27%;
+  font-size: 30px;
+  cursor: pointer;
+  display: none;
 }

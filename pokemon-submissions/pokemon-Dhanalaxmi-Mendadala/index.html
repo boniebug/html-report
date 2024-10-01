@@ -17,20 +17,24 @@
     <main id="main">
 
     </main>
-    <section id="pokemon">
-        <button onclick="closePokemonDiv()">Close</button>
+    <section id="pokemon" hidden="true">
+        <button onclick="closePokemonDiv()">Go to Home</button>
+        <div id="header">
         <h1 id="name"></h1>
-        <div>
-            <img src="" id="pokemonImage" height="500" width="500">
         </div>
-        <h5>Pokemon Id:<span id="pokemonId"></span></h5>
-        <h5>Pokemon Type:<span id="pokemonType"></span></h5>
-        <h5>Pokemon Height:<span id="pokemonHeight"></span>cm</h5>
-        <h5>Pokemon Weight:<span id="pokemonWeight"></span>kg</h5>
-        <h5>Abilites of pokemon: <span id="abilities"></span></h5>
-        <h5>Pokemon Moves: <span id="moves"></span></h5>
-        <h5>Pokemon Statistics: <span id="stats"></span></h5>
-        <h5>Pokemon Weakness: <span id="weakness"></span></h5>
+        <div id="image">
+            <img src="" id="pokemonImage" height="250" width="250">
+        </div>
+        <div id="details">
+        <h5>Id:<span id="pokemonId"></span></h5>
+        <h5>Type:<span id="pokemonType"></span></h5>
+        <h5>Height:<span id="pokemonHeight"></span>cm</h5>
+        <h5>Weight:<span id="pokemonWeight"></span>kg</h5>
+        <h5>Abilites: <span id="abilities"></span></h5>
+        <h5>Statistics: <span id="stats"></span></h5>
+        <h5>Weakness: <span id="weakness"></span></h5>
+        <h5>Moves: <span id="moves"></span></h5>
+       </div>
     </section>
 </body>
 

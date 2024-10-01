@@ -40,23 +40,29 @@ const pushData = (object, pokemonUrl, index) => {
     views: object.sprites,
   });
 };
+
 const closePokemonDiv = () => {
-  document.getElementById('pokemon').style.display = 'none';
+  document.getElementById('pokemon').hidden = true;
   document.getElementById('main').style.display = 'flex';
 };
-const displayPokemonSection = (pokemon) => {
-  const section = document.getElementById('pokemon');
+
+const addBasicData=(section, pokemon)=>{
   section.querySelector('#name').innerText = pokemon.name;
   section.querySelector('#pokemonImage').src = pokemon.image;
   section.querySelector('#pokemonId').innerText = pokemon.id;
   section.querySelector('#pokemonType').innerText = pokemon.type;
   section.querySelector('#pokemonHeight').innerText = pokemon.height;
   section.querySelector('#pokemonWeight').innerText = pokemon.weight;
+};
+
+const displayPokemonSection = (pokemon) => {
+  const section = document.getElementById('pokemon');
+  addBasicData(section, pokemon);
   addMovesData(section, pokemon);
   addAbilitesData(section, pokemon);
   addStatisticsData(section, pokemon);
   addWeaknessData(section, pokemon);
-  document.getElementById('pokemon').style.display = 'block';
+  document.getElementById('pokemon').hidden = false;
 };
 
 const addMovesData = (section, pokemon) => {
@@ -91,12 +97,12 @@ const addWeaknessData = async (section, pokemon) => {
   if (pokemon.weakness !== 'normal') {
     try {
       const response = await fetch(pokemon.weakness);
-      const data = response.json();
+      const data = await response.json();
       weakness = '';
       for (const weak of data.damage_relations.double_damage_from) {
-        weakness += weak.name;
+        weakness += `${weak.name}`;
       }
-    section.querySelector('#weakness').innerText;
+    section.querySelector('#weakness').innerText=`${weakness} attacks`;
     } catch { }
   } else {
     section.querySelector('#weakness').innerText = weakness;
@@ -122,7 +128,7 @@ const createAndAppendDiv = (pokemon) => {
   div.id = pokemon.id;
   id.innerText = `Pokemon Id: ${pokemon.id}`;
   type.innerText = `Pokemon Type: ${pokemon.type}`;
-  button.innerText = 'Know about me';
+  button.innerText = `Know more about ${pokemon.name}`;
   button.id = pokemon.indexInArray;
   addbutton(button);
   div.append(name, image, id, type, button);

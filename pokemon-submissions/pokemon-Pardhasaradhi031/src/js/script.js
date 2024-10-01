@@ -26,16 +26,13 @@ const createPokemonContainer = function (id, name, image, types) {
   const mainSection = document.getElementById('pokemonSection');
   const pokemonContainer = document.createElement('div');
   pokemonContainer.className = 'pokemon';
-  const pokeCard = document.createElement('div');
-  pokeCard.className = 'pokeCard';
   const imageElement = document.createElement('img');
-  imageElement.src = image;
+  imageElement.src = image || `./src/images/Pokeball.png`;
   imageElement.className = 'imageContainer';
-  pokeCard.append(imageElement);
   const detailsContainer = document.createElement('div');
   detailsContainer.className = 'pokemonDetails';
   createDetailsContainer(detailsContainer, id, name, types);
-  pokemonContainer.append(pokeCard, detailsContainer);
+  pokemonContainer.append(imageElement, detailsContainer);
   mainSection.append(pokemonContainer);
 };
 

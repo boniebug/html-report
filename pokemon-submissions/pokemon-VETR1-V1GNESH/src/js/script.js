@@ -148,36 +148,58 @@ const generatePokemonStatistics = function (statistics) {
   return allStats;
 };
 
-const generatePokemonWeakness = function () {
-
+const generatePokemonWeakness = async function (pokemon) {
+  const container = document.createElement('div');
+  const weaknesses = [];
+  for (let index of pokemon.types) {
+    const response = await fetch(index.type.url);
+    const pokemonWeakness = await response.json();
+    pokemonWeakness.damage_relations.double_damage_from.forEach(weakness => {
+      if (!weaknesses.includes(weakness.name)) {
+        weaknesses.push(weakness.name);
+      }
+    });
+  }
+  const allWeakness = weaknesses.join(', ');
+  container.append(generatePokemonDetails('Weakness', allWeakness));
+  return container;
 };
 
-const displayMoreDetails = function (pokemon) {
-  const detailsModal = document.getElementById('details-modal');
+const generateModal = function () {
+  const modal = document.createElement('button');
+  modal.classList.add('details-modal');
+  const closeButton = document.createElement('p');
+  closeButton.innerText = 'close';
+  closeButton.classList.add('close-modal');
+  modal.append(closeButton);
+  return modal;
+}
+
+const displayMoreDetails = async function (pokemon) {
+  const detailsModal = generateModal();
+  detailsModal.append(generatePokemonImage(pokemon));
+  const pokemonDetails = await appendDetailsToModal(pokemon);
+  detailsModal.append(pokemonDetails);
   detailsModal.style.display = 'flex';
-  document.getElementById('close-modal').addEventListener('click', () => {
+  const closeButton = detailsModal.querySelector('.close-modal');
+  closeButton.addEventListener('click', () => {
     detailsModal.style.display = 'none';
   });
-  detailsModal.append(generatePokemonImage(pokemon));
-  detailsModal.append(appendDetailsToModal(pokemon));
-  const statsContainer = document.createElement('div');
-  statsContainer.append(generatePokemonStatistics(pokemon.stats));
-  const weaknessContainer = document.createElement('div');
-  weaknessContainer.append(generatePokemonWeakness(pokemon));
-  detailsModal.append(statsContainer);
-  detailsModal.append(weaknessContainer);
+  document.body.append(detailsModal);
 };
 
-const appendDetailsToModal = function (pokemon) {
+const appendDetailsToModal = async function (pokemon) {
   const detailsContainer = document.createElement('div');
   detailsContainer.classList.add('modal-pokemon-details');
   detailsContainer.append(generatePokemonDetails('Name', pokemon.name));
   detailsContainer.append(generatePokemonDetails('Id', pokemon.id));
-  detailsContainer.append(generatePokemonDetails('Type', pokemon.types.map((index) => 
-    index.type.name).join(', ')));
+  detailsContainer.append(generatePokemonDetails('Type', pokemon.types.map(index => index.type.name).join(', ')));
   detailsContainer.append(generatePokemonDetails('Height', pokemon.height));
   detailsContainer.append(generatePokemonDetails('Weight', pokemon.weight));
-  detailsContainer.append(generatePokemonDetails('Abilities', pokemon.abilities.map((index) => 
-    index.ability.name).join(', ')));
+  detailsContainer.append(generatePokemonDetails('Abilities', pokemon.abilities.map(index => index.ability.name).join(', ')));
+  detailsContainer.append(generatePokemonDetails('Moves', pokemon.moves.map(index => index.move.name).slice(0, 5).join(', ')));
+  const weaknesses = await generatePokemonWeakness(pokemon);
+  detailsContainer.append(weaknesses);
+  detailsContainer.append(generatePokemonStatistics(pokemon.stats));
   return detailsContainer;
 };

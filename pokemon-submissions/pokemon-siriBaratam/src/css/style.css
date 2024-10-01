@@ -90,9 +90,11 @@ mark {
 }
 
 .pokemon-type::before {
+    content: 'Type: ';
+}
+.pokemon-types::before {
     content: 'Types: ';
 }
-
 .pokemon-ability::before {
     content: 'Abilities: ';
 }
@@ -114,7 +116,8 @@ mark {
 .pokemon-ability::before,
 .pokemon-statistics::before,
 .pokemon-height::before,
-.pokemon-weight::before {
+.pokemon-weight::before,
+.pokemon-types::before {
     font-weight: bold;
     color: #556f7a;
 }
@@ -153,7 +156,7 @@ mark {
         font-family: monospace;
     }
 }
-.moves-container{
+.moves-weakness-container{
     position: fixed;
     top: 25%;
     left: 60%;
@@ -163,7 +166,10 @@ mark {
     background-color: whitesmoke;
     border: 1px solid grey;
     padding: 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
     border-radius: 5px;
+    display: none;
 }
 /* pokemon-popup */
 .pokemon-popup-container {
@@ -186,7 +192,9 @@ mark {
     display: flex;
     flex-direction: column;
 }
-
+.left-div {
+    padding-left: 30px;
+}
 .height-weight-div , .moves-weakness{
     display: flex;
     flex-direction: row;

@@ -35,6 +35,28 @@ const displayImageOnLeave = (pokemon, image) => {
   image.src = pokemon.imageUrl;
 };
 
+const createButton = (tag, idName, className, text) => {
+  const button = document.createElement(tag);
+  button.id = idName;
+  button.classList.add(className);
+  button.innerHTML = text;
+  return button;
+};
+
+const createCloseButton = () => {
+  const closeButton = document.createElement('button');
+  closeButton.classList.add('close-button');
+  closeButton.id = 'close';
+  closeButton.innerText = 'X';
+  return closeButton;
+};
+
+const createMoveWeaknessDiv = (movesWeaknessDiv, pokemon) => {
+  movesWeaknessDiv.appendChild(createButton('button', `${pokemon.name}-moves-btn`, 'moves-btn', 'Moves'));
+  movesWeaknessDiv.appendChild(createButton('button', `${pokemon.name}-weakness-btn`, 'weakness-btn', 'Weakness'));
+  return movesWeaknessDiv;
+};
+
 const createPopupDetails = (tag, className, array, key, name) => {
   const popupDetailContainer = document.createElement(tag);
   popupDetailContainer.classList.add(className);
@@ -46,34 +68,8 @@ const createPopupDetails = (tag, className, array, key, name) => {
   return popupDetailContainer;
 };
 
-const createDivision = (className) => {
-  const div = document.createElement('div');
-  div.classList.add(className);
-  return div;
-};
-const createLeftDiv = (leftDiv, pokemon) => {
-  leftDiv.appendChild(createDetails('h2', 'pokemon-name', pokemon.name));
-  leftDiv.appendChild(createImage(pokemon.imageUrl, pokemon.name));
-  leftDiv.appendChild(createDetails('p', 'pokemon-id', pokemon.id.toString()));
-  return leftDiv;
-};
-
-const createButton = (tag, idName, className, text) => {
-  const button = document.createElement(tag);
-  button.id = idName;
-  button.classList.add(className);
-  button.innerHTML = text;
-  return button;
-};
-
-const createMoveWeaknessDiv = (movesWeaknessDiv, pokemon) => {
-  movesWeaknessDiv.appendChild(createButton('button', `${pokemon.name}-moves-btn`, 'moves-btn', 'Moves'));
-  movesWeaknessDiv.appendChild(createButton('button', `${pokemon.name}-weakness-btn`, 'weakness-btn', 'Weakness'));
-  return movesWeaknessDiv;
-};
-
 const createPokemonsDetailsDiv = (pokemonDetailsDiv, pokemon) => {
-  pokemonDetailsDiv.appendChild(createPopupDetails('p', 'pokemon-type', pokemon.types, 'type', 'name'));
+  pokemonDetailsDiv.appendChild(createPopupDetails('p', 'pokemon-types', pokemon.types, 'type', 'name'));
   pokemonDetailsDiv.appendChild(createPopupDetails('p', 'pokemon-ability', pokemon.abilities, 'ability', 'name'));
   pokemonDetailsDiv.appendChild(createPopupDetails('p', 'pokemon-statistics', pokemon.statistics, 'stat', 'name'));
   return pokemonDetailsDiv;
@@ -85,13 +81,18 @@ const createHeightWeightDiv = (heightWeightDiv, pokemon) => {
   return heightWeightDiv;
 };
 
-const createCloseButton = () => {
-  const closeButton = document.createElement('button');
-  closeButton.classList.add('close-button');
-  closeButton.id = 'close';
-  closeButton.innerText = 'X';
-  return closeButton;
-}
+const createLeftDiv = (leftDiv, pokemon) => {
+  leftDiv.appendChild(createDetails('h2', 'pokemon-name', pokemon.name));
+  leftDiv.appendChild(createImage(pokemon.imageUrl, pokemon.name));
+  leftDiv.appendChild(createDetails('p', 'pokemon-id', pokemon.id.toString()));
+  return leftDiv;
+};
+
+const createDivision = (className) => {
+  const div = document.createElement('div');
+  div.classList.add(className);
+  return div;
+};
 
 const createPopupContainer = (pokemon) => {
   const popup = createDivision('pokemon-popup-container');
@@ -111,19 +112,23 @@ const createPopupContainer = (pokemon) => {
   return popup;
 };
 
-const closePopupContainer = () => {
+const closePopupContainer = (movesBtn, weaknessBtn) => {
   const overlay = document.getElementById('overlay');
   overlay.style.display = 'none';
   const popup = document.getElementsByClassName('pokemon-popup-container')[0];
-  const movesContainer = document.getElementsByClassName('moves-container')[0];
+  const movesWeaknessContainer = document.getElementsByClassName('moves-weakness-container')[0];
   const body = document.body;
   body.removeChild(popup);
-  body.removeChild(movesContainer);
+  movesWeaknessContainer.style.display = 'none';
+  movesBtn.disabled = false;
+  weaknessBtn.disabled = false;
 };
 
 const createPopupActions = () => {
   const close = document.getElementById('close');
-  close.addEventListener('click', closePopupContainer);
+  const movesBtn = document.querySelector('.moves-btn');
+  const weaknessBtn = document.querySelector('.weakness-btn');
+  close.addEventListener('click', () => { closePopupContainer(movesBtn, weaknessBtn) });
 };
 
 const showPopupContainer = (popup) => {
@@ -134,7 +139,45 @@ const showPopupContainer = (popup) => {
   createPopupActions();
 };
 
-const displayMoves = (array, key, name) => {
-  const body = document.body;
-  body.appendChild(createPopupDetails('div', 'moves-container', array, key, name));
+const createMoves = (array, key, name) => {
+  const popupContainer = document.getElementsByClassName('moves-weakness-container')[0];
+  const details = [];
+  for (let element of array) {
+    details.push(`${element[key][name]}`);
+  }
+  popupContainer.innerText = details.join(',');
+  return popupContainer;
+};
+
+const displayMoves = (array, key, name, movesBtn, weaknessBtn) => {
+  const popupContainer = createMoves(array, key, name);
+  popupContainer.style.display = 'block';
+  weaknessBtn.disabled = false;
+  movesBtn.disabled = true;
+};
+
+const displayWeakness = (weakness) => {
+  const popupContainer = document.getElementsByClassName('moves-weakness-container')[0];
+  const details = [];
+  for (let element of weakness) {
+    details.push(element);
+  }
+  popupContainer.innerText = details.join(',');
+  return popupContainer;
+};
+
+const fetchWeakness = async (types, weaknessBtn, movesBtn) => {
+  const resultWeakness = [];
+  for (let type of types) {
+    const response = await fetch(type.type.url);
+    const data = await response.json();
+    const weakness = data.damage_relations.double_damage_from;
+    for (let element of weakness) {
+      resultWeakness.push(element.name);
+    }
+  }
+  const popupContainer = displayWeakness(resultWeakness);
+  popupContainer.style.display = 'block';
+  movesBtn.disabled = false;
+  weaknessBtn.disabled = true;
 };

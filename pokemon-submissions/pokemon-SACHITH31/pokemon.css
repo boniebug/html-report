@@ -95,3 +95,47 @@
 .movesContainer::before {
     content: 'Moves: ';
 }
+.moreInfo {
+    padding: 4px;
+    cursor: pointer;
+    margin-bottom: 10px;
+    margin-left: 250px;
+}
+.popUpDiv {
+    position: relative;
+    top: 0px;
+    padding-top: 5px;
+    background-color: black;
+    color: white;
+    width: auto;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+}
+.closePopUp {
+    font-size: 30px;
+}
+.movesContainer {
+    padding-top: 10px;
+    text-align: center;
+    padding-left: 20px;
+    max-width: 1000px;
+    display: flex;
+    flex-wrap: wrap;
+}
+.stats::before {
+    content: 'Stats: ';
+}
+.stats::after {
+    content: '.';
+}
+.damageDisplay {
+    padding-left: 20px;
+}
+.closePopUpBox {
+    cursor: pointer;
+    max-width: 50px;
+}
+.another {
+    display: none;
+}

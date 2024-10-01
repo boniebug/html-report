@@ -27,7 +27,7 @@ function filterPokemons (e) {
   })
 }
 
-fetch('https://pokeapi.co/api/v2/pokemon/?offset=0&limit=1000')
+fetch('https://pokeapi.co/api/v2/pokemon/?offset=0&limit=1300')
 .then((data) => {
   return data;
 })
@@ -79,8 +79,8 @@ container.push( fetch(data[i])
       return data.json();
     })
     .then((data) => { 
-      console.log(data.moves)
-      
+      // console.log(data.moves)
+
       movesDisplayContainer = document.createElement('div');
       movesDisplayContainer.classList.add('movesContainer');
       for (let i = 0; i < data.moves.length; i++) {
@@ -89,8 +89,6 @@ container.push( fetch(data[i])
         movesTag.innerText = `${data.moves[i].name}`;
         movesDisplayContainer.append(movesTag);
       }
-      // pokemonDataContainer.append(movesDisplayContainer);
-
 
      damageDisplayContainer = document.createElement('div');
       damageDisplayContainer.classList.add('damageDisplay');
@@ -159,7 +157,6 @@ container.push( fetch(data[i])
   for (let i = 0; i < stats2.length; i++) {
     statsContainer.push(`${typeStats2[i]}:${stats2[i]}`)
   }
-
   let statsOfPokemons ;
   for (let i = 0; i < statsContainer.length ; i++) {
     statsOfPokemons = document.createElement('p');
@@ -172,6 +169,9 @@ container.push( fetch(data[i])
   let smallPokemonContainer = document.createElement('div');
   smallPokemonContainer.classList.add('smallPokemonContainer');
   let imageDiv = document.createElement('div');
+  let moreInfo = document.createElement('button');
+  moreInfo.innerText = 'More Info';
+  moreInfo.classList.add('moreInfo');
   imageDiv.classList.add('imageDiv');
   let pokemonDataContainer = document.createElement('div');
   pokemonDataContainer.classList.add('pokemonDataContainer');
@@ -183,9 +183,6 @@ container.push( fetch(data[i])
   let pokemonImage = document.createElement('img');
   pokemonImage.classList.add('pokemonImage');
   let pokemonName = document.createElement('p');
-  let moreInfo = document.createElement('button');
-  moreInfo.innerText = 'More Info';
-  moreInfo.classList.add('moreInfo');
   pokemonName.classList.add('pokemonName');
   pokemonName.innerText = `Name: ${data.name}`;
   pokemonID.innerText = data.id;
@@ -206,8 +203,23 @@ container.push( fetch(data[i])
   pokemonDataContainer.append(pokemonHeight);
   pokemonDataContainer.append(abilityContainer);
   pokemonDataContainer.append(pokemonTypes);
-  pokemonDiv.append(moreInfo)
-  // pokemonDiv.append(statsOfPokemons);
+  pokemonDiv.append(moreInfo);
+
+  moreInfo.addEventListener('click', () => {
+    let closeButton = document.createElement('button');
+    closeButton.innerText = 'Close';
+    closeButton.classList.add('closePopUpBox');
+    let popUpDiv = document.createElement('div');
+    popUpDiv.classList.add('popUpDiv');
+    pokemonDiv.append(popUpDiv);
+    popUpDiv.append(closeButton);
+    popUpDiv.append(movesDisplayContainer);
+    popUpDiv.append(statsOfPokemons);
+    popUpDiv.append(damageDisplayContainer);
+    closeButton.addEventListener('click' , () => {
+    popUpDiv.classList.add('another');
+    })
+  });
 })
  )
 }

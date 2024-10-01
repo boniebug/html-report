@@ -20,49 +20,72 @@ function fetchPokemonList(apiUrl) {
 function fetchPokemonData(url) {
   return fetch(url)
     .then(response => response.json())
-    .then(pokemonData => displayPokemon(pokemonData))
+    .then(pokemonData => {
+      const types = pokemonData.types.map(eachType => eachType.type.url);
+      const final = fetchWeaknessData(types,pokemonData);
+    })
     .catch(error => console.error('Error fetching Pokémon details:', error));
 }
 
-function displayPokemon(pokemonData) {
-  console.log(pokemonData)
-  const pokemonName = pokemonData.name;
-  const pokemonImage = pokemonData.sprites.front_default;
-  const pokemonId = pokemonData.id;
-  const types = pokemonData.types.map(eachType => eachType.type.name);
-  const height = pokemonData.height;
-  const weight = pokemonData.weight;
-  const abilities = pokemonData.abilities.map(ability => ability.ability.name);
-  const stats = pokemonData.stats.map(stat => `${stat.stat.name}: ${stat.base_stat}`).join(', ');
-  const moves = pokemonData.moves.map(move => move.move.name).slice(0, 5).join(', ');
-  addingData(pokemonName, pokemonImage, pokemonId, types, height, weight, abilities, stats, moves);
+
+function fetchWeaknessData(types,pokemonData) {
+  const pokemondataOriginals = pokemonData;
+  console.log(pokemondataOriginals);
+  const typeFetches = types.map(typeUrl => {
+    return fetch(typeUrl)
+      .then(response => response.json())
+      .then(typeData => {
+        const weaknesses = typeData.damage_relations.double_damage_from.map(relation => relation.name);
+        displayPokemon(weaknesses, pokemondataOriginals);
+      });
+  });
 }
 
-const addingData = function (pokemonName, pokemonImage, pokemonId, types, height, weight, abilities, stats, moves) {
+function displayPokemon(weaknesses,pokemondataOriginals) {
+  console.log(pokemondataOriginals);
+  const pokemonName = pokemondataOriginals.name;
+  const pokemonImage = pokemondataOriginals.sprites.front_default;
+  const pokemonId = pokemondataOriginals.id;
+  const types = pokemondataOriginals.types.map(eachType => eachType.type.name);
+  const height = pokemondataOriginals.height;
+  const weight = pokemondataOriginals.weight;
+  const abilities = pokemondataOriginals.abilities.map(ability => ability.ability.name);
+  const stats = pokemondataOriginals.stats.map(stat => `${stat.stat.name}: ${stat.base_stat}`).join(', ');
+  const moves = pokemondataOriginals.moves.map(move => move.move.name).slice(0, 5).join(', ');
+  const weakness = weaknesses;
+  addingData(pokemonName, pokemonImage, pokemonId, types, height, weight, abilities, stats, moves, weakness);
+}
+
+const addingData = function (pokemonName, pokemonImage, pokemonId, types, height, weight, abilities, stats, moves, weakness) {
+  const pokemonContainer = document.getElementById('pokemon-container');
+  const existingPokemonDiv = document.querySelector(`.newPokemon[data-id='${pokemonId}']`);
+  if (existingPokemonDiv) {
+    console.log(`Pokemon with ID ${pokemonId} already exists.`);
+    return;
+  }
   const imageElement = document.createElement('img');
   const nameElement = document.createElement('h1');
   const idElement = document.createElement('p');
   const typesElement = document.createElement('p');
-
   imageElement.src = pokemonImage;
   nameElement.innerText = `Name: ${pokemonName}`;
   idElement.innerText = `Id: ${pokemonId}`;
   typesElement.innerText = `Type: ${types.join(', ')}`;
-
   const newPokemonDiv = document.createElement('div');
   newPokemonDiv.classList.add('newPokemon');
+  newPokemonDiv.setAttribute('data-id', pokemonId);
   newPokemonDiv.pokemonTypes = types;
   newPokemonDiv.addEventListener('click', function () {
-    displayPokemonAllDetails(weight, height, stats, moves, abilities,imageElement, nameElement, idElement, typesElement);
+    displayPokemonAllDetails(weight, height, weakness, stats, moves, abilities, imageElement, nameElement, idElement, typesElement);
   });
 
   appendElements(imageElement, nameElement, idElement, typesElement, newPokemonDiv);
 };
 
-const displayPokemonAllDetails = function (weight, height, stats, moves, abilities, imageElement, nameElement, idElement, typesElement) {
+
+const displayPokemonAllDetails = function (weight, height, weakness, stats, moves, abilities, imageElement, nameElement, idElement, typesElement) {
   const detailContainer = document.getElementById('detail-container');
   detailContainer.innerHTML = '';
-
   const displayAllDetails = document.createElement('div');
   displayAllDetails.classList.add('pokemonBigContainer');
   const weightElement = document.createElement('p');
@@ -70,11 +93,13 @@ const displayPokemonAllDetails = function (weight, height, stats, moves, abiliti
   const abilitiesElement = document.createElement('p');
   const statsElement = document.createElement('p');
   const movesElement = document.createElement('p');
+  const weaknessElement = document.createElement('p');
   weightElement.innerText = `Weight: ${weight}`;
   heightElement.innerText = `Height: ${height}`;
   statsElement.innerText = `Statastics: ${stats}`;
   movesElement.innerText = `Moves: ${moves}`;
-  abilitiesElement.innerText = `Abilities: ${abilities}`;
+  abilitiesElement.innerText = `Abilities: ${abilities}`
+  weaknessElement.innerText = `Weakness: ${weakness}`;
   displayAllDetails.appendChild(imageElement.cloneNode(true));
   displayAllDetails.appendChild(nameElement.cloneNode(true));
   displayAllDetails.appendChild(idElement.cloneNode(true));
@@ -84,11 +109,11 @@ const displayPokemonAllDetails = function (weight, height, stats, moves, abiliti
   displayAllDetails.appendChild(weightElement); 
   displayAllDetails.appendChild(statsElement);
   displayAllDetails.appendChild(movesElement);
-
+  displayAllDetails.appendChild(weaknessElement);
   detailContainer.appendChild(displayAllDetails);
   detailContainer.style.display = 'block';
   const pokemonContainer = document.getElementById('pokemon-container');
-  pokemonContainer.style.filter = 'blur(2px)';
+  pokemonContainer.style.width = '80%';
   detailContainer.addEventListener('click', function () {
     detailContainer.style.display = 'none';
     pokemonContainer.style.filter = 'none';

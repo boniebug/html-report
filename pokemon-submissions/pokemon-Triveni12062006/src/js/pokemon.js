@@ -45,10 +45,10 @@ const createPokemonElement = (pokemonData) => {
   image.src = pokemonData.sprites.front_default;
 
   const id = document.createElement('p');
-  id.textContent = `ID: ${ pokemonData.id };`
+  id.textContent = `ID: ${pokemonData.id};`
 
   const type = document.createElement('p');
-  type.textContent = `Type: ${ pokemonData.types.map(eachType => eachType.type.name).join(', ')}`;
+  type.textContent = `Type: ${pokemonData.types.map(eachType => eachType.type.name).join(', ')}`;
 
   pokemonDiv.appendChild(name);
   pokemonDiv.appendChild(image);
@@ -74,10 +74,10 @@ const dispalySinglePokemonDetails = (pokemonData) => {
   type.textContent = `Type: ${pokemonData.types.map(eachType => eachType.type.name).join(', ')}`;
 
   const height = document.createElement('p');
-  height.textContent = `Height: ${pokemonData.height } m`;
+  height.textContent = `Height: ${pokemonData.height} m`;
 
   const weight = document.createElement('p');
-  weight.textContent = `Weight: ${pokemonData.weight } kg`;
+  weight.textContent = `Weight: ${pokemonData.weight} kg`;
 
   const abilities = document.createElement('p');
   abilities.textContent = `Abilities: ${pokemonData.abilities.map(ability => ability.ability.name).join(', ')}`;
@@ -88,6 +88,19 @@ const dispalySinglePokemonDetails = (pokemonData) => {
   const moves = document.createElement('p');
   moves.textContent = `Moves: ${pokemonData.moves.slice(0, 5).map(move => move.move.name).join(', ')}`;
 
+  const typeUrl = pokemonData.types[0].type.url;
+
+  fetch(typeUrl)
+    .then(response => {
+      return response.json();
+    })
+    .then(typeData => {
+
+      const weakness = document.createElement('p');
+      weakness.textContent = `Weakness: ${typeData.damage_relations.double_damage_from.map(type => type.name).join(', ')}`;
+
+      detailsContainer.appendChild(weakness);
+    })
 
   detailsContainer.appendChild(name);
   detailsContainer.appendChild(image);

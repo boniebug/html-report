@@ -1,7 +1,7 @@
 const arrayOfPokemons = [];
 
 const searchPokemons = function () {
-  const pokemons = document.querySelectorAll('.pokemon');
+  const pokemons = document.querySelectorAll('.groupPokemonAndButton');
   const pokemonData = document.getElementById('search');
   for (const index in arrayOfPokemons) {
     const pokemon = arrayOfPokemons[index]['name'] + arrayOfPokemons[index]['id'] + arrayOfPokemons[index]['type'];
@@ -21,25 +21,33 @@ const hideLoading = function () {
   }
 };
 
-const displayDetails = function (section, pokemonName, pokemonId, pokemonImage, pokemonType, pokemonHeight, pokemonweight) {
+const displayDetails = function (section, pokemons) {
   const image = document.createElement('img');
   const name = document.createElement('p');
   const id = document.createElement('p');
   const type = document.createElement('p');
   const height = document.createElement('p');
   const weight = document.createElement('p');
+  const moves = document.createElement('p');
+  const statistics = document.createElement('p');
   section.appendChild(image);
   section.appendChild(name);
   section.appendChild(id);
   section.appendChild(type);
   section.appendChild(height);
   section.appendChild(weight);
-  image.src = pokemonImage;
-  name.innerText = 'name :'+pokemonName;
-  id.innerText = 'id :'+pokemonId;
-  type.innerText = 'type :'+pokemonType;
-  height.innerText = 'height :'+ pokemonHeight;
-  weight.innerText = 'weight :'+ pokemonweight;
+  section.appendChild(moves);
+  section.appendChild(statistics);
+  image.src = pokemons['imageUrl'];
+  name.innerText = 'name :'+pokemons['name'];
+  id.innerText = 'id :'+pokemons['id'];
+  type.innerText = 'type :'+pokemons['type'];
+  height.innerText = 'height :'+ pokemons['height'];
+  weight.innerText = 'weight :'+ pokemons['weight'];
+  moves.innerText = `Moves :  
+  ` + pokemons['moves']['name'].join(',    ');
+  statistics.innerText = `Statistics:
+  `+ pokemons['stats']['statName'].join(',  ');
 };
 
 const createAndAppendElements = function (pokemons) {
@@ -47,13 +55,7 @@ const createAndAppendElements = function (pokemons) {
   for (let index = 0; index < pokemons.length; index++) {
     const section = document.createElement('section');
     section.className = 'pokemon';
-    const name = pokemons[index]['name'];
-    const id = pokemons[index]['id'];
-    const url = pokemons[index]['imageUrl'];
-    const type = pokemons[index]['type'];
-    const height = pokemons[index]['height'];
-    const weight = pokemons[index]['weight']
-    displayDetails(section, name, id, url, type, height, weight);
+    displayDetails(section, pokemons[index]);
     const div = document.createElement('div');
     div.className = 'groupPokemonAndButton';
     div.appendChild(section);
@@ -61,7 +63,7 @@ const createAndAppendElements = function (pokemons) {
     button.className = 'seeMore';
     button.innerText = 'see more';
     div.appendChild(button);
-    totalPokemons.appendChild(div)
+    totalPokemons.appendChild(div);
   } 
   const buttons = document.querySelectorAll('.seeMore');
   for (let index = 0; index < buttons.length; index++) {
@@ -117,6 +119,7 @@ const fetchEachPokemonDetails = async (pokemonName, pokemonAddress) => {
     const name = fetchAbility(parseEachPokemon)
     const moves = fetchMove(parseEachPokemon);
     const stats = fetchStatistics(parseEachPokemon);
+    const weekNess = fetchWeekNess(parseEachPokemon);
     let pokemonType1 = parseEachPokemon['types'][0]['type']['name'];
     const pokemonType2 = (parseEachPokemon['types'][1])?parseEachPokemon['types'][1]['type']['name']:undefined;
     if (pokemonType2) {
@@ -137,6 +140,23 @@ const fetchEachPokemonDetails = async (pokemonName, pokemonAddress) => {
   }
 };
 
+const fetchWeekNess = async (pokemon) => {
+  const types = pokemon['types'];
+  const weekNess = [];
+  for (let index = 0; index < types.length; index++) {
+    const value = getWeekNess(types[index]);
+    weekNess.push(value)
+  }
+  return weekness;
+}
+
+const getWeekNess = async (type) => {
+  console.log(type['type']['url'])
+  const weekNess = await fetch(type['type']['url']);
+  console.log(weekNess['damage_relations'])
+  return  weekNess['damage_relations']['double_damage_from'];
+}
+
 const fetchPokemon = async () => {
   const totalPokemons = await fetch("https://pokeapi.co/api/v2/pokemon/?offset=0&limit=1032");
   const parsePokemons = await totalPokemons.json();
@@ -152,22 +172,26 @@ const fetchPokemon = async () => {
    hideLoading();
 };
 
+const showPokemonAllDetails = function (buttons) {
+  buttons.addEventListener('click', () => {
+    const pokemon = buttons.parentElement;
+    const section = pokemon.querySelector('.pokemon');
+    const image = pokemon.querySelector('img')
+    if (pokemon.style.width != '100%') {
+      pokemon.style.width = '100%';
+      section.style.height = '100vh';
+      pokemon.style.height = '105%';
+      image.style.paddingLeft= '44%'
+    } else {
+      section.style.height = '35vh';
+      image.style.paddingLeft= '10%'
+      pokemon.style.width = '16vw';
+      pokemon.style.height = '37.8vh';
+      pokemon.style.marginBottom = '10px'
+    }
+  })
+}
+
 window.onload = function () {
   fetchPokemon();
 };
-
-const showPokemonAllDetails = function (buttons) {
-  buttons.addEventListener('click', () =>{
-  const pokemon = buttons.parentElement;
-  const section = pokemon.querySelector('.pokemon');
-  if (pokemon.style.backgroundColor === 'white') {
-  pokemon.style.width = '100%';
-  pokemon.style.backgroundColor = 'aliceblue';
-  section.style.height = '50vh';
-  } else {
-    pokemon.style.backgroundColor = 'white';
-    section.style.height = '35vh';
-    pokemon.style.width = 'none'
-  }
-  })
-}

@@ -1,4 +1,4 @@
-'use strict';
+ 'use strict';
 const renderPokemon = async(url) => {
   try{
     const response = await fetch(url);
@@ -9,6 +9,40 @@ const renderPokemon = async(url) => {
   }
 };
 
+const getWeekness = async(url) => {
+  const response = await fetch(url);
+  const weeknessData = await response.json();
+  let weekness = weeknessData.damage_relations.double_damage_from[0].name;
+  for (let index = 1; index < weeknessData.damage_relations.double_damage_from.length; index++) {
+    weekness += ',' + weeknessData.damage_relations.double_damage_from[index].name;
+  }
+  return weekness;
+};
+
+const getmoves = (moves) => {
+  let move = moves[0].move.name;
+  for (let index = 1; index < moves.length; index++) {
+   move += ',' + moves[index].move.name;
+  } 
+  return move;
+};
+
+const getStats = (statistics) => {
+  let stats = statistics[0].stat.name;
+  for(let index = 1; index < statistics.length; index++) {
+    stats += ',' + statistics[index].stat.name;
+  } 
+  return stats;
+};
+
+const getAbilities = (abilities) => {
+  let ablitity = abilities[0].ability.name;
+  for(let index = 1; index < abilities.length; index++) {
+    ablitity += ',' + abilities[index].ability.name;
+  }
+  return ablitity;
+};
+
 const createElement = () => {
   const imageContainer = document.createElement('img');
   const nameContainer = document.createElement('p');
@@ -16,8 +50,12 @@ const createElement = () => {
   const type = document.createElement('p');
   const height = document.createElement('p');
   const weight = document.createElement('p');
+  const ability = document.createElement('p');
+  const statistics = document.createElement('p');
   const moreDetails = document.createElement('div');
-  return { image: imageContainer, name: nameContainer,id: id, type: type, height: height, weight: weight, moreDetails: moreDetails }
+  const moves = document.createElement('p');
+  const weekness = document.createElement('p');
+  return { image: imageContainer, name: nameContainer,id: id, type: type, height: height, weight: weight, moreDetails: moreDetails, abilities: ability, statistics: statistics, moves: moves, weekness:weekness};
 };
 
 const addClassToDetails = (detailsContainer) => {
@@ -27,6 +65,10 @@ const addClassToDetails = (detailsContainer) => {
   detailsContainer.height.classList.add('pokemonHeight');
   detailsContainer.weight.classList.add('weight');
   detailsContainer.moreDetails.classList.add('moreDetails');
+  detailsContainer.abilities.classList.add('abilities');
+  detailsContainer.statistics.classList.add('stats');
+  detailsContainer.moves.classList.add('moves');
+  detailsContainer.weekness.classList.add('weekness');
 };
 
 const appendDetails = (details) => {
@@ -37,20 +79,30 @@ const appendDetails = (details) => {
   detailsContainer.id.innerText = details.pokenonId;
   detailsContainer.type.innerText = details.pokemonType;
   detailsContainer.weight.innerText = details.weight;
+  detailsContainer.abilities.innerText = details.abilities;
+  detailsContainer.statistics.innerText = details.statistics;
+  detailsContainer.moves.innerText = details.moves;
+  detailsContainer.weekness.innerText = details.weekness;
   addClassToDetails(detailsContainer);
-  detailsContainer.moreDetails.append(detailsContainer.height, detailsContainer.weight);
+  detailsContainer.moreDetails.append(detailsContainer.height, detailsContainer.weight, detailsContainer.abilities, detailsContainer.statistics, detailsContainer.moves, detailsContainer.weekness);
   const element = {image: detailsContainer.image, name: detailsContainer.name, id: detailsContainer.id, type: detailsContainer.type, moreDetails: detailsContainer.moreDetails};
   return element;
 };
+const getMoreDetails = async(pokemonData) => {
+  const statistics = await getStats(pokemonData.stats);
+  const abilities = await getAbilities(pokemonData.abilities);
+  const moves = await getmoves(pokemonData.moves);
+  const weekness = await getWeekness(pokemonData.types[0].type.url);
+  return {statistics: statistics, abilities: abilities, moves: moves, weekness};
+};
 
 const createPokemon = async (pokemon, index) => {
-  const pokemonName = pokemon.name;
   const pokemonContainer = document.createElement('div');
   const url = pokemon.url;
-  let pokemonData
   try{
-    pokemonData = await renderPokemon(url);
-    const details = {name: pokemonName, imageUrl: pokemonData.sprites.front_default, pokenonId: pokemonData.id, pokemonType: pokemonData.types[0].type.name, height: pokemonData.height, weight: pokemonData.weight};
+    const pokemonData = await renderPokemon(url);
+    const extraDetails = await getMoreDetails(pokemonData);
+    const details = {name: pokemon.name, imageUrl: pokemonData.sprites.front_default, pokenonId: pokemonData.id, pokemonType: pokemonData.types[0].type.name, height: pokemonData.height, weight: pokemonData.weight, abilities: extraDetails.abilities, statistics:extraDetails.statistics, moves: extraDetails.moves, weekness: extraDetails.weekness};
     const element = appendDetails(details);
     pokemonContainer.append(element.image,element.name, element.id, element.type, element.moreDetails);
     pokemonContainer.addEventListener('click', ()=> {showPopup(element, pokemonContainer)});
@@ -80,7 +132,7 @@ const appendPokemon = async (pokemons) => {
  };
 
 const fetchPokemons = async() => {
-  const url = 'https://pokeapi.co/api/v2/pokemon?limit=1300&offset=0';
+  const url = 'https://pokeapi.co/api/v2/pokemon?limit=1100&offset=0';
   const response = await fetch(url);
   const pokemonsData = await response.json();
   const pokemons = pokemonsData.results;

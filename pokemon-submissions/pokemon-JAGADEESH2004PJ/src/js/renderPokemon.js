@@ -63,7 +63,7 @@ const showPopup = (message) => {
 
 const createPopupDiv = () => {
   const popupDiv = document.createElement('div');
-  popupDiv.className = 'popup';
+  popupDiv.className = 'loadingPopup';
   popupDiv.setAttribute('id', 'popup');
   document.body.appendChild(popupDiv);
 };

@@ -42,6 +42,12 @@ const appendPokemonName = (data) => {
   return pokemonName;
 };
 
+const appendPokemonData = () => {
+  const pokemonData = document.createElement('p');
+  pokemonData.innerText = 'Click More Details ...';
+  pokemonData.style.color ='blue';
+  return pokemonData;
+};
 
 const appendPokemanType = (data) => {
   const pokemonTypes = document.createElement('p');
@@ -69,6 +75,7 @@ const appendPokemonHeight = async (data) => {
   pokemonHeight.innerText = 'Height: ' + fetchedData.height;
   return pokemonHeight;
 };
+
 
 const appendPokemonAbilities = async (data) => {
   const fetchedData = await fetchData(data);
@@ -109,28 +116,32 @@ const appendPokemonMoves = async (data) => {
   return pokemonMoves;
 };
 
-const appendPokemonWeaknesses = async (data) => {
-  const fetchedData = await fetchData(data);
-  const pokemonWeaknesses = document.createElement('p');
-  pokemonWeaknesses.innerText = 'Weaknesses: ';
+const getPokemonWeaknesses = async (fetchedData) => {
+  const result = [];
   for (const type of fetchedData.types) {
     const response = await fetch(type.type.url);
     const typeData = await response.json();
-    typeData.damage_relations.double_damage_to.forEach((weakness, index) => {
-      pokemonWeaknesses.innerText += weakness.name;
-      if (index < typeData.damage_relations.double_damage_to.length - 1) {
-        pokemonWeaknesses.innerText += ', ';
-      }
+    typeData.damage_relations.double_damage_to.forEach((weakness) => {
+      result.push(weakness.name);
     });
-    pokemonWeaknesses.innerText += ', ';
-    typeData.damage_relations.half_damage_to.forEach((weakness, index) => {
-      pokemonWeaknesses.innerText += weakness.name;
-      if (index < typeData.damage_relations.half_damage_to.length - 1) {
-        pokemonWeaknesses.innerText += ', ';
-      }
+    typeData.damage_relations.half_damage_to.forEach((weakness) => {
+      result.push(weakness.name);
     });
   }
-  return pokemonWeaknesses;
+  return result;
+}
+
+const appendPokemonWeaknesses = async (data) => {
+  const fetchedData = await fetchData(data);
+  const weaknessesElement = document.createElement('p');
+  weaknessesElement.innerText = 'Weaknesses: ';
+  const weaknesses = await getPokemonWeaknesses(fetchedData);
+  weaknesses.forEach((string) => {
+    if (!weaknessesElement.innerText.includes(string)) {
+      weaknessesElement.innerText += string + ", ";
+    }
+  });
+  return weaknessesElement;
 };
 
 

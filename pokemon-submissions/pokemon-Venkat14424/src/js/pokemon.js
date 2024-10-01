@@ -37,6 +37,7 @@ const displayPokemon = async (url) => {
   pokemonData.appendChild(appendPokemanId(data));
   pokemonData.appendChild(appendPokemonName(data));
   pokemonData.appendChild(appendPokemanType(data));
+  pokemonData.appendChild(appendPokemonData());
   document.getElementById('pokemonContainer').appendChild(pokemonData);
 };
 

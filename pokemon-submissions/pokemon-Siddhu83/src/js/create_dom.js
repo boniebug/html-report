@@ -45,7 +45,7 @@ const removeFullDetails = () => {
   search.classList.remove('disabled');
 };
 
-const createFullDetails = (pokemonDetailsObject) => {
+const createFullDetails = (pokemonDetails) => {
   const mainContainer = document.getElementsByClassName('main-container')[0];
   const pokemonUnit = document.getElementsByClassName('pokemon-main-container')[0];
   pokemonUnit.classList.add('disabled');
@@ -56,19 +56,18 @@ const createFullDetails = (pokemonDetailsObject) => {
   const closeButton = document.createElement('button');
   closeButton.id = 'detail-unit-close';
   closeButton.addEventListener('click', () => removeFullDetails());
-  const id = pokemonDetailsObject.id;
+  const id = pokemonDetails.id;
 
-  const pokemonImage = createImageTag(pokemonDetailsObject.image, 'detail-unit-image', `detail-unit-image-${id}`);
-  const pokemonName = createPTag(`Name: ${pokemonDetailsObject.name}`, 'detail-unit-name', `detail-unit-name-${id}`);
-  const pokemonId = createPTag(id, 'detail-unit-id', `detail-unit-id-${id}`);
-  const pokemonType = createPTag(`Types: ${pokemonDetailsObject.type}`, 'detail-unit-type', `detail-unit-type-${id}`);
-  const pokemonHeight = createPTag(`Height: ${pokemonDetailsObject.extraDetails.height}`, 'detail-unit-heigth', `detail-unit-heigth-${id}`);
-  const pokemonweight = createPTag(`weight: ${pokemonDetailsObject.extraDetails.weight}`, 'detail-unit-weight', `detail-unit-weight-${id}`);
-  const pokemonAbility = createPTag(`Abilities: ${pokemonDetailsObject.extraDetails.abilities}`, 'detail-unit-abilities', `detail-unit-abilities-${id}`);
-  const pokemonMoves = createPTag(`Moves: ${pokemonDetailsObject.extraDetails.moves}`, 'detail-unit-moves', `detail-unit-moves-${id}`);
-  const pokemonWeakness = createPTag(`Weakness: ${pokemonDetailsObject.extraDetails.weakness} types`, 'detail-unit-weakness', `detail-unit-weakness-${id}`);
-  const pokemonStats = createPTag(`Stats: ${pokemonDetailsObject.extraDetails.stats}`, 'detail-unit-stats', `detail-unit-stats-${id}`);
-
+  const pokemonName = createPTag(`Name: ${pokemonDetails.name}`, 'detail-unit-name');
+  const pokemonId = createPTag(id, 'detail-unit-id');
+  const pokemonImage = createImageTag(pokemonDetails.image, 'detail-unit-image');
+  const pokemonType = createPTag(`Types: ${pokemonDetails.type}`, 'detail-unit-type');
+  const pokemonHeight = createPTag(`Height: ${pokemonDetails.extraDetails.height}`, 'detail-unit-heigth');
+  const pokemonweight = createPTag(`weight: ${pokemonDetails.extraDetails.weight}`, 'detail-unit-weight');
+  const pokemonAbility = createPTag(`Abilities: ${pokemonDetails.extraDetails.abilities}`, 'detail-unit-abilities');
+  const pokemonMoves = createPTag(`Moves: ${pokemonDetails.extraDetails.moves.join('\n')}`, 'detail-unit-moves');
+  const pokemonWeakness = createPTag(`Weakness: ${pokemonDetails.extraDetails.weakness.join(', ')}`, 'detail-unit-weakness');
+  const pokemonStats = createPTag(`Stats: ${pokemonDetails.extraDetails.stats.join(', ')}`, 'detail-unit-stats');
   parentContainer.append(closeButton, pokemonName, pokemonId, pokemonImage, pokemonType);
   parentContainer.append(pokemonHeight, pokemonweight, pokemonAbility, pokemonMoves);
   parentContainer.append(pokemonWeakness, pokemonStats);

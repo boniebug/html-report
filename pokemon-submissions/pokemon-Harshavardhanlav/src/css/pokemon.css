@@ -58,6 +58,7 @@
   p {
     font-size: 16px;
     margin-left: 10px;
+    font-weight: 530;
   }
   #loadingLogo {
     display: flex;
@@ -112,7 +113,7 @@
 .pokemon-detail-box {
   position: fixed;
   left: 80%;
-  top: 0;
+  top: 11.5%;
   width: 280px;
   border: 1px solid #ccc;
   background-color: rgb(255, 255, 255);
@@ -129,8 +130,4 @@
   height: 150px;
   margin-left: 25px;
   margin-top: 15px;
-}
-.detail-image-size {
-  width: 100px;
-  height: 200px;
 }

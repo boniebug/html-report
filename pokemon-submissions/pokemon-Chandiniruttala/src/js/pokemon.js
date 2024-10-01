@@ -22,13 +22,16 @@ const abilities = `Abilities: ${pokemonInfo.abilities.map(ability => ability.abi
 
 const statistics = `Statistics: ${pokemonInfo.stats.map(stat => `${stat.stat.name}: ${stat.base_stat}`).join(', ')}`;
 
-let weaknesses = `Weaknesses: ${pokemonInfo.types.forEach(async (type) => {
-  const response = await fetch(type.url);
-  const typeData = await response.json();
-  
+let weaknesses = `Weaknesses: `;
+
+for (const type of pokemonInfo.types) {
+fetch(type.url)
+  .then(response => response.json())
+  .then(typeData => {
   const weaknessesList = typeData.damage_relations.double_damage_from.map(weakness => weakness.name).join(', ');
-  weaknesses += `${type.type.name}: ${weaknessesList},`;
-})}`;
+  weaknesses += `${type.type.name}: ${weaknessesList}, `;
+})
+}
 
 createElement('p', `Height: ${pokemonInfo.height}`, pokemonMoreContent);
 createElement('p', `Weight: ${pokemonInfo.weight}`, pokemonMoreContent);

@@ -11,6 +11,7 @@ const createPokemonObject = (pokemonData) => {
     imageOnHover: pokemonData.sprites.other.home.front_shiny || './src/images/noImage.png',
     abilities: pokemonData.abilities,
     statistics: pokemonData.stats,
+    weakness: pokemonData.types,
     moves: pokemonData.moves
   }
   return object;
@@ -63,9 +64,7 @@ const filterPokemons = (search, array) => {
   outerContainer.innerText = '';
   const value = search.value.toLowerCase();
   const newArray = generateNewArray(value, array);
-  newArray.forEach(pokemon => {
-    createPokemonContainer(pokemon, value);
-  });
+  displayPokemons(newArray, value);
 };
 
 const addSearchAction = (array) => {
@@ -79,17 +78,20 @@ const removeLoader = () => {
   loader.style.display = 'none';
 };
 
-const displayPokemons = (array) => {
+const designPokemonPopup = (popup, pokemon) => {
+  showPopupContainer(popup);
+  const movesBtn = document.getElementById(`${pokemon.name}-moves-btn`);
+  const weaknessBtn = document.getElementById(`${pokemon.name}-weakness-btn`);
+  movesBtn.addEventListener('click', () => { displayMoves(pokemon.moves, 'move', 'name', movesBtn, weaknessBtn) });
+  weaknessBtn.addEventListener('click', () => { fetchWeakness(pokemon.weakness, weaknessBtn, movesBtn) });
+};
+
+const displayPokemons = (array, value) => {
   array.forEach(pokemon => {
-    createPokemonContainer(pokemon);
+    createPokemonContainer(pokemon, value);
     const popup = createPopupContainer(pokemon);
     const pokemonContainer = document.getElementById(pokemon.name);
-    pokemonContainer.addEventListener('click', () => {
-      showPopupContainer(popup);
-      const movesBtn = document.getElementById(`${pokemon.name}-moves-btn`);
-      movesBtn.addEventListener('click', () => { displayMoves(pokemon.moves, 'move', 'name') });
-    });
-
+    pokemonContainer.addEventListener('click', () => {designPokemonPopup(popup, pokemon)});
     const image = document.getElementById(`${pokemon.name}-image`);
     image.addEventListener('mouseover', () => { displayImageOnHover(pokemon, image) });
     image.addEventListener('mouseleave', () => { displayImageOnLeave(pokemon, image) });

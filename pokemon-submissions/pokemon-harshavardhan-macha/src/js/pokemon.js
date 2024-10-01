@@ -136,8 +136,11 @@ function closeSearch() {
 };
 
 function detailInView(id,pokemonContainer) {
-  document.getElementById('deatilButton').style.display = 'block';
   const pokemonDetailer = document.getElementById('detailViewer');
+  const detailCloseButton = document.createElement('button');
+  detailCloseButton.setAttribute('id','detailButton');
+  detailCloseButton.textContent = '❌';
+  detailCloseButton.style.display = 'block';
   const pokemonHeight = document.createElement('p');
   const pokemonWeight = document.createElement('p');
   const pokemonAbilities = document.createElement('p');
@@ -159,18 +162,22 @@ function detailInView(id,pokemonContainer) {
    .then((response) => response.json())                    
    .then((data) => pokemonWeakness.textContent = 'weakness :'+data.damage_relations.double_damage_from.map((element) => element.name)))
    })
+   pokemonDetailer.appendChild(detailCloseButton);
    pokemonDetailer.appendChild(pokemonHeight);
    pokemonDetailer.appendChild(pokemonWeight);
    pokemonDetailer.appendChild(pokemonAbilities);
    pokemonDetailer.appendChild(pokemonMoves);
    pokemonDetailer.appendChild(pokemonStats);
    pokemonDetailer.appendChild(pokemonWeakness);
+
+   detailCloseButton.addEventListener("click",() => closeDetailer());
 };
  
  function closeDetailer () {
   document.getElementById('detailViewer').style.display = 'none';
   document.getElementById('container').style.opacity = '1';
   document.getElementById('container').style.pointerEvents = 'auto';
+  document.getElementById('detailViewer').textContent = ''
  };
 
 window.onload = fetchPokemon;

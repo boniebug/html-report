@@ -43,7 +43,7 @@ header {
   background: white;
   width: 150px;
   text-align: center;
-  box-shadow: 5px 5px rgb(253, 191, 75);
+  box-shadow: 5px 5px rgb(251, 226, 181);
 }
 
 img {
@@ -72,9 +72,9 @@ img {
   border: 3px solid black;
   background-color: rgb(172, 228, 249);
   top: auto;
-  bottom: 0%;
+  bottom: 10px;
   width: 40%;
-  right: 0%;
+  right: 10px;
 }
 
 .moreDetails img {
@@ -91,6 +91,9 @@ img {
 
 .closeButton button {
   position: fixed;
-  right: 0;
+  right: 12px;
+  height: 25px;
+  width: 60px;
+  border: none;
   background-color: rgb(250, 65, 65);
 }

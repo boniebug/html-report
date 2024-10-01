@@ -38,7 +38,9 @@ const determineWeakness = async (urls) => {
     const weaknessData2 = weaknessRawDataType2['damage_relations'];
     let weaknessArray2 = weaknessData2['double_damage_from'].concat(weaknessData2['half_damage_from']);
     const list2 = weaknessArray2.map(element => element['name']);
-    resultArray = list1.filter(weakness => list2.includes(weakness));
+    resultArray = list1.concat(list2)
+    const commonWeakness = list1.filter(weakness => list2.includes(weakness));
+    resultArray = commonWeakness || resultArray;
   }
   return new Promise((resolve, reject) => {
     resolve(resultArray);
@@ -57,7 +59,7 @@ const determineStats = (statsObject) => {
 
 const createExtraDetails = async (pokemon) => {
   const urls = [`https://pokeapi.co/api/v2/type/${pokemon['types'][0]['type']['name']}`];
-  
+
   if (pokemon['types'][1]) {
     urls.push(`https://pokeapi.co/api/v2/type/${pokemon['types'][1]['type']['name']}`);
   }

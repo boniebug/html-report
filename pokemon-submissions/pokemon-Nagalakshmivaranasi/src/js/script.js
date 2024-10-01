@@ -23,6 +23,23 @@ const preloading = () => {
   searchPokemon.addEventListener('click', displayPopup)
 };
 
+const fetchWeekness = async (pokemonData) => {
+  const weakness = [];
+  try {
+    const weaknessDetail = await fetch(pokemonData.types[0].type.url);
+    const weaknessData = await weaknessDetail.json();
+    console.log(weaknessData);
+    for (let index = 0; index < weaknessData.damage_relations.double_damage_from.length; index++) {
+      weakness.push(weaknessData.damage_relations.double_damage_from[index].name);
+    }
+    console.log(weakness);
+    return weakness;
+  }
+  catch (error) {
+    console.log('error at fetching weekness', error);
+  }
+};
+
 const createObject = (pokemonData) => {
   const pokemonInfo = {
     id: pokemonData.id,
@@ -33,7 +50,7 @@ const createObject = (pokemonData) => {
     weight: pokemonData.weight,
     moves: [],
     abilities: [],
-    stastics: []
+    stastics: [],
   };
   for (let index = 0; index < pokemonData.moves.length && index < 5; index++) {
     pokemonInfo.moves.push(pokemonData.moves[index].move.name);
@@ -42,7 +59,7 @@ const createObject = (pokemonData) => {
     pokemonInfo.abilities.push(pokemonData.abilities[index].ability.name);
   }
   for (let index = 0; index < pokemonData.stats.length; index++) {
-  pokemonInfo.stastics.push(pokemonData.stats[index].stat.name);
+    pokemonInfo.stastics.push(pokemonData.stats[index].stat.name);
   }
   return pokemonInfo;
 };
@@ -63,7 +80,7 @@ const fetchData = async (data, array) => {
 };
 
 const fetchPokemonData = async () => {
-  const url = 'https://pokeapi.co/api/v2/pokemon?limit=50&offset=0';
+  const url = 'https://pokeapi.co/api/v2/pokemon?limit=1025&offset=0';
   const options = {
     method: 'GET'
   }
@@ -92,6 +109,17 @@ const addDetial = (label, value) => {
   pTag.classList.add('details');
   spanTag.classList.add('bold-text');
   spanTag.innerText = label;
+  pTag.append(spanTag, value);
+  return pTag;
+};
+
+const addWeaknessDetial = (label, pokemonData) => {
+  const pTag = document.createElement('p');
+  const spanTag = document.createElement('span');
+  pTag.classList.add('details');
+  spanTag.classList.add('bold-text');
+  spanTag.innerText = label;
+  const value = fetchWeekness(pokemonData);
   pTag.append(spanTag, value);
   return pTag;
 };
@@ -136,24 +164,18 @@ const displayPokemonOnSearch = (pokemons) => {
 
 const closeDetails = () => {
   const divForAdditionalDetails = document.querySelector('.additional-details');
-  // divForAdditionalDetails.style.display = 'none';
-  const main = document.getElementById('main');
-  main.removeChild(divForAdditionalDetails);
-  const overlay = document.querySelector('.overlay')
-  overlay.style.display = 'none';
+  const overlay = document.getElementById('overlay');
+  overlay.classList.remove('overlay-popup');
+  overlay.removeChild(divForAdditionalDetails);
 };
 
 const displayExtraDetails = (pokemon) => {
-  console.log(pokemon);
   const divForAdditionalDetails = document.createElement('div');
   divForAdditionalDetails.classList.add('additional-details');
 
-  const main = document.getElementById('main');
-  main.appendChild(divForAdditionalDetails);
-
-  const overlay = document.createElement('div');
-  overlay.classList.add('overlay');
-  main.appendChild(overlay);
+  const overlay = document.getElementById('overlay');
+  overlay.classList.add('overlay-popup');
+  overlay.appendChild(divForAdditionalDetails);
 
   const pokemonImage = addImage(pokemon['image']);
   const pokemonName = addDetial('Name: ', pokemon['name']);
@@ -164,11 +186,13 @@ const displayExtraDetails = (pokemon) => {
   const pokemonMoves = addDetial('Moves: ', pokemon['moves']);
   const pokemonAbility = addDetial('Abilities: ', pokemon['abilities']);
   const pokemonStastics = addDetial('Stastics: ', pokemon['stastics']);
+  const pokemonWeakness = addWeaknessDetial('Weakness: ', pokemon);
+
   const closeButton = document.createElement('button');
   closeButton.classList.add('close-button');
   closeButton.innerText = 'Close';
-  divForAdditionalDetails.append(pokemonImage, pokemonName, pokemonType, pokemonId, pokemonHeight);
-  divForAdditionalDetails.append(pokemonWeight, pokemonMoves, pokemonAbility, pokemonStastics, closeButton);
+  divForAdditionalDetails.append(pokemonImage, pokemonName, pokemonType, pokemonId, pokemonHeight, pokemonWeight);
+  divForAdditionalDetails.append(pokemonMoves, pokemonAbility, pokemonStastics, pokemonWeakness, closeButton);
   closeButton.addEventListener('click', closeDetails);
 };
 
@@ -189,7 +213,6 @@ const main = async () => {
   popup.remove();
   const searchPokemon = document.getElementById('search');
   searchPokemon.addEventListener('input', () => { displayPokemonOnSearch(pokemons) })
-  console.log(pokemons);
   extraDetails(pokemons);
 };
 

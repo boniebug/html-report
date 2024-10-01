@@ -149,7 +149,7 @@ header {
 }
 
 .close-btn {
-  background-color: red;
+  background-color: #6f4e37;
   color: white;
   cursor: pointer;
   padding: 10px;
@@ -178,4 +178,40 @@ header {
 .pokemon-abilities, .pokemon-moves, .pokemon-statistics, .pokemon-weaknesses {
   margin-top: 15px;
   text-align: left;
+}
+
+.pokemon-statistics{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.stat-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+  width: 45%;
+}
+
+.stat-name {
+  width: 50px;
+  font-weight: bold;
+}
+
+.stat-bar {
+  width: 50%;
+  background-color: #e0e0e0;
+  border-radius: 4px;
+  margin: 0 10px;
+  height: 15px;
+}
+
+.stat-progress {
+  height: 100%;
+  border-radius: 4px;
+}
+
+.stat-value {
+  width: 40px;
+  text-align: right;
 }

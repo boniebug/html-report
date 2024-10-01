@@ -73,7 +73,7 @@ function addPokemonDetails(pokemon, parentElement) {
     try {
       displayPokemonPopup(pokemon);
     } catch (error) {
-      console.error('Error fetching Pokémon details:', error);
+      console.error('Error fetching Pokemon details:', error);
     }
   });
   parentElement.appendChild(pokemonElement);

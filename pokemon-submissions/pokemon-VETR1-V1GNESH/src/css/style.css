@@ -28,7 +28,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0px 80px;
+  padding: 0 80px;
   height: 70px;
   z-index: 200;
 }
@@ -41,9 +41,9 @@ body {
   border-radius: 25px;
 }
 
-.search-feature button {
+.search-feature button,
+.search-feature .home-button {
   padding: 12px 20px;
-  background-color: #28a745;
   color: white;
   border: none;
   border-radius: 10px;
@@ -52,15 +52,12 @@ body {
   margin-left: 1px;
 }
 
+.search-feature button {
+  background-color: #28a745;
+}
+
 .search-feature .home-button {
-  padding: 12px 20px;
   background-color: #cd1515;
-  color: white;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  font-size: 16px;
-  margin-left: 1px;
 }
 
 .page-loader {
@@ -89,51 +86,49 @@ body {
 
 .details-modal {
   display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  overflow: scroll;
   position: fixed;
   top: 0;
   right: 0;
   z-index: 300;
   background-color: white;
-  position: fixed;
   height: 100%;
   width: 100%;
   border: 1px solid black;
-  padding: -400px;
+  padding: 0;
 }
 
 .details-modal img {
-  height: 250px;
-  width: 250px;
+  height: 200px;
+  width: 200px;
   margin: 30px;
 }
 
-.modal-pokemon-details div {
-  height: 40px;
-  display: flex;
-  justify-content: start;
-  align-items: center;
-}
-
-.modal-pokemon-details p {
-  margin: 0;
-  text-align: center;
+.details-modal div p, .details-modal div h3{
+  font-size: 25px;
   margin-left: 15px;
-  font-size: 30px;
+  text-align: left;
 }
 
-.modal-pokemon-details h3 {
-  margin: 0;
+.pokemon-detail {
   text-align: center;
-  margin-left: 15px;
-  font-size: 30px;
+  font-size: 25px;
 }
 
-#close-modal {
-  font-size: 30px;
+.close-modal {
+  color: white;
+  background-color: red;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 25px;
   position: absolute;
   margin: 0;
-  top: 0;
-  right: 10px;
+  top: 10px;
+  right: 20px;
   cursor: pointer;
 }
 
@@ -151,13 +146,14 @@ body {
   cursor: pointer;
   border-radius: 8px;
   margin: 8px;
-  padding: 10px 0px;
+  padding: 10px 0;
   width: 220px;
   text-align: center;
-  transition: all ease-in-out 0.3s;
+  transition: transform 0.3s ease-in-out;
 }
 
-.pokemon-container div {
+.pokemon-container div,
+.modal-pokemon-details div {
   height: 40px;
   display: flex;
   justify-content: center;

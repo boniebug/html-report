@@ -5,9 +5,7 @@ const renderPokemon = async () => {
     try {
       const link = await fetch(result.results[index].url);
       const info = await link.json();
-      if (info.sprites.front_default) {
-        createContainers(info.name, info.id, info.sprites.front_default, info.types);
-      }
+      createContainers(info.name, info.id, info.sprites.front_default, info.types);
     } catch (error) {
       console.log(error);
     }
@@ -34,7 +32,7 @@ const renderPokemonNameAndId = (container, name, id, image, types) => {
   const printId = document.createElement('p');
   printId.className = 'pokemonId';
   printName.className = 'pokemonName';
-  printId.innerText = `Id : ${id}`;
+  printId.innerText = `Id :  ${id}`;
   printName.innerText = `Name : ${name}`;
   container.appendChild(printName);
   container.appendChild(printId);
@@ -52,7 +50,10 @@ const renderPokemonImg = (container, image, types) => {
 const renderPokemonTypeContainer = (container, types) => {
   const pokemonTypeContainer = document.createElement('p');
   pokemonTypeContainer.className = 'pokemonTypeContainer';
-  pokemonTypeContainer.innerText = `Types : `;
+  const heading = document.createElement('p');
+  heading.className = 'heading';
+  heading.innerText = `Types : `;
+  pokemonTypeContainer.appendChild(heading);
   container.appendChild(pokemonTypeContainer);
   const printPokemonList = document.createElement('ol');
   printPokemonList.className = 'printPokemonList';
@@ -175,21 +176,27 @@ const createPopup = (name, id, image, types, height, weight, moves, abilities, s
 };
 
 const renderPokemonHeightAndWeight = (container, height, weight, moves, abilities, stats, weakness) => {
+  const heightAndWeight = document.createElement('div');
+  heightAndWeight.className = 'heightAndWeight';
+  container.appendChild(heightAndWeight);
   const pokemonHeight = document.createElement('p');
   pokemonHeight.className = 'pokemonHeight';
-  pokemonHeight.innerText = `Height : ${height / 10}.m`;
-  container.appendChild(pokemonHeight);
+  pokemonHeight.innerText = `Height : ${height / 10}.m ,    `;
+  heightAndWeight.appendChild(pokemonHeight);
   const pokemonWeight = document.createElement('p');
   pokemonWeight.className = 'pokemonWeight';
   pokemonWeight.innerText = `Weight : ${weight / 10}.kg`;
-  container.appendChild(pokemonWeight);
+  heightAndWeight.appendChild(pokemonWeight);
   renderPokemonMovesContainer(container, moves, abilities, stats, weakness);
 };
 
 const renderPokemonMovesContainer = (container, moves, abilities, stats, weakness) => {
   const pokemonTypeContainer = document.createElement('p');
   pokemonTypeContainer.className = 'pokemonMoveContainer';
-  pokemonTypeContainer.innerText = `Moves : `;
+  const heading = document.createElement('p');
+  heading.className = 'heading';
+  heading.innerText = `Moves : `;
+  pokemonTypeContainer.appendChild(heading);
   container.appendChild(pokemonTypeContainer);
   renderPokemonMove(moves, pokemonTypeContainer, container, abilities, stats, weakness);
 };
@@ -199,7 +206,7 @@ const renderPokemonMove = (moves, printPokemonList, container, abilities, stats,
     if (moves[index].move.name !== null || undefined) {
       const PokemonType = document.createElement('p');
       PokemonType.className = 'PokemonMove';
-      PokemonType.innerText = `${index + 1} : ${moves[index].move.name}`;
+      PokemonType.innerText = `${index + 1} : ${moves[index].move.name}, `;
       printPokemonList.appendChild(PokemonType);
     }
   }
@@ -209,7 +216,10 @@ const renderPokemonMove = (moves, printPokemonList, container, abilities, stats,
 const renderAbilitiesContainer = (container, abilities, stats, weakness) => {
   const pokemonAbilityContainer = document.createElement('p');
   pokemonAbilityContainer.className = 'pokemonMoveContainer';
-  pokemonAbilityContainer.innerText = `Abilities : `;
+  const heading = document.createElement('p');
+  heading.className = 'heading';
+  heading.innerText = `Abilities : `;
+  pokemonAbilityContainer.appendChild(heading);
   container.appendChild(pokemonAbilityContainer);
   renderPokemonAbility(pokemonAbilityContainer, container, abilities, stats, weakness);
 };
@@ -218,7 +228,7 @@ const renderPokemonAbility = (printPokemonList, container, abilities, stats, wea
   for (let index = 0; index < abilities.length; index++) {
     const PokemonType = document.createElement('p');
     PokemonType.className = 'PokemonMove';
-    PokemonType.innerText = `${index + 1} : ${abilities[index].ability.name}`;
+    PokemonType.innerText = `${index + 1} : ${abilities[index].ability.name}, `;
     printPokemonList.appendChild(PokemonType);
   }
   renderStatsContainer(container, stats, weakness);
@@ -227,7 +237,10 @@ const renderPokemonAbility = (printPokemonList, container, abilities, stats, wea
 const renderStatsContainer = (container, stats, weakness) => {
   const pokemonstatsContainer = document.createElement('p');
   pokemonstatsContainer.className = 'pokemonStatContainer';
-  pokemonstatsContainer.innerText = `Stats : `;
+  const heading = document.createElement('p');
+  heading.className = 'heading';
+  heading.innerText = `Stats : `;
+  pokemonstatsContainer.appendChild(heading);
   container.appendChild(pokemonstatsContainer);
   renderPokemonStat(pokemonstatsContainer, container, stats, weakness);
 };
@@ -236,7 +249,7 @@ const renderPokemonStat = (printPokemonList, container, stats, weakness) => {
   for (let index = 0; index < stats.length; index++) {
     const PokemonType = document.createElement('p');
     PokemonType.className = 'PokemonStat';
-    PokemonType.innerText = `${index + 1} . ${stats[index].stat.name} : ${stats[index].base_stat}`;
+    PokemonType.innerText = ` ${stats[index].stat.name} : ${stats[index].base_stat}, `;
     printPokemonList.appendChild(PokemonType);
   }
   renderWeaknessContainer(container, weakness);
@@ -245,24 +258,26 @@ const renderPokemonStat = (printPokemonList, container, stats, weakness) => {
 const renderWeaknessContainer = (container, weakness) => {
   const pokemonweaknessContainer = document.createElement('p');
   pokemonweaknessContainer.className = 'pokemonweaknessContainer';
-  pokemonweaknessContainer.innerText = `Weakness : `;
+  const heading = document.createElement('p');
+  heading.className = 'heading';
+  heading.innerText = 'Weakness : ';
+  pokemonweaknessContainer.appendChild(heading);
   container.appendChild(pokemonweaknessContainer);
   renderWeakness(pokemonweaknessContainer, weakness);
 };
 
 const renderWeakness = async (printPokemonList, weakness) => {
   for (let index = 0; index < weakness.length; index++) {
-    const PokemonType = document.createElement('p');
-    PokemonType.className = 'PokemonWeakness';
     const link = await fetch(weakness[index].type.url);
     const info = await link.json();
     const damageFrom = info.damage_relations.double_damage_from;
     for (let i = 0; i < damageFrom.length; i++) {
-      PokemonType.innerText = `${i + 1} . ${damageFrom[i].name}`;
+      const PokemonType = document.createElement('p');
+      PokemonType.className = 'PokemonWeakness';
+      PokemonType.innerText = `${damageFrom[i].name}, `;
       printPokemonList.appendChild(PokemonType);
     }
   }
-  renderWeaknessContainer(container, abilities, weakness);
 };
 
 const createPopupCloseButton = (popup) => {
@@ -300,6 +315,10 @@ window.onload = async () => {
   document.getElementById('search').addEventListener('input', callSearch);
   const readMoreButtons = document.getElementsByClassName('readMoreInfo');
   for (let index = 0; index < readMoreButtons.length; index++) {
-    readMoreButtons[index].addEventListener('click', () => popupFetchDetails(index));
+    if (index < 358) {
+      readMoreButtons[index].addEventListener('click', () => popupFetchDetails(index));
+    } else {
+      readMoreButtons[index].addEventListener('click', () => popupFetchDetails(index + 1));
+    }
   }
 };

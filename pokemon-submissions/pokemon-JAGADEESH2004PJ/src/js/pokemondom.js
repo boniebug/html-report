@@ -71,40 +71,35 @@ const createAndAppendButton = (pokemonData, pokemonCard) => {
   pokemonCard.appendChild(moreDetailsButton);
 };
 
-const showDetailsPopup = (pokemonData) => {
+const showDetailsPopup = async (pokemonData) => {
   const overlay = createOverlay();
   const popup = createPopup();
   const closeButton = createCloseButton();
+
   popup.appendChild(closeButton);
-  closeButton.addEventListener('click', () => closPopup(popup, overlay));
-  const contentContainer = document.createElement('div');
-  contentContainer.className = 'popupContent';
-  popup.appendChild(contentContainer);
-  const imgContainer = createImageContainer(pokemonData);
-  contentContainer.appendChild(imgContainer);
+  closeButton.addEventListener('click', () => closePopup(popup, overlay));
 
-  const detailsContainer = document.createElement('div');
-  detailsContainer.className = 'popupDetailsContainer';
+  const image = createImage(pokemonData);
+  popup.appendChild(image);
 
-  appendBasicDetails(detailsContainer, pokemonData);
-  appendTypes(detailsContainer, pokemonData);
-  appendAbilities(detailsContainer, pokemonData);
-  appendStatistics(detailsContainer, pokemonData);
-  appendMoves(detailsContainer, pokemonData);
+  const detailsContainer = await appendAllDetails(pokemonData);
+  popup.appendChild(detailsContainer);
 
-  contentContainer.appendChild(detailsContainer);
+  document.body.appendChild(overlay);
   document.body.appendChild(popup);
 
   overlay.addEventListener('click', () => {
-    document.body.removeChild(overlay);
-    document.body.removeChild(popup);
+      closePopup(popup, overlay);
   });
   popup.style.display = 'block';
 };
 
-const closPopup = (popup, overlay) => {
-  popup.style.display = 'none';
-  overlay.style.display = 'none';
+
+const closePopup = (popup, overlay) => {
+  overlay.remove();
+  popup.remove();
+
+
 };
 
 const createCloseButton = () =>{
@@ -127,17 +122,29 @@ const createPopup = () => {
   return popup;
 };
 
-const createImageContainer = (pokemonData) => {
-  const imgContainer = document.createElement('div');
-  imgContainer.className = 'popupImageContainer';
-
+const createImage = (pokemonData) => {
   const img = document.createElement('img');
   img.src = pokemonData.sprites.other.home.front_default || '';
   img.className = 'popupImage';
-  imgContainer.appendChild(img);
-
-  return imgContainer;
+  return img;
 };
+
+const appendAllDetails = async (pokemonData) => {
+  const detailsContainer = document.createElement('div');
+  detailsContainer.className = 'popupDetailsContainer';
+
+  appendBasicDetails(detailsContainer, pokemonData);
+  appendTypes(detailsContainer, pokemonData);
+  appendAbilities(detailsContainer, pokemonData);
+  appendStatistics(detailsContainer, pokemonData);
+  appendMoves(detailsContainer, pokemonData);
+
+  const weaknesses = await getWeaknesses(pokemonData);
+  appendWeakness(detailsContainer, weaknesses);
+
+  return detailsContainer;
+};
+
 
 const appendBasicDetails = (container, pokemonData) => {
   const name = document.createElement('h2');
@@ -149,11 +156,11 @@ const appendBasicDetails = (container, pokemonData) => {
   container.appendChild(id);
 
   const height = document.createElement('p');
-  height.textContent = `Height: ${pokemonData.height}`;
+  height.textContent = `Height: ${pokemonData.height} metres`;
   container.appendChild(height);
 
   const weight = document.createElement('p');
-  weight.textContent = `Weight: ${pokemonData.weight}`;
+  weight.textContent = `Weight: ${pokemonData.weight} Kg`;
   container.appendChild(weight);
 };
 
@@ -190,9 +197,39 @@ const appendStatistics = (container, pokemonData) => {
 const appendMoves = (container, pokemonData) => {
   const moves = document.createElement('p');
   let moveNames = [];
-  for (let i = 0; i < 60; i++) {
+  for (let i = 0; i <pokemonData.moves.length; i++) {
     moveNames.push(pokemonData.moves[i].move.name);
   }
   moves.textContent = `Moves: ${moveNames.join(', ')}`;
   container.appendChild(moves);
 };
+
+const appendWeakness = (container, weaknesses) => {
+  const weaknessParagraph = document.createElement('p');
+  weaknessParagraph.textContent = `Weakness: ${weaknesses.length > 0 ? weaknesses.join(', ') : 'None'}`;
+  container.appendChild(weaknessParagraph);
+};
+
+const getWeaknesses = async (pokemon) => {
+  const weaknesses = [];
+
+  for (let i = 0; i < pokemon.types.length; i++) {
+      const typeInfo = await fetchConvertData(pokemon.types[i].type.url);
+      if (typeInfo) {
+          for (let j = 0; j < typeInfo.damage_relations.double_damage_from.length; j++) {
+              const weakness = typeInfo.damage_relations.double_damage_from[j].name;
+              if (!weaknesses.includes(weakness)) {
+                  weaknesses.push(weakness);
+              }
+          }
+          for (let j = 0; j < typeInfo.damage_relations.half_damage_to.length; j++) {
+              const weakness = typeInfo.damage_relations.half_damage_to[j].name;
+              if (!weaknesses.includes(weakness)) {
+                  weaknesses.push(weakness);
+              }
+          }
+      }
+  }
+  return weaknesses;
+};
+

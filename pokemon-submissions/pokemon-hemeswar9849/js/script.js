@@ -3,7 +3,7 @@
 const getTheData = () => {
   return new Promise(async (resolve) => {
     try {
-      const fetchedData = await fetch(`https://pokeapi.co/api/v2/pokemon/?offset=0&limit=10`);
+      const fetchedData = await fetch(`https://pokeapi.co/api/v2/pokemon/?offset=0&limit=1032`);
       const resultData = await fetchedData.json();
       resolve(resultData);
     } catch (error) {
@@ -72,7 +72,7 @@ const appendPokemonType = (pokemonContainer, pokemonDetails) => {
 
 const createAContainer = () => {
   const container = document.createElement('div');
-  container.setAttribute('id','containers');
+  container.setAttribute('id', 'containers');
   return container;
 };
 
@@ -103,8 +103,7 @@ const appendAllPokemonDetailsToDocument = (pokemonContainers) => {
   pokemonContainers.forEach(pokemonContainer => {
     container.appendChild(pokemonContainer);
   });
-  main.appendChild(container)
-
+  main.appendChild(container);
 };
 
 const allPokemonDetails = async () => {
@@ -117,64 +116,79 @@ const allPokemonDetails = async () => {
   appendAllPokemonDetailsToDocument(pokemonContainers);
 };
 
+const appendAndRemoveWaitPopup = () => {
+  const main = document.querySelector('main');
+  const waitPopup = document.createElement('div');
+  waitPopup.innerText = `Please wait sometime, while Pokémons are loading`;
+  waitPopup.setAttribute('id', 'waitPopup');
+  main.appendChild(waitPopup);
+  setTimeout(() => {
+    waitPopup.remove();
+  }, 2000);
+}
+
 const searchBarFunctionality = () => {
   const allPokemons = document.querySelectorAll('.aPokemon');
   const searchBar = document.querySelector('#searchBar');
-  allPokemons.forEach((pokemon) => {
-    if (!pokemon.innerText.toUpperCase().includes(searchBar.value.toUpperCase())) {
-      pokemon.classList.add('hide');
-    } else {
-      pokemon.classList.remove('hide');
-    }
-  });
+  if (document.querySelector('#containers')) {
+    allPokemons.forEach((pokemon) => {
+      if (!pokemon.innerText.toUpperCase().includes(searchBar.value.toUpperCase())) {
+        pokemon.classList.add('hide');
+      } else {
+        pokemon.classList.remove('hide');
+      }
+    });
+  } else {
+    appendAndRemoveWaitPopup();
+  }  
 };
 
-const createSearchBar = () => {
-  const searchBar = document.createElement('input');
-  searchBar.placeholder = 'Search Here';
-  searchBar.setAttribute('id', 'searchBar');
+  const createSearchBar = () => {
+    const searchBar = document.createElement('input');
+    searchBar.placeholder = 'Search Here';
+    searchBar.setAttribute('id', 'searchBar');
 
-  return searchBar;
-};
+    return searchBar;
+  };
 
-const createSearchButton = () => {
-  const searchButton = document.createElement('button');
-  searchButton.setAttribute('id', 'searchButton');
-  searchButton.setAttribute('onclick', 'searchBarFunctionality()');
-  searchButton.innerText = 'Search';
+  const createSearchButton = () => {
+    const searchButton = document.createElement('button');
+    searchButton.setAttribute('id', 'searchButton');
+    searchButton.setAttribute('onclick', 'searchBarFunctionality()');
+    searchButton.innerText = 'Search';
 
-  return searchButton;
-};
+    return searchButton;
+  };
 
-const appendSearchBarAndButton = (header) => {
-  const searchBarContainer = document.createElement('div');
-  searchBarContainer.setAttribute('id', 'search');
-  const searchBar = createSearchBar();
-  const searchButton = createSearchButton();
+  const appendSearchBarAndButton = (header) => {
+    const searchBarContainer = document.createElement('div');
+    searchBarContainer.setAttribute('id', 'search');
+    const searchBar = createSearchBar();
+    const searchButton = createSearchButton();
 
-  searchBarContainer.append(searchBar, searchButton);
-  header.appendChild(searchBarContainer);
-};
+    searchBarContainer.append(searchBar, searchButton);
+    header.appendChild(searchBarContainer);
+  };
 
-const appendMainHeading = (header) => {
-  const mainHeading = document.createElement('h1');
-  mainHeading.innerText = 'Pokédex';
-  mainHeading.setAttribute('id', 'mainHeading');
-  header.appendChild(mainHeading);
-};
+  const appendMainHeading = (header) => {
+    const mainHeading = document.createElement('h1');
+    mainHeading.innerText = 'Pokédex';
+    mainHeading.setAttribute('id', 'mainHeading');
+    header.appendChild(mainHeading);
+  };
 
-const appendToHeaders = () => {
-  const header = document.querySelector('header');
-  appendMainHeading(header);
-  appendSearchBarAndButton(header);
-};
+  const appendToHeaders = () => {
+    const header = document.querySelector('header');
+    appendMainHeading(header);
+    appendSearchBarAndButton(header);
+  };
 
-const main = async () => {
-  createAndAppendLoader();
-  const loader = document.querySelector('.loading');
-  appendToHeaders();
-  await allPokemonDetails();
-  loader.remove();
-};
+  const main = async () => {
+    createAndAppendLoader();
+    const loader = document.querySelector('.loading');
+    appendToHeaders();
+    await allPokemonDetails();
+    loader.remove();
+  };
 
-window.onload = main;
+  window.onload = main;

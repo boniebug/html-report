@@ -81,7 +81,7 @@ const createPokemonContainer = async (rawPokemonInfo) => {
 
 const pokemonFetch =async () => {
   const loader = document.querySelector('.loader');
-  const fetchData = await fetch('https://pokeapi.co/api/v2/pokemon/');
+  const fetchData = await fetch('https://pokeapi.co/api/v2/pokemon/?limit=1302&offset=0');
   const fetchResult = await fetchData.json();
   createPokemonContainer(fetchResult['results']);
 };

@@ -13,24 +13,33 @@ const getStrengthAndWeakness = (pokemonTypeid) => {
 const createAMoreDetailsContainer = () => {
   const moreDetailsContainer = document.createElement('div');
   moreDetailsContainer.setAttribute('id', 'moreDetailsContainer');
-
+  
   return moreDetailsContainer;
 };
 
 const closePopup = () => {
+  const body = document.querySelector('body');
   const popup = document.querySelector('#moreDetailsContainer');
+  const popupBackground = document.querySelector('#popupBackground');
+  body.classList.remove('noScroll');
+  popupBackground.remove();
   popup.remove();
+};
+
+const appendBackgroundDiv = () => {
+  const container = document.querySelector('#containers');
+  const backgroundDiv = document.createElement('div');
+  backgroundDiv.setAttribute('id', 'popupBackground');
+  backgroundDiv.setAttribute('onclick', 'closePopup()');
+  container.before(backgroundDiv);
 };
 
 const appendCloseButton = (moreDetailsContainer) => {
   const closeButton = document.createElement('button');
-  const backgroundDiv = document.createElement('div');
-  backgroundDiv.setAttribute('id', 'popupBackground');
   closeButton.innerHTML = '&times';
   closeButton.setAttribute('id', 'closeButton');
-  backgroundDiv.setAttribute('onclick', 'closePopup()');
   closeButton.setAttribute('onclick', 'closePopup()');
-  moreDetailsContainer.append(closeButton, backgroundDiv);
+  moreDetailsContainer.appendChild(closeButton);
 };
 
 const appendPokemonHeight = (moreDetailsContainer, pokemonDetails) => {
@@ -194,6 +203,9 @@ const appendMorePokemonDetailsToContainer = async (pokemonDetails) => {
   const strengthAndWeaknessData = await fetch(pokemonDetails.types[0].type.url);
   const strengthAndWeakness = await strengthAndWeaknessData.json();
   appendCloseButton(moreDetailsContainer);
+  appendPokemonImage(moreDetailsContainer, pokemonDetails);
+  appendBackgroundDiv();
+  appendPokemonName(moreDetailsContainer, pokemonDetails);
   appendPokemonHeight(moreDetailsContainer, pokemonDetails);
   appendPokemonWeight(moreDetailsContainer, pokemonDetails);
   appendPokemonMoves(moreDetailsContainer, pokemonDetails);
@@ -201,11 +213,16 @@ const appendMorePokemonDetailsToContainer = async (pokemonDetails) => {
   appendPokemonStatistics(moreDetailsContainer, pokemonDetails);
   appendPokemonStrength(moreDetailsContainer, strengthAndWeakness);
   appendPokemonWeakness(moreDetailsContainer, strengthAndWeakness);
-
   container.before(moreDetailsContainer);
 };
 
+const makeDocumentNoScroll = () => {
+  const body = document.querySelector('body');
+  body.classList.add('noScroll');
+};
+
 const getMoreDetails = async (clickedPokemon) => {
+  makeDocumentNoScroll();
   const pokemonid = clickedPokemon.querySelector('.pokemonid');
   const pokemonDetails = await getTheDetails(`https://pokeapi.co/api/v2/pokemon/${pokemonid.classList[1]}`);
   appendMorePokemonDetailsToContainer(pokemonDetails);

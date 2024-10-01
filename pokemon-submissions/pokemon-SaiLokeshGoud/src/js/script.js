@@ -126,13 +126,13 @@ const fetchPokemonWeaknesses = async (types) => {
     const typeDetails = await fetchTypeDetails(typeInfo);
     typeWeaknesses.push(...extractWeaknesses(typeDetails));
   }
-  return [...new Set(typeWeaknesses)]; 
+  return [...new Set(typeWeaknesses)];
 };
 
 const createCloseButton = (pokemonMainPopup) => {
   const closeBtn = createElementWithClass('button', 'close-btn', 'Close');
   closeBtn.addEventListener('click', () => {
-    pokemonMainPopup.remove(); 
+    pokemonMainPopup.remove();
   });
   return closeBtn;
 };
@@ -167,13 +167,26 @@ const createPokemonMovesElement = (pokemonDetails) => {
 };
 
 const createPokemonstatisticsElement = (pokemonDetails) => {
-  let statistics = '';
-  pokemonDetails.stats.forEach((statInfo, index) => {
-    statistics += `${statInfo.stat.name}: ${statInfo.base_stat}`;
-    if (index < pokemonDetails.stats.length - 1) statistics += ', ';
+  const statsDiv = createElementWithClass('div', 'pokemon-statistics');
+
+  pokemonDetails.stats.forEach(statInfo => {
+    const statContainer = createElementWithClass('div', 'stat-container');
+    const statName = createElementWithClass('span', 'stat-name', statInfo.stat.name);
+    const statValue = createElementWithClass('span', 'stat-value', `:${statInfo.base_stat}`);
+
+    const statBar = createElementWithClass('div', 'stat-bar');
+    const statProgress = createElementWithClass('div', 'stat-progress');
+    statProgress.style.width = `${statInfo.base_stat}%`; 
+    statProgress.style.backgroundColor = 'green'; 
+
+    statBar.appendChild(statProgress);
+    statContainer.append(statName, statValue, statBar);
+    statsDiv.appendChild(statContainer);
   });
-  return createElementWithClass('p', 'pokemon-statistics', `Statistics: ${statistics}`);
+
+  return statsDiv;
 };
+
 
 const createPokemonWeaknessesElement = async (pokemonDetails) => {
   const weaknesses = await fetchPokemonWeaknesses(pokemonDetails.types);
@@ -211,7 +224,7 @@ const displayPokemons = async (pokemonResults) => {
     try {
       const response = await fetch(pokemonResults[i].url);
       const pokemonsDetails = await response.json();
-      
+
       const pokemonName = fetchPokemonName(pokemonResults, i);
       const pokemonType = fetchPokemonType(pokemonsDetails);
       const pokemonId = fetchPokemonId(pokemonsDetails);

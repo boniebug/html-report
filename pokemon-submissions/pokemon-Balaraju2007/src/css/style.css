@@ -1,12 +1,14 @@
 .pokemon {
     height: 35vh;
-    width: 12vw;
-    padding-right: 30px;
+    padding-right: 0px;
     overflow: hidden;
 }
 .groupPokemonAndButton {
     border: 1px solid black;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
+    width: 16vw;
+    height: 37.8vh;
+    background-color: white;
 }
 img {
     aspect-ratio: 1;
@@ -26,7 +28,7 @@ img {
     top:140px;
 }
 p{
-    font-size: 15.5px;
+    font-size: 15px;
     text-align: center;
 }
 header {

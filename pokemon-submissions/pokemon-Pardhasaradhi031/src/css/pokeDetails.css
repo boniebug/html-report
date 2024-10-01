@@ -1,14 +1,25 @@
-
 .pokeInfoButton {
   padding: 5px 7px;
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  background-color: #1c1f33;
+  color: white;
+  border-radius: 2px 0px 0px 0px;
+  cursor: pointer;
+}
+
+p {
+  font-weight: 500;
+  width: 90%;
 }
 
 .pokemonDataContainer {
   position: absolute;
   top: 30%;
-  left: 50%;
-  height: 243px;
-  border: 2px solid black;
+  left: 35%;
+  height: 410px;
+  border: 3px solid black;
   aspect-ratio: 1;
   display: flex;
   justify-content: center;
@@ -17,5 +28,167 @@
 }
 
 .pokemonDataContainer img {
-  height: 120px;
+  height: 235px;
+  position: relative;
+  bottom: 40px;
+}
+
+.pokemonId {
+  font-weight: bolder;
+  font-size: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  position: absolute;
+  top: 0px;
+  left: 5px;
+}
+
+.pokemonName {
+  font-weight: bolder;
+  font-size: 25px;
+  position: relative;
+  top: 65%;
+  display: flex;
+  gap: 12px;
+}
+
+.pokemonName span {
+  display: none;
+}
+
+.pokemonName p {
+  position: relative;
+  right: 13px;
+  width: 112%;
+}
+
+.pokemonType {
+  display: flex;
+  gap: 9px;
+  position: relative;
+  top: 9%;
+  font-size: 14px;
+}
+
+.pokemonHeight {
+  position: absolute;
+  left: 119%;
+  width: 30%;
+  border: 3px solid black;
+  height: 100px;
+  top: 85%;
+  padding-left: 5px;
+}
+
+.pokemonWeight {
+  position: absolute;
+  top: 95%;
+  left: 119%;
+  width: 30%;
+  height: 100px;
+  padding-left: 5px;
+}
+
+.pokemonHeight p,
+.pokemonWeight p {
+  margin-left: 2%;
+  margin-top: 2%;
+}
+
+.pokemonSize div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pokemonSize div p {
+  font-size: 11px;
+  margin: 0px 0px 0px 7px
+}
+
+.pokemonHeight span,
+.pokemonWeight span,
+.pokemonType span,
+.pokemonAbilities span,
+.pokemonStatistics div,
+.pokemonWeakness span {
+  font-weight: bolder;
+  font-size: 15px;
+}
+
+.pokemonMoves p {
+  font-weight: bolder;
+  width: 100%;
+  position: relative;
+  top: 0%;
+  left: 1%;
+  margin-bottom: 2%;
+}
+
+.pokemonMoves {
+  position: absolute;
+  bottom: -16%;
+  right: 110%;
+  border: 3px solid black;
+  width: 78%;
+  aspect-ratio: 1;
+  padding: 4%;
+}
+
+.pokemonAbilities {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  bottom: 96%;
+  left: 120%;
+  width: 32%;
+  border: 3px solid black;
+  height: fit-content;
+  padding: 2%;
+}
+
+.pokemonAbilities p {
+  margin-top: 4px;
+  text-align: start;
+}
+
+.pokemonStatistics {
+  position: absolute;
+  top: 170px;
+  left: 120%;
+  width: 40%;
+  line-height: 18px;
+  border: 3px solid black;
+  padding: 2%;
+}
+
+.pokemonStatistics p {
+  font-weight: bolder;
+}
+
+.pokemonStatistics span {
+  font-weight: 400;
+}
+
+.pokemonWeakness {
+  position: absolute;
+  top: 10%;
+  left: 120%;
+  width: 35%;
+  border: 3px solid black;
+  padding: 2%;
+}
+
+.closeDetails {
+  font-weight: bolder;
+  position: absolute;
+  left: 90%;
+  padding: 7px 18px;
+  border: none;
+  font-size: 26px;
+  cursor: pointer;
+  background-color: transparent;
+  top: -14px;
 }

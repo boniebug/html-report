@@ -17,20 +17,20 @@ document.addEventListener('DOMContentLoaded', function() {
         .then(data => {
           allPokemon = data.results;
           loadPokemonDetails();
-          loadingElement.style.display = 'none'; // Hide the loading text
+          loadingElement.style.display = 'none';  
         });
     }
   
     function loadPokemonDetails() {
-      let i = 0;
-      while (i < allPokemon.length) {
-        let url = allPokemon[i].url;
+      let index = 0;
+      while (index < allPokemon.length) {
+        let url = allPokemon[index].url;
         fetch(url)
           .then(response => response.json())
           .then(pokemon => {
             createPokemonBox(pokemon);
           });
-        i++;
+        index++;
       }
     }
   
@@ -45,8 +45,8 @@ document.addEventListener('DOMContentLoaded', function() {
   
       const types = document.createElement('p');
       let typeText = 'Types: ';
-      for (let i = 0; i < pokemon.types.length; i++) {
-        typeText += pokemon.types[i].type.name + ' ';
+      for (let index = 0; index < pokemon.types.length; index++) {
+        typeText += pokemon.types[index].type.name + ' ';
       }
       types.textContent = typeText;
   
@@ -63,22 +63,22 @@ document.addEventListener('DOMContentLoaded', function() {
   
       const moves = document.createElement('p');
       let moveText = 'Moves: ';
-      for (let j = 0; j < Math.min(pokemon.moves.length, 5); j++) {
-        moveText += pokemon.moves[j].move.name + ' ';
+      for (let move = 0; move < Math.min(pokemon.moves.length, 5); move++) {
+        moveText += pokemon.moves[move].move.name + ' ';
       }
       moves.textContent = moveText;
   
       const abilities = document.createElement('p');
       let abilityText = 'Abilities: ';
-      for (let k = 0; k < pokemon.abilities.length; k++) {
-        abilityText += pokemon.abilities[k].ability.name + ' ';
+      for (let ability = 0; ability < pokemon.abilities.length; ability++) {
+        abilityText += pokemon.abilities[ability].ability.name + ' ';
       }
       abilities.textContent = abilityText;
   
       const stats = document.createElement('p');
       let statsText = 'Stats: ';
-      for (let l = 0; l < pokemon.stats.length; l++) {
-        statsText += `${pokemon.stats[l].stat.name}: ${pokemon.stats[l].base_stat} `;
+      for (let stat = 0; stat < pokemon.stats.length; stat++) {
+        statsText += `${pokemon.stats[stat].stat.name}: ${pokemon.stats[stat].base_stat} `;
       }
       stats.textContent = statsText;
   
@@ -115,8 +115,8 @@ document.addEventListener('DOMContentLoaded', function() {
       const searchValue = searchBar.value.toLowerCase();
       const pokemonBoxes = pokemonContainer.getElementsByClassName('pokemon-box');
   
-      for (let i = 0; i < pokemonBoxes.length; i++) {
-        const pokemonBox = pokemonBoxes[i];
+      for (let index = 0; index < pokemonBoxes.length; index++) {
+        const pokemonBox = pokemonBoxes[index];
         const pokemonName = pokemonBox.querySelector('h4').textContent.toLowerCase();
         const pokemonTypes = pokemonBox.querySelector('p').textContent.toLowerCase();
   

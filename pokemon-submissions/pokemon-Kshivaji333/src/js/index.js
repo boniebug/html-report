@@ -1,9 +1,13 @@
 
-const showLoader = () => {
-  const container = document.querySelector('main');
+const showLoader = (container) => {
+  if (!container) {
+    container = document.querySelector('main');
+  }
   const loader = document.createElement('div');
   loader.className = 'loader';
   container.appendChild(loader);
+
+  return loader;
 };
 
 const fetchAndAppendPokemons = async (count) => {
@@ -15,7 +19,7 @@ const fetchAndAppendPokemons = async (count) => {
 const loadShortList = () => {
   let count = 200;
   let length = dataOfAllpokemons.names.length;
-  
+
   window.onscroll = () => {
     const documentHeight = document.documentElement.scrollHeight;
     if (window.scrollY + window.innerHeight >= documentHeight && count <= length) {
@@ -33,9 +37,15 @@ const loadShortList = () => {
 
 };
 
-const removeLoader = () => {
-  const container = document.querySelector('main');
-  const loader = document.querySelector('.loader');
+const removeLoader = (container, loader) => {
+  if (!container) {
+    container = document.querySelector('main');
+  }
+
+  if (!loader) {
+    loader = document.querySelector('.loader');
+  }
+
   if (loader) {
     container.removeChild(loader);
   }

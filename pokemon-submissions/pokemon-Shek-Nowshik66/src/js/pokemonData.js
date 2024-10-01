@@ -126,7 +126,7 @@ const formatWeaknesses = (weaknesses) => {
   return weak;
 };
 
-const appenWeakness = async (pokemonInfo, url) => {
+const appendWeakness = async (pokemonInfo, url) => {
   const weaknessContainer = document.createElement('span');
   const alltypes = url['types'];
   let weaknesses = [];
@@ -153,7 +153,7 @@ const redirectPokemon = (pokemonData, pokemonInfo, url) => {
   pokemonInfo.removeChild(removeButton);
   morePokemonDetails.appendChild(pokemonInfo);
   appendNewDetails(pokemonInfo, url);
-  appenWeakness(pokemonInfo,url);
+  appendWeakness(pokemonInfo,url);
 }
 
 const pokemonFullData = (url) => {

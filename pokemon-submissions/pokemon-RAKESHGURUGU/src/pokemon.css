@@ -70,7 +70,7 @@ body {
   padding-left: 15px;
   border-radius: 10px;
   width: 200px;
-  height: 350px;
+  height: 360px;
   margin: 10px 10px;
   background-color: white;
   box-shadow: 1px 1px 15px rgba(89, 89, 89, 0.507);
@@ -78,6 +78,11 @@ body {
 }
 
 .pokemonName {
+  padding: 5px 10px 5px 15px;
+  background-color: rgba(255, 217, 0, 0.753);
+  border: 2px solid gold;
+  border-bottom-left-radius: 15px;
+  border-top-left-radius: 15px;
   font-size: larger;
   font-weight: 600;
 }
@@ -85,22 +90,27 @@ body {
 .pokemonId {
   font-size: large;
   margin: 0px;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .pokemonTypeContainer {
   font-size: large;
   font-weight: 500;
   margin: 0px;
+  display: flex;
+  flex-wrap: wrap;
 }
 
-.pokemonType {
-  font-size: large;
+.PokemonType {
+  font-size: medium;
   font-weight: 500;
-  margin: 0px 0px 3px 0px;
+  padding: 0px;
+  margin: 0px  25px 0px 5px;
 }
 
 .printPokemonList {
+  display: flex;
+  flex-wrap: wrap;
   margin: 2px 0px 8px 0px;
 }
 
@@ -108,29 +118,40 @@ body {
   margin: 8px 0px 8px 0px;
   display: flex;
   flex-wrap: wrap;
-  font-size: small;
+  font-size: medium;
   font-weight: 500;
 }
 
 .pokemonStatContainer {
-  margin: 8px 0px 8px 0px;
+  margin: 5px 0px 5px 0px;
   display: flex;
   flex-wrap: wrap;
-  font-size: small;
+  font-size: medium;
   font-weight: 500;
+}
+
+.PokemonStat {
+  margin: 0px 5px;
 }
 
 .pokemonAbilityContainer {
-  margin: 8px 0px 8px 0px;
+  margin: 5px 0px 5px 0px;
   display: flex;
   flex-wrap: wrap;
-  font-size: small;
+  font-size: medium;
   font-weight: 500;
 }
 
-.pokemonWeaknessContainer {
-  font-size: small;
+.pokemonweaknessContainer {
+  font-size: medium;
   font-weight: 500;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 5px 5px;
+}
+
+.PokemonWeakness {
+  margin: 0px 5px;
 }
 
 .PokemonMove {
@@ -146,22 +167,36 @@ body {
 .readMoreInfo {
   color: blue;
   cursor: pointer;
+  margin-top: 7px;
 }
 
 .readMoreInfo:hover {
   text-decoration: underline;
 }
 
-.pokemonHeight {
-  font-size: large;
+.heightAndWeight {
+  font-size: medium;
   font-weight: 500;
-  margin: 5px 0px 0px 0px;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0px;
+}
+
+.pokemonHeight {
+  font-size: medium;
+  font-weight: 500;
+  margin: 0px 10px;
 }
 
 .pokemonWeight {
-  font-size: large;
+  font-size: medium;
   font-weight: 500;
-  margin: 0px 0px 5px 0px;
+  margin: 0px;
+}
+
+.heading {
+  font-weight: bold;
+  margin: 0px 10px;
 }
 
 #loader {
@@ -183,8 +218,8 @@ body {
   top: 60px;
   right: 0px;
   border: none;
-  padding: 20px 40px;
-  width: 95.84%;
+  padding: 0px 0px 0px 30px;
+  width: 100%;
 }
 
 #popCloseButton {
@@ -197,4 +232,5 @@ body {
   border: none;
   border-radius: 5px;
   letter-spacing: 2px;
+  cursor: pointer;
 }

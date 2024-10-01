@@ -109,7 +109,7 @@ body {
   border: 1px solid black;
   opacity: 200 !important;
   position: fixed;
-  top: 90px;
+  top: 85px;
   left: 30vw;
   z-index: 1;
   width: 500px;
@@ -136,8 +136,20 @@ body {
   border: none;
 }
 
-.detail-unit-name {
+.detail-unit-name,
+.detail-unit-id,
+.detail-unit-type,
+.detail-unit-moves,
+.detail-unit-abilities,
+.detail-unit-stats,
+.detail-unit-weakness,
+.detail-unit-moves {
   position: absolute;
+  text-wrap: wrap;
+  text-transform: capitalize;
+}
+
+.detail-unit-name {
   top: 0;
   left: 20px;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
@@ -146,7 +158,6 @@ body {
 }
 
 .detail-unit-id {
-  position: absolute;
   right: 100px;
   top: -5px;
   font-size: larger;
@@ -154,22 +165,19 @@ body {
 }
 
 .detail-unit-type {
-  position: absolute;
-  left: 200px;
+  right: 50px;
   top: 60px;
 }
 
 .detail-unit-moves {
   border: 1px solid black;
   font-size: small;
-  width: 310px;
+  width: 150px;
   max-height: 200px;
-  position: absolute;
-  right: 10px;
   top: 100px;
-  text-wrap: wrap !important;
-  overflow-y: scroll;
-  overflow-x: hidden;
+  right: 10px;
+  padding: 5px;
+  overflow: hidden scroll;
 }
 
 .detail-unit-heigth,
@@ -186,7 +194,6 @@ body {
 }
 
 .detail-unit-abilities {
-  position: absolute;
   bottom: 0;
   border: 1px solid black;
   width: 500px;
@@ -196,19 +203,13 @@ body {
 .detail-unit-weakness {
   border: 1px solid black;
   margin-top: 10px;
-  width: 180px;
   height: fit-content;
-  text-wrap: wrap;
-  word-break:break-all;
+  max-width: 330px;
 }
-
 
 .detail-unit-stats {
   border: 1px solid black;
   margin-top: 10px;
-  position: absolute;
-  bottom:100px;
+  bottom: 130px;
   height: fit-content;
-  text-wrap: wrap;
-  word-break:break-all;
 }

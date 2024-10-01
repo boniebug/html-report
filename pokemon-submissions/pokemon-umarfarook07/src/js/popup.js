@@ -1,56 +1,49 @@
+'use strict';
+
 const createCloseButton = (popup) => {
   const closeButton = document.createElement('button');
   closeButton.textContent = 'Close';
   closeButton.classList.add('close-btn');
-  closeButton.onclick = () => popup.close();
+  closeButton.onclick = () => hidePopup(popup);
   return closeButton;
 };
 
-const showPopup = (popupMessage) => {
-  if (document.getElementById('popup-message')) return;
+const createPopup = (content, className = 'popup-message', autoHide = false, hideTime = 2000) => {
+  if (document.getElementById(className)) return;
 
-  const loadingPopup = document.createElement('dialog');
-  loadingPopup.id = 'popup-message';
-  loadingPopup.classList.add('popup-message');
+  const popup = createNewElement('dialog', className);
+  popup.id = className;
 
-  const message = document.createElement('p');
-  message.innerText = popupMessage;
-  loadingPopup.appendChild(message);
+  if (typeof content === 'string') {
+    const message = createNewElement('p', '', content);
+    popup.appendChild(message);
+  } else {
+    popup.appendChild(content);
+  }
 
-  const closeButton = createCloseButton(loadingPopup);
-  loadingPopup.appendChild(closeButton);
+  const closeButton = createCloseButton(className);
+  popup.appendChild(closeButton);
 
-  document.body.appendChild(loadingPopup);
-  loadingPopup.showModal();
+  document.body.appendChild(popup);
 
-  setTimeout(() => {
-    hidePopup();
-  }, 2000);
+  if (autoHide) {
+    setTimeout(() => {
+      hidePopup(className);
+    }, hideTime);
+  }
+  return popup;
 };
 
-const hidePopup = () => {
-  const loadingPopup = document.getElementById('popup-message');
-  if (loadingPopup) {
-    loadingPopup.close();
-    loadingPopup.remove();
+const hidePopup = (popupId = 'popup-message') => {
+  const popup = document.getElementById(popupId);
+  if (popup) {
+    popup.close();
+    popup.remove();
   }
 };
 
 const showLoadingPopup = () => {
-  showPopup('Content is still loading...');
+  const loadingPopup = createPopup('Content is still loading...', 'loading-popup', true);
+  loadingPopup.showModal();
 };
 
-const createPokemonDetailsPopup = (pokemon) => {
-  const detailsPopup = document.createElement('dialog');
-  detailsPopup.classList.add('popup-details');
-
-  const content = createPokemonDetailsContent(pokemon);
-  const closeButton = createCloseButton(detailsPopup);
-
-  detailsPopup.appendChild(content);
-  detailsPopup.appendChild(closeButton);
-
-  document.body.appendChild(detailsPopup);
-
-  return detailsPopup;
-};

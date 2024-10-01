@@ -7,17 +7,18 @@ const loadingSymbol = document.getElementById('loadingSymbol');
 const modal = document.getElementById('modal');
 const modalInfo = document.getElementById('modal-info');
 const closeModal = document.querySelector('.close');
-
+let allPokemons = [];
 async function fetchPokemons() {
     showLoading(true);
     const pokemons = [];
-    for (let i = 1; i <= 20; i++) {
+    for (let i = 1; i <= 18; i++) {
         const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${i}`);
         if (response.ok) {
             pokemons.push(await response.json());
         }
     }
     hideLoading();
+    allPokemons = pokemons;
     return pokemons;
 }
 
@@ -36,7 +37,14 @@ function displayPokemon(pokemon) {
     pokemonId.textContent = `ID: ${pokemon.id}`;
 
     const pokemonType = document.createElement('div');
-    pokemonType.textContent = `Type: ${pokemon.types.map(t => t.type.name).join(', ')}`;
+    let typeNames = '';
+    for (let i = 0; i < pokemon.types.length; i++) {
+        typeNames += pokemon.types[i].type.name;
+        if (i < pokemon.types.length - 1) {
+            typeNames += ', ';
+        }
+    }
+    pokemonType.textContent = `Type: ${typeNames}`;
 
     const detailsButton = document.createElement('button');
     detailsButton.textContent = 'Extra details';
@@ -57,17 +65,17 @@ function showDetails(pokemon) {
     weight.textContent = `Weight: ${pokemon.weight / 10} kg`;
 
     let stats = '';
-    pokemon.stats.forEach(s => {
-        stats += `${s.stat.name}: ${s.base_stat}, `;
-    });
+    for (let i = 0; i < pokemon.stats.length; i++) {
+        stats += `${pokemon.stats[i].stat.name}: ${pokemon.stats[i].base_stat}, `;
+    }
     stats = stats.slice(0, -2);
     const statsElement = document.createElement('p');
     statsElement.textContent = `Stats: ${stats}`;
 
     let abilities = '';
-    pokemon.abilities.forEach(a => {
-        abilities += `${a.ability.name}, `;
-    });
+    for (let i = 0; i < pokemon.abilities.length; i++) {
+        abilities += `${pokemon.abilities[i].ability.name}, `;
+    }
     abilities = abilities.slice(0, -2);
     const abilitiesElement = document.createElement('p');
     abilitiesElement.textContent = `Abilities: ${abilities}`;
@@ -87,7 +95,7 @@ function showDetails(pokemon) {
     modal.classList.remove('hidden');
     document.body.style.overflow = 'hidden';
 }
-
+fetch
 
 function getWeaknesses(types) {
     const typeWeaknesses = {
@@ -116,23 +124,28 @@ function hideLoading() {
 }
 
 fetchPokemons().then(pokemons => {
-    pokemons.forEach(displayPokemon);
+    for (let i = 0; i < pokemons.length; i++) {
+        displayPokemon(pokemons[i]);
+    }
 });
 
 searchButton.addEventListener('click', () => {
     const query = searchInput.value.trim();
+    pokemonContainer.innerHTML = '';
+
     if (query) {
-        pokemonContainer.innerHTML = '';
-        fetchPokemons().then(pokemons => {
-            const filteredPokemons = pokemons.filter(p => p.name.toLowerCase().includes(query.toLowerCase()));
-            filteredPokemons.forEach(displayPokemon);
+        const filteredPokemons = allPokemons.filter(pokemon => {
+            const nameMatches = pokemon.name.toLowerCase().includes(query.toLowerCase());
+            const idMatches = pokemon.id.toString() === query;
+            const typeMatches = pokemon.types.some(type => type.type.name.toLowerCase().includes(query.toLowerCase()));
+            return nameMatches || idMatches || typeMatches;
         });
+
+        filteredPokemons.forEach(displayPokemon);
     } else {
-        pokemonContainer.innerHTML = '';
         fetchPokemons().then(pokemons => pokemons.forEach(displayPokemon));
     }
 });
-
 closeModal.onclick = () => {
     modal.classList.add('hidden');
     document.body.style.overflow = '';

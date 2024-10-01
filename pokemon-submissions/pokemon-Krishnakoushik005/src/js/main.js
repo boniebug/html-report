@@ -1,22 +1,39 @@
 'use strict';
 
+const handleClickOutside = (event) => {
+  const div = document.querySelector('.popup');
+  if (!div.contains(event.target)) {
+    div.remove();
+    document.removeEventListener('click', handleClickOutside);
+  }
+};
+
+const removePopup = function (popup) {
+  popup.remove();
+};
+
 const createPopup = function (childs) {
   const div = document.createElement('div');
   div.className = 'popup';
+  const b1 = document.createElement('button');
+  b1.innerText = 'X';
+  b1.addEventListener('click', () => removePopup(div));
+  div.append(b1);
   childs.forEach(element => div.appendChild(element));
-  const button = document.createElement('button');
-  button.innerText = 'close';
-  button.addEventListener('click', () => div.remove());
-  div.append(button);
+  const b2 = document.createElement('button');
+  b2.innerText = 'close';
+  b2.addEventListener('click', () => removePopup(div));
+  div.append(b2);
   document.querySelector('main').append(div);
+  document.addEventListener('click', handleClickOutside);
 };
 
 const createElements = function (data) {
-  const h3 = document.createElement('h3');
-  h3.innerText = data[0];
+  const h2 = document.createElement('h2');
+  h2.innerText = data[0];
   const img = document.createElement('img');
   img.src = data[1];
-  const tags = [h3, img];
+  const tags = [h2, img];
   for (let index = 2; index < data.length; index++) {
     const p = document.createElement('p');
     p.innerText = data[index];
@@ -25,18 +42,26 @@ const createElements = function (data) {
   return tags;
 };
 
-const moreDetials = async function (details) {
+const getWeekness = async function (types) {
+  const response = await fetch(types[0].type.url);
+  const data = await response.json();
+  const weekness = (data.damage_relations.double_damage_from).map(element => element.name).join(',');
+  return `Weekness : ${weekness}`;  
+};
+
+const moreDetails = async function (details) {
   const response = await fetch(details[details.length - 1]);
   const data = await response.json();
   console.log(data);
-  
+
   const id = `ID : ${details[2]}`;
   const type = `Type : ${details[3]}`;
   const heightWeight = `Height & Weight : ${data.height} & ${data.weight}`;
   const moves = `Moves : ${data.moves.map(move => move.move.name).join(', ')}`;
   const abilities = `Abilities : ${data.abilities.map(ability => ability.ability.name).join(', ')}`;
   const stats = `Stats : ${data.stats.map(stat => `${stat.stat.name}: ${stat.base_stat}`).join(', ')}`;
-  const tags = createElements([details[0], details[1], id, type, heightWeight, moves, abilities, stats]);
+  const weekness = await getWeekness(data.types);
+  const tags = createElements([details[0], details[1], id, type, heightWeight, moves, abilities, stats, weekness]);
   createPopup(tags);
 };
 
@@ -53,7 +78,7 @@ const appendPoke = function (data) {
     section.append(tags[index]);
   }
   document.querySelector('.allPokemon').append(section);
-  section.addEventListener('click', () => moreDetials(data));
+  section.addEventListener('click', () => moreDetails(data));
 };
 
 const getPokeDetials = async function (url) {

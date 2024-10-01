@@ -51,18 +51,19 @@ const handleSearch = () => {
 
   showLoadingIndicator();
 
-  let hasMatch = false;
+  let visibleCards = 0;
 
   pokemonCards.forEach((card) => {
     const isMatch = isPokemonMatch(card, searchValue);
     card.style.display = isMatch ? '' : 'none';
     if (isMatch) {
-      hasMatch = true;
+      visibleCards++;
     }
   });
-
-  if (!hasMatch) {
-    showPopup('No matches found for your search.');
+  console.log(visibleCards);
+  if (!visibleCards) {
+    const noMatchesFoundPopup = createPopup('No matches found for your search.');
+    noMatchesFoundPopup.showModal();
   }
 
   hideLoadingIndicator();

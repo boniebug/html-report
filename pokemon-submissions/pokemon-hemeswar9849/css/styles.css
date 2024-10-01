@@ -11,13 +11,26 @@ header {
   position: sticky;
   top: 0;
   left: 0;
-
   background-color: #000;
   color: #fff;
   padding: 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+#waitPopup {
+  height: 100px;
+  font-family: "Flexo-Demi", arial, sans-serif;
+  background-color: #000;
+  color: #fff;
+  padding: 30px;
+  position: fixed;
+  top: 10vw;
+  left: 80vh;
+  display: flex;
+  align-items: center;
+  z-index: 20;
 }
 
 #search {
@@ -59,7 +72,7 @@ header {
 .pokemonName {
   font-size: 30px;
   font-family: "Flexo-Demi", arial, sans-serif;
-  text-transform: none;
+  padding-bottom: 10px;
 }
 
 .pokemonImage {
@@ -119,7 +132,6 @@ h3 {
   position: fixed;
   background-color: black;
   opacity: 80%;
-  z-index: -1;
 }
 
 #closeButton {
@@ -131,4 +143,8 @@ h3 {
 
 .hide {
   display: none;
+}
+
+.noScroll {
+  overflow-y: hidden;
 }

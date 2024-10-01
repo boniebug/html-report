@@ -104,6 +104,10 @@ margin-left: 10px;
   z-index: 10;
 }
  
+.pokemonHeading{
+  font-size: 25px;
+}
+
 .closeButton{
  margin-left: 550px;
 background-color: black;

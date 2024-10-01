@@ -6,7 +6,7 @@ const getPokemonCount = async function () {
 
 const fetchPokemonData = async function () {
   try{
-  const url = await fetch('https://pokeapi.co/api/v2/pokemon?limit=1032&offset=0');
+  const url = await fetch('https://pokeapi.co/api/v2/pokemon?limit=1302&offset=0');
   const pokemon = await url.json();
   return pokemon;
   }
@@ -74,13 +74,17 @@ const fetchHeightAndWeight = function(properties, height, weight, hidden) {
 };
 
 const fetchWeakness = async function (properties, weakness, hidden) {
-  const weaknessUrl= await fetch(`${properties.types['0'].type.url}`);
-  const response = await weaknessUrl.json();
+  weakness.innerText = 'weakness =';
   const damage = [];
+  for (let index = 0;index<properties.types.length;index++) {
+  const weaknessUrl= await fetch(`${properties.types[index].type.url}`);
+  const response = await weaknessUrl.json();
   for(let index = 0; index < response.damage_relations.double_damage_from.length;index ++) {
     damage.push(`${response.damage_relations.double_damage_from[index].name}`);
   }
-  weakness.innerText = `weakness : ${damage} `;
+  weakness.innerText += ` ${damage} `;
+ }  
+  
   hidden.append(weakness);
 };
 

@@ -34,49 +34,49 @@ const createDivTag = (classname) => {
   return div;
 };
 
-const createTable = (heading , data, className) => {
-  const container = createDivTag(className);
-  container.append(createPTag(heading,'heading'));
-  for (let index = 0; index < data.length; index++){
-    const detail = createPTag(data[index] , 'details');
-    container.append(detail)
-  }
-  return container;
-}
-
 const createFullDetailsStructure = (details) => {
   const container = createDivTag('full-details');
   const image = createImgTag(details.image, 'full-details-image');
   const fullDetails = createDivTag('details');
-  const id = createPTag('ID : ' + details.id, 'detail');
-  const name = createPTag('Name : ' + details.name, 'detail');
-  const types = createPTag('Types : ' + details.types, 'detail');
-  const weight = createPTag('Weight : ' + details.weight, 'detail');
-  const height = createPTag('Height : ' + details.height, 'detail');
-  const tablesContainer = createDivTag('tables-container');
-  const moves = createTable('Moves' , details.moves, 'tables');
-  const abilitys = createTable( 'Abilities', details.abilitys, 'tables');
-  const stats = createTable('Statistics',details.stats, 'tables');
-  tablesContainer.append( moves, abilitys, stats)
-  fullDetails.append(id, name, types, weight, height,tablesContainer);
-  container.append(image, fullDetails);
+  for (let key in details) {
+    if (key !== 'image') {
+      fullDetails.append(createPTag(`${key} : ${details[key]}`, 'detail'));
+    }
+  }
+  const closeButton = document.createElement('button');
+  closeButton.innerText = 'X';
+  closeButton.addEventListener('click', (event) => {
+    removeElement('.full-details-container');
+  });
+  container.append(closeButton, image, fullDetails);
   return container;
-}
+};
+
+const getWeaknesses = async (types) => {
+  const weaknesses = [];
+  for (const type of types) {
+    const data = await getData(`https://pokeapi.co/api/v2/type/${type.type.name}`);
+    const weaknessResults = data.damage_relations.double_damage_from;
+    weaknesses.push(weaknessResults.map(type => type.name));
+  }
+  return weaknesses;
+};
 
 const getFullDetails = async (id) => {
   const data = await getData(`https://pokeapi.co/api/v2/pokemon/${id}`);
   const fullDetails = {
-    name: data.name,
-    id: data.id,
     image: data.sprites.other['official-artwork'].front_default,
-    types: data.types.map(element => element.type.name),
-    weight: data.weight,
+    id: data.id,
+    name: data.name,
     height: data.height,
-    moves: data.moves.map(element => element.move.name),
+    weight: data.weight,
+    types: data.types.map(element => element.type.name),
     abilitys: data.abilities.map(element => element.ability.name),
+    weakness: await getWeaknesses(data.types),
     stats: data.stats.map(element => {
-      return [element.stat.name,element.base_stat]
+      return [element.stat.name + '-' + element.base_stat]
     }),
+    moves: data.moves.map(element => element.move.name),
   }
   return fullDetails;
 };
@@ -85,11 +85,6 @@ const showFullDetails = async (id) => {
   const details = await getFullDetails(id);
   const fullDetailsStructure = createFullDetailsStructure(details);
   const container = createDivTag('full-details-container');
-  container.addEventListener('click', (event) => {
-    if (event.target.className !== 'full-details') {
-      removeElement('.full-details-container');
-    }
-  })
   container.append(fullDetailsStructure);
   document.querySelector('#main').append(container);
   removeElement('#loader-background');
@@ -140,9 +135,6 @@ const activateSearch = () => {
       hideElement('#search-results');
     }
   });
-  // searchBar.addEventListener('blur', () => {
-  //   hideElement('#search-results');
-  // });
 };
 
 const showErrorOnScreen = () => {
