@@ -14,9 +14,9 @@ const getPromises = async () => {
     })
   const promiseArray = [];
   for (let index = 0; index < count; index += 100) {
-    promiseArray.push(fetchData(index)); // Push fetch promises into array
+    promiseArray.push(fetchData(index));
   }
-  return promiseArray; // Return array of fetch promises
+  return promiseArray;
 };
 
 const getTypes = (data) => {
@@ -32,44 +32,45 @@ const getTypes = (data) => {
 
 const getWeakness = async (types) => {
   const weakTypes = [];
-  for(const typeName of types) {
-   await fetch(`https://pokeapi.co/api/v2/type/${typeName}/`)
-      .then((response) => {return response.json()})
+  for (const typeName of types) {
+    await fetch(`https://pokeapi.co/api/v2/type/${typeName}/`)
+      .then((response) => { return response.json() })
       .then((response) => {
-        for(const type of response.damage_relations.double_damage_from) {
+        for (const type of response.damage_relations.double_damage_from) {
           weakTypes.push(type.name);
         }
       })
   }
-  return weakTypes; 
+  return weakTypes;
+};
+
+const createData = async (response) => {
+  const pokemonData = {};
+  pokemonData.type = response.types.map((typeObject) => {return typeObject.type.name});
+  pokemonData.id = response.id;
+  pokemonData.name = response.name;
+  pokemonData.imageUrl = response.sprites.other.dream_world.front_default || response.sprites.front_default;
+  pokemonData.base = response.base_experience || 'UN-BEATEABLE';
+  pokemonData.height = response.height;
+  pokemonData.weight = response.weight;
+  pokemonData.stats = response.stats.map((statObject) => {return {value : statObject.base_stat, name : statObject.stat.name}});
+  pokemonData.moves = response.moves.map((moveObject) => { return moveObject.move.name })
+  pokemonData.abilities = response.abilities.map((abilitieObject) => { return abilitieObject.ability.name })
+  pokemonData.weakness = await getWeakness([...pokemonData.type]);
+  return pokemonData;
 };
 
 const pokemonDataArray = [];
 const getSinglePokemon = async (url) => {
   return await fetch(url)
-    .then((response) => {return response.json()})
+    .then((response) => { return response.json() })
     .then(async (response) => {
-      const pokemonData = {};
-      pokemonData.type = [];
-      response.types.forEach((types) => {
-        pokemonData.type.push(types.type.name)
-      });
-      pokemonData.id = response.id;
-      pokemonData.name = response.name;
-      pokemonData.imageUrl = response.sprites.other.dream_world.front_default || response.sprites.front_default;
-      pokemonData.base = response.base_experience || 'UN-BEATEABLE';
-      pokemonData.height = response.height;
-      pokemonData.weight = response.weight;
-      pokemonData.moves = response.moves.map((moveObject) => {return moveObject.move.name})
-      pokemonData.abilities = response.abilities.map((abilitieObject) => {return abilitieObject.ability.name})
-      pokemonData.weakness = await getWeakness(pokemonData.type);
+      const pokemonData = await createData(response);
       pokemonDataArray.push(pokemonData);
-      // console.log(pokemonData);
-      addPokemon(pokemonData);
       return pokemonData;
     })
     .catch((error) => {
-      console.log('error : '+ error);
+      console.log('error : ' + error);
     })
 };
 const getData = async () => {
@@ -77,13 +78,15 @@ const getData = async () => {
     const promises = await getPromises();
     const results = await Promise.all(promises);
     const urlArray = results.flat(10).map((pokemon) => pokemon.url);
-    const dataArray = await Promise.all(urlArray.map((url) => { getSinglePokemon(url) }));
+    await Promise.all(urlArray.map((url) => getSinglePokemon(url)));
+    const sortedData = pokemonDataArray.sort((pokemonOne, pokemonTwo) => pokemonOne.id - pokemonTwo.id);
+    sortedData.forEach((data) => {
+      addPokemon(data)
+    });
+    document.getElementById('loader').classList.add('hide');
   }
   catch (error) {
-    console.error('Error in getData:', error);
+    console.error(error);
   }
-  setTimeout(() => {
-    document.getElementById('loader').classList.add('hide');    
-  }, 3000);
 };
 

@@ -9,10 +9,13 @@ const closeResults = () => {
   searchBox.value = '';
 };
 
+const toggleSearchPopUp = () => {
+  document.querySelector('#searchPopUp').classList.toggle('hide');
+}
+
 const appendToResults = (results) => {
   if(results.length === 0) {
     toggleSearchPopUp();
-    return;
   }
   const resultsContainer = document.getElementById('searchResults');
   const cardContainer = document.getElementById('cardContainer');
@@ -42,10 +45,6 @@ const isSearchEmpty = (query) => {
   return false;
 };
 
-const toggleSearchPopUp = () => {
-  document.querySelector('.searchPopUp').classList.toggle('hide');
-  document.querySelector('.searchPopUpButton').onclick = toggleSearchPopUp;
-}
 
 const getResults = (query) =>{
   const data = document.querySelectorAll('#cardContainer .card');
@@ -59,7 +58,7 @@ const getResults = (query) =>{
     const card = orgCard.cloneNode(true); 
     const name = card.querySelector('.cardTitle').innerText.toLowerCase();
     const id = card.querySelector('.cardId').innerText.toLowerCase();
-    const types = card.querySelectorAll('.cardTypes .type');
+    const types = card.querySelectorAll('.cardTypes .cardType');
     if (name.includes(query) || id.includes(query)) {
       results.push(card);
     }
@@ -77,5 +76,9 @@ const addSearchFunctionality = () => {
   const search = document.getElementById('searchBox');
   search.oninput = () => {
     getResults(search.value);
+  };
+  document.querySelector('.searchPopUpButton').onclick = ()=>{
+    toggleSearchPopUp();
+    changeSearchIcon(false);
   };
 };

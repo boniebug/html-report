@@ -2,20 +2,34 @@
 
 let isPageLoading = true;
 
-const displayPickedOne = () => {
-    const container = document.getElementsByClassName('pokemon');
-    for (let index = 0; index < container.length; index++) {
-        const section = container[index]
-        section.addEventListener('click', () => {
-            const detailsContainer = document.getElementsByClassName('moreDetails');
-            for (let index = 0; index < detailsContainer.length; index++) {
-                if (section.querySelector('p').innerText === detailsContainer[index].querySelector('p').innerText) {
-                    detailsContainer.style.display = 'block';
-                } 
+const displayPickedOne = (button) => {
+    const detailsContainers = document.getElementsByClassName('moreDetails');
+    const buttonText = button.parentNode.querySelector('h2').innerText;
+    if (button.innerText === 'More') {
+        button.innerText = 'Close';
+        button.style.backgroundColor = 'red';
+        for (let j = 0; j < detailsContainers.length; j++) {
+            detailsContainers[j].style.display = 'none';
+        }
+        for (let index = 0; index < detailsContainers.length; index++) {
+            if (detailsContainers[index].querySelector('h2').innerText === buttonText) {
+                detailsContainers[index].style.display = 'block';
+                detailsContainers[index].style.border = '1px solid black';
+                break;
             }
-        });
+        }
+    } else {
+        button.innerText = 'More';
+        button.style.backgroundColor = '#007bff';
+        for (let index = 0; index < detailsContainers.length; index++) {
+            if (detailsContainers[index].querySelector('h2').innerText === buttonText) {
+                detailsContainers[index].style.display = 'none';
+                break;
+            }
+        }
     }
 };
+
 
 const removePopup = () => {
     const popup = document.getElementById('popup');
@@ -66,6 +80,11 @@ const appendChilderns = (names, id, image, typeArray, pokemonDIv) => {
     pokemonDIv.appendChild(image);
     pokemonDIv.appendChild(typeArray);
     pokemonsContainer.appendChild(pokemonDIv);
+    const button = document.createElement('button');
+    button.innerText = 'More';
+    button.className = 'button';
+    pokemonDIv.appendChild(button);
+    button.addEventListener('click', () => displayPickedOne(button));
 };
 
 const removeLoader = () => {
@@ -87,12 +106,13 @@ const renderMoreDetails = (names, id, image, typeArray, height, weight, abilitie
     extraDetails.appendChild(abilitiesArray);
     extraDetails.appendChild(movesArray);
     extraDetails.appendChild(staticies);
+    // extraDetails.appendChild(weaknesses);
     const container = document.getElementById('mainpage');
     container.appendChild(extraDetails);
     extraDetails.style.display = 'none';
 };
 
-const getMoreDetails = (data) => {
+const getMoreDetails = async (data) => {
     const pokemonDIv = document.createElement('div');
     pokemonDIv.className = 'pokemon';
     const names = document.createElement('h2');
@@ -116,9 +136,7 @@ const getMoreDetails = (data) => {
     if (data.abilities) {
         for (let i = 0; i < data.abilities.length; i++) {
             const abilityObj = data.abilities[i];
-            if (abilityObj.ability && abilityObj.ability.name) {
-                abilities.push(abilityObj.ability.name);
-            }
+            abilities.push(abilityObj.ability.name);
         }
     }
     abilitiesArray.innerText = `Abilities: ${abilities.join(', ')}`;
@@ -127,9 +145,7 @@ const getMoreDetails = (data) => {
     if (data.moves) {
         for (let i = 0; i < data.moves.length; i++) {
             const moveObj = data.moves[i];
-            if (moveObj.move && moveObj.move.name) {
-                moves.push(moveObj.move.name);
-            }
+            moves.push(moveObj.move.name);
         }
     }
     movesArray.innerText = `Moves: ${moves.length ? moves.join(', ') : 'None'}`;
@@ -138,14 +154,25 @@ const getMoreDetails = (data) => {
     if (data.stats) {
         for (let i = 0; i < data.stats.length; i++) {
             const statObj = data.stats[i];
-            if (statObj.stat && statObj.stat.name && statObj.base_stat !== undefined) {
-                stats.push(`${statObj.stat.name}: ${statObj.base_stat}`);
-            }
+            stats.push(`${statObj.stat.name}: ${statObj.base_stat}`);
         }
     }
     statsArray.innerText = `Stats: ${stats.join(', ')}`;
+    // const weakness = document.createElement('p');
+    // const weaknessArray = [];
+    // if (data.types !== undefined) {
+    //     for (let index = 0; index < data.types.length; index++) {
+    //         const requestUrl = data.types[index].type.url;
+    //         const response = await fetch(requestUrl);
+    //         const holdResponse = await response.json();
+    //         for (let j = 0; j < holdResponse.damage_relations.double_damage_from.length; j++) {
+    //             weaknessArray.push(holdResponse.damage_relations.double_damage_from[j].name);
+    //         }
+    //     }
+    //     weakness.innerText = `Weakness: ${weaknessArray.join(',')}`;
+    // }
     renderMoreDetails(names, id, image, typeArray, height, weight, abilitiesArray, movesArray, statsArray);
-}
+};
 
 const displayData = (data) => {
     const pokemonDIv = document.createElement('div');
@@ -206,5 +233,4 @@ window.onload = () => {
         removePopup();
     }, 5000);
     searchFunctioning();
-    displayPickedOne();
 };

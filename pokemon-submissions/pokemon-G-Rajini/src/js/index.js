@@ -17,19 +17,40 @@ const pokemonsParse = async (data) => {
             const pokemonResponse = await fetch(pokemon.url);
             const pokemonData = await pokemonResponse.json();
             console.log(pokemonData);
+            const weakness = await fetchWeakness(pokemonData.types[0].type.url);
+            const ability = accessElementsFromArray(pokemonData.abilities, 'ability', pokemonData.abilities.length);
+            const move = accessElementsFromArray(pokemonData.moves, 'move', 4);
+            const statistics = accessElementsFromArray(pokemonData.stats, 'stat', 3);
             const pokemonInfo = {
                 id: pokemonData.id, name: pokemonData.name, type: pokemonData.types[0].type.name,
-                image: pokemonData.sprites.other.home.front_shiny, ability: pokemonData.abilities[0].ability.name,
-                move: pokemonData.moves[0].move.name, statistics: pokemonData.stats[0].stat.name,
-                height: pokemonData.height, weight: pokemonData.weight
-            };
-            // console.log(pokemonInfo);
+                image: pokemonData.sprites.other.home.front_shiny, ability, move, statistics,
+                height: pokemonData.height, weight: pokemonData.weight, weakness
+            }
             pokemonArray.push(pokemonInfo);
         } catch (error) {
             console.log('error', error);
         }
     }
     return pokemonArray;
+};
+
+const fetchWeakness = async (url) => {
+    const response = await fetch(url);
+    const parseData = await response.json(response);
+    const data = parseData.damage_relations.double_damage_from;
+    const array = [];
+    for (let index = 0; index < data.length; index++) {
+        array.push(data[index].name);
+    }
+    return array;
+};
+
+const accessElementsFromArray = (array, key, limit) => {
+    const result = [];
+    for (let index = 0; index < limit; index++) {
+        result.push(array[index][key].name);
+    }
+    return result;
 };
 
 const createDiv = (pokemon) => {
@@ -49,6 +70,7 @@ const createDiv = (pokemon) => {
     return appendedPokemonDetais(pokemonId, pokemonType, pokemonImage, pokemonName, moreDetails, pokemon);
 };
 
+
 const createMoreInfo = (pokemon, pokemonDiv, moreDetails, outerDiv) => {
     const pokemonHeight = document.createElement('p');
     pokemonHeight.textContent = `Height:${pokemon.height}`;
@@ -57,32 +79,42 @@ const createMoreInfo = (pokemon, pokemonDiv, moreDetails, outerDiv) => {
     const pokemonMoves = document.createElement('p');
     pokemonMoves.textContent = `Moves:${pokemon.move}`;
     const pokemonStatistics = document.createElement('p');
-    pokemonStatistics.textContent = `Statistics:${pokemon.stat}`;
+    pokemonStatistics.textContent = `Statistics:${pokemon.statistics}`;
     const pokemonAbilities = document.createElement('p');
     pokemonAbilities.textContent = `Ability:${pokemon.ability}`;
-    morePokemonDetailsAppended(pokemonDiv, moreDetails, outerDiv, pokemonHeight, pokemonWeight, pokemonMoves, pokemonStatistics, pokemonAbilities)
-};
-
-const homeButton = (pokemonArray) => {
-    const homeButton = document.getElementById('homeButton');
-    homeButton.addEventListener('click', () => {
-        outerDiv.innerHTML = '';
-        displayPokemonDetails(pokemonArray);
-    });
-};
-
-const morePokemonDetailsAppended = (pokemonDiv, moreDetails, outerDiv, pokemonHeight, pokemonWeight, pokemonMoves, pokemonStatistics, pokemonAbilities) => {
+    const closeButton = document.createElement('button');
+    const pokemonWeakness = document.createElement('p');
+    pokemonWeakness.textContent = `Weakness:${pokemon.weakness}`;
+    closeButton.className = 'closeButton';
+    closeButton.innerText = 'Close';
     moreDetails.addEventListener('click', () => {
-        outerDiv.classList.add('moreDetails');
-        outerDiv.innerHTML = '';
-        pokemonDiv.appendChild(pokemonHeight);
-        pokemonDiv.appendChild(pokemonWeight);
-        pokemonDiv.appendChild(pokemonMoves);
-        pokemonDiv.appendChild(pokemonStatistics);
-        pokemonDiv.appendChild(pokemonAbilities);
-        moreDetails.style.display = 'none';
-        outerDiv.appendChild(pokemonDiv);
-        homeButton();
+        const newPokemonDiv = appendMoredInfo(pokemonDiv, pokemonHeight, pokemonWeight, pokemonMoves, pokemonStatistics, pokemonAbilities, pokemonWeakness);
+        pokemonDetailsDisplay(newPokemonDiv, outerDiv, closeButton);
+    })
+
+};
+
+const appendMoredInfo = (pokemonDiv, pokemonHeight, pokemonWeight, pokemonMoves, pokemonStatistics, pokemonAbilities, pokemonWeakness) => {
+    pokemonDiv.appendChild(pokemonHeight);
+    pokemonDiv.appendChild(pokemonWeight);
+    pokemonDiv.appendChild(pokemonMoves);
+    pokemonDiv.appendChild(pokemonStatistics);
+    pokemonDiv.appendChild(pokemonAbilities);
+    pokemonDiv.appendChild(pokemonWeakness);
+    return pokemonDiv;
+};
+
+const pokemonDetailsDisplay = (newPokemonDiv, outerDiv, closeButton) => {
+    outerDiv.style.display = 'none';
+    newPokemonDiv.appendChild(closeButton);
+    const anotherOuterDiv = document.createElement('div');
+    anotherOuterDiv.className = 'moreDetailsOuterDiv';
+    newPokemonDiv.classList.add('pokemonInnerDiv');
+    anotherOuterDiv.appendChild(newPokemonDiv);
+    document.body.appendChild(anotherOuterDiv);
+    closeButton.addEventListener('click', () => {
+        outerDiv.style.display = 'flex';
+        anotherOuterDiv.style.display = 'none';
     });
 };
 
@@ -140,6 +172,5 @@ window.onload = async () => {
     displayPokemonDetails(pokemonArray);
     const search = document.getElementById('search');
     search.addEventListener('input', () => searcArray(pokemonArray, search.value.toLowerCase()));
-    homeButton(pokemonArray);
 };
 

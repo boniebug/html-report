@@ -29,7 +29,7 @@ const createTypes = (data) => {
   typesArray.forEach((typeName) => {
     const type = document.createElement('span');
     type.innerText = typeName;
-    type.classList.add('type');
+    type.classList.add('cardType');
     type.style.backgroundColor = getcolors(typeName);
     types.appendChild(type);
   });

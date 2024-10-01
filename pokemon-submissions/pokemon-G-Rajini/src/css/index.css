@@ -67,9 +67,23 @@ margin-bottom: 10px;
 font-size: large;
 background-color:#dee6eb ;
 }
-.moreDetails{
+
+#moreDetailsOuterDiv{
+display: none;
 margin-top: 20px;
 display:flex;
 justify-content: center;
 align-items: center;
+}
+
+.closeButton{
+border: none;
+width: 90px;
+font-size: large;
+color:black;
+margin-bottom: 10px;
+background-color: #dee6eb;
+}
+.pokemonInnerDiv{
+    width: 300px;
 }

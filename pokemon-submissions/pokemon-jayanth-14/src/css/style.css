@@ -55,7 +55,7 @@
 .cardTypes{
   padding: 5px 3px;
 }
-.type{
+.cardType{
   padding: 2px 5px;
   border-radius: 5px;
   margin: 4px;
@@ -123,4 +123,30 @@ header .logo img{
 .searchIcon{
   object-fit: cover;
   object-position: center;
+}
+/* search popup */
+#searchPopUp{
+  position: fixed;
+  z-index: 15;
+  width: 40vw;
+  top: 0px;
+  left: 50%;
+  transform: translate(-50%,0);
+  padding: 20px 30px;
+  background-color: #fff;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+}
+#searchPopUp .searchPopUpButton{
+  padding: 8px 12px;
+  background-color: #0dcaf0;
+  border: none;
+  outline: none;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 5px;
+  align-self: flex-end;
+  width:80px;
 }

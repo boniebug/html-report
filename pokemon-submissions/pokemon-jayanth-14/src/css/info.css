@@ -8,12 +8,10 @@
     top: 0px;
 }
 #detailsButton{
-    width:30px ;
-    aspect-ratio: 1/1;
     position: relative;
     z-index: 12;
-    top: 300px;
-    left: 90vw;
+    top: 10vh;
+    right: -90vw;
 }
 
 #fullDetails {
@@ -31,6 +29,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    /* overflow-x: scroll; */
 }
 
 .sideRow {
@@ -59,33 +58,34 @@
     padding-left: 30px;
 }
 
-.minorDetails .id {
+.idDetails {
     font-size: 18px;
 }
-
-.minorDetails .id::before {
+.idDetails::before {
     content: 'Id : ';
     font-weight: 600;
 }
 
-.minorDetails .name {
-    font-size: 34px;
+.nameDetails {
+    font-size: 25px;
+    text-transform: capitalize;
+    font-weight: 500;
 }
-.minorDetails .name::before{
+.nameDetails::before{
     content: "Name : ";
 }
-.minorDetails .types {
+.typesDetails {
     padding: 5px 3px;
 }
-.minorDetails .types::before{
+.typesDetails::before{
     content: "Types : ";
 }
-
-.minorDetails .types .type {
+.typesDetails .type {
     padding: 2px 5px;
     border-radius: 5px;
     margin: 4px;
     font-size: 18px;
+    text-transform: capitalize;
     /* background-color: rgb(0, 60, 255); */
 }
 .characteristics h1{
@@ -150,4 +150,38 @@
 }
 .height::after{
     content: " dm";
+}
+
+/* stats */
+.statsDiv{
+   display: grid;
+   grid-template-columns: repeat(3, 1fr);
+   gap: 15px 15px;
+}
+.statsDiv div{
+    margin-right: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.statsDiv div p {
+    font-size: 16px;
+    text-transform: capitalize;
+    font-weight: 600;
+}
+.statsDiv div meter{
+    height: 30px;
+    width: 50%;
+}
+.statsDiv div meter::after{
+    content: attr(statValue);
+    font-size: 12px;
+    font-weight: 700;
+    position: relative;
+    top: -28px;
+    left: 20%;
+    
+}
+.statsDiv div p::after{
+    content: ' : ';
 }
