@@ -1,5 +1,5 @@
 function fetchUrlData() {
-  const apiUrl = 'https://pokeapi.co/api/v2/pokemon?limit=15';
+  const apiUrl = 'https://pokeapi.co/api/v2/pokemon?limit=1025';
   fetchPokemonList(apiUrl);
 }
 

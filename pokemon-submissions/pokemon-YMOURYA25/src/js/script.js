@@ -94,7 +94,6 @@ const pokemonDataFetch = async (pokemonUrl, main) => {
     const PokemonWeekness = await Promise.all(
       pokemonData.types.map(element => pokemonWeekNessFetch(element.type.url))
     );
-    console.log(pokemonMoves);
     createDivAndItsElementsAppendToMain(main, pokemonImage, pokemonName, pokemonId, pokemonType, pokemonAblities, pokemonHeight,
       pokemonWeight, pokemonMoves, pokemonStats, PokemonWeekness);
   } catch (error) {

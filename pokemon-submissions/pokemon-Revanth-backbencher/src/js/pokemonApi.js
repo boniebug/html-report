@@ -27,12 +27,13 @@ const appending = (
   pokemonContainer, pokemonName, pokemonId, pokemonImage, pokemonType
 ) => {
   const moreDetails = document.createElement('p');
-  button.innerText = 'more details'
+  moreDetails.id = 'moreDetail';
+  moreDetails.innerText = 'more details';
   pokemonContainer.appendChild(pokemonName);
   pokemonContainer.appendChild(pokemonId);
   pokemonContainer.appendChild(pokemonImage);
   pokemonContainer.appendChild(pokemonType);
-  pokemonContainer.appendChild(button);
+  pokemonContainer.appendChild(moreDetails);
   document.getElementById('pokemonsContainer').appendChild(pokemonContainer);
 };
 

@@ -13,18 +13,12 @@ const makeMainEventListeners = () => {
   return;
 };
 
-async function makeResearchOnAPI() {
-  const rawData = await makeFetchCall("https://pokeapi.co/api/v2/poemon/1/");
-  console.log('stats: ' , rawData);
-};
-
 const main = async () => {
   displayLoader();
   addDefaultListeners();
   const pokemonData = await createPokemon();
   displayPokemons(pokemonData);
   makeMainEventListeners();
-  // makeResearchOnAPI();
 };
 
 window.onload = main;

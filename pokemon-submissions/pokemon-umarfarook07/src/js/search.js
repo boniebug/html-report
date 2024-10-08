@@ -47,22 +47,18 @@ const getSearchValue = () => {
 
 const handleSearch = () => {
   const searchValue = getSearchValue();
-  const pokemonCards = document.querySelectorAll('.pokemon-card');
+  const pokemonCards = Array.from(document.querySelectorAll('.pokemon-card'));
 
   showLoadingIndicator();
 
-  let visibleCards = 0;
+  const visibleCards = pokemonCards
+    .filter((card) => isPokemonMatch(card, searchValue))
+    .forEach((card) => {
+      card.style.display = '';
+    });
 
-  pokemonCards.forEach((card) => {
-    const isMatch = isPokemonMatch(card, searchValue);
-    card.style.display = isMatch ? '' : 'none';
-    if (isMatch) {
-      visibleCards++;
-    }
-  });
-  console.log(visibleCards);
-  if (!visibleCards) {
-    const noMatchesFoundPopup = createPopup('No matches found for your search.');
+  if (visibleCards.length === 0) {
+    const noMatchesFoundPopup = createPopup('No matches found for your search.', '', false);
     noMatchesFoundPopup.showModal();
   }
 

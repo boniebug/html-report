@@ -68,8 +68,7 @@ font-size: large;
 background-color:#dee6eb ;
 }
 
-#moreDetailsOuterDiv{
-display: none;
+#moreDetails{
 margin-top: 20px;
 display:flex;
 justify-content: center;

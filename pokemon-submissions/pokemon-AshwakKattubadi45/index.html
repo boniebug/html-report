@@ -1,20 +1,35 @@
 <html>
 
-  <head>
-    <title>Pokemon</title>
-    <link rel="stylesheet" href="./src/css/poke.css">
-    <script src="./src/js/poke.js"></script>
-  </head>
+<head>
+  <title>Pokemon</title>
+  <link rel="stylesheet" href="./src/css/poke.css">
+  <script src="./src/js/poke.js"></script>
+</head>
 
-  <body>
-    <h1>Pokemon Data</h1>
+<body>
+  <h1>Pokemon Data</h1>
 
-    <div id="searchBar">
-      <input type="text" id="searchInput" placeholder="Search by name, ID, or type">
-      <button id="searchButton">Search</button>
+  <div id="searchBar">
+    <input type="text" id="searchInput" placeholder="Search by name, ID, or type">
+    <button id="searchButton">Search</button>
   </div>
-    <div id="loader" class="loader"></div>
-    <div id="pokemonList"></div>
-  </body>
+  <div id="loader" class="loader"></div>
+  <div id="pokemonList"></div>
+  <div id="pokemonPopup" class="popup">
+    <div class="popupContent">
+      <span class="close">&times;</span>
+      <h2 id="popupName"></h2>
+      <img id="popupImage" alt="Pokemon Image" />
+      <p id="popupID"></p>
+      <p id="popupTypes"></p>
+      <p id="popupHeightWeight"></p>
+      <p id="popupMoves"></p>
+      <p id="popupAbilities"></p>
+      <p id="popupStats"></p>
+      <p id="popupWeaknesses"></p>
+    </div>
+  </div>
+
+</body>
 
 </html>

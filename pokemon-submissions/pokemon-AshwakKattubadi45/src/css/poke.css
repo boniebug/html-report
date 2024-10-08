@@ -24,15 +24,14 @@ body {
 
 .pokemonBox {
     display: inline-block;
+    width: 90px;
+    height: auto;
     margin: 20px;
     padding: 10px;
     border: 2px solid rgb(233, 229, 229);
     border-radius: 8px;
 }
 
-#searchBar {
-    margin-bottom: 20px;
-}
 #searchInput {
     width: 30%;
     height: 35px;
@@ -42,7 +41,44 @@ body {
     width: 70px;
     height: 35px;
 }
+
 .pokemonBox img {
-    width: 200px;
+    width: 100px;
     height: auto;
+}
+#popupImage{
+    width: 100px;
+    height: auto;
+}
+
+.popup {
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 40%;
+    height: auto;
+    background-color:rgb(233, 229, 229);
+}
+.popupContent {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 600px;
+    text-align: center;
+}
+  
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+  
+.close:hover,
+.close:focus {
+    color: black;
 }

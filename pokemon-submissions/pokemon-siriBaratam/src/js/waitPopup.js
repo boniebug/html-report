@@ -2,15 +2,15 @@
 const removeWaitPopup = (popup) => {
   popup.style.display = 'none';
   const search = document.getElementById('search');
-  search.removeEventListener('click', () => { showPopup(popup) });
+  search.removeEventListener('click', () => { showWaitPopup(popup) });
 };
 
-const popupAction = (popup) => {
+const waitPopupAction = (popup) => {
   const search = document.getElementById('search');
-  search.addEventListener('click', () => { showPopup(popup) });
+  search.addEventListener('click', () => { showWaitPopup(popup) });
 };
 
-const showPopup = popup => {
+const showWaitPopup = popup => {
   const body = document.body;
   body.appendChild(popup);
   setTimeout(()=>{
@@ -18,7 +18,7 @@ const showPopup = popup => {
   },2000)
 };
 
-const createPopup = () => {
+const createWaitPopup = () => {
   const popup = document.createElement('div');
   popup.classList.add('popup-container');
   const firstMessage = document.createElement('p')

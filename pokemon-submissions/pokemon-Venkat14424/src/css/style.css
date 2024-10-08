@@ -70,7 +70,7 @@ img {
   flex-direction: column;
   position: fixed;
   border: 3px solid black;
-  background-color: rgb(172, 228, 249);
+  background-color: white;
   top: auto;
   bottom: 10px;
   width: 40%;

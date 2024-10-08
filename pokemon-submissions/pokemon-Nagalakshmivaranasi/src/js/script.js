@@ -41,6 +41,8 @@ const fetchWeekness = async (pokemonData) => {
 };
 
 const createObject = (pokemonData) => {
+  const weaknessData = fetchWeekness(pokemonData);
+  console.log(weaknessData);
   const pokemonInfo = {
     id: pokemonData.id,
     name: pokemonData.name,
@@ -51,6 +53,7 @@ const createObject = (pokemonData) => {
     moves: [],
     abilities: [],
     stastics: [],
+    // weakness: []
   };
   for (let index = 0; index < pokemonData.moves.length && index < 5; index++) {
     pokemonInfo.moves.push(pokemonData.moves[index].move.name);
@@ -69,7 +72,7 @@ const fetchData = async (data, array) => {
     try {
       const details = await fetch(element.url);
       const pokemonData = await details.json();
-      console.log(pokemonData);
+      // console.log(pokemonData);
       array.push(createObject(pokemonData));
     }
     catch (error) {
@@ -80,7 +83,7 @@ const fetchData = async (data, array) => {
 };
 
 const fetchPokemonData = async () => {
-  const url = 'https://pokeapi.co/api/v2/pokemon?limit=1025&offset=0';
+  const url = 'https://pokeapi.co/api/v2/pokemon?limit=500&offset=0';
   const options = {
     method: 'GET'
   }
@@ -88,6 +91,7 @@ const fetchPokemonData = async () => {
     const array = [];
     const response = await fetch(url, options);
     const data = await response.json();
+    // console.log(data);
     return fetchData(data, array);
   }
   catch (error) {
@@ -109,17 +113,6 @@ const addDetial = (label, value) => {
   pTag.classList.add('details');
   spanTag.classList.add('bold-text');
   spanTag.innerText = label;
-  pTag.append(spanTag, value);
-  return pTag;
-};
-
-const addWeaknessDetial = (label, pokemonData) => {
-  const pTag = document.createElement('p');
-  const spanTag = document.createElement('span');
-  pTag.classList.add('details');
-  spanTag.classList.add('bold-text');
-  spanTag.innerText = label;
-  const value = fetchWeekness(pokemonData);
   pTag.append(spanTag, value);
   return pTag;
 };
@@ -186,7 +179,7 @@ const displayExtraDetails = (pokemon) => {
   const pokemonMoves = addDetial('Moves: ', pokemon['moves']);
   const pokemonAbility = addDetial('Abilities: ', pokemon['abilities']);
   const pokemonStastics = addDetial('Stastics: ', pokemon['stastics']);
-  const pokemonWeakness = addWeaknessDetial('Weakness: ', pokemon);
+  const pokemonWeakness = addDetial('Weakness: ', pokemon['weakness']);
 
   const closeButton = document.createElement('button');
   closeButton.classList.add('close-button');

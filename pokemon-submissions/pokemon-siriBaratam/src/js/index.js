@@ -17,20 +17,30 @@ const createPokemonObject = (pokemonData) => {
   return object;
 };
 
-const fetchEachPokemon = async (pokemons) => {
+const createArray = async (cleanArrayWithoutPromises) => {
   const array = [];
+  for (const response of cleanArrayWithoutPromises) {
+    try {
+      const object = await response.json();
+      array.push(createPokemonObject(object));
+    }
+    catch (err) { console.log(`error: ${err}`) }
+  }
+  return array;
+};
+
+const fetchEachPokemon = async (pokemons) => {
+  const responseArray = [];
   const count = document.getElementById('count');
   for (const pokemon of pokemons) {
     count.innerText = parseInt(count.innerText) + 1;
     try {
-      const pokemonResponse = await fetch(pokemon.url);
-      const pokemonData = await pokemonResponse.json();
-      const object = createPokemonObject(pokemonData);
-      array.push(object);
+      const pokemonResponse = fetch(pokemon.url);
+      responseArray.push(pokemonResponse);
     }
     catch (err) { console.log(`error:${err}`) }
   }
-  return array;
+  return createArray(await Promise.all(responseArray));
 };
 
 const fetchPokemons = async () => {
@@ -70,7 +80,11 @@ const filterPokemons = (search, array) => {
 const addSearchAction = (array) => {
   const search = document.getElementById('search');
   search.removeAttribute('readonly');
-  search.addEventListener('input', () => { filterPokemons(search, array) });
+  search.addEventListener('input', () => {
+    setTimeout(() => {
+      filterPokemons(search, array)
+    }, 300);
+  });
 };
 
 const removeLoader = () => {
@@ -91,7 +105,7 @@ const displayPokemons = (array, value) => {
     createPokemonContainer(pokemon, value);
     const popup = createPopupContainer(pokemon);
     const pokemonContainer = document.getElementById(pokemon.name);
-    pokemonContainer.addEventListener('click', () => {designPokemonPopup(popup, pokemon)});
+    pokemonContainer.addEventListener('click', () => { designPokemonPopup(popup, pokemon) });
     const image = document.getElementById(`${pokemon.name}-image`);
     image.addEventListener('mouseover', () => { displayImageOnHover(pokemon, image) });
     image.addEventListener('mouseleave', () => { displayImageOnLeave(pokemon, image) });
@@ -99,8 +113,8 @@ const displayPokemons = (array, value) => {
 };
 
 const start = async () => {
-  const popup = createPopup();
-  popupAction(popup);
+  const popup = createWaitPopup();
+  waitPopupAction(popup);
   const array = await fetchPokemons();
   displayPokemons(array);
   removeLoader();

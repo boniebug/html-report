@@ -38,9 +38,9 @@ const determineWeakness = async (urls) => {
     const weaknessData2 = weaknessRawDataType2['damage_relations'];
     let weaknessArray2 = weaknessData2['double_damage_from'].concat(weaknessData2['half_damage_from']);
     const list2 = weaknessArray2.map(element => element['name']);
-    resultArray = list1.concat(list2)
+    resultArray = list1.concat(list2);
     const commonWeakness = list1.filter(weakness => list2.includes(weakness));
-    resultArray = commonWeakness || resultArray;
+    resultArray = commonWeakness.length > 0 ? commonWeakness : resultArray;
   }
   return new Promise((resolve, reject) => {
     resolve(resultArray);

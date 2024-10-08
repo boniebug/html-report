@@ -87,14 +87,14 @@ const createMoreInfo = (pokemon, pokemonDiv, moreDetails, outerDiv) => {
     pokemonWeakness.textContent = `Weakness:${pokemon.weakness}`;
     closeButton.className = 'closeButton';
     closeButton.innerText = 'Close';
-    moreDetails.addEventListener('click', () => {
-        const newPokemonDiv = appendMoredInfo(pokemonDiv, pokemonHeight, pokemonWeight, pokemonMoves, pokemonStatistics, pokemonAbilities, pokemonWeakness);
-        pokemonDetailsDisplay(newPokemonDiv, outerDiv, closeButton);
+    moreDetails.addEventListener('click',()=>{
+    const newPokemonDiv = appendMoredInfo(pokemonDiv, pokemonHeight, pokemonWeight, pokemonMoves, pokemonStatistics, pokemonAbilities, pokemonWeakness);
+    pokemonDetailsDisplay(newPokemonDiv, outerDiv,closeButton);
     })
-
+  
 };
 
-const appendMoredInfo = (pokemonDiv, pokemonHeight, pokemonWeight, pokemonMoves, pokemonStatistics, pokemonAbilities, pokemonWeakness) => {
+const appendMoredInfo = (pokemonDiv, pokemonHeight, pokemonWeight, pokemonMoves, pokemonStatistics, pokemonAbilities, pokemonWeakness)=>{
     pokemonDiv.appendChild(pokemonHeight);
     pokemonDiv.appendChild(pokemonWeight);
     pokemonDiv.appendChild(pokemonMoves);
@@ -104,7 +104,7 @@ const appendMoredInfo = (pokemonDiv, pokemonHeight, pokemonWeight, pokemonMoves,
     return pokemonDiv;
 };
 
-const pokemonDetailsDisplay = (newPokemonDiv, outerDiv, closeButton) => {
+const pokemonDetailsDisplay = (newPokemonDiv, outerDiv,closeButton) => {
     outerDiv.style.display = 'none';
     newPokemonDiv.appendChild(closeButton);
     const anotherOuterDiv = document.createElement('div');
@@ -112,9 +112,9 @@ const pokemonDetailsDisplay = (newPokemonDiv, outerDiv, closeButton) => {
     newPokemonDiv.classList.add('pokemonInnerDiv');
     anotherOuterDiv.appendChild(newPokemonDiv);
     document.body.appendChild(anotherOuterDiv);
-    closeButton.addEventListener('click', () => {
-        outerDiv.style.display = 'flex';
-        anotherOuterDiv.style.display = 'none';
+    closeButton.addEventListener('click',()=>{
+      anotherOuterDiv.style.display = 'none';
+      outerDiv.style.display = 'flex';
     });
 };
 

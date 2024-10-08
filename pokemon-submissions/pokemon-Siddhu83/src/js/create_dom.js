@@ -49,8 +49,7 @@ const createFullDetails = (pokemonDetails) => {
   const mainContainer = document.getElementsByClassName('main-container')[0];
   const pokemonUnit = document.getElementsByClassName('pokemon-main-container')[0];
   pokemonUnit.classList.add('disabled');
-  const search = document.getElementById('search-bar');
-  search.classList.add('disabled');
+  document.getElementById('search-bar').classList.add('disabled');
   const parentContainer = document.createElement('section');
   parentContainer.className = 'pokemon-detail-unit';
   const closeButton = document.createElement('button');
@@ -68,6 +67,7 @@ const createFullDetails = (pokemonDetails) => {
   const pokemonMoves = createPTag(`Moves: ${pokemonDetails.extraDetails.moves.join('\n')}`, 'detail-unit-moves');
   const pokemonWeakness = createPTag(`Weakness: ${pokemonDetails.extraDetails.weakness.join(', ')}`, 'detail-unit-weakness');
   const pokemonStats = createPTag(`Stats: ${pokemonDetails.extraDetails.stats.join(', ')}`, 'detail-unit-stats');
+
   parentContainer.append(closeButton, pokemonName, pokemonId, pokemonImage, pokemonType);
   parentContainer.append(pokemonHeight, pokemonweight, pokemonAbility, pokemonMoves);
   parentContainer.append(pokemonWeakness, pokemonStats);

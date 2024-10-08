@@ -195,7 +195,6 @@ body {
 
 .detail-unit-abilities {
   bottom: 0;
-  border: 1px solid black;
   width: 500px;
   height: 70px;
 }
@@ -208,7 +207,6 @@ body {
 }
 
 .detail-unit-stats {
-  border: 1px solid black;
   margin-top: 10px;
   bottom: 130px;
   height: fit-content;
