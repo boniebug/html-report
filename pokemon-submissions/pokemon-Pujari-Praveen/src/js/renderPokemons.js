@@ -30,25 +30,25 @@ const createElementAssignClass = (element, classNames) => {
   return newElement;
 };
 
-const setPokemonId = (pokemonAllInfo, pokemonData, pokemonNameHeight) => {
+const setPokemonId = (pokemonContainer, pokemonData, pokemonNameHeight) => {
   const pokemonIdPara = createElementAssignClass('p', 'pokemon-id-para');
   const pokemonId = createElementAssignClass('span', 'pokemon-id pokemon-info');
   const defaultText = document.createTextNode('Id:');
   pokemonId.innerText = pokemonData.id;
   pokemonIdPara.append(defaultText, pokemonId);
   pokemonIdPara.style.top = `${pokemonNameHeight}px`;
-  pokemonAllInfo.appendChild(pokemonIdPara);
+  pokemonContainer.appendChild(pokemonIdPara);
   return pokemonId.innerText.toLowerCase();
 };
 
-const setPokemonName = (pokemonAllInfo, pokemonData) => {
+const setPokemonName = (pokemonContainer, pokemonData) => {
   const pokemonName = createElementAssignClass('p', 'pokemon-name pokemon-info');
   pokemonName.innerText = pokemonData.name;
-  pokemonAllInfo.appendChild(pokemonName);
+  pokemonContainer.appendChild(pokemonName);
   return pokemonName;
 };
 
-const setPokemonType = (pokemonAllInfo, pokemonData) => {
+const setPokemonType = (pokemonContainer, pokemonData) => {
   const pokemonTypePara = createElementAssignClass('p', 'pokemon-type-para');
   const pokemonType = createElementAssignClass('span', 'pokemon-type pokemon-info');
   const defaultText = document.createTextNode('Type:');
@@ -56,7 +56,7 @@ const setPokemonType = (pokemonAllInfo, pokemonData) => {
   pokemonData.types.forEach(type => pokemonTypes.push(type['type'].name));
   pokemonType.innerText = pokemonTypes.join(', ');
   pokemonTypePara.append(defaultText, pokemonType);
-  pokemonAllInfo.appendChild(pokemonTypePara);
+  pokemonContainer.appendChild(pokemonTypePara);
   return pokemonType.innerText.toLowerCase();
 };
 
@@ -67,7 +67,7 @@ const setPokemonImg = (pokemonContainer, pokemonData) => {
   pokemonContainer.appendChild(pokemonImg);
 };
 
-const setPokemonAllInfo = (pokemonContainer, pokemonData) => {
+const setPokemonBasicInfo = (pokemonContainer, pokemonData) => {
   const pokemonAllInfo = {};
   const pokemonName = setPokemonName(pokemonContainer, pokemonData);
   pokemonAllInfo.pokemonName = pokemonName.innerText.toLowerCase();
@@ -88,6 +88,27 @@ const createPokemonContainer = () => {
 const toggleContainer = (isRendered, container, style) => {
   const visibleStatus = isRendered ? 'none' : style;
   container.style.cssText = `display: ${visibleStatus}`;
+};
+
+const getPokemonWeakness = async (pokemonId, pokemonSideBanner) => {
+  const loaderContainer = document.querySelector('.loader-container');
+  pokemonSideBanner.appendChild(loaderContainer);
+  toggleContainer(false, loaderContainer, 'block');
+  const moveAailmentsData = await fetchPokemonsData(`https://pokeapi.co/api/v2/move/${pokemonId}`);
+  toggleContainer(true, loaderContainer);
+  const allPokemonMainContainer = document.querySelector('.all-pokemons-main-container');
+  allPokemonMainContainer.appendChild(loaderContainer);
+  return moveAailmentsData;
+};
+
+const setPokemonWeakness = async (pokemonSideBanner, pokemonData) => {
+  const pokemonWeaknessPara = createElementAssignClass('p', 'pokemon-weakness-para');
+  const pokemonWeakness = createElementAssignClass('span', 'pokemon-weakness pokemon-info');
+  const defaultText = document.createTextNode('Weakness:');
+  const moveAailmentsData = await getPokemonWeakness(pokemonData.id, pokemonSideBanner);
+  pokemonWeakness.innerText = moveAailmentsData.type.name;
+  pokemonWeaknessPara.append(defaultText, pokemonWeakness);
+  pokemonSideBanner.appendChild(pokemonWeaknessPara);
 };
 
 const setPokemonStats = (pokemonSideBanner, pokemonData) => {
@@ -118,22 +139,22 @@ const setPokemonMoves = (pokemonSideBanner, pokemonData) => {
   pokemonSideBanner.appendChild(pokemonMovesDetails);
 };
 
-const setNormalAbilities = (normalAbilitiesArr) => {
+const setNormalAbilities = (normalAbilitiesArr, pokemonSideBanner) => {
   const normalAbilityDetails = createElementAssignClass('p', 'normal-ability-para');
   const defaultNoramlAbilityText = document.createTextNode('Noraml Abilities:');
   const normalAbilities = createElementAssignClass('span', 'pokemon-ability');
   normalAbilityDetails.append(defaultNoramlAbilityText, normalAbilities);
   normalAbilities.innerText = normalAbilitiesArr.join(', ');
-  return normalAbilityDetails;
+  pokemonSideBanner.append(normalAbilityDetails);
 };
 
-const setHiddenAbilities = (hiddenAbilitiesArr) => {
+const setHiddenAbilities = (hiddenAbilitiesArr, pokemonSideBanner) => {
   const hiddenAbilityDetails = createElementAssignClass('p', 'normal-ability-para');
   const defaultHiddenAbilityText = document.createTextNode('Hidden Abilities:');
-  const hiddenAbilities = createElementAssignClass('span', 'pokemon-ability');
+  const hiddenAbilities = createElementAssignClass('span', 'pokemon-ability pokemon-info');
   hiddenAbilityDetails.append(defaultHiddenAbilityText, hiddenAbilities);
   hiddenAbilities.innerText = hiddenAbilitiesArr.join(', ');
-  return hiddenAbilityDetails;
+  pokemonSideBanner.appendChild(hiddenAbilityDetails);
 };
 
 const setPokemonAbilities = (pokemonSideBanner, pokemonData) => {
@@ -144,9 +165,8 @@ const setPokemonAbilities = (pokemonSideBanner, pokemonData) => {
     abilityInfo.is_hidden && normalAbilitiesArr.push(abilityInfo.ability.name);
     !abilityInfo.is_hidden && hiddenAbilitiesArr.push(abilityInfo.ability.name);
   });
-  const normalAbilityDetails = setNormalAbilities(normalAbilitiesArr);
-  const hiddenAbilityDetails = setHiddenAbilities(hiddenAbilitiesArr);
-  pokemonSideBanner.append(normalAbilityDetails, hiddenAbilityDetails);
+  setNormalAbilities(normalAbilitiesArr, pokemonSideBanner);
+  setHiddenAbilities(hiddenAbilitiesArr, pokemonSideBanner);
 };
 
 const setPokemonWeight = (pokemonSideBanner, pokemonData) => {
@@ -167,15 +187,26 @@ const setPokemonHeight = (pokemonSideBanner, pokemonData) => {
   pokemonSideBanner.appendChild(heightPara);
 };
 
-const createPokemonSideBanner = (pokemonInfo, pokemonData) => {
-  const pokemonSideBanner = pokemonInfo.pokemonContainer.cloneNode(true);
-  pokemonSideBanner.classList.remove('pokemon-container');
-  pokemonSideBanner.classList.add('pokemon-side-banner');
-  setPokemonHeight(pokemonSideBanner, pokemonData);
-  setPokemonWeight(pokemonSideBanner, pokemonData);
-  setPokemonAbilities(pokemonSideBanner, pokemonData);
-  setPokemonMoves(pokemonSideBanner, pokemonData);
-  setPokemonStats(pokemonSideBanner, pokemonData);
+const setCloseBtn = (pokemonSideBanner) => {
+  const closeBtn = createElementAssignClass('button', 'side-banner-close-btn');
+  closeBtn.innerText = 'X';
+  closeBtn.addEventListener('click', () => pokemonSideBanner.remove());
+  pokemonSideBanner.appendChild(closeBtn);
+};
+
+const setPokemonAllInfo = (pokemonSideBanner, pokemonData) => {
+  const pokemonAllInfoContainer = createElementAssignClass('div', 'pokemon-all-info');
+  setPokemonBasicInfo(pokemonAllInfoContainer, pokemonData);
+  const PokemonExtraInfo = [setPokemonHeight, setPokemonWeight, setPokemonAbilities, setPokemonMoves, setPokemonStats, setPokemonWeakness];
+  PokemonExtraInfo.forEach((callback) => callback(pokemonAllInfoContainer, pokemonData));
+  pokemonSideBanner.appendChild(pokemonAllInfoContainer);
+};
+
+const createPokemonSideBanner = (pokemonData) => {
+  const pokemonSideBanner = document.querySelector('.pokemon-side-banner') || createElementAssignClass('div', 'pokemon-side-banner');
+  pokemonSideBanner.innerHTML = '';
+  setCloseBtn(pokemonSideBanner);
+  setPokemonAllInfo(pokemonSideBanner, pokemonData);
   const allPokemonMainContainer = document.querySelector('.all-pokemons-main-container');
   allPokemonMainContainer.appendChild(pokemonSideBanner);
 };
@@ -184,11 +215,13 @@ const processPokemonsData = async (pokemonsData, loaderContainer) => {
   const searchBox = document.querySelector('.search-box');
   for (const pokemon of pokemonsData) {
     const pokemonData = await fetchPokemonsData(pokemon.url);
-    const pokemonContainer = pokemonData && createPokemonContainer();
-    const pokemonInfo = pokemonData && setPokemonAllInfo(pokemonContainer, pokemonData);
-    pokemonData && pokemonContainer.addEventListener('click', () => createPokemonSideBanner(pokemonInfo, pokemonData));
-    const searchText = pokemonData && searchBox.value.toLowerCase();
-    searchText && checkMatchings(searchText, pokemonInfo);
+    if (pokemonData) {
+      const pokemonContainer = createPokemonContainer();
+      const pokemonInfo = setPokemonBasicInfo(pokemonContainer, pokemonData);
+      pokemonContainer.addEventListener('click', () => createPokemonSideBanner(pokemonData));
+      const searchText = searchBox.value.toLowerCase();
+      searchText && checkMatchings(searchText, pokemonInfo);
+    }
   }
   toggleContainer(true, loaderContainer);
 };

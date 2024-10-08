@@ -136,16 +136,16 @@
   right: 0;
   height: 90vh;
   width: 350px;
-  border: 2px solid black;
   background-color: white;
+  border-radius: 10px;
   z-index: 3;
   display: flex;
   flex-direction: column;
   overflow: scroll;
+  text-align: center;
 }
 
 .pokemon-stats-container {
-  /* border: 1px solid black; */
   display: grid;
   grid-template-columns: repeat(3, 1fr);
 }
@@ -153,6 +153,7 @@
 .stat-factor {
   border-bottom: 1px solid orange;
   height: 100%;
+  width: 100%;
 }
 
 .pokemon-stat {
@@ -164,4 +165,13 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+
+.side-banner-close-btn {
+  cursor: pointer;
+  border: 2px solid orange;
+  position: absolute;
+  right: 10px;
+  top: 35px;
+  padding: 5px;
 }

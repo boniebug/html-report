@@ -42,4 +42,29 @@
 ## Error Handling
 -----------------
 
-Catches errors during execution of getResponse function.
+* Catches errors during execution of getResponse function.
+
+## Using API
+----------------
+
+* https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0: Fetches list of pokemon
+
+## USING LANGUAGES AND STYLESHEETS
+-------------------------------------
+
+* JavaScript
+* HTML
+* CSS
+
+## USING RESOURCE 
+-------------------
+
+* pokemon API
+
+## Features or Requirements
+------------------------------
+
+* Search bar for searching pokemon by name, id and types.
+* Loading indicator for fetching data.
+* Displays list of pokemon with details from Pokemon Api.
+* Handles errors during API data fetching.
