@@ -1,10 +1,23 @@
 # PokeHub
 
+### Table of contents
+ 
+ * [Introduction](#introduction)
+ * [Features](#features)
+ * [ResourcesUsed](#resourcesUsed)
+ * [Conclusion](#conclusion)
+
 ![Pokemons](./src/Images/all-pokemon.jpeg);
 
-This is the place where you can get the all the pokemon details
+### Introduction
 
-* What you can get from PokeHub
+PokeHub provides a comprehensive collection of Pokemon information.  This resource is designed enthusiasts looking to expand their knowledge of the Pokémon universe.
+
+### Features
+
+* Extensive Pokemon Data
+
+  * This encompasses various pokemons, ranging from starter types like Bulbasaur, Charmander, and Squirtle, to legendary Pokémon like Mewtwo and Lugia.
 
   * Here you can get various pokemons along with their details
     | Details                   | Description                      |
@@ -19,5 +32,54 @@ This is the place where you can get the all the pokemon details
     | Stats | It determines how a pokemon will perform in battle |
     | Weakness |It indicates which types of Pokémon it is vulnerable to|
 
+  * We highlights the diversity of Pokémon types and includes several pokemons from multiple generations.
 
+* Search Functionality
+  
+  * Users can search for specific Pokémon by name or type or id.
 
+### Resources Used
+
+  1. **PokeAPI**
+      
+      * **Description:** [PokeAPI](https://pokeapi.co/) is a RESTful API that provides a wealth of information about Pokémon, including their attributes, types, abilities, sprites.
+
+      * **Endpoint:** The specific endpoint used for retrieving Pokemon data is:
+        ```
+        https://pokeapi.co/api/v2/pokemon/
+        ```
+
+      * **Data retrieved:** 
+        
+        * Paginated list of available resources/pokemons on that API and Total Available resources/pokemons.
+        * Example: 
+          ```json
+          {
+            "count": 1302,
+            "results": [
+              {
+                "name": "bulbasaur",
+                "url": "https://pokeapi.co/api/v2/pokemon/1/"
+              }
+            ]
+          }
+          ```
+
+      * **Pokemon information:** Every Pokemon has it's own endpoint, here is an example:
+        ```
+        https://pokeapi.co/api/v2/pokemon/{id or name}/
+        ```
+          * **Data retrieved:** 
+            1. Pokemon names
+            2. Indentification numbers(IDs)
+            3. Types
+            4. Sprites
+            5. Abilities
+            6. Moves
+            7. Stats
+            8. Height
+            9. Weight
+
+### Conclusion
+
+  The PokeHub is an essential tool for enthusiasts seeking to understand pokemon strengths and weaknesses. With a user-friendly interface and organized data, users can easily access the information.

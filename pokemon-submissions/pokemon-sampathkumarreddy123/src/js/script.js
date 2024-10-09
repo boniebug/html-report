@@ -19,7 +19,6 @@ const getPokemonDetails = async (url) => {
 const getTypeDetails = async (typeName) => {
   try {
     const response = await fetch(`https://pokeapi.co/api/v2/type/${typeName}`);
-   console.log(response);
     const typeDetails = await response.json();
     return typeDetails;
   } catch (error) {
@@ -229,3 +228,4 @@ window.onload = async () => {
   searchInput.addEventListener('input', filterPokemons);
   createCloseButton();
 };
+

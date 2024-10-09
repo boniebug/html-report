@@ -1,9 +1,9 @@
 'use strict';
 
-const getTheData = () => {
+const getTheData = (startFrom) => {
   return new Promise(async (resolve) => {
     try {
-      const fetchedData = await fetch(`https://pokeapi.co/api/v2/pokemon/?offset=0&limit=1032`);
+      const fetchedData = await fetch(`https://pokeapi.co/api/v2/pokemon/?offset=${startFrom}&limit=200`);
       const resultData = await fetchedData.json();
       resolve(resultData);
     } catch (error) {
@@ -108,12 +108,15 @@ const appendAllPokemonDetailsToDocument = (pokemonContainers) => {
 
 const allPokemonDetails = async () => {
   let pokemonContainers = [];
-  const pokemons = await getTheData();
-  for (const pokemon of pokemons.results) {
-    const pokemonDetails = await getTheDetails(slashremover(pokemon.url));
-    pokemonContainers.push(appendDetailsToPokemonContainer(pokemonDetails, createAPokemonContainer));
+  let pokemons;
+  for(let index = 0; index <= 1302; index+=200){
+    pokemons = await getTheData(index);
+    for (const pokemon of pokemons.results) {
+      const pokemonDetails = await getTheDetails(slashremover(pokemon.url));
+      pokemonContainers.push(appendDetailsToPokemonContainer(pokemonDetails, createAPokemonContainer));
+    }
+    appendAllPokemonDetailsToDocument(pokemonContainers);
   }
-  appendAllPokemonDetailsToDocument(pokemonContainers);
 };
 
 const appendAndRemoveWaitPopup = () => {
@@ -140,55 +143,55 @@ const searchBarFunctionality = () => {
     });
   } else {
     appendAndRemoveWaitPopup();
-  }  
+  }
 };
 
-  const createSearchBar = () => {
-    const searchBar = document.createElement('input');
-    searchBar.placeholder = 'Search Here';
-    searchBar.setAttribute('id', 'searchBar');
+const createSearchBar = () => {
+  const searchBar = document.createElement('input');
+  searchBar.placeholder = 'Search Here';
+  searchBar.setAttribute('id', 'searchBar');
 
-    return searchBar;
-  };
+  return searchBar;
+};
 
-  const createSearchButton = () => {
-    const searchButton = document.createElement('button');
-    searchButton.setAttribute('id', 'searchButton');
-    searchButton.setAttribute('onclick', 'searchBarFunctionality()');
-    searchButton.innerText = 'Search';
+const createSearchButton = () => {
+  const searchButton = document.createElement('button');
+  searchButton.setAttribute('id', 'searchButton');
+  searchButton.setAttribute('onclick', 'searchBarFunctionality()');
+  searchButton.innerText = 'Search';
 
-    return searchButton;
-  };
+  return searchButton;
+};
 
-  const appendSearchBarAndButton = (header) => {
-    const searchBarContainer = document.createElement('div');
-    searchBarContainer.setAttribute('id', 'search');
-    const searchBar = createSearchBar();
-    const searchButton = createSearchButton();
+const appendSearchBarAndButton = (header) => {
+  const searchBarContainer = document.createElement('div');
+  searchBarContainer.setAttribute('id', 'search');
+  const searchBar = createSearchBar();
+  const searchButton = createSearchButton();
 
-    searchBarContainer.append(searchBar, searchButton);
-    header.appendChild(searchBarContainer);
-  };
+  searchBarContainer.append(searchBar, searchButton);
+  header.appendChild(searchBarContainer);
+};
 
-  const appendMainHeading = (header) => {
-    const mainHeading = document.createElement('h1');
-    mainHeading.innerText = 'Pokédex';
-    mainHeading.setAttribute('id', 'mainHeading');
-    header.appendChild(mainHeading);
-  };
+const appendMainHeading = (header) => {
+  const mainHeading = document.createElement('h1');
+  mainHeading.innerText = 'Pokédex';
+  mainHeading.setAttribute('id', 'mainHeading');
+  header.appendChild(mainHeading);
+};
 
-  const appendToHeaders = () => {
-    const header = document.querySelector('header');
-    appendMainHeading(header);
-    appendSearchBarAndButton(header);
-  };
+const appendToHeaders = () => {
+  const header = document.querySelector('header');
+  appendMainHeading(header);
+  appendSearchBarAndButton(header);
+};
 
-  const main = async () => {
-    createAndAppendLoader();
-    const loader = document.querySelector('.loading');
-    appendToHeaders();
-    await allPokemonDetails();
-    loader.remove();
-  };
+const main = async () => {
+  createAndAppendLoader();
+  const loader = document.querySelector('.loading');
+  appendToHeaders();
+  await allPokemonDetails();
+  loader.remove();
+};
 
-  window.onload = main;
+window.onload = main;

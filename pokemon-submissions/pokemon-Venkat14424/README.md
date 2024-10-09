@@ -11,7 +11,7 @@
   - **ID**: Search by the pokemon's ID.
   - **Type**: Search by the pokemon's type.
 
-  ### Loading message
+  ### Search Loading message
 
   When searching for Pokemon before pokemons loading, a loading message will be display until 2secs.
 

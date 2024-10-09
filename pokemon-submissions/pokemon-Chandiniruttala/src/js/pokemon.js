@@ -11,7 +11,7 @@ function createCloseButton(pokemonMorecontent){
   closeButtonElement.classList.add('closeButton');
 }
 
-function createMoreDetails(pokemonMoreContent, pokemonInfo){
+async function createMoreDetails(pokemonMoreContent, pokemonInfo){
 createCloseButton(pokemonMoreContent);
 
 pokemonCardContent(pokemonInfo,pokemonMoreContent);
@@ -22,15 +22,13 @@ const abilities = `Abilities: ${pokemonInfo.abilities.map(ability => ability.abi
 
 const statistics = `Statistics: ${pokemonInfo.stats.map(stat => `${stat.stat.name}: ${stat.base_stat}`).join(', ')}`;
 
-let weaknesses = `Weaknesses: `;
+let weaknesses = ``;
 
 for (const type of pokemonInfo.types) {
-fetch(type.url)
-  .then(response => response.json())
-  .then(typeData => {
+  const typeResponse = await fetch(type.type.url);
+  const typeData = await typeResponse.json();
   const weaknessesList = typeData.damage_relations.double_damage_from.map(weakness => weakness.name).join(', ');
-  weaknesses += `${type.type.name}: ${weaknessesList}, `;
-})
+  weaknesses += weaknessesList + ', ';
 }
 
 createElement('p', `Height: ${pokemonInfo.height}`, pokemonMoreContent);
@@ -38,7 +36,7 @@ createElement('p', `Weight: ${pokemonInfo.weight}`, pokemonMoreContent);
 createElement('p', `${moves}`, pokemonMoreContent);
 createElement('p', `${abilities}`, pokemonMoreContent);
 createElement('p', `${statistics}`, pokemonMoreContent);
-createElement('p', `${weaknesses}`, pokemonMoreContent);
+createElement('p', `Weaknesses: ${weaknesses}`, pokemonMoreContent);
 }
 
 function closeMoreDetailsContainer(moreDetailsContainer, header, pokemonList){
@@ -47,7 +45,7 @@ function closeMoreDetailsContainer(moreDetailsContainer, header, pokemonList){
   pokemonList.classList.remove('disabled');
 }
 
-function pokemonMoreDetails(pokemonInfo){
+async function pokemonMoreDetails(pokemonInfo){
 
   const header = document.querySelector('.navBar');
   header.classList.add('disabled');
@@ -65,7 +63,7 @@ function pokemonMoreDetails(pokemonInfo){
 
   document.body.appendChild(moreDetailsContainer);
 
-  createMoreDetails(pokemonMoreContent, pokemonInfo);
+  await createMoreDetails(pokemonMoreContent, pokemonInfo);
 
   closeButtonClick = document.querySelector('.closeButton');
 
@@ -99,8 +97,8 @@ function createPokemonCard(pokemonListElement, pokemonInfo) {
 
   pokemonListElement.appendChild(pokemonCard);
 
-  pokemonCard.addEventListener('click',() => {
-    pokemonMoreDetails(pokemonInfo);
+  pokemonCard.addEventListener('click',async() => {
+    await pokemonMoreDetails(pokemonInfo);
   });
 };
 
@@ -161,7 +159,6 @@ async function pokemonInfoList(searchInput, loader) {
   const data = await fetchPokemonListData();
   const pokemonInfoList = data.results;
   const pokemonDataArray = await fetchPokemonDetails(pokemonInfoList);
-  console.log(pokemonDataArray)
   loader.remove();
 
   pokemonDataArray.forEach((pokemonInfo) => {

@@ -50,10 +50,15 @@ which is later converted into object using ```json()``` and displays the details
 * Statistics
 
 #### Name
+
 The name of the pokemon is retrived using the key *name*.
+
 #### Id
+
 The The ID denotes the Id of the pokemon.
+
 #### Image
+
 The image url is retrived from the front_default of the official_artwork from others of sprites of json file.
 
 ```json
@@ -67,20 +72,47 @@ The image url is retrived from the front_default of the official_artwork from ot
 }
 ```
 #### Type
+
+Type defines the the type of the pokemon like *flying, grass, fire, water, etc.,* <br>
 The types of each pokemon is retrived from types array that contains an object for each type.
+
 #### Moves
+
 The moves of each pokemon is retrived from an array of objects and each object of array refers to each move containing name of the move and version_group_details.
+
 #### Weakness
+
 The weakness of the  pokemon depends on the type it belongs to, the weakness denotes that from which types of pokemons does it get harmed.
 using the URL ```https://pokeapi.co/api/v2/type/${type.name}``` we retrive a json data of pokemons type which contains details like from which the pokemon get damage from and to which pokemons does it can damage and etc.
 weaknesses are retrived from double_damage_from key of damage_relations_object.
 
->Note: The ${type.name} is replaced with the type of pokemon.
+>Note: The $\{type.name\} is replaced with the type of pokemon.
 
 #### Abilities
 
+The abilities of a pokemon shows all the abilities that the pokemon posses like *overgrow, chlorophyll, etc.,<br>
+The abilities are retrived from the ability object of abilities array of json file that is retrived using the pokemon URL.
+
+#### Statistics
+
+statistics determine certain aspects of battles. Each Pokémon has a value for each stat which grows as they gain levels and can be altered momentarily by effects in battles.<br>
+we retrive the stat_name, base_stat and effort from stat object of stats array.
 
 ## Features
 
 Pokemon website contains Multiple features like ***Loading***, ***Search***, ***Show Details***.
 
+### Loading
+
+The Loading feature shows Disclaims the user that the page is loading.<br>
+while loading, the browser renders all related data of all the pokemons from https://pokeapi.com using ```fetch()```.
+
+### Search
+
+The search featrue enables the user to find a specific pokemon based on its name, type or Id.
+
+### Show Details
+
+The show details button displays all details of the pokemon in a container at the right side of the screen.
+Details that has multiple values are displayed in the form of unordered list.<br>
+Close button in the container is used to close the container.

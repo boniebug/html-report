@@ -3,9 +3,9 @@
 ## List Of Features :
   - view upto 15 pokemon at time in webpage.
   - user can view **name, id, type** of the any pokemon by  deafult.
-  - You can view search bar on the top of the web page Search criteria **name, id, type**.
+  - You can view search bar on the top of the web page Search criterias **name, id, type**.
 
-  >NOTE: To see the more information about the pokemon click on the pokemon for which you wanna see information
+  >NOTE: To see the more information about the pokemon click on the pokemon for which you wanna see information.
 
 ## API's Used :
   - used this [Pokemon site](https://pokeapi.co/) to know the All Pokemon API.
@@ -34,7 +34,7 @@
 
 >NOTE: After Fetching and parsing the json object taken from the url provided by the pokemon object Url key. We get and object we a list of key like **name,type, moves, id and many other**. You can refer the below example of the object for more details.
 
-**example pokemon data Fetched using url given by the above pokemon object.** 
+**example of the  pokemon data Fetched using url given by the above pokemon object.** 
 ```js
 {
   id:1,

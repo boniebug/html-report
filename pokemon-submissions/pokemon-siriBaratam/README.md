@@ -27,7 +27,10 @@ This site for browsing pokemons with powerful ***searching***
     > Click to see Pokemon Moves and Weaknesses.
 - If you want to see **specific pokemon** which is not able to screen veiw then you use ***search*** feature.
 
+---
+
 #### Do you want to see which API'S used in this website 👇
 
 | API | *https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0* |
 | --- | --------------------------------------------------------- |
+> Explore this **[API](https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0 "https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0")**. It contains  API-URL'S of each pokemon.

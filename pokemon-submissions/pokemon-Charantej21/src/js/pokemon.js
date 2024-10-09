@@ -1,6 +1,6 @@
 'use strict';
 async function fetchPokemonDetails() {
-  const response = await fetch('https://pokeapi.co/api/v2/pokemon/?offset=0&limit=1302');
+  const response = await fetch('https://pokeapi.co/api/v2/pokemon/?offset=0&limit=1032');
   const data = await response.json();
   const pokemonList = data.results;
   const pokemonContainer = document.getElementById('pokemon-container');

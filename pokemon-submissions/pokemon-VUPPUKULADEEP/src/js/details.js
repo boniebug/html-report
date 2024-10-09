@@ -8,6 +8,7 @@ const displayDetails = function () {
   }
 };
 
+
 const showOnly = function (one, content) {
   for (let index = 0; index < content.length; index++) {
     content[index].style.display = 'none';

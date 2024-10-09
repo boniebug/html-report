@@ -119,14 +119,11 @@ function fetching() {
         fetch(arr[i].url)
             .then((response) => response.json())
             .then((pokemonData) => {
-                if (pokemonData.sprites && pokemonData.sprites.front_default) {
                     allPokemonDetails.push(pokemonData);
                     displayAllPokemons(pokemonData);
                     getPokemonWeaknesses(pokemonData.types);
-                }
             })
             console.log(arr.length);
-            console.log(count);
             count++;
                 if (count === arr.length) {
                     setTimeout(() => {

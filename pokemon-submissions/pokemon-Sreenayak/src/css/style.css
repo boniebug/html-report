@@ -5,6 +5,7 @@ body {
     padding: 0;
     transition: filter 0.3s;
 }
+
 header {
     background-color: black;
     padding: 20px;
@@ -12,30 +13,36 @@ header {
     align-items: center;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
+
 header img {
     height: 45px;
     width: 45px;
     padding: 10px;
 }
+
 h1 {
     color: orange;
     margin: 0;
 }
+
 .heading {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
+
 .search-container {
     margin-left: auto;
 }
+
 input[type="text"] {
     padding: 10px;
     width: 200px;
-    border: 3px solid  orange;
+    border: 3px solid orange;
     border-radius: 4px 0 0 4px;
     outline: none;
 }
+
 button {
     padding: 10px;
     border: 1px solid peru;
@@ -44,9 +51,11 @@ button {
     border-radius: 0 4px 4px 0;
     cursor: pointer;
 }
+
 button:hover {
     background-color: #e62e5e;
 }
+
 .container {
     max-width: 1200px;
     margin: auto;
@@ -79,6 +88,7 @@ button:hover {
     text-transform: uppercase;
     font-style: inherit;
 }
+
 .loading {
     display: none;
     margin: 20px auto;
@@ -86,6 +96,7 @@ button:hover {
     height: 50px;
     color: blue;
 }
+
 .modal {
     display: flex;
     position: fixed;
@@ -114,6 +125,7 @@ button:hover {
     color: red;
     font-size: 35px;
 }
+
 .close:hover {
     height: 29px;
     width: 22px;
@@ -123,6 +135,7 @@ button:hover {
     background-color: red;
     color: #f0f0f0;
 }
+
 .hidden {
     display: none;
 }

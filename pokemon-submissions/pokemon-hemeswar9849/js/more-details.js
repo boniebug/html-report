@@ -13,7 +13,7 @@ const getStrengthAndWeakness = (pokemonTypeid) => {
 const createAMoreDetailsContainer = () => {
   const moreDetailsContainer = document.createElement('div');
   moreDetailsContainer.setAttribute('id', 'moreDetailsContainer');
-  
+
   return moreDetailsContainer;
 };
 

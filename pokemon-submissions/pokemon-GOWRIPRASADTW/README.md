@@ -1,4 +1,4 @@
-# pokemon-assignment
+# Pokemon-assignment
 
 ## Overview of pokemon website
 
@@ -13,5 +13,26 @@ This application fetches data from the Pokemon API and displays information on s
 ## How look of website
 
 - when open a site top of the left side we can the **Pokemon** heading.
-- Top of the right side avaiable a **search bar**, user can search any Pokemon by name.
+- Top of the right side avaiable a **search bar**
+  - user can search any Pokemon by name.
+- Below the header Pokemons are loading.
+
+## Functions in our website
+
+- **`fetchPokemon()`**
+  - Fetches a list of Pokemon from the API.
+  - Calls `displayPokemon()` with the fetched data.
+
+- **`displayPokemon(pokemonData)`**
+  - Fetches information for each Pokemon.
+  - Displays the fetched Pokemon in the container.
+
+- **`searchPokemons()`**
+  - The search function is called when the user keyup in the search input field.
+  - Filters the displayed Pokemon based on user input.
+  - Updates the visibility of Pokemons based on the search input.
+  - Remaining Pokemons are disabled until search is cleared.
+
+  
+
 

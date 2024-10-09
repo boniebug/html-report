@@ -30,7 +30,10 @@ const filterContent = function (value, contents) {
   for (let index = 0; index < contents.length; index++) {
     const contentElement = contents[index];
     for (let childIndex = 1; childIndex < contentElement.children.length; childIndex++) {
-      if (contentElement.children[childIndex].innerText.includes(value)) {
+      if(contentElement.children[childIndex].className === 'hidden') {
+        continue;
+      }
+      else if (contentElement.children[childIndex].innerText.includes(value)) {
         filteredContent.push(contentElement)
       }
     }
