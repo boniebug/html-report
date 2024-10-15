@@ -1,10 +1,10 @@
 # POKEMON APPLICATION
    A simple pokemon application about, details of different characters in **pokemon cartoon** with images.
 * ## FEATURES
-  1. Contains 1000+ pokemons.
-  2. Search option on top to search for pokemons on application.
-  3. **More option**, click on it displays more details about pokemon.
-  4. We can see 14 pokmons on window without any scroll.
+  1. **Pokemon Data:** Access information on over 1000 Pokemon.
+  2. **Search Functionality:** Quickly find your favorite Pokemon using the search bar.
+  3. **Detailed Information Access:** Each Pokemon comes with a **More** button for deeper insights.
+  4. **User-Friendly Interface:** Display up to 14 Pokemon at once without scrolling for a smooth experience.
 
 * ## POKEMON DETAILS
   1. **Name :** The name of the Pokemon.
@@ -37,8 +37,8 @@
     ```js
     https://pokeapi.co/api/v2/pokemon/{name-of-pokemon}/
     ```
-  Then we get details about every pokemon using thier names.
-  >NOTE: Use catch to display error while fetching the API
+  The application processes the data from the main API, converting it to a JavaScript object and subsequently fetching detailed information for each Pokemon.
+  >NOTE: Use catch to display error while fetching the API's
 
 ## Conclusion
 This application  provieds User friendly interface and get detailed information about every pokemon. Quick search of favorite pokemon in list. 

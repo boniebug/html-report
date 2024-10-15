@@ -6,7 +6,7 @@ pokemon explorer which dispay the some features about pokemon
 ## major aspects in pokipokemon
 
 - **Loading Screen**:display loading message while fetching the pokemaon . 
-- **Pokemon Display**: once all pokemons are fetch , pokemon date like image , name , id , type is diplay with in a container.
+- **Pokemon Display**: once all pokemons are fetch , pokemon date like image , name , id , type of 1300 pokemons is diplay with in a container.
 
 - **Detail Section**: On clicking a Pokemon, users can access:
   - Image
@@ -14,7 +14,7 @@ pokemon explorer which dispay the some features about pokemon
   - ID
   - Type
   - Abilities
-  - Height
+  - Height 
   - Weight
   - Moves
   - Stats
@@ -41,52 +41,35 @@ This website use the [PokeAPI](https://pokeapi.co/) to fetch Pokemon data.
 2. **Individual Pokemon Data**:
    - **key points**: Each Pokemon's URL (e.g., `https://pokeapi.co/api/v2/pokemon/{id or name}`)  
 
-- **details used in this api with their references**
+   - **details used in this api with their references**
+   <br>
+   <br>
 
-   - **Name:**
-     - **Expressing:** Name of the pokemon
-     - **Reference:** `PokemonData.name`
 
-   - **ID:** 
-      - **Expressing:** Id of pokemon
-      - **Reference:** `pokemonData.id`
-   - **Height:** 
-      - **Expressing:** Height of pokemon
-      - **Reference:** `pokemonData.height`
-   - **Weight:** 
-      - **Expressing:** Weight of pokemon
-      - **Reference:** `pokemonData.weight`
+     | **Attribute**  | **Expressing**                                  | **Reference**                                    |
+     |----------------|-------------------------------------------------|-------------------------------------------------|
+     | **Name**       | Name of the Pokemon       | `pokemonData.name`                              |
+     | **ID**         | ID of the Pokemon                               | `pokemonData.id`                                |
+     | **Height**     | Height of the Pokemon                           | `pokemonData.height`                            |
+     | **Weight**     | Weight of the Pokemon                           | `pokemonData.weight`                            |
+     | **Types**      | Types of Pokemon like _grass, poison_          | `pokemonData.types[index].type.name`           |
+     | **Abilities**  | Abilities like _overgrow, chlorophyll_         | `pokemonData.abilities[index].ability.name`    |
+     | **Moves**      | Moves like _razor-wind, swords-dance, cut_     | `pokemonDa  moves[index].move.name`           |
+     | **Stats**      | Stats like _hp, attack, defense, special-attack, special-defense, speed_ | `pokemonData.stats[index].base_stat` |
+     | **Image**      | Image of the Pokemon  |`pokemonData.sprites`|
 
-  - **Types:** 
-      - **Expressing:** Types of pokemon like _grass,poison_
-      - **Reference:** `pokemonData.types[index].type.name`
+> **Note:** Here, _pokemonData_ is the index object in the API. The index indicates it is an array, which we access through the index.
+        
 
-  - **Abilities:**
-    - **Expressing:** abilities like _overgrow, chlorophyll_
-    - **Reference:** `pokemonData.abilities[index].ability.name`
+3. **Weakness Data**:
 
-  - **Moves:** 
-    - **Expressing:** moves like _razor-wind, swords-dance , cut, bind, vine-whipl_
-    - **Reference:** `pokemonData.moves[index].move.name`
+   - **key points**: pokemon Weekness(e.g., `https://pokeapi.co/api/v2/type/{typeId or name}`) 
 
-  - **Stats:** 
-    - **Expressing:** states like _hp, attack, defense, special-attack, special-defense, speed_ in percentages 
-    - **Reference:** `pokemonData.stats[index].base_stat`
+    - **Weakness:**  
+      - **Expressing:** weaknesses of Pokemon it based on
+      - **Reference:** `data.damage_relations` 
 
-  - **Image:** 
-      - **Expressing:** image of pokemon
-      - **Reference:** `pokemonData.sprites`
-
->note: here _pokemonData_ is the index object in api . index tells its an array we access it thorugh index
-
-## Weakness Data
-- **key points**: pokemon Weekness(e.g., `https://pokeapi.co/api/v2/type/{typeId or name}`) 
-
-- **Weakness:**  
-  - **Expressing:** weaknesses of Pokemon it based on
-  - **Reference:** `data.damage_relations` 
-
->Note: here _data_ is index object of this api.. index tells its an array we access it thorugh index
+>**Note**: here _data_ is index object of this api.. index tells its an array we access it thorugh index
 
 
 

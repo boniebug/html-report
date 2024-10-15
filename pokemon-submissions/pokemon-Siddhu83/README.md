@@ -34,7 +34,7 @@ The gateway for this code is `script.js`. It will initiate all the remaining **J
 
 ## Features
 
-In Pokémon's World these following features you'll have
+In Pokémon's World you'll have these following features:
 
 - Basic details of each pokemon
 - Vast collection of pokemons
@@ -57,13 +57,14 @@ You should wait until the loader is replaced with the pokemons
 Once the pokeoms are loaded you can use the:
 
 1. _**Search**_ by entering the name / Id / a Type of the pokemon. on Empty inputs you'll get have nothing on the screen. on Proper Inputs you'll have related matches.
-> ℹ️ **Note:** you'll get a warn popup when performed search on site while loading and the input given will be cleared once the data is loaded.
+>ℹ️ **Note:** you'll get a warn popup when performed search on site while loading and the input given will be cleared once the data is loaded.
 
 2. _**Extra Details**_ on a click you can see more Details of the respective pokemon.
 
 >ℹ️ **Note:** you've to click on the red button appears on the top rigth of `pokemon section`. The remaining elements will be diabled until the `pokemon section` is closed.
 
 ## Dependencies - APIs
+
 we've used the following APIs to fetch the Pokémon's data
 1. `https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0`
 is used to fetch the data of 1302 pokemons data in the form of `JSON`. 
@@ -71,4 +72,5 @@ is used to fetch the data of 1302 pokemons data in the form of `JSON`.
 is used to determine the strengths and weakness of a particular type.
 
 ## Conclusion
+
 This is our Pokémon World, you can refer the types and weakness of the pokemons when playing Pokémon games.

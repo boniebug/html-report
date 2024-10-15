@@ -18,6 +18,8 @@ The search bar is a crucial part of the Pokédex application that allows users t
 
 The search bar is a simple text input field where users can type the name of the Pokémon, id of the Pokémon or types of the Pokémon and when click on the search button then the details of that Pokémon will displayed on the page.
 
+> ***🔍 searchbar***
+
 ![searchFeature](src/images/searchOption.png)
 
 ## PokémonDetails
@@ -26,7 +28,7 @@ The Pokémon Details component is a part of the Pokédex application that displa
 
 - id, name, types, weight, height, abilities, moves, and stats.
 
->Pokémon card:
+> ***🎴 Pokémon card:***
 
 ![pokecard](src/images/pokemonInfo.png)
 
@@ -37,7 +39,7 @@ When the user click on a specific Pokémon card then the more information about 
 It contains all the details about the Pokémon like it's height, weight, abilities, statistics, weaknesses, moves and
 It has a **X** button to close the details of the Pokémon to see the full page as before. 
 
->Full deatails:
+> ***📜 Full deatails:***
 
 !["moreInformation about the pokemon"](src/images/pokemonMoreInfo.png)
 
@@ -52,3 +54,4 @@ Fetched PokémonData from here **_[pokemonData](https://pokeapi.co/api/v2/pokemo
 
 collected the more information of the specific pokémon by the [url](https://pokeapi.co/api/v2/pokemon/) provided the above api link there by fetching that url to get the all the information related to that Pokémon.
 
+<center>&copy written by <ins><font color="grey">sohan</font></ins></center>

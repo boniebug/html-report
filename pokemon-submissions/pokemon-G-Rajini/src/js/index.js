@@ -16,7 +16,6 @@ const pokemonsParse = async (data) => {
         try {
             const pokemonResponse = await fetch(pokemon.url);
             const pokemonData = await pokemonResponse.json();
-            console.log(pokemonData);
             const weakness = await fetchWeakness(pokemonData.types[0].type.url);
             const ability = accessElementsFromArray(pokemonData.abilities, 'ability', pokemonData.abilities.length);
             const move = accessElementsFromArray(pokemonData.moves, 'move', 4);
@@ -171,6 +170,5 @@ window.onload = async () => {
     const pokemonArray = await renderPokemonApi();
     displayPokemonDetails(pokemonArray);
     const search = document.getElementById('search');
-    homeButton(pokemonArray);
     search.addEventListener('input', () => searcArray(pokemonArray, search.value.toLowerCase()));
 };

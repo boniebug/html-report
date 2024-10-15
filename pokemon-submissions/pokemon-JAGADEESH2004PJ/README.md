@@ -3,33 +3,33 @@
 ***Read the Documentation Before go to the pokemon website you will get an information and idea about website.Explore and Enjoy it.***
 
 ## Pokémon Website Documentation Contents
->1. [Documentation](#documentation)
+>1. [Introduction](#introduction)
 >2. [Features](#features)
 >3. [How to Search the Pokemon](#how-to-search-the-pokemon)
 >4. [Pokemon Basic Details](#pokemon-basic-details)
 >5. [Pokemon Additional Information](#pokemon-additional-information)
 >6. [API](#api)
 
-## Documentation
+## Introduction
 
->Welcome to the **Pokémon Website**.. Explore various Pokémon and their details. You can access the Pokémon database, including ID, name, image, types and additional information.Some features like searching for your favorite Pokémon. Learn how to get data from the Pokémon API and find links to the Pokemon API.
+>Welcome to the **Pokémon Website**. Explore various Pokémon and their details. You can access the Pokémon database, including ID, name, image, types and additional information.Some features like searching for your favorite Pokémon. Learn how to get data from the Pokémon API and find links to the Pokemon API.
 
 ## Features
 
 >- **Pokémon Data**: Open the website to view data on various Pokémon with their details.There are 1300 pokemons are Available on that site.
->- **Loading Message**: At the time of processing of pokemons the loading message will dispalyed like a loader in websites.Whenever the all pokemons are rendered the loading message is disappear and 1300 pokemons are display.
+>- **Loading Message**: At the time of processing of pokemons the loading message will displayed like a loader in websites.Whenever the all pokemons are rendered the loading message is disappear and 1300 pokemons are display.
 >- **popup**: At the time of loading pokemons user try to search handle user actions before rendered and popup says still loading.
 >- **Search**: Search for your favorite Pokémon by ID, name, or type.
 >- **Basic Details**:Name, Image, Id and Type of a pokemon.
 >- **More Details**: Click the button to get additional information about each Pokémon.
->- **Additional Information**: When the "More Details" button is clicked, you will get extra details like abilities,height, width, statistics, moves, and weaknesses of each Pokémon.
+>- **Additional Information**: When the 'More Details' button is clicked in Basic Details, you will get extra details like abilities,height, width, statistics, moves, and weaknesses of each Pokémon.
 
 ## How to Search the Pokemon
 **Search the Favorite pokemon by Name or type or ID**
 
 >1. In the top right on the website there is a search bar.
 >2. Type the pokemon name or type or Id on the search bar.
->3. If the type the pokemon details it was found on the 1300 pokemons it will show dynamically.
+>3. If the Pokémon details are found, it will show dynamically.
 >4. Otherwise **No pokemons found** message will dispaly if no pokemons match with your typed details on search bar.
 
 >***Note***: If the user try to search before loading pokemons a small popup message shows **the pokemons are still loading Please wait...**

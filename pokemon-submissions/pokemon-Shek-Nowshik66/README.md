@@ -12,10 +12,13 @@ This webpage is used to gather the information about the pokemon from the API.
     - **Languages Used.**
 
 - **Content**
+    - **Description.**
 
     - **Functionalities.**
 
     - **Representation.**
+
+    - **Webpage Look.**
 
 # INTRODUCTION :
 
@@ -45,13 +48,17 @@ This webpage is used to gather the information about the pokemon from the API.
 
 - # Languages Used
 
-    1. **Basic HTML.**
+    1. ***Basic HTML.***
 
-    2. **Basic CSS.**
+    2. ***Basic CSS.***
 
-    3. **Basic JAVASCRIPT.**
+    3. ***Basic JAVASCRIPT.***
 
 # Content :
+
+- # Description
+
+    - **In this Webpage, There are over 1302 (one pokemon's data is not mentioned correctly) pokemons in the webpage including from Gen 1 to Gen 9 and there are Future and Past Paradox pokemons including the Regular, Mytical, Psuedo-Legeendary, Legendary, Ultra-Beasts and Regional Variants. Regional variants like Galarian, Hissuian, Alolan variants. Example: *like Hissuian Typlosion, Alolan Exeggutor, Galarian Articuno***.
 
 - # Functionalities
 
@@ -59,13 +66,13 @@ This webpage is used to gather the information about the pokemon from the API.
 
       - This feature is used to search the pokemon by either name or id or type.
 
-      > NOTE : This feature only works when all data is completely loaded.
+      > NOTE : *This feature only works when all data is completely loaded.*
 
     - # More Details
 
       - This feature is used to get the extra information of the pokemon.
 
-      > NOTE : This feature only works when all data is completely loaded.
+      > NOTE : *This feature only works when all data is completely loaded.*
 
 - # Representation
 
@@ -95,4 +102,14 @@ This webpage is used to gather the information about the pokemon from the API.
 
         - **Weakness** : In the field it shows all the specific Pokemon Weakness from the *[Weakness](https://pokeapi.co/api/v2/type/)*.
 
-        > NOTE : This feature only works when all data is completely loaded. There is a small drawback when using this it doesn't shows the more data immediately, So please wait.
+        > NOTE : *This feature only works when all data is completely loaded. There is a small drawback when using this it doesn't shows the more data immediately, So please wait*.
+
+- # Webpage Look
+
+    - **Webpage Before Loading Pokemon.** :
+
+    ![Webpage Load](./src/images/page%20loaded.png)
+    
+    - **Pokemon View** :
+    
+    ![Pokemon View](./src/images/Pokemon%20view.png)

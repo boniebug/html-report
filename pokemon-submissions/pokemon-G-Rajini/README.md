@@ -20,6 +20,8 @@ It displays the title of the `Pokemon-webpage`.
 
 - **Search-Bar:** The home page has a search bar. When users input a Pokemon's name, type, or ID, the corresponding data will appear on the home page.
 
+![Search-Image](./src/images/search.png)
+
 - **Home-Button:** After users search for something and view the data, they can click the home button to return to the home page.
 
 > ***NOTE:*** If the Pokemons take time to load, a loader will be displayed. Once the loading is complete, the Pokemons will be visible on the webpage.
@@ -40,7 +42,7 @@ It displays the title of the `Pokemon-webpage`.
    - ***Name:*** The name signifies the specific name of the Pokemon, like Pikachu, Bulbasaur, or Charmander.
    - ***Details-Button:*** When users click this button, it will **display additional information about the Pokemon.** "
  
-  ![Home-Page-Image](./src/images/homePage.png)
+  ![Home-Page-Image](./src/images/homepage.png)
 
 ---
 

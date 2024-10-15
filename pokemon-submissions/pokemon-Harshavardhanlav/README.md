@@ -25,3 +25,23 @@ The website consists of a single page designed to display Pokémon data. The pag
 - **CSS**: For styling the website (like Pokémon-themed colors, fonts).
 - **JavaScript**: To handle dynamic features like search and filters and displaying content.
 - **API** : To fetch Pokémon data.
+
+### Code Explanation 
+1. **HTML**
+-Basic Layout: The HTML file sets up the structure of the Pokémon Info page, linking the CSS for styling and JavaScript for functionality.
+
+2. Header:Contains a heading with h2 tag and an image of a Pokéball (#ball).
+Includes a search bar within a search-container for filtering Pokémon by name.
+    ```html
+    <div id="header">
+      <h2>Pokémon Info</h2>
+      <img id="ball" src="src/images/pokeball (2).png" alt="">
+      <div class="search-container">
+      <input type="text" class="search-input" placeholder="Search...">
+    </div>
+
+3. Loading Section: A loading animation (#loadingLogo) with an image (rectangle.gif) and text (Loading...), which is shown while the data is being fetched.
+Pokémon Container: The main section (#pokemon-container) where Pokémon cards will be dynamically displayed once fetched from the API.
+4. Detail Container: A hidden container (#detail-container) that will display additional Pokémon details when a specific Pokémon is selected.
+5. The src/css/pokemon.css file handles the visual styling, while src/js/pokemon.js contains the JavaScript code to make the page interactive.
+

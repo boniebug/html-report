@@ -1,20 +1,28 @@
 # pokemon-assignment
-# html
-______
-## pokemon-List
 
-- __click the link goto css__ js_`./src/css/style.css`.
+ - html
+ - css
+ - JavScript
+
+ # html
+ -----
+ this is title in html. 
+ # pokemon-List 
+ - next link the css file and js in html file.
+ - __click the link goto css js__`./src/css/style.css`.
 
 - _click the link goto js_`./src/js/script.js`.
 
+this is a h1 tag.
 # Pokémon List
-### loading.....
-- create search bar. and search pokemon deatailes. 
 
+ loading..... 
+ this loading are 5 seconds.after display pokemons in UI.
+- loading
 
+next create search bar search the pokemon name, id, type that related pokemons are displayed in UI other pokemons are hided.
 
-
-# js
+- search bar create.
 ___
 
 
