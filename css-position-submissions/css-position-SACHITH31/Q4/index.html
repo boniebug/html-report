@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+<style>
+      body {
+        height: 1000px;
+        background-color: black;
+  }
+  img{
+    height: 40px;
+  }
+  .box{
+  position: sticky;
+    left: 100px;
+    top: 10px;
+    width: 500px;
+    aspect-ratio: 1;    
+    border: 1px solid red;
+    margin: 200px auto;
+  }
+  .container{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    bottom: 0px;
+    right: 0px;
+    margin: auto;
+    border: 1px solid red;
+  }
+  .container:nth-child(2){
+    width: 400px;
+    aspect-ratio: 1;
+  }
+  .container > .container > .container:nth-child(2){
+    width: 300px;
+    aspect-ratio: 1;
+  }
+.container>.container > .container > .container:nth-child(2){
+  width: 200px;
+  aspect-ratio: 1;
+}
+.two img{
+  position: relative;
+  left: 350px;
+}
+.three img{
+  position: relative;
+  left: 250px;
+  top: 250px;
+}
+.four :nth-child(1){
+  position: relative;
+  left: 70px;
+  top: 80px;
+}
+.five :nth-child(1){
+  position: relative;
+  top: 110px;
+  left: 5px;
+}
+.five :nth-child(2){
+  position: fixed;
+  top: 500px;
+  left: 400px;
+}
+</style>
+  <body>
+    <div class="box">
+      <div class="container">
+        <div class="pokemon one">
+          <img src="./assets/vaporeon.png">
+        </div>
+        <div class="container">
+          <div class="pokemon two">
+            <img src="./assets/vaporeon.png">
+          </div>
+          <div class="container">
+            <div class="pokemon three">
+              <img src="./assets/vaporeon.png">
+            </div>
+            <div class="container">
+              <div class="pokemon four">
+                <img src="./assets/vaporeon.png">
+              </div>
+              <div class="pokemon"></div>
+              <div class="pokemon five">
+                <img src="./assets/vaporeon.png">
+                <img src="./assets/vaporeon.png">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+
+</html>

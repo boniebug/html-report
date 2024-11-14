@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TROUSER</title>
+      <style>
+        body {
+            font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            background-color:azure;
+         }
+        .header h1 {
+            margin: 0;
+        }
+        .header .icons {
+            display: flex;
+            gap: 20px;
+        }
+        .filters {
+            display: flex;
+            justify-content: space-around;
+            padding: 10px;
+            background-color:aliceblue;
+            outline: 1px  solid aliceblue ;
+        }
+        .filters div {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .categories {
+            display: flex;
+            justify-content: space-around;
+            padding: 10px;
+            background-color: #fff;
+        }
+        .categories div {
+            text-align: center;
+        }
+        .products {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding: 10px;
+        }
+        .product {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .product img {
+            width: 100%;
+            height:300px;
+        }
+        .information {
+            padding:3px;
+        }
+        .information h2 {
+            margin: 0;
+            font-size:large;
+        }
+        .information p {
+            margin: 5px 0;
+    
+        }
+        .information .price {
+            font-size: 18px;
+            color: #000;
+        }
+        .information .offer {
+            color:#28a745;
+        }
+        .information .rating {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .information .rating span {
+            color: #28a745;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>TROUSER
+    </h1>
+        <div class="icons">
+            <span>🔍</span>
+            <span>❤</span>
+            <span>🛒</span>
+        </div>
+    </div>
+    <div class="filters">
+        <div>Sort</div>
+        <div>Category</div>
+        <div>Gender</div>
+        <div>Filters</div>
+    </div>
+    
+    <div class="products">
+        <div class="product">
+            <img src="./assets/shirts/trouser1.webp">
+            <div class="information">
+                <h2>Roadster Men Solid Pure Cotton...</h2>
+                <p class="price">₹1,327</p>
+                <p>Free Delivery</p>
+                <div class="rating">
+                    <span>Rating:3.7</span>
+                    <span>(79) reviews</span>
+                </div>
+            </div>
+        </div>
+        <div class="product">
+            <img src="./assets/shirts/trouser2.webp">
+            <div class="information">
+                <h2>Fubar Slim Fit Men Black Trousers</h2>
+                <p class="price">₹698</p>
+                <p>Free Delivery</p>
+                <div class="rating">
+                    <span> Rating:3.8</span>
+                    <span>(109) Reviews</span>
+                </div>
+            </div>
+        </div>
+        <div class="product">
+            <img src="./assets/shirts/trouser3.webp">
+            <div class="information">
+                <h2>Highlander Regular Fit Men Grey Trousers</h2>
+                <p class="price">₹722</p>
+                <p>₹79.00 Delivery</p>
+                <div class="rating">
+                    <span>Rating:3.7</span>
+                    <span>(849) Reviews</span>
+                </div>
+            </div>
+        </div>
+        <div class="product">
+            <img src="./assets/shirts/trouser4.webp">
+            <div class="information">
+                <h2>Off Duty | Men Semi Formal Straight...</h2>               
+                 <p class="price">₹1,690 </p>
+                <p>Delivery ₹91</p>
+                <div class="rating">
+                    <span> Rating:3.1</span>
+                    <span>(7) reviews</span>
+                </div>
+                </div>
+                </div>
+                <div class="product">
+                    <img src="./assets/shirts/trouser5.webp">
+                    <div class="information">
+                        <h2>Ad & Av Regular Fit Men Grey Trousers</h2>
+                        <p class="price">₹479</p>
+                        <p>Free Delivery</p>
+                         <div class="rating">
+                            <span> Rating:3.7</span>
+                            <span>(1994) Reviews <span>
+                        </div>
+            </div>
+        </div>
+        <div class="product">
+            <img src="./assets/shirts/trouser6.webp">
+            <div class="information">
+                    <h2>Off Duty | Korean Baggy Loose Fit Pant</h2>
+                <p class="price">₹1,699.00</p>
+                <p>Free Delivery</p>
+                <div class="rating">
+                    <span>Rating:3.7</span>
+                    <span>(217) reviews</span>
+                </div>
+            </div>
+        </div>
+        <div class="product">
+            <img src="./assets/shirts/trouser7.webp">
+            <div class="information">
+                <h2>The Indian Garage Co Men Cargos</h2>
+                <p class="price">₹677</p>
+                <p>Free Delivery</p>
+                <div class="rating">
+                    <span> Rating:3.6</span>
+                    <span>(1,341) Reviews</span>
+                </div>
+            </div>
+        </div>
+        <div class="product">
+            <img src="./assets/shirts/trouser8.webp">
+            <div class="information">
+                <h2>Eyebogler Regular Fit Men Grey Trousers</h2>
+                <p class="price">₹429</p>
+                <p>Free Delivery</p>
+                <div class="rating">
+                    <span> Rating:3.9</span>
+                    <span>(119) Reviews</span>
+                </div>
+            </div>
+        </div>
+        <div class="product">
+            <img src="./assets/shirts/trouser9.webp">
+            <div class="information">
+                <h2>Fubar Regular Fit Men Khaki Trousers</h2>
+                <p class="price">₹420 </p>
+                <p>Free Delivery</p>
+                <div class="rating">
+                    <span> Rating:3.6</span>
+                    <span>(93) reviews</span>
+                </div>
+                </div>
+                </div>
+                <div class="product">
+                    <img src="./assets/shirts/trouser10.webp">
+                    <div class="information">
+                        <h2>
+                            Roadster Men Grey Trousers</h2>
+                        <p class="price">₹419 <span style="text-decoration: line-through;">₹462</span>9% off </p>
+                        <p>Free Delivery</p>
+                         <div class="rating">
+                            <span> Rating:3.5</span>
+                            <span>(943) Reviews <span>
+                        </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

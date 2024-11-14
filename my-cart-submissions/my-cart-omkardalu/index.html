@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>My Cart</title>
+    <style>
+       .welcome{
+        color: #183A37;
+       }
+      .text{
+        width: 800px;
+        align-items: center;
+        text-align: center;
+        padding: 90px;
+      }
+      #welcome,#welcome>p{
+        font-size: 2rem;
+        color: #183A37;
+      }
+      main{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        height: 90%;
+        padding: 70px;
+      }
+      .shopnow{
+        height: 37px;
+        background-color: orange;
+        width: 110px;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px;
+        border-radius: 20px;
+        margin: 50px;
+        margin-left:240px;
+        box-shadow: 0 0 10px orange;
+      }
+      .shopnow:hover{
+       padding: 12px;
+      }
+      .shopnow img{
+        filter:invert(100%);
+      }
+      #mcrt{
+        font-family: Bauhaus;
+        font-weight: 600;
+        font-size: 3rem;
+        color:orange;
+      }
+    </style>
+</head>
+<body align="center">
+    <header>
+        <a href="index.html"><h1>My Cart</h1></a>
+        <nav class="nav">
+            <a href="catagories.html">catagories</a>
+            <a href="profile.html">Profile</a>
+            <a href="sign-in.html">Login</a>
+        </nav>
+    </header>
+    <main>
+            <div class="text"><p id="welcome">Welcome to <span id="mcrt">MY CART</span></p>
+            <p  >Discover a world of amazing products at your fingertips!</p>
+              <a href="catagories.html"><div class="shopnow">Shop now <img src="./assets/arrow.svg" width="20%"></div></a>
+            </div>
+            <div class="img"><img src="./assets/cart.png" width="100%" alt="Cart"></div>
+       
+    </main>
+        <footer>
+        <p>Contact us as +91 XXXXX-XXXXX or my card support@gmail.com</p>
+    </footer>
+</body>
+</html>

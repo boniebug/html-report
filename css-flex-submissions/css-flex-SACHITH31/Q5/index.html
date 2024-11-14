@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Question 5</title>
+  <style>
+    *{
+      margin: 0px;
+      padding: 0px;
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+    body{
+      background-color: #000;
+    }
+    #box{
+      margin: 300px 300px 10% 40%;
+      background-color: #000;
+      border: 2px solid #fff;
+      height: 500px;
+      width: 550px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    }
+    #box p{
+      color: #fff;
+      font-size: 20px;
+      font-weight: bolder;
+      border: 2px solid red;
+      height: 100px;
+      width: 100px;
+    }
+    #thirdbox{
+      align-self: flex-end;
+    }
+  </style>
+</head>
+<body>
+<div id="box">
+  <p>box</p>
+  <p>box</p>
+  <p id="thirdbox">box</p>
+  <p>box</p>
+  <p>box</p>
+</div>
+</body>
+</html>

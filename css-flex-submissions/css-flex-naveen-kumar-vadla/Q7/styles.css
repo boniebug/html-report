@@ -1,0 +1,47 @@
+body {
+  background-color: black;
+  color: white;
+}
+
+.first-box,
+.second-box,
+.first-circle,
+.second-circle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.first-box {
+  height: 500px;
+  width: 650px;
+  margin: 10% auto;
+  background-color: #5372fe;
+}
+
+.first-circle {
+  height: 450px;
+  width: 450px;
+
+  background-color: white;
+  border-radius: 100%;
+}
+
+.second-box {
+  height: 320px;
+  width: 320px;
+  background-color: #5372fe;
+}
+
+.second-circle {
+  height: 200px;
+  width: 200px;
+  background-color: white;
+  border-radius: 100%;
+}
+
+.third-box {
+  height: 75px;
+  width: 75px;
+  background-color: #5372fe;
+}

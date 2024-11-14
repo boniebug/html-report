@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- <header>
+        <h1 align="center"><u></u>User Login !!<u></u></h1>
+    </header> -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap" rel="stylesheet">
+</head>
+<body>
+    <h1 align="center">My Cart</h1>
+    <header>
+        <div class="navigation">
+            <section>
+                <nav>
+                   <li> <a href="index.html">
+                    <div class="logo">
+                        <img class="home" src="./assets/images/homeF.png"/>
+
+                    Home
+                    </div>
+                </a> </li>
+                   <li> <a href="books.html">
+                    
+                    <div class="logo">
+                        <img class="book" src="./assets/images/bookF.png"/>
+                    Books
+                    </div>
+                </a> </li>
+                   <li> <a href="mobiles.html">
+                    <div class="logo">
+                    <img class="mobile" src="./assets/images/mobilesF.png"/>
+                    mobiles
+                    </div>
+                   </a> </li>
+                   <li> <a href="electronics.html">
+                    <div class="logo">
+                    <img class="electronics" src="./assets/images/electronicsF.png"/>
+                    Electronics
+                </div></a> </li>
+                   <li> <a href="toys.html"><div class="logo">
+                    <img class="toy" src="./assets/images/toysF.png"/>
+                    Toys
+                </div></a> </li>
+                   <li> <a href="laptops.html">
+                    <div class="logo">
+                        <img class="laptop" src="./assets/images/laptopF.png" alt="">
+                        Laptop
+                    </div>
+                   </a> </li>
+                    <li> <a href="fashion.html">
+                        <div class="logo">
+                            <img class="shirt" src="./assets/images/shirtF.png" alt="">
+                            fashion
+                        </div>
+                    </a> </li>
+                   <li> <a href="beauty.html">
+                    <div class="logo">
+                        <img class="beauty" src="./assets/images/beautyF.png" alt="">
+                        beauty
+                    </div>
+                   </a> </li>
+                    <li> <a href="furniture.html">
+                        <div class="logo">
+                            <img class="furniture" src="./assets/images/furnitureF.png"/>
+                            Furniture
+                        </div>
+                    </a> </li>
+                    <li> <a href="profile.html"><div class="logo">
+                        <img class="profile" src="./assets/images/profileF.png"/>
+                        Profile
+                    </div></a> </li>
+                    <li> <a href="login.html">
+                        <div class="logo login">
+                            Login
+                        </div>
+                    </a> </li>
+                </nav>
+            </section>
+        </div>
+    </header>
+
+
+    <style>
+        body{
+            background-color: rgba(149, 128, 128, 0.377);
+        }
+        div.outer{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            margin-bottom: 100px;
+            
+        }
+
+        div.loginM{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 10px 20px 30px rgba(0, 0, 0, 0.964); 
+            height: 350px;
+            border-radius: 30px;
+            margin-bottom: 20px;
+            background: rgba(255, 255, 255, 0.52);
+            backdrop-filter: blur(6px);
+        }
+
+        input{
+            padding-left: 10px;
+            width: 400px;
+            height: 50px;
+            margin-bottom: 20px;
+            font-size: 20px;
+            border-radius: 30px;
+            border-color: white;
+            background-color: rgba(255, 255, 255, 0);
+            backdrop-filter: blur(8px);
+        }
+
+        button{
+            width: 120px;
+            padding: 1px;
+            height: 40px;
+            margin-top: 20px;
+            margin-right: 10px;
+            font-size: 20px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-weight: 550;
+            background-color: rgba(255, 255, 255, 0);
+            border-radius: 20px;
+            
+        }
+        div.outer p{
+            margin-top: 50px;
+            color: black;
+            font-size: 20px;
+            font-weight: 550;
+            font-family: arial;
+        }
+    </style>
+
+    <main>
+        <h1 align="center"><u>User Login !!</u></h1>
+        <pre>
+
+
+        </pre>
+        <div class="outer" align="center">
+        <div class="loginM">
+            
+            <form action="" method="post">
+                <table>
+                    <tr align="right">
+                        <!-- <td>
+                            <label for="userName">User Name / email-ID : </label>
+                    
+                        </td> -->
+                        <td>
+                            <input type="text" id="userName" name="userName" required placeholder="User Name / E-mail">
+                    
+                        </td>
+                    </tr>
+                    <tr align="right">
+                        <!-- <td>
+                            <label for="Password">Password : </label>
+                    
+                        </td> -->
+                        <td>
+                            <input type="password" id="password" name="password" required placeholder="Password">
+                        </td>
+                    </tr>
+                   
+                </table>
+                <tr>
+                    <td>
+                        <button onclick="location.href='index.html'">Sign In..</button>
+                    </td>
+                                        
+                </tr>
+                
+            </form>
+            </div>
+            <p>Don't Have Account ? ,  Sign Up Below </p>
+            <button onclick="location.href='signUp.html'">SignUp..</button>
+            </div>
+            
+    </main>
+
+    <footer>
+        <h3 class="footHeading" align="center">Contact</h3>
+      <nav class="foot" align="center" style="list-style-type: none;">
+            <li>E-mail : bala@gmail.com</li>
+            <li>Mentor : Naveen</li>
+            <li>Group  : the code crew</li>
+            <li>name   : M.Bala satish</li>
+        </nav>
+    </footer>
+</body>
+</html>

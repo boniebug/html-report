@@ -1,0 +1,33 @@
+.gridcont{
+    height: 450px;
+    width: 560px;
+    background-color: aliceblue;
+    display: grid;
+    grid-template: repeat(8,1fr) / repeat(4,1fr);
+   grid-gap:4px;
+}
+.header{
+    grid-column: 1/6;
+    background-color: rgb(170, 223, 253);
+
+}
+.nav{
+ 
+    grid-row: 2/7;
+    
+}
+.article{
+    grid-area: 2/2/8/6;
+}
+.ads{
+    grid-area: 7/1/9/2;
+}
+.footer{
+    grid-column:2/6
+}
+.ads,.article,.footer,.header,.nav{
+    background-color: rgb(170, 223, 253);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

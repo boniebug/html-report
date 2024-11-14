@@ -1,0 +1,27 @@
+body
+{
+    background-color: black;
+    color: white;
+}
+.container
+{
+    display: flex;
+    border: 2px solid white;
+    flex-wrap: wrap;
+    margin: 40px;
+    height: 650px;
+    justify-content: center;
+    align-items: center;
+    aspect-ratio: 1;
+}
+.box
+{
+    border: 3px solid red;
+    height: 110px;
+    aspect-ratio: 1;
+    font-size: 30px;
+}
+#box3
+{
+    align-self:flex-end
+}

@@ -1,0 +1,116 @@
+body {
+    background: linear-gradient(to top, rgb(89, 152, 173), rgb(73, 73, 143));
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+#head {
+    color: rgb(211, 63, 63);
+    font-size: 50px;
+    background-color: rgb(118, 237, 227);
+    width: 90%;
+    padding: 25px;
+    margin: 10px;
+    border-radius: 10px;
+    border-bottom: 5px solid black;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-shadow: 3px 3px 5px rgb(185, 172, 172);
+}
+
+nav {
+    word-spacing: 20px;
+}
+
+s {
+    margin-bottom: 20px;
+}
+
+a {
+    color: rgb(232, 92, 115);
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 5px;
+    text-shadow: rgb(232, 230, 230);
+}
+
+
+a:hover {
+    color: black;
+}
+
+article {
+    margin: 20px;
+    border-radius: 10px;
+    margin: 100px;
+}
+
+h5 {
+    margin-bottom: 1px;
+}
+
+article h2 {
+    color: rgb(7, 18, 136);
+    text-shadow: 2px 3px 5px #b7b2b2;
+    padding-top: 50px;
+}
+
+article b {
+    color: rgb(22, 22, 227);
+    text-shadow: 2px 3px 5px #ae9393;
+}
+
+article p {
+    color: rgb(142, 13, 122);
+    text-shadow: 2px 3px 5px rgb(186, 160, 126);
+}
+
+img {
+    border: 2px solid orange;
+    box-shadow: 10px 10px 10px #888888;
+    border-radius: 10px;
+}
+
+article {
+    margin-left: 100px;
+}
+
+footer {
+    color: rgb(167, 6, 6);
+    word-spacing: 30px;
+    text-shadow: 3px 3px 5px rgb(194, 142, 142);
+    border-top: 1.5px solid rgb(232, 226, 226);
+}
+
+main {
+    background-color: rgb(118, 237, 227);
+    border-radius: 10px;
+    margin: 30px;
+    width: 93%;
+}
+
+input {
+    box-shadow: 5px 5px 5px #888888;
+}
+
+form {
+    background-color: rgb(118, 237, 227);
+    margin: 30px;
+    margin-right: 100px;
+    margin-left: 100px;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+#one {
+    padding-top: 50px;
+}
+
+#five {
+    padding-bottom: 100px;
+}
+
+#h {
+    border-top: 1.5px solid rgb(232, 226, 226);
+    padding-top: 15px;
+}

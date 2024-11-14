@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sign - Up</title>
+  <link rel="stylesheet" href="./styles/styles.css" />
+  <link rel="stylesheet" href="./styles/signin.css" />
+  <link rel="stylesheet" href="./styles/signup.css" />
+
+</head>
+
+<body>
+  <center>
+    <header>
+      <h1 class="header-logo">My Cart</h1>
+      <nav class="menu-nav">
+        <!-- <a class="current" href="./signin.html">Login</a>
+        <a href="./index.html"> Home </a>
+        <a href="./toys.html"> Toys </a>
+        <a href="./books.html"> Books </a>
+        <a href="./mobiles.html"> Mobiles </a>
+        <a href="./laptops.html"> Laptops </a>
+        <a href="./watches.html"> Smart - Watches </a>
+        <a href="./fashion.html"> Fashion </a>
+        <a href="./beauty.html"> Beauty </a>
+        <a href="./furniture.html"> Furniture </a>
+        <a href="./profile.html"> Profile </a> -->
+        <a href="./signup.html">SIGN UP</a>
+      </nav>
+    </header>
+
+    <main>
+      <div class="input-container">
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" required placeholder="Username" />
+      </div>
+
+      <div class="input-container">
+        <label for="full-name">Full Name</label>
+        <input type="text" id="full-name" name="full-name" required placeholder="Full Name" />
+      </div>
+
+      <div class="input-container gender-container">
+        <label for="gender">Gender</label>
+        <div>
+        <select name="gender" id="gender">
+          <option>select</option>
+          <option value="Male">male</option>
+          <option value="female">Female</option>
+          <option value="others">Others</option>
+        </select>
+        </div>
+      </div>
+
+      <div class="input-container">
+        <label for="email">Email</label>
+        <input class="email-container" type="text" name="email" id="email" placeholder="username or email" required />
+      </div>
+
+      <div class="input-container">
+        <label for="mobile">Mobile</label>
+        <input class="mobile-container" type="tel" name="mobile" id="mobile" placeholder="mobile" required />
+      </div>
+
+      <div class="input-container">
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password" placeholder="password" required />
+      </div>
+
+      <div class=" input-container membership-container">
+        <label class="membership-label" for="membership">Do You Want premium Membership</label>
+        <div class="options-div">
+        <div class="option">
+        <input class="radio-container" type="radio" name="membership" id="yes" value="Yes" />
+        <label for="yes">Yes</label>
+        </div>
+        <div class="option">
+        <input class="radio-container" type="radio" name="membership" id="no" value="No" />
+        <label for="no">No</label>
+        </div>
+        </div>
+      </div>
+
+      <div class="input-container">
+        <label for="profile-pic">Choose Profile Pic</label>
+        <input type="file" name="profile-pic" id="profile-pic" />
+      </div>
+
+      <div class="btn-container">
+        <a href="./index.html"><button>Sign up</button></a>
+        <a href="./signin.html"><button>Sign In</button></a>
+      </div>
+    </main>
+
+    <footer>
+      <p>
+        contact us on +91 (000) xxxx xxxx | <a href="#">mycart12@gmail.com</a>
+      </p>
+    </footer>
+  </center>
+</body>
+
+</html>

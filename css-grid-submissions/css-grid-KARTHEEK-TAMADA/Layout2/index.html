@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Layout2</title>
+    <style>
+      .parent{
+        display: grid;
+        grid-template-columns: 200px 500px ;
+        grid-template-rows: 100px 400px 100px 50px;
+        grid-template-areas: "child1 child1 "
+        "child3 child2"
+         "child4 child2" 
+         "child4 child5";
+         grid-gap: 5px;
+         justify-content: center;
+     padding-top: 50px;
+      }
+      .child1{
+        grid-area: child1;
+        background-color:aliceblue;
+    
+      }
+      .child2{
+        grid-area: child2;
+        background-color:aliceblue;
+      }
+      .child3{
+        grid-area: child3;
+        background-color:aliceblue;
+      }
+      .child4{
+        grid-area: child4;
+        background-color:aliceblue;
+      }
+      .child5{
+        grid-area: child5;
+        background-color:aliceblue;
+      }
+
+    </style>
+  </head>
+  <body>
+    <div class="parent">
+      <div class="child1">Header</div>
+      <div class="child2">Article</div>
+      <div class="child3">Nav</div>
+      <div class="child4">Ads</div>
+      <div class="child5">Footer</div>
+    </div>
+  </body>
+</html>

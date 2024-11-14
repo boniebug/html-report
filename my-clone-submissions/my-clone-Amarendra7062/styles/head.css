@@ -1,0 +1,10 @@
+  body{
+                background-color: aqua;
+                margin:2px;
+                border:2px solid blue ;
+            }
+            #a{
+                border: 2px dotted blue;
+                background-color: aqua;
+
+            }

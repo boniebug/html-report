@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Library Management System</title>
+    <link href="./src/css/style.css" rel="stylesheet" />
+    <script src="./src/js/category.js"></script>
+    <script src="./src/js/availability.js"></script>
+    <script src="./src/js/dispalyBooks.js"></script>
+    <script src="./src/js/addNewBook.js"></script>
+  </head>
+  <body>
+    <header id="titleBar">
+      <h1>TRACK MY BOOKS</h1>
+    </header>
+    <main>
+      <section class="navSection">
+        <div id="navBar">
+          <div>BOOKS</div>
+
+          <button id="addBookBtn" onclick="displayForm()">+ Add</button>
+        </div>
+      </section>
+      <h2>Categorise</h2>
+      <section id="buttonContainer"></section>
+      <section id="bookContainer">
+        <!-- To append the bookdetails  -->
+        <!-- <div class="book">
+            <div class="hi">Book is Available now, dbclick to lend</div>
+          </div> -->
+      </section>
+      <section class="catergorise-container" id="categoryContainer">
+
+      </section>
+    </main>
+    <section>
+      <form id="addNewbook">
+        <div>
+          <u
+            ><div id="formHeading">
+              Adding New Book
+              <button type="button" id="closeBtn" onclick="closeForm()">
+                x
+              </button>
+            </div></u
+          >
+          <p>Please Enter Bookdetails</p>
+        </div>
+        <label for="name">Book Name :</label>
+        <input
+          type="text"
+          id="name"
+          placeholder="enter book name..."
+          required
+        />
+        <label for="bookGerne">Genre :</label>
+        <input
+          type="text"
+          id="bookGerne"
+          placeholder="enter book genre..."
+          required
+        />
+        <label for="authorName">Authorname :</label>
+        <input
+          type="text"
+          id="authorName"
+          placeholder="enter authorname..."
+          required
+        />
+        <label for="year">publishedYear :</label>
+        <input
+          type="number"
+          id="year"
+          placeholder="enter publishedyear..."
+          required
+        />
+        <button type="button" id="startAdding">ADD Book</button>
+      </form>
+    </section>
+  </body>
+</html>

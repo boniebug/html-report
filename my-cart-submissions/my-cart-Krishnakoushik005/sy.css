@@ -1,0 +1,51 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+} 
+body{
+   background-color:#361134;
+   color: white;
+   text-align: center;
+}
+#hl{
+    border:0.1px solid white;
+}
+table,li,p,#hl{
+    margin: 1rem auto;
+}
+table{
+    border-spacing: 0.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.505);
+    border-radius: 1em;
+}
+img{
+    height: 500px;
+    width: 500px;
+}
+input,select,button{
+    background-color: #361134;
+    color: white;
+    padding: 0.2rem;
+    border: 1px solid white;
+    border-radius: 0.5em;
+}
+a ,article h4:hover{
+    text-decoration: none;
+    color: #99FF00;
+}
+a:hover,a:focus{
+   
+    font-size: 1.1rem;
+    font-style:italic;
+    color: #fff;
+    border: 1px solid;
+    border-radius: 5px;
+}
+button:hover,select:hover,input:hover,input:focus,select:focus,button:focus{  
+    color: #99ff00;
+    border: 2px solid #99FF00;
+}
+a:active,footer{
+    color: silver;
+}

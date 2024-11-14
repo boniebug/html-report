@@ -1,0 +1,45 @@
+#head {
+    grid-area: header;
+
+}
+
+#article {
+    grid-area: article;
+}
+
+#nav {
+    grid-area: nav;
+
+}
+
+#ads {
+    grid-area: ads;
+
+}
+
+#footer {
+    grid-area: footer;
+
+}
+
+.container {
+    display: grid;
+    grid-template-areas:
+        'header header header header header'
+        'nav  article article article article'
+'ads article article article article'
+        'ads footer footer footer footer';
+    grid-template-rows: 60px 1fr 60px 60px;
+    grid-template-columns:20% 20% 20% 20% 17%;
+    height: 700px;
+    grid-gap: 10px;
+    margin: 0;
+    border: 1px solid lavender;
+    background-color: white;
+
+}
+
+div {
+    background-color: lavender;
+    padding: 10px;
+}

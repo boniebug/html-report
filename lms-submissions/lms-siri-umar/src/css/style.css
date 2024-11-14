@@ -1,0 +1,201 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+#modal-background{
+  background-color: rgba(0, 0, 0, 0.5);
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 9;
+  display: none;
+}
+body {
+  background-color: #f3e9dc;
+  height: 100vh;
+  padding: 0 10px;
+}
+a {
+  text-decoration: none;
+  color: white;
+}
+
+ul {
+  list-style: none;
+}
+
+header {
+  padding: 16px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  background-color: #c08552;
+  z-index: 9;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+button {
+  padding: 8px 16px;
+  border-radius: 8px;
+  margin: 0 4px;
+  border: 1px solid #5e3023;
+  font-size: 16px;
+  cursor: pointer;
+}
+.primary-btn {
+  background-color: #5e3023;
+  color: white;
+  border: none;
+}
+.secondary-btn {
+  color: #5e3023;
+  background-color: white;
+}
+.logo h1 {
+  font-size: 32px;
+}
+.category-section {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  flex-wrap: wrap;
+  gap: 20px;
+  padding-bottom: 20px;
+  border-bottom: 8px solid #ba9779;
+}
+.category-container:nth-child(1) {
+  margin-top: 60px;
+}
+.category-container {
+  padding-top: 20px;
+  margin: 8px 0;
+}
+.category-container h2 {
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+.book-container {
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  background-color: rgb(244, 242, 242);
+  padding: 12px;
+  border-radius: 8px;
+  display: grid;
+  gap: 20px;
+  transition: transform 0.3s;
+}
+.book-container:hover {
+  transform: scale(1.03);
+}
+
+/* Add book modal styles */
+#add-book-modal {
+  width: 30vw;
+  height: fit-content;
+  background-color: white;
+  padding: 20px;
+  font-family: sans-serif;
+  position: fixed;
+  top: 15%;
+  left: 30vw;
+  display: none;
+  border-radius: 10px;
+  z-index: 10;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+}
+h2 {
+  text-align: center;
+}
+input {
+  width: 100%;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  padding: 8px 0;
+  padding-left: 4px;
+  border: 2px solid #c08552;
+  font-size: 16px;
+  margin-top: 4px;
+}
+#close-button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+.Available {
+  color: green;
+}
+.Unavailable {
+  color: red;
+}
+.book-title {
+  color:#5e3023;
+  overflow-y: hidden;
+  text-overflow: ellipsis;
+}
+.book-title::-webkit-scrollbar {
+  display: none;
+  height: 0;
+}
+.book-author::before {
+  content: "Author: ";
+  font-weight: bold;
+}
+.published-year::before {
+  content: "Published Year: ";
+  font-weight: bold;
+}
+.book-genre::before {
+  content: "Genre: ";
+  font-weight: bold;
+}
+
+/* drop down styles */
+#dropdown-container {
+  position: relative;
+  display: inline-block;
+}
+
+#dropdown {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: white;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  border-radius: 5px;
+  overflow: hidden;
+  margin-top: 5px;
+}
+
+#dropdown button {
+  background-color: white;
+  color: black;
+  padding: 10px;
+  text-align: left;
+  border: none;
+  width: 100%;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+#dropdown button:hover {
+  background-color: #ddd;
+}
+
+#dropdown button:active {
+  background-color: #ccc;
+}
+
+#scroll-up-btn {
+ position: fixed;
+ z-index: 1000;
+ bottom: 20px;
+ right: 40px;
+ display: none;
+}

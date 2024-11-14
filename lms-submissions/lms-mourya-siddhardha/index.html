@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>pustaka Vanam</title>
+  <script src="src/js/script.js"></script>
+  <script src="src/js/sourceData.js"></script>
+  <script src="src/js/createHtml.js"></script>
+  <script src="src/js/categorise.js"></script>
+  <script src="src/js/addNewBook.js"></script>
+  <script src="src/js/Lend.js"></script>
+  <link rel="stylesheet" href="src/css/styles.css">
+</head>
+
+<body>
+  <header>
+    <h1 class="library-name">Pustaka Vanam</h1>
+    <button id="add-button" class="clickable-buttons">+</button>
+    <label for="category-unit" id="label-for-catgory-unit">Categorise: </label>
+    <select id="category-unit">
+      <option class="clickable-buttons categorise-buttons" id="all-books-criteria">All books</option>
+      <option class="clickable-buttons categorise-buttons" id="genre-criteria">Genre</option>
+      <option class="clickable-buttons categorise-buttons" id="author-criteria">Author</option>
+      <option class="clickable-buttons categorise-buttons" id="year-criteria">Year</option>
+    </select>
+  </header>
+
+  <main>
+    <form action="" class="new-book-form-class">
+      <button id="close-button" class="clickable-buttons">X</button>
+      <button id="minimize-button" class="clickable-buttons">-</button>
+      <label for="name">Book Name : </label>
+      <input type="text" id="name" class="new-book-input">
+      <label for="year">Published Year : </label>
+      <input type="number" id="year" class="new-book-input">
+      <label for="genre">Book Genre : </label>
+      <input type="text" id="genre" class="new-book-input">
+      <label for="author">Book Author : </label>
+      <input type="text" id="author" class="new-book-input">
+      <label for="cover-page">Cover Page(OPTIONAL) : </label>
+      <input type="file" id="cover-page" class="new-book-input">
+      <input type="button" value="Submit" id="Submit-button" class="clickable-buttons">
+    </form>
+    <section id="main-section" class="main-section-class">
+      <!-- <div class="book-container">
+        <img src="" alt="" class="book-image">
+        <div class="book-select">
+          <p class="book-name"></p>
+          <p class="published-year"></p>
+          <p class="book-genre"></p>
+          <p class="book-author"></p>
+        </div>
+        <div class="check-division">
+          <span class="availability-message">book is unavailable</span> 
+          <button id="lend">lend book</button>
+        </div>
+      </div> -->
+    </section>
+  </main>
+
+</body>
+
+</html>

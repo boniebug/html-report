@@ -1,0 +1,22 @@
+body
+{
+    background-color: black;
+}
+
+.flex{
+    display: flex;
+    height: 600px;
+  aspect-ratio: 1;
+    border: 2px solid white;
+    align-items: center;
+    justify-content: center;
+}
+
+.item{
+    border: 2px solid red;
+    height: 100px;
+    aspect-ratio: 1;
+    color: white;
+    font-weight: 900;
+    font-size: 25px;
+}

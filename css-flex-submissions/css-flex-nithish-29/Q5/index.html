@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Question 5</title>
+  <style>
+    body{
+      background-color: black;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .content{
+      border:3px solid white;
+      width: 40%;
+      aspect-ratio: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .box{
+      width: 75px;
+      height: 75px;
+      border: 2px solid red;
+      color:white;
+    }
+    .box:nth-child(3){
+      align-self:flex-end;
+    }
+  </style>
+</head>
+<body>
+  <div class="content">
+    <div class="box">Box</div>
+    <div class="box">Box</div>
+    <div class="box">Box</div>
+    <div class="box">Box</div>
+    <div class="box">Box</div>
+  </div>
+</body>
+</html>

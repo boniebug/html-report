@@ -1,0 +1,62 @@
+body {
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+img {
+    width: 100px;
+}
+
+.cartoons {
+    margin-top: 200px;
+    display: flex;
+    border: solid red 2px;
+
+}
+
+.charmander1,
+.charmander10 {
+    position: static;
+}
+
+.charmander2 {
+    position: relative;
+    bottom: 100px;
+}
+
+.charmander3 {
+    position: relative;
+    top: 100px;
+}
+
+.charmander4 {
+    position: relative;
+    bottom: 100px;
+}
+
+.charmander5 {
+    position: relative;
+    top: 100px;
+}
+
+.charmander6 {
+    position: relative;
+    bottom: 100px;
+}
+
+.charmander7 {
+    position: relative;
+    top: 100px;
+}
+
+.charmander8 {
+    position: relative;
+    bottom: 100px;
+}
+
+.charmander9 {
+    position: relative;
+    top: 100px;
+}

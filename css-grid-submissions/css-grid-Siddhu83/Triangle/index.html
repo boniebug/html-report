@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>css-grid-qsn3</title>
+  <style>
+    .main-container {
+      display: grid;
+      height: 200px;
+      width: 600px;
+      grid-template-rows: repeat(4, 1fr);
+      gap: 5px;
+    }
+
+    .internal-container {
+      background-color: #e6e6fb;
+      text-align: center;
+      padding: 15px;
+    }
+
+    .second-row {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 5px;
+    }
+
+    .third-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 5px;
+    }
+
+    .fourth-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 5px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="main-container">
+    <div class="internal-container One">1</div>
+    <div class="second-row">
+      <div class="internal-container Two">2</div>
+      <div class="internal-container Three">3</div>
+    </div>
+    <div class="third-row">
+      <div class="internal-container Four">4</div>
+      <div class="internal-container Five">5</div>
+      <div class="internal-container Six">6</div>
+    </div>
+    <div class="fourth-row">
+      <div class="internal-container Seven">7</div>
+      <div class="internal-container Eight">8</div>
+      <div class="internal-container Nine">9</div>
+      <div class="internal-container Ten">10</div>
+    </div>
+  </div>
+</body>
+
+</html>

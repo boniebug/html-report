@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+     }
+      .all_items
+      {
+        font-weight:bold;
+        background-color: #e3e3fd;
+        display: grid;
+        grid-template-columns:3fr 1fr 1fr;
+        grid-template-rows: auto 1fr auto;
+        grid-template-areas: "header header header"
+                              "article nav ads"
+                              "footer nav ads";
+        height: 100vh;
+      }
+      .header
+      {
+        grid-area: header;
+        padding: 20px;
+        border: 5px solid rgb(255, 255, 255);
+      }
+      .article
+      {
+        grid-area:article;
+        border: 5px solid rgb(255, 255, 255);
+        padding: 20px;
+      }
+      .nav
+      {
+        grid-area: nav;
+        border: 5px solid rgb(255, 255, 255);
+        padding: 20px;
+      }
+      .ads
+      {
+        grid-area: ads;
+        border: 5px solid rgb(255, 255, 255);
+        padding: 20px;
+      }
+      .footer
+      {
+        grid-area: footer;
+        border: 5px solid rgb(255, 255, 255);
+        padding: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="all_items">
+      <div class="header">HEADER</div>
+      <div class="article">ARTICLE</div>
+      <div class="nav">NAV</div>
+      <div class="ads">ADS</div>
+      <div class="footer">FOOTER</div>
+  </div>
+  </body>
+</html>

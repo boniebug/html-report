@@ -1,0 +1,38 @@
+body{
+    background-color: black;
+}
+.main_block
+{
+    width: 470px;
+    aspect-ratio: 1;
+    border: 2px solid white;
+    margin: auto;
+    margin-top: 100px;
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+}
+.box
+{
+    font-size:20px;
+    font-weight: 600;
+    border: 2px solid red;
+    color: white;
+    margin: none;
+    width: 80px;
+    height: 80px;
+}
+.left_block
+{
+    display: flex;
+    flex-direction: column;
+    height: 470px;
+    justify-content: space-between;
+}
+.right_block
+{
+    display: flex;
+    flex-direction: column;
+    height: 470px;
+    justify-content: space-between;
+}

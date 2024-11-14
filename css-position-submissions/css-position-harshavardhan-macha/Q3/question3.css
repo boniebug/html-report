@@ -1,0 +1,78 @@
+body{
+    
+    
+    background:black; 
+    
+    }
+    .box{
+    
+    margin-left:auto;
+    margin-right:auto;
+    }
+    img{
+        height:45px;
+        aspect-ratio: 1;
+    }
+    .container-one{
+    height:500px;
+    aspect-ratio:1;
+        border:1px solid red;
+        margin-left:auto;
+        margin-right:auto;
+    
+    }
+    .pokemon-one{
+        position:relative;
+       
+        top:0%;
+        left:1%
+    }
+    .container-two{
+        height:400px;
+        aspect-ratio:1;
+            border:1px solid red;
+            margin-left:auto;
+    margin-right:auto;
+        
+        }
+        .pokemon-two{
+            position:relative;
+            left:88%;
+            top:1%;
+        }
+        .container-three{
+            height:300px;
+            aspect-ratio:1;
+                border:1px solid red;
+                margin-left:auto;
+                margin-right:auto;
+            }
+            .pokemon-three{
+                position:relative;
+                left:84%;
+                top:83%;
+            }
+            .container-four{
+                height:200px;
+                aspect-ratio:1;
+                    border:1px solid red;
+                    margin-left:auto;
+                    margin-right:auto; 
+                  
+                }
+    
+                .pokemon-four{
+                    position:relative;
+                    left:2%;
+                    top:75%;
+                }
+    
+    
+               
+                   
+                    .pokemon-five{
+                       position:relative;
+                       top:12%;
+                       left:37%;
+                    }
+    

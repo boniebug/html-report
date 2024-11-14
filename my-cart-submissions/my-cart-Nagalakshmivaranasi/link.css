@@ -1,0 +1,31 @@
+#cart{
+    background-color: cyan;
+    color:coral;
+}
+body{
+  background-color:pink;
+}
+#head{
+    background-color: violet;
+    color:brown;
+}
+.img{
+  border:3px dotted orange;
+  margin: 2px;
+border-radius: 5%;
+}
+a{
+  text-decoration: none;
+  font-weight: 600;
+  color:midnightblue;
+}
+.ten{
+  font-size: large;
+}
+.header{
+  border-top: 3px;
+  border-color: black;
+}
+.five{
+    margin-left: 1.5%;
+}

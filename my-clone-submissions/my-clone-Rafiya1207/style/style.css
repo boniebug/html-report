@@ -1,0 +1,501 @@
+*{
+    margin: 0px;
+    font-family: "Roboto",sans-serif;
+    color:#FFF;
+}
+img{
+    width:  100%; 
+}
+.container1{
+    display: flex;
+    box-sizing: border-box;
+    height: 94px;
+    width: 100%;
+    background: linear-gradient(#0a1b22,#162a32);
+    padding:16px 50px;
+    font-weight: bold;
+    justify-content: space-between;
+}
+#logo{
+    margin: 16px 0;
+}
+.nav-elements {
+    padding:0;
+    margin: 24px 0;
+    li{
+        list-style-type: none;
+        display: inline;
+        padding: 16px;
+    }
+}
+a{
+    text-decoration: none;
+}
+.select-language{
+    display: flex;
+    select,option{
+        border: none;
+        appearance: none;
+        background-color:#0a1b22;
+        font-size:24px ;
+        width: 50px;
+        padding: 8px;
+        text-align: center;
+    }
+}
+.green-button{
+    margin: 32px;
+    background-color: #4cc373;
+    padding: 18px 32px;
+    width: fit-content;
+    border-radius: 40px;
+    font-size: 16px;
+    display: inline-block;
+}
+.intro{
+    width: 100%;
+    height:fit-content;
+    color: #FFF;
+}
+.background-images-layout{
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.hero-image1,.hero-image2{
+    background-image: url("../assets/hero-image-1080x1080.webp");
+    width: 100%;
+    height: 100%;
+    text-align: center;
+}
+.archivo{
+    font-family: "Archivo", sans-serif;
+}
+.reg{
+    font-size:10px;
+    line-height: 10px;
+    vertical-align: super;
+}
+
+.content-on-hero-image{
+    padding:160px 80px 48px;
+    h1{
+        font-weight:600;
+        font-size:90px;
+        line-height:112px;
+    }
+    h2,h3{
+        font-weight: 400;
+        font-size: 24px;
+    }
+}
+.financers-logos{
+    text-align: left;
+    line-height: 50px;
+    width: fit-content;
+    img{
+        margin-right: 24px;
+        width: max-content;
+    }
+}
+.first{
+    padding: 80px;
+    background-color: #10232a;
+}
+.nominee{
+    width: 100%;
+    height: auto;
+    background-color: #162a32;
+    display:flex;
+    border-radius: 30px;
+}
+#nomineeimg{
+    width: 50%;
+    overflow: hidden;
+    border-radius: 30px 0 0 30px;
+    height: fit-content;
+    img{
+        object-fit: cover;
+        height: 320px;
+    }
+}
+.ask-for-vote{
+    text-align: left;
+    font-size: 20px;
+    h2{
+        margin: 32px;
+    }
+    #yellow-background{
+        color: #000;
+        background-color:#EAAD40;
+        border-radius: 10px;
+        padding: 16px ;
+        margin: 0 32px;
+    }
+}
+span{
+    display: inline-block;
+}
+.container2{
+    text-align: center;
+    padding: 32px;
+}
+.roboto-large{
+    font-size:64px;
+    font-weight: 600;
+    margin: 16px 0;
+    text-wrap: balance;
+}
+.roboto-medium{
+    font-size: 24px;
+    font-weight: 400;
+    margin: 32px;
+    opacity: 0.5;
+}
+.quiz{
+    display: grid;
+    grid-template-columns: 30% 30% 30%;
+    column-gap: 5%;
+}
+.quiz-images{
+    text-align: center;
+    padding: 32px;   
+    border-radius: 100px 20px 20px;
+    display: grid;
+    row-gap: 60%;
+    height: 450px;
+    h2 span{
+        opacity: 0.7;
+    }
+}
+#quiz-fitness{
+    background-image: url("../assets/quiz-fitness.webp");
+}
+#quiz-nutrition{
+    background-image: url("../assets/quiz-nutrition.webp");
+}
+#quiz-mentalbalance{
+    background-image: url("../assets/quiz-mentalbalance.webp");
+}
+.grid1,.grid2{
+    display: grid;
+    grid-template-columns: 500px 500px;
+    gap: 20px;
+}
+.border{
+    border-radius: 20px;
+}
+.what-you-get-images{
+    width: 100%;
+    height: 100%;
+}
+.horizontal-grid{
+    display: grid;
+    grid-template-columns: 250px 250px;
+}
+.grid1 .vertical-grid{
+    display: grid;
+    grid-template-rows: 250px 370px;
+}
+.grid2 .vertical-grid{
+    display: grid;
+    grid-template-rows: 450px 250px;
+}
+#what-you-get-phone{
+    grid-area: 1/1/2/2;
+    background-color: #ffffffc8;
+}
+#what-you-get-appointments{
+    grid-area: 2/1/4/2;  
+    background-image: url("../assets/whatyouget-appointments.webp");
+}
+#what-you-get-healthy{
+    grid-area: 4/1/5/2;
+    background-color: #0a1b22;
+    grid-template-columns: 275px 250px;
+    img{
+        
+        height: 100%;
+        width: 90%;
+    }                                                                                     
+}
+#what-you-get-empowering{   
+    grid-area: 1/2/3/3;
+    background-color: #EAAD40;
+}
+#what-you-get-goals{
+    grid-area: 3/2/5/3;
+    background-color: #0a1b22;    
+}
+.text-on-what-you-get{
+    padding: 32px;;
+    text-align: left;
+    h2,h5{
+        color: #0a1b22;
+        font-size: 40px;
+    }
+    h5{
+        padding: 16px 0 0;
+        font-weight: 400;
+        font-size: 24px;
+    }
+    .white{
+        color: #FFF;
+    }
+}
+#what-you-get-appointments .text-on-what-you-get{
+    margin:240px 32px;
+    padding: 24px;
+}
+.grid2{
+    grid-template-rows: 700px 360px 650px;
+    margin-top: 20px;
+}
+#what-you-get-audiobooks{
+    grid-area: 1/1/2/2;
+    background-color: #EAAD40;
+}
+#what-you-get-badge{
+    grid-area: 1/2/2/3;
+    background-color: #0a1b22;
+}
+#what-you-get-mentalbalance{
+    grid-area: 2/1/3/3;
+    background-image: url("../assets/whatyouget-cr-mentalbalance-desktop.webp");
+    .text-on-what-you-get{
+        width: 50%;
+        h2{
+            padding: 0 112px 0 0;
+        }
+        h2,h5{
+            margin: 0 32px;
+        }
+    }
+}
+#what-you-get-reports{
+    grid-area: 3/1/4/2;
+    background-color: #0a1b22;
+    grid-template-rows: 400px 300px;
+}
+#cards{
+    display: grid;
+    grid-template-rows:180px 150px;
+    grid-template-columns: repeat(2,200px);
+    padding: 32px;
+    gap: 20px;
+}
+#card1{
+    grid-area: 1/1/2/3;
+}
+#what-you-get-water-intake{
+    grid-area: 3/2/4/3;
+    background-image: url("../assets/water-intake.webp");
+    .text-on-what-you-get{
+        height: 30%;
+        padding-top: 430px;
+    }
+}
+.available{
+    display: flex;
+    div{
+        width: 50%;
+    }
+}
+.available-device-text{
+    text-align: left;
+    padding:160px 32px;
+    .green-button{
+        padding: 8px 24px;
+        background-color: #FFF;
+        margin: 8px;
+    }
+}
+.available-buttons{
+    width: 250px !important;
+    height: 35px;
+    display: flex;
+    justify-content: space-evenly;
+    img{
+        height: 30px;
+        width: 30px;
+    }
+    p{
+        padding-top: 8px;
+        color: #000;
+        font-size: 16px;
+        font-weight: 700;
+    }
+}
+.explore-plans{
+    display: flex;
+}
+.plans{
+    width: 50%;
+    border: 2px solid rgba(255,255,255,0.5);
+    border-radius: 50px;
+    padding: 40px;
+    margin: 16px;
+    background-color: #0a1b22;
+    text-align: left;
+    color: #FFF;
+    .roboto-large{
+        font-size: 48px;
+    }
+    h5{
+        display: inline;
+    }
+    .roboto-medium{
+        margin: 0;
+        padding: 0;
+        font-size: 24px;
+    }
+}
+.plans:hover{
+    background-color: #162a32;
+}
+.plans-bullets{
+    margin: 20px 20px 20px 0;
+}
+.circle-dot{
+    width: 20px;
+    height: 20px;
+}
+.second{
+    padding: 16px;
+    text-align: center;
+}
+.roboto-large-black{
+    font-size:64px;
+    font-weight: 500;
+    margin:160px 160px 80px;
+    text-wrap: balance;
+    color: #0a1b22;
+}
+.roboto-medium-white{
+    font-size: 32px;
+    font-weight: 500;
+    color: #FFF;
+}
+.roboto-medium-black{
+    font-size: 32px;
+    font-weight: 500;
+    color: #0a1b22;
+}
+.experts-section,.tips-advices{
+    height: fit-content;
+    padding: 16px 0;
+}
+.expert{
+    text-align: left;
+    height: 470px;
+    width: 300px;
+    margin:0 16px;
+    img{
+        height: 100%;
+    }
+    h3{
+        position: relative;
+        bottom :150px;
+        left: 10px;
+    }
+}
+.expert-speciality{
+    width: fit-content;
+    padding: 12px 32px;
+    background-color: #FFF;
+    border-radius: 10px;
+    position: relative;
+    bottom :130px;
+    left: 10px;
+    h4{
+        color: #0a1b22;
+    }
+}
+.appointments{
+    background-color: #0a1b22;
+    border-radius: 20px;
+    margin: 48px;
+    padding: 48px;
+    width: auto;
+    display: flex;
+    .roboto-large{
+        font-size: 48px;
+    }
+    .roboto-medium-white{
+        font-size: 24px;
+    }
+}
+.tips-advices-section{
+    display: flex;
+}
+.image-radius{
+    border-radius: 20px;
+}
+.expert-tips-advices{
+    width: 240px;
+    padding: 16px;
+    display: grid;
+    grid-template-rows: 270px 40px 70px;
+    grid-template-columns: 240px;
+    row-gap: 10px;
+    border: 2px solid grey;
+    border-radius: 20px;
+    margin: 16px;
+    img{
+        width: 100%;
+        height: 100%;
+    }
+    .expert-speciality{
+        bottom: 50px;
+        padding:8px 16px;
+    }
+    h3.roboto-medium-black{
+        font-weight: 600;
+        text-align: left;
+        font-size: 18px;
+    }
+}
+.expert-profiles{
+    display: flex;
+    img{
+        width: 15%;
+        height: 100%;
+    }
+    h5.roboto-medium-black{
+        margin: 8px 16px;
+        font-size: 18px;
+    }
+}
+.view-all-button{
+    border: 2px solid #162a32 ;
+    background-color: #FFF;
+    margin: 0 16px; 
+    color: #162a32; 
+    padding: 16px 48px;
+}
+.hero-image2{
+    background-image: url("../assets/testimonal-1080x1080.webp");    
+}
+.hero-image2 .content-on-hero-image{
+    padding: 160px 80px;
+}
+.hero-image2 h1{
+    font-size: 64px;
+}
+#logo-slogan{
+    width: 200px;
+    height: 90px;
+}
+.footer-content{
+    padding: 80px 160px ;
+    background-color: #0a1b22;
+    color: #FFF;
+    display: grid;
+    row-gap: 50px;
+}
+.social-profiles{
+    img{
+        width: 24px;
+        height: 24px;
+        margin: 24px;
+    }
+}

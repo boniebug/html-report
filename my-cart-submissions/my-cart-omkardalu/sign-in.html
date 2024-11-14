@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Cart</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        main {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #sign-in {
+            background: #183A37;
+            color: white;
+            width: 55vw;
+            max-width: 500px;
+            padding: 20px;
+            border-radius: 20px 20px 20px 0px;
+            box-shadow: 0 0 10px #183A37;
+            /* line-height: 30px; */
+        }
+
+        input {
+            text-align: center;
+            background-color: white;
+            border: 2px solid black;
+            padding: 7px;
+            color: black;
+            border-radius: 10px;
+        }
+
+        .log {
+            text-align: center;
+            ;
+        }
+
+        main {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            height: 76vh;
+            padding: 70px;
+        }
+
+        main h1 {
+            color: orange;
+            margin-left: 25px;
+            text-align: left;
+        }
+        [type=submit] {
+            background-color: orange;
+            width: 70px;
+            border-radius: 9px;
+            width: 75%;
+            height: 30px;
+            border: none;
+        }
+
+        .sign-up {
+            border-radius: 10px;
+            border-color: orange;
+            background-color: #183A37;
+            color: orange;
+            height: 30px;
+            width: 75%;
+        }
+
+        .sign-up:hover {
+            border-color: orange;
+            background-color: orange;
+            color: #183A37;
+            height: 30px;
+        }
+    </style>
+</head>
+
+<body align="center">
+    <header>
+        <a href="index.html">
+            <h1>My Cart</h1>
+        </a>
+        <nav class="nav">
+            <a href="index.html">Home</a>
+            <a href="sign-in.html">Login</a>
+        </nav>
+    </header>
+    <main>
+        <section id="sign-in">
+            <h1>Sign In</h1>
+            <div class="log">
+                <label for="username">username or email: </label><input type="text" id="username" placeholder="username"
+                    autofocus required><br><br>
+                <label for="password"> password: </label><input type="password" id="password" placeholder="password"
+                    required><br><br>
+                <input type="submit" value="sign-in"><br><br>
+                <sup>__________</sup> <small>or</small> <sup>__________</sup><br><br>
+                <a href="sign-up.html"><button class="sign-up">sign-up</button></a>
+            </div>
+
+        </section>
+        <section>
+            <img src="./assets/cart.png" alt="" width="70%">
+        </section>
+    </main>
+    <footer>
+        <p>Contact us as +91 XXXXX-XXXXX or my card support@gmail.com</p>
+    </footer>
+</body>
+
+</html>

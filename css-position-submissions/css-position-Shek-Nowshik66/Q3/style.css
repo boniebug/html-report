@@ -1,0 +1,65 @@
+*{
+    background-color: black;
+}
+
+.box{
+    width: 1000px;
+    height: 800px;
+    border: 1px solid white;
+    margin: 50px auto;
+    padding: 80px 100px 20px 100px;
+}
+
+.container{
+    border:1px solid red;
+}
+
+img{
+    width: 60px;
+    height:60px;
+}
+
+.conatiner_1{
+    width: 1000px;
+    height: 1000px;
+    margin: 50px auto;
+}
+
+.container_2{
+    width: 600px;
+    height: 600px;
+    margin: 20px auto 60px auto;
+}
+
+.container_3{
+    width: 400px;
+    height: 400px;
+    margin: 50px auto;
+}
+
+.container_4{
+    width: 200px;
+    height: 200px;
+    margin: 50px auto;
+}
+
+.pokemon_image2{
+    position: relative;
+    left: 540px;
+}
+
+.pokemon_image3{
+    position: relative;
+    top: 340px;
+}
+
+.pokemon_image4{
+    position: relative;
+    top: 60px;
+    left:75px
+}
+
+.pokemon_image5{
+    position: relative;
+    top: 70px;
+}

@@ -1,0 +1,24 @@
+body{
+    background-color: black;
+    color: white;
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+     align-items: center;
+}
+.bcont{
+    display: flex;
+    justify-content: center;
+     align-items: center;
+     height: 500px;
+     aspect-ratio: 1;
+     border: 2px solid white;
+}
+.b1{
+    height: 76px;
+    aspect-ratio: 1;
+    border: 2px solid red;
+}
+#self{
+    align-self:flex-end;
+}

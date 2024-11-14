@@ -1,0 +1,23 @@
+body{
+    background-color: black;
+}
+.container{
+    height:90vh;
+   width:90vh;
+   
+    border:0.5vh solid white;
+    display:flex;
+    padding:6px;
+    flex-direction:row;
+    justify-content:center; 
+   align-items:center;
+    
+}
+.items{
+    font-size: 250%;
+    background:#000;
+    border:0.5vh solid red;
+    color:white;
+    height:16vh;
+    aspect-ratio: 1;
+}

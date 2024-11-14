@@ -1,0 +1,40 @@
+header {
+    font-size: 35px;
+    background-color:white;
+    color: black;
+}
+
+.a .text {
+    font-size: 20px;
+    position: absolute;
+    top: 80%;
+    left: 20%;
+    color: white;
+
+}
+
+.a .tex {
+    font-size: 20px;
+    position: absolute;
+    top: 220%;
+    left: 20%;
+    color:white;
+}
+.a .text0{
+        font-size: 30px;
+        position: absolute;
+        top: 10px;
+        left:20px;
+        color:black;
+}
+.a .text00{
+    font-size: 15px;
+    position: absolute;
+    top:50px;
+    left:35%;
+    color:white;
+}
+h1{
+    background-color:white;
+    color:black;
+}

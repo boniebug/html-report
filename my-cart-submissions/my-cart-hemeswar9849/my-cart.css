@@ -1,0 +1,322 @@
+body{
+    background: aliceblue;
+    font-family:monospace;
+    /* padding-bottom: 500px; */
+}
+/* #page{
+    display: grid;
+    grid-template-areas: "top top"
+                         "side content"; */
+/* } */
+
+a{
+    text-decoration: none;
+    color: black;
+}
+#s{
+    padding-top: 10px;
+}
+#profiles{
+    position: relative;
+    top:130px;
+    z-index: -1;
+}
+#loginfooter{
+    position: relative;
+    bottom: -120px;
+}
+#signupfooter{
+    position: relative;
+    bottom: -30px;
+}
+#content{
+    top:100px;
+}
+#top{
+    /* grid-area: top; */
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: black;
+    color: white;
+    a{
+        color: white;
+    }
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    /* border: 1.5px solid black; */
+    height: 80px;
+}
+label{
+    display: block;
+    padding-bottom: 10px;
+    font-weight: 900;
+    float: left;
+}
+form{
+    padding-top: 100px;
+    padding-left: 100px;
+    width:300px;
+    /* text-align: center; */
+}
+.radio{
+    padding-left: 120px;
+    display: inline;
+}
+input{
+    width:100%;
+    box-sizing: content-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+#menu{
+    padding: 2px;
+    border-radius: 5px;
+    color: white;
+    padding-left: 10px;
+}
+#signupform{
+    text-align: center;
+    padding-top: 0px;
+}
+.please fill out this field{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#title{
+    font-family: sans-serif;
+    text-transform: uppercase;
+}
+#title2{
+    position: static;
+    text-align: center;
+    padding-top: 80px;
+}
+#profile{
+     box-sizing: content-box;
+     height: 60px;
+    border: 1px groove black;
+    margin-right: 10px;
+    border-radius: 50px;
+}
+#nav{
+    position: fixed;
+    width: 100px;
+    border: 1.5px solid black;
+    background-color: black;
+    color: white;
+    a{
+        color: white;
+    }
+    top: 80px;
+    left: 0px;
+    bottom: 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+#profile:hover{
+    background-color: rgb(53, 51, 51);
+}
+#profile{
+    padding: 10px;
+}
+.navi{
+    /* border: 3px solid black; */
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 8px;
+}
+.navi:hover{
+    background-color: rgb(53, 51, 51);
+}
+#content{
+    position: relative;
+    z-index: -1;
+    
+    /* grid-area: content; */
+}
+h2{
+    text-decoration: underline;
+    /* padding-top: 100px; */
+}
+#profilefooter{
+    position: relative;
+    bottom:-150px;
+}
+/* h3{
+    border: 3px solid black;
+    /* position: relative; */
+#signinform{
+    padding-top: 80px;
+}
+#foot{
+    size: 100px;
+}
+footer{
+    background-color: black;
+    text-align: center;
+    color: white;
+    width: 100%;
+    position: absolute;
+    margin:0px;
+    margin-left: 85px;
+    z-index: -1;
+    border-bottom: 30px solid black;
+}
+#footer{
+    position: absolute;
+    bottom: 00px;
+}
+
+#main{
+    display: grid;
+    /* grid-area: "photo1 descript1 price1"
+                "photo2 descript2 price2"
+                "photo3 descript3 price3"
+                "photo4 descript4 price4"
+                "photo5 descript5 price5"
+                "photo6 descript6 price6"
+                "photo7 descript7 price7"; */
+    grid-template-columns: 100px 1fr 1fr;
+    grid-template-rows: 80px 1fr 1fr 1fr;
+    /* align-content: right; */
+    position: relative;
+    top:-70px;
+    z-index: -1;
+    align-content: center;
+    /* border: 3px solid black; */
+    align-items: center;
+    justify-content: flex-start;
+    gap: 5px 5px;
+    text-align: center;
+    overflow: hidden;
+    padding-bottom: 0px;
+}
+#first{
+    grid-row: 2/3;
+    grid-column: 2/3;
+    padding-top: 3px;
+    height: 377px;
+    border: 2PX solid black;
+    overflow: hidden;
+}
+#second{
+    grid-row: 2/3;
+    grid-column: 3/4;
+    height: 377px;
+    border: 2PX solid black;
+    overflow: hidden;
+}
+
+#third{
+    grid-row: 3/4;
+    grid-column: 2/3;
+    height: 377px;
+    border: 2PX solid black;
+    overflow: hidden;
+}
+#fourth{
+    grid-row: 3/4;
+    grid-column: 3/4;
+    height: 377px;
+    border: 2PX solid black;
+    overflow: hidden;
+}
+#fifth{
+    grid-row: 4/5;
+    grid-column: 2/3;
+    height: 377px;
+    border: 2PX solid black;
+    overflow: hidden;
+}
+#title1{
+    display: inline;
+    position: relative;
+    top: 100px;
+}
+#sign{
+    position: relative;
+    top: 30px;
+    right: 100px;
+    /* z-index: -1; */
+    /* padding: 10px; */
+    /* padding-left: 100px; */
+    /* padding-top: 100px; */
+
+    /* border: 1px solid white; */
+}
+img:hover{
+   /* background-color: black; */
+   /* border: 1px solid rgb(53, 51, 51); */
+}
+input:invalid + span{
+    display: block;
+}
+span.error{
+    color:red;
+    display: none;
+}
+#loginlink{
+    height: -2px;
+}
+#want{
+    /* position: relative; */
+    padding-top: 80px;
+    float: right;
+    clear: left;
+}
+#image{
+    float: right;
+    position: fixed;
+    /* top:0px;s */
+    /* left: 0px; */
+    right:10px;
+    top: 100px;
+}
+#refer{
+    float:right;
+    position: relative;
+    top:-30px;
+}
+#refer1{
+    float: right;
+    position: relative;
+    top: -30px;
+}
+.values{
+    font-size: 15px;
+    border: 3px solid black;
+    /* position: relative; */
+    left: 120px;
+    line-height: 30px;
+    width: 400px;
+}
+/* #profileheading{
+    position: relative;
+    top:500px;
+    text-align: center;
+} */
+/* footer{
+    background-color: black;
+    color: white;
+    width: 100%;
+    position: relative;
+    bottom: 0;
+    left: 0;
+    padding: 10px;
+    text-align: center;
+    box-sizing: border-box; 
+    margin: 0; 
+} */

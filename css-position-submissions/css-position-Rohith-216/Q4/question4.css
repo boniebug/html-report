@@ -1,0 +1,59 @@
+   
+        *{
+          background-color: black;
+        }
+        .box{
+         margin-top: 250px;
+         margin-bottom: 250px;
+        }
+        img{
+          height: 45px;
+          aspect-ratio: 1;
+        }
+        .container{
+          border: 1px solid red;
+            margin: auto;
+        }
+        .container_one{
+          height: 500px;
+          aspect-ratio: 1;
+       }
+       .container_two{
+          height: 400px;
+          aspect-ratio: 1;
+       }
+       .container_three{
+          height: 300px;
+          aspect-ratio: 1;
+       }
+       .container_four{
+          height: 200px;
+          aspect-ratio: 1;
+       }
+       .vaporeon_one{
+        position: relative;
+        top: 0;
+       }
+       .vaporeon_two{
+        position: relative;
+        left: 350px;
+       }
+       .vaporeon_three{
+        position: relative;
+        left: 250px;
+        top: 250px;
+       }
+       .vaporeon_four{
+        position: relative;
+        top: 75px;
+        left:75px
+       }
+       .vaporeon_five{
+        position: relative;
+        top: 100px;
+       }
+       .vaporeon_six{
+         position: fixed;
+         top: 700px;
+         left: 300px;
+        }

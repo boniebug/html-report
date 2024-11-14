@@ -1,0 +1,439 @@
+    * {
+        padding: 0px;
+        margin: 0px;
+        box-sizing: border-box;
+        list-style: none;
+        text-decoration: none;
+    }
+
+
+    #homeMain{
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+    }
+
+    #homeHeader{
+        display: flex;
+    }
+
+    /* Navigaiton bar */
+    #navigationHeader {
+        max-height: 65px;
+        max-width: 1331px;
+        margin: 0px auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 3vw; 
+        position: relative; 
+          
+    }
+
+    /* Website logo */
+    #logoIcon {
+        height: 24px;
+    }
+
+    #websiteLogo {
+        display: flex;
+        align-items: center;
+        margin-left: 50px;
+    }
+
+    #websiteLogo h1 {
+        display: inline-block;
+        color: white;
+        font-family: ubuntu, sans-serif;
+        letter-spacing: 1px;
+        text-shadow: 0px 0px 15px rgba(255, 245, 255, .9);
+    }
+
+    /* Navigation bar: Navigation */
+    #navbar-signinSignup-container{
+       display: flex;
+       margin-left: auto;
+       margin-right: 30px;
+    }
+
+    #navbar {
+        max-height: 65px;
+    }
+
+    /* Navigation bar: Menu: Home, About ...  */
+    #navMenu {
+        display: flex;
+        gap: 2vw;
+        height: 65px;
+        align-items: center;
+    }
+
+    .navMenu-listItem {
+        position: relative;
+    }
+
+    /* Navigation bar: Services */
+    #navMenu li #servicesBtn {
+        background-color: inherit;
+        border: none;
+        font-family: ubuntu, sans-serif;
+        font-size: 18px;
+        cursor: pointer;
+        font-weight: 700;
+        color: white;
+    }
+    
+    /* Navigation bar: Services Dropdown */
+    #servicesList-dropdown {
+        display: none;
+        box-shadow: 0px 0px 6px 0px white;
+        min-width: 200px;
+        position: absolute;
+        top: 25px;
+    }
+
+    #servicesList-dropdown li {
+        border-bottom: 1px solid rgba(0, 0, 0, .1);
+        padding: 10px 0px;
+    }
+
+    #navMenu .navMenu-listItem .servicesList-item .listanchor {
+        padding: 10px 20px;
+        color: white;
+        font-weight: 500;
+    }
+
+    .navMenu-listItem:hover #servicesList-dropdown {
+        display: block;
+    }
+
+    .servicesList-item:hover {
+        background-color: orange;
+
+    }
+
+    #navMenu .navMenu-listItem .servicesList-item:hover .listanchor {
+        color: black
+    }
+
+    .navMenu-listItem:hover {
+        border-bottom-style: solid;
+        border-bottom-width: 3px;
+        border-bottom-color: darkorange;
+
+    }
+
+    #navMenu li .listanchor {
+        font-family: ubuntu, sans-serif;
+        font-size: 18px;
+        font-weight: 500;
+        color: rgb(255, 255, 255);
+    }
+
+    #navMenu .navMenu-listItem:hover a {
+        color: black;
+    }
+
+    #navMenu .navMenu-listItem:hover #servicesBtn {
+        color: black;
+    }
+
+
+    #home-signinSignup {
+        display: flex;
+        height: 65px;
+        margin-left: 10px;
+    }
+
+    #signinBtn, #signupBtn {
+        margin-top: 0px;
+        padding: 5px 10px;
+        align-self: center;
+        font-weight: 500;
+    }
+
+    #signupBtn {
+        background-color: inherit;
+        border-left: inherit;
+        border-top-left-radius: 0px;
+        border-bottom-left-radius: 0px;
+        border-left-color: orange;
+    }
+
+    #signinBtn {
+        border-right: inherit;
+        border-top-right-radius: 0px;
+        border-bottom-right-radius: 0px;
+
+    }
+
+    #signinBtn:hover {
+        border-right: solid;
+        border-right-color: orange;
+
+    }
+
+    /* Home banner */
+    #homeBanner-container {
+        background-image: url(../assets/homeBanner.jpg);
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        height: 120vh;
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+        z-index: -1;
+    }
+
+    #homeContent {
+        margin-top: 200px;
+        margin-left: 50px;
+        max-width: 600px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    #mainContent {
+        font-size: 55px;
+        color: white;
+        font-family: sans-serif;
+        font-weight: 700;
+        text-shadow: 0px 0px 8px rgba(255, 245, 255, .7);
+    }
+
+    .subContent {
+        display: inline-block;
+        max-width: 500px;
+    }
+
+    #subContent-1 {
+        color: darkorange;
+        font-family: Arial, sans-serif;
+        font-weight: bold;
+        text-shadow: 0px 0px 5px black;
+    }
+
+
+    .btn {
+        padding: 10px 15px;
+        border-radius: 4px;
+        border-width: 2px;
+        border-color: orange;
+        background-color: orange;
+        margin-left: 0px;
+        margin-top: 20px;
+        cursor: pointer;
+        align-self: flex-start;
+    }
+
+    .btn a {
+        color: lightgoldenrodyellow;
+        font-weight: 700;
+        font-size: 18px;
+        text-shadow: 0px 0px 5px black;
+    }
+
+    .btn a #joinUs-span {
+        font-weight: 100;
+    }
+
+    .btn:hover {
+        background-color: inherit;
+    }
+
+    .btn a:hover {
+        color: orange;
+    }
+
+    /* Footer: Contact Us */
+#contactUs-container{
+    margin-top: 120vh;
+    margin-bottom: 20vh;
+    padding-top: 6vh;
+    position: relative;
+    
+ }
+ 
+ #contactUs-innerContainer{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap:25px;
+    position: absolute;
+    top: 20vh;
+ }
+ 
+ #contactUs-form-info-wrapper{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background-color: #FFFFFF;
+    margin-top: 20px;
+ }
+ 
+ #contactUs-topcolor{
+    background-color: rgb(255, 244, 228);
+    min-height: 30vh;
+ }
+ 
+ .contactInfo-iconContainer{
+    margin: 10px;
+ }
+ 
+ .contactInfo-icon{
+    height: 60px;
+ }
+ 
+ #contact, #contactUs-form-section{
+    width: 50%;
+ }
+ 
+ #contactUs-form-section{
+    display: flex;
+    justify-content: center;
+    height: 100%;
+ }
+ 
+ #userDetails-group{
+    display: flex;
+ }
+ 
+ .userContact-details-section{
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+ }
+ 
+ .userContact-details-section label{
+    /* color: orange; */
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 700;
+ }
+ 
+ .userDetails, #messageArea{
+    margin-top: 10px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom-color: rgb(255, 166, 0);
+    background-color: rgb(246, 248, 252);
+    min-height: 30px;
+    min-width: 220px;
+ }
+ 
+ #messageArea{
+    height: 70px;
+    border-bottom-color: rgb(255, 166, 0);
+    border-width: 2px;
+ 
+ }
+ 
+ #contactUser-btn{
+    width: 100%;
+    padding: 10px 15px;
+    margin-top: 10px;
+    background-color: orange;
+    border-radius: 25px;
+    cursor: pointer;
+    border-color: orange;
+ }
+ 
+ #contactUser-btn a{
+    color: white;
+    font-weight: 700;
+    font-size: 17px;
+ }
+ 
+ #contactUser-btn:hover{
+    background-color: inherit;
+ }
+ 
+ #contactUser-btn:hover a{
+    color: orange;
+ }
+ 
+ #contact{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding-left: 20px;
+ }
+ 
+ #contactUs-heading{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: orange;
+    margin-bottom: 8vh;
+ }
+ 
+ #contactUs-para{
+    width: 50%;
+    font-family: Arial, Helvetica, sans-serif;
+ }
+ 
+ #contactInfo{
+    display: flex;
+    gap: 50px;
+    justify-content: center;
+    /* position: absolute;
+    top: 15vh; */
+    width: 100%;
+ }
+ 
+ .contactInfo-child{
+    border: 2px solid rgb(243, 243, 243);
+    background-color: #FFFFFF;
+    border-radius: 11px;
+    min-height: 200px;
+    max-height: 200px;
+    min-width: 200px;
+    max-width: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 1px 2px 0px black;
+ }
+ 
+ .contactInfo-details{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 5vh;
+    font-family: Arial, Helvetica, sans-serif;
+
+ }
+
+
+ .contactHeading{
+    font-weight: 700;
+ }
+ 
+ .contactInfo-detailsPara{
+    margin-top: 10px;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+ }
+
+ .contactInfo-detailsPara a{
+    color: #000000;
+ }
+ 
+#contactUs-socialMedia-icons{
+    display: flex;
+    column-gap: 1vw;
+    justify-content: flex-start;
+    margin-top: 2vh;
+}
+
+ .socialMedia-icon{
+    height: 25px;
+    cursor: pointer;
+ }

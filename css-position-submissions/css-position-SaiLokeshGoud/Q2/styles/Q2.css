@@ -1,0 +1,22 @@
+body{
+    background-color: whitesmoke;
+}
+.monkey-page{
+    display: flex;
+    width: 100%;
+}
+.monkey-page p{
+    font-size: 24pt;
+}
+.content-section{
+    width: 80%;
+}
+.image-section{
+    width: 20%;
+}
+.monkey-page img{
+    width: 80%;
+    margin-top: 150px;
+    position: sticky;
+    top: 0px;
+}

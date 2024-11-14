@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+</head>
+<style>
+   * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: black;
+  }
+
+  .box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 110vh;
+    width: 100vw;
+  }
+
+  .container {
+    height: 85%;
+    width: 65%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid red;
+    position: relative;
+  }
+
+  .pokemon {
+    position: absolute;
+  }
+
+  img {
+    height: 30px;
+    width: 30px;
+  }
+
+  .one {
+    top: 0;
+    left: 0;
+  }
+
+  .two {
+    top: 0;
+    right: 0;
+  }
+
+  .three {
+    bottom: 0;
+    right: 0;
+  }
+
+  .four {
+    top: 40%;
+    left: 43%;
+  }
+
+  .five {
+    bottom: 0;
+    left: 0;
+  }
+  .pokemon.fix {
+    position: fixed;
+    bottom: 0;
+    left: 6%;
+  }
+</style>
+
+<body>
+  <div class="box">
+    <div class="container">
+      <div class="pokemon one">
+        <img src="./assets/vaporeon.png" alt="vaporeon">
+      </div>
+      <div class="container">
+        <div class="pokemon two">
+          <img src="./assets/vaporeon.png" alt="vaporeon">
+        </div>
+        <div class="container">
+          <div class="pokemon three">
+              <img src="./assets/vaporeon.png" alt="vaporeon">
+          </div>
+          <div class="container">
+            <div class="pokemon four">
+              <img src="./assets/vaporeon.png" alt="vaporeon">
+            </div>
+            <div class="pokemon fix">
+              <img src="./assets/vaporeon.png" alt="vaporeon">
+            </div>
+            <div class="pokemon five">
+              <img src="./assets/vaporeon.png" alt="vaporeon">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

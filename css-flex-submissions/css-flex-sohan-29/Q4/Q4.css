@@ -1,0 +1,25 @@
+body{
+    background-color: black;
+}
+.main_block
+{
+    width: 470px;
+    aspect-ratio: 1;
+    border: 2px solid white;
+    margin: auto;
+    margin-top: 100px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.box
+{
+    font-size:20px;
+    font-weight: 600;
+    border: 2px solid red;
+    color: white;
+    margin: none;
+    width: 80px;
+    aspect-ratio: 1;
+}

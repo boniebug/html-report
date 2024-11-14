@@ -1,0 +1,12 @@
+@keyframes loading-animation {
+    0% {
+      transform: rotate(0deg);
+      border-top-width: 0px;
+    } 50% {
+      transform: rotate(180deg);
+      border-top-width: 15px;
+    } 100% {
+      transform: rotate(360deg);
+      border-top-width: 0px;
+    }
+  }

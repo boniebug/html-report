@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <style>
+    .container {
+      box-sizing: border-box;
+      display: grid;
+      grid-template-rows: 10% 70% 10%;
+      grid-template-columns: 40% 10% 10%;
+      height: 100vh;
+      justify-content: center;
+      gap: 10px;
+      align-content: center;
+    }
+
+    .header {
+      grid-column: 1/4;
+    }
+
+    .nav {
+      grid-column: 2/3;
+      grid-row: 2/4;
+    }
+
+    .ads {
+      grid-column: 3/4;
+      grid-row: 2/4;
+    }
+
+    .dimensions {
+      background-color:lightsteelblue;
+      padding: 20px;
+      text-transform: capitalize;
+      font-size: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <section class="container">
+    <div class="header dimensions">header</div>
+    <div class="article dimensions">article</div>
+    <div class="nav dimensions">nav</div>
+    <div class="ads dimensions">ads</div>
+    <div class="footer dimensions">footer</div>
+  </section>
+</body>
+
+</html>

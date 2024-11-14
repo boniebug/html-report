@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Question 6</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      background-color: black;
+    }
+
+    .container {
+      margin: 10px;
+      border: 1px solid white;
+      color: white;
+      width: 500px;
+      height: 500px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .div1 {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .aa {
+      height: 100px;
+      width: 100px;
+      border: 1px solid red;
+    }
+
+    .div2 {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .bb {
+      height: 100px;
+      width: 100px;
+      border: 1px solid red;
+      align-content: end;
+      justify-content: space-between;
+    }
+
+    .c {
+      align-self: center;
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+    <div class="container">
+      <div class="div1">
+        <div class="aa">Box</div>
+        <div class="aa">Box</div>
+      </div>
+      <div class=" aa c">Box</div>
+      <div class="div2">
+        <div class="bb">Box</div>
+        <div class="bb">Box</div>
+      </div>
+    </div>
+
+  </main>
+</body>
+
+</html>

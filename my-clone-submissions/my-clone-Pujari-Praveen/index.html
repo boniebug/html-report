@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="styles/style.css">
+
+</head>
+
+<body>
+    <!-- Header section -->
+    <header id="homeHeader" class="header">
+            <!-- Website logo -->
+            <section id="websiteLogo" class="logo">
+                <img src="assets/education (1).png" alt="" id="logoIcon">
+                <h1 id="logoHeading">BrightEdu</h1>
+            </section>
+
+            <section id="navbar-signinSignup-container">
+
+                <nav id="navbar">
+                    <ul id="navMenu">
+                        <li class="navMenu-listItem">
+                            <a href="home.html" id="homeNavigation" class="listanchor">Home</a>
+                        </li>
+                        <li class="navMenu-listItem">
+                            <button id="servicesBtn">Services</button>
+                            <ul id="servicesList-dropdown">
+                                <li class="servicesList-item" id="servicesList-item-1"> <a href="knowNavigation"
+                                        id="aboutNavigation" class="listanchor">Know With Us</a>
+                                </li>
+                                <li class="servicesList-item" id="servicesList-item-2"> <a href="shareNavigaiton"
+                                        id="aboutNavigation" class="listanchor">Share With Us</a>
+                                </li>
+                                <li class="servicesList-item" id="servicesList-item-3"> <a href="rateNavigation"
+                                        id="aboutNavigation" class="listanchor">Rate With Us</a>
+                                </li>
+                                <li class="servicesList-item" id="servicesList-item-4"> <a href="voteNavigation"
+                                        id="aboutNavigation" class="listanchor">Vote With Us</a>
+                                </li>
+                                <li class="servicesList-item" id="servicesList-item-5"> <a href="askNavigation"
+                                        id="aboutNavigation" class="listanchor">Ask With Us</a>
+                                </li>
+                                <li class="servicesList-item" id="servicesList-item-6"> <a href="prepareNavigation"
+                                        id="aboutNavigation" class="listanchor">Prepare With Us</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="navMenu-listItem">
+                            <a href="aboutUs.html" id="aboutNavigation" class="listanchor">About us</a>
+                        </li>
+                        <li class="navMenu-listItem">
+                            <a href="contactUs.html" id="contactUsNavigation" class="listanchor">Contact us</a>
+                        </li>
+                    </ul>
+                </nav>
+                <section id="home-signinSignup" class="siginSignup">
+                    <button id="signinBtn" class="btn"><a href="signIn.html">Sign in</a></button>
+                    <button id="signupBtn" class="btn"><a href="signup.html">Sign up</a></button>
+                </section>
+            </section>
+        </section>
+    </header>
+
+    <main id="homeMain" class="main-section">
+        <section id="homeBanner-container" class="banner">
+
+            <section id="homeContent">
+                <p id="subContent-1" class="content subContent">
+                    Your Education, Your Voice </p>
+                <p id="mainContent" class="content">
+                    Transforming Education Together
+                </p>
+                <button id="joinUsBtn" class="btn"><a href="signIn.html">Join us - <span id="joinUs-span">Make a
+                            difference</span></a></button>
+            </section>
+
+        </section>
+    </main>
+    <footer id="footer">
+        <!-- ContactUs outercontainer -->
+        <section id="contactUs-container">
+            <section id="contactUs-topcolor"></section>
+            <section id="contactUs-innerContainer">
+                <!-- Contact information -->
+                <section id="contactInfo">
+                    <section id="mailSection" class="contactInfo-child">
+                            <section class="contactInfo-iconContainer">
+
+                                <img src="assets/email (1).png" alt="" id="mailIcon" class="contactInfo-icon">
+                            </section>
+                        <section class="contactInfo-details">
+                            <p id="mailHeading" class="contactHeading">EMAIL</p>
+                            <p id="mailInformation" class="contactInfo-detailsPara"><a href="">ABC939@gmail.com</a></p>
+
+                        </section>
+                    </section>
+                    <section id="phoneSection" class="contactInfo-child">
+                        <section class="contactInfo-iconContainer">
+
+                            <img src="assets/phone.png" alt="" id="phoneIcon" class="contactInfo-icon">
+                        </section>
+                        <section class="contactInfo-details">
+                            <p id="phoenHeading" class="contactHeading">PHONE</p>
+                            <p id="phoneInformation" class="contactInfo-detailsPara"><a href="">+91 1234567890</a></p>
+
+                        </section>
+                    </section>
+                    <section id="addressSection" class="contactInfo-child">
+                        <section class="contactInfo-iconContainer">
+
+                            <img src="assets/address.png" alt="" id="addressIcon" class="contactInfo-icon">
+                        </section>
+                        <section class="contactInfo-details">
+                            <p id="addresssHeading" class="contactHeading">ADDRESS</p>
+                            <p id="addressInformation" class="contactInfo-detailsPara"><a href="">Sai Nagar, Thotapalem, Andhra Pradesh, India</a></p>
+
+                        </section>
+                    </section>
+                </section>
+                <!-- Container that holds contact form and description -->
+                <section id="contactUs-form-info-wrapper">
+
+                    <section id="contactUs-form-section">
+
+                        <form action="POST" id="contactUs-form">
+                            <section id="userDetails-group">
+
+                                <section id="userMail-section" class="userContact-details-section">
+                                    <label for="userMail">Email</label>
+                                    <input type="email" name="userMail" id="userMail" class="userDetails">
+                                </section>
+                                <section id="userName-section" class="userContact-details-section">
+                                    <label for="userName">Name</label>
+                                    <input type="email" name="userName" id="userName" class="userDetails">
+                                </section>
+                            </section>
+                            <section id="userMessage-section" class="userContact-details-section">
+                                <label for="userMessage">Message</label>
+                                <textarea type="text" name="userMail" id="messageArea"></textarea>
+                            </section>
+                            <button id="contactUser-btn"><a href="" id="contactUser-btn-a">SUBMIT</a></button>
+                        </form>
+                    </section>
+                    <section id="contact">
+                        <section id="contactUs-heading">
+                            <p>Get In Touch</p>
+                        </section>
+                        <section id="contactUs-para">
+                            <p>We value your feedback and are here to assist you. If you have any
+                                questions, comments, or suggestions, please don't hesitate to get in touch with us.</p>
+                        </section>
+                        <section id="contactUs-socialMedia-icons">
+                            <section id="facebookIcon-section"><a href=""><img src="assets/facebook.png" alt="" id="facebookIcon"
+                                class="socialMedia-icon"></a>
+                            </section>
+                            <section id="twitterIcon-section"><a href=""></a><img src="assets/twitter.png" alt="" id="twitterIcon"
+                                    class="socialMedia-icon">
+                            </section>
+                            <section id="instagramIcon-section"><a href=""></a><img src="assets/instagram.png" alt="" id="instagramIcon"
+                                    class="socialMedia-icon">
+                            </section>
+                            <section id="linkedinIcon-section"><a href=""></a><img src="assets/linkedin.png" alt="" id="lindedinIcon"
+                                    class="socialMedia-icon">
+                            </section>
+                        </section>
+                    </section>
+                </section>
+            </section>
+
+        </section>
+        </section>
+    </footer>
+</body>
+
+</html>

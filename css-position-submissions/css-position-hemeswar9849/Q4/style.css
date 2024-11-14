@@ -1,0 +1,58 @@
+body {
+    background-color: black;
+  }
+  img{
+    height: 40px;
+  }
+  .box{
+    position: relative;
+    height: 400px;
+    aspect-ratio: 1;    
+    border: 1px solid red;
+    margin: 100px auto;
+  }
+  .container{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    bottom: 0px;
+    right: 0px;
+    margin: auto;
+    border: 1px solid red;
+  }
+  .container:nth-child(2){
+    width: 300px;
+    aspect-ratio: 1;
+  }
+  .container > .container > .container:nth-child(2){
+    width: 200px;
+    aspect-ratio: 1;
+  }
+.container>.container > .container > .container:nth-child(2){
+  width: 100px;
+  aspect-ratio: 1;
+}
+.two img{
+  position: relative;
+  left: 260px;
+}
+.three img{
+  position: relative;
+  left: 160px;
+  top: 160px;
+}
+.four :nth-child(1){
+  position: relative;
+  left: 35px;
+  top: 20px;
+}
+.four :nth-child(2){
+  position: relative;
+  top: 60px;
+  left: -46px;
+}
+.five{
+  position: fixed;
+  bottom: 0px;
+  left: 0px;
+}

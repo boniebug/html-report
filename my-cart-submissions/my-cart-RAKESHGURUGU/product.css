@@ -1,0 +1,85 @@
+a{
+    color:black;
+    border:10px black;
+    border-radius:25px;
+    padding:7px;
+    margin:15px;
+    background:linear-gradient(rgb(79, 230, 220),rgb(66, 126, 216));
+    text-decoration:none;} 
+    input{
+    border-radius:5px;
+    }
+    header{
+    background-image: url("./assets/bg.jpg");
+        border-radius: 10px;
+        
+    }
+    h4{
+        margin:0px;
+        padding:30px;
+        background:linear-gradient( rgb(52, 174, 235),rgb(119, 176, 241) ),
+               linear-gradient( rgb(7, 173, 244),rgb(106, 200, 240) ),
+               linear-gradient( rgb(1, 183, 243),rgb(41, 154, 206)),
+               linear-gradient( rgb(41, 167, 212),rgb(25, 175, 206));
+    }
+    body{
+text-align: center;
+background-color:rgb(106, 200, 240);
+    }
+    .one{
+        background-color:rgb(79, 192, 230);
+        border-radius: 20px;
+        border: 5px rgb(149, 149, 149);
+       margin: 18px 200px 50px 200px;
+
+    }
+    .one:hover{
+        background-color: rgb(55, 164, 231);
+    }
+    .content{
+        font-size: larger;
+        color: white;
+        height:250px;
+        font-weight: 100;
+     
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        border-radius: 40px;
+    }
+    img 
+    {float: left;
+border-top-left-radius: 8%;
+border-bottom-left-radius: 8%;
+        height: 250px;
+        width: 210px;
+    }
+h2{
+    color: black;
+}
+
+h3{
+    color: rgb(34, 34, 34);
+}
+p{
+    color:rgb(0, 0, 0);
+}
+#hr{
+    margin: 100px;
+    border-top: 1px solid black;
+}
+#price{
+    font-size: 25px;
+}
+#product{
+    background:linear-gradient(rgb(79, 192, 230),rgb(66, 216, 181));
+}
+.a{
+    padding:9px;
+    
+    margin: 15px 100px 80px 100px;
+font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+#heading{
+     background:linear-gradient( rgb(55, 164, 231),rgba(17, 146, 215, 0.489) 70%),
+linear-gradient( rgba(10, 63, 110, 0.901),rgb(32, 171, 199) 70%); margin-bottom:0px;border-radius: 50px;
+}

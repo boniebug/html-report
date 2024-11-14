@@ -1,0 +1,57 @@
+body {
+  background-color: black;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* border: 5px solid white; */
+}
+
+.box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 800px;
+  width: 800px;
+  /* border: 5px solid white; */
+}
+
+.container {
+  position: relative;
+  height: 75%;
+  width: 75%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid red;
+}
+
+.pokemon {
+  position: absolute;
+}
+
+img {
+  height: 50px;
+  width: 50px;
+}
+
+.one {
+  top: 0;
+  left: 0;
+}
+
+.two {
+  top: 0;
+  right: 0;
+}
+
+.three {
+  bottom: 0;
+  right: 0;
+}
+
+.four {
+  bottom: 0;
+  left: 0;
+}

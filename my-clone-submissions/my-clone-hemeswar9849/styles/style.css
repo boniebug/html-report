@@ -1,0 +1,379 @@
+body {
+    font-family: sans-serif;
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+}
+
+#teslalogo {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    height: 50px;
+    width: 190px;
+    z-index: 11;
+}
+
+#menuicon {
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    height: 30px;
+    width: 40px;
+    z-index: 1;
+}
+
+#one {
+    position: absolute;
+    text-align: center;
+    top: 0px;
+    left: 0px;
+    background-image: url(../assets/backgroundimages/model3top.avif);
+    height: 650PX;
+    width: 100%;
+    background-size: cover;
+
+    h2,
+    h3,label {
+        position: relative;
+        top: 100px;
+    }
+}
+
+#two {
+    position: absolute;
+    text-align: center;
+    top: 650px;
+    left: 0px;
+    background-image: url(../assets/backgroundimages/modely2.avif);
+    background-size: cover;
+
+    h2,
+    h3,
+    h7,label{
+        position: relative;
+        top: 100px;
+    }
+    height: 650px;
+    width: 100%;
+}
+
+#three {
+    position: absolute;
+    text-align: center;
+    top: 1300px;
+    left: 0px;
+    background-image: url(../assets/backgroundimages/modelx3.avif);
+    background-size: cover;
+
+    h2,
+    h3,
+    h7,label{
+        position: relative;
+        top: 100px
+    }
+
+    height: 650px;
+    width: 100%;
+}
+
+#four {
+    position: absolute;
+    text-align: center;
+    top: 1950px;
+    left: 0px;
+    background-image: url(../assets/backgroundimages/models4.avif);
+    background-size: cover;
+
+    h2,
+    h3,
+    h7,label{
+        position: relative;
+        top: 100px;
+    }
+
+    height: 650px;
+    width: 100%;
+    color: white;
+}
+
+#five {
+    position: absolute;
+    text-align: center;
+    top: 2600px;
+    left: 0px;
+    background-image: url(../assets/backgroundimages/cybertruck5.avif);
+    background-size: cover;
+
+    img{
+        position: relative;
+        top: 71px;
+        height: 200px;
+        width: 700px;
+
+    }
+
+    height: 650px;
+    width: 100%;
+}
+
+#six {
+    position: absolute;
+    text-align: center;
+    top: 3250px;
+    left: 0px;
+    background-image: url(../assets/backgroundimages/solar\ panels6.avif);
+    background-size: cover;
+
+    h2,
+    h3,
+    h7,label{
+        position: relative;
+        top: 100px;
+    }
+
+    height: 650px;
+    width: 100%;
+    color: white;
+}
+
+#seven {
+    position: absolute;
+    text-align: center;
+    top: 3900px;
+    left: 0px;
+    background-image: url(../assets/backgroundimages/solarroof7.avif);
+    background-size: cover;
+
+    h2,
+    h3,
+    h7,label{
+        position: relative;
+        top: 100px;
+    }
+
+    height: 650px;
+    width: 100%;
+}
+
+#eight {
+    position: absolute;
+    text-align: center;
+    top: 4550px;
+    left: 0px;
+    background-image: url(../assets/backgroundimages/powerwall8.avif);
+    background-size: cover;
+
+    h2,
+    h3,
+    h7,label{
+        position: relative;
+        top: 100px;
+    }
+
+    /* padding-left: 80px; */
+    padding-top: 30px;
+    height: 650px;
+    width: 100%;
+}
+
+#nine {
+    position: absolute;
+    text-align: center;
+    top: 5200px;
+    left: 0px;
+    background-image: url(../assets/backgroundimages/accessories9.avif);
+    background-size: cover;
+
+    h2,
+    h3,
+    h7,label{
+        position: relative;
+        top: 100px;
+    }
+
+    height: 650px;
+    width: 100%;
+}
+
+.baseprice {
+    text-decoration: underline;
+}
+
+/* #top, #content, footer{
+    display: none;
+    } */
+#close {
+    float: right;
+    background-color: white;
+    position: relative;
+    top: -50px;
+}
+
+.link {
+    text-decoration: none;
+    color: black;
+    display: block;
+    padding: 15px;
+    margin-bottom: 30px;
+    font-size: 17px;
+    font-family: sans-serif;
+}
+
+#option1 {
+    margin-top: 50px;
+}
+
+.options:hover {
+    background-color: rgba(237, 237, 237, 0.541);
+}
+
+.categories {
+    background: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGJzbdwbN3gVZi6yTbKCbFe_jgw8t5Q8NHlQ&s);
+    background-size: 20px;
+    background-repeat: no-repeat;
+    background-position: right;
+}
+
+#us {
+    padding-left: 30px;
+    background: url(../assets/menu/download.jpeg);
+    background-position: top;
+    background-position: left;
+    background-size: 20px;
+    background-repeat: no-repeat;
+}
+
+/* #eng{
+    background: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGJzbdwbN3gVZi6yTbKCbFe_jgw8t5Q8NHlQ&s);
+    background-position: left;
+    background-size: 20px;
+    background-repeat: no-repeat;
+} */
+/* .menu{
+    display:none;
+    } */
+.menu:target {
+    display: block;
+    position: absolute;
+    z-index: 100;
+    top: 0px;
+    left: 0px;
+    width: 99vw;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: white;
+}
+
+/* .link:hover{
+        background-color: rgba(237, 237, 237, 0.541);
+        } */
+#headingvehicles {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 10px;
+    font-size: 12px;
+}
+
+#footertop{
+    z-index: 11;
+    position: absolute;
+    left: 0px;
+    top: 5850px;
+    background-color: black;
+    color: rgba(240, 248, 255, 0.767);
+    text-align: center;
+    padding: 0px 200px;
+}
+ul{
+    list-style: none;
+}
+#last{
+    margin-top: 100px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    /* padding: 0px 100px; */
+    /* width: 1000px; */
+}
+/* .last{
+    padding: 10px 100px;
+} */
+input[type=button]{
+    display: none;
+}
+label{
+    display: block;
+    /* margin-top: 100px; */
+    cursor: pointer;
+}
+.white{
+    width: 350px;
+    height: 20px;
+    margin-top: 300px;
+    text-align: center;
+    height: auto;
+    background-color: white;
+    color: black;
+    padding: 10px ;
+    border-radius: 10px;
+    border: 2px solid white;
+}
+.black{
+    width: 400px;
+    height: 20px;
+    margin-top: 300px;
+    text-align: center;
+    background-color: black;
+    color: white;
+    padding: 10px 0px;
+    border-radius: 10px;
+    border: 2px solid black;
+}
+.buttons{
+    display: flex;
+    /* flex-wrap: wrap; */
+    justify-content: space-around;
+    /* padding: 0px 100px; */
+}
+.whitecyber{
+    width: 400px;
+    height: 20px;
+    margin-top: 300px;
+    text-align: center;
+    background-color: black;
+    color: white;
+    padding: 10px 0px;
+    border: 2px solid black;
+    border-top: 2px solid gray;
+}
+.blackcyber{
+    width: 400px;
+    height: 20px;
+    margin-top: 300px;
+    text-align: center;
+    background-color: black;
+    border: 2px solid black;
+    color: white;
+    padding: 10px 0px;
+    /* border-radius: 10px; */
+}
+.options{
+    padding: 4px;
+    cursor: pointer;
+    font-size: smaller;
+}
+#vehicle{
+    display: grid;
+    grid-template-columns: 50vw 50vw;
+    text-align: center;
+    color: rgba(0, 0, 0, 0.744);
+    cursor: pointer;
+}
+u{
+    padding: 10px;
+}

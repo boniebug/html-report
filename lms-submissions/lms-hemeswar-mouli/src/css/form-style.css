@@ -1,0 +1,75 @@
+.form-background{
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+    opacity: 70%;
+}
+
+.add-book-form {
+    background-color: white;
+    position: fixed;
+    top: 20%;
+    left: 37%;
+    width: 300px;
+    padding: 30px;
+    border-radius: 3px;
+    user-select: none;
+}
+
+#form-heading{
+    font-size: 25px;
+}
+
+#form-header{
+    display: flex;
+    text-align: center;
+    justify-content: space-between;
+}
+
+#close-button{
+    display: inline-block;
+    background-color: red;
+    color: white;
+    height: 20px;
+    padding: 5px 10px;
+    border: 1px solid;
+    cursor: default;
+}
+
+#close-button:hover{
+    scale: 0.9;
+    transition: all 0.225s;
+}
+
+input {
+    width: 90%;
+    padding: 3px
+}
+
+#form-heading {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+label,
+input {
+    margin: 10px;
+}
+
+input[type='submit'] {
+    width: 100px;
+    background-color: rgb(79, 182, 216);
+    border: 1px solid transparent;
+    border-radius: 3px;
+    padding: 10px 5px;
+    cursor: pointer;
+}
+
+.form-background,.add-book-form{
+    display: none;
+}
+
+.form-display, .form-background-display{
+   display: block;
+}

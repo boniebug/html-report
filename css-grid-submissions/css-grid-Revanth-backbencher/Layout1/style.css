@@ -1,0 +1,44 @@
+a {
+    text-decoration: none;
+    font-size: large;
+    color: black;
+    padding: 7%;
+}
+
+.Grids {
+    width: 600px;
+    height: 600px;
+    display: grid;
+    grid-gap: 2%;
+    grid-template-columns: 4fr 1.25fr 1fr;
+    grid-template-rows: 1fr 5fr 1fr;
+    grid-template-areas: 'header header header'
+        'article nav ads'
+        'footer nav ads';
+}
+
+.HeaderSite {
+    grid-area: header;
+    background-color: rgba(133, 128, 238, 0.195);
+
+}
+
+.NavSite {
+    grid-area: nav;
+    background-color: rgba(133, 128, 238, 0.195);
+}
+
+.ArticleSite {
+    grid-area: article;
+    background-color: rgba(133, 128, 238, 0.195);
+}
+
+.AdsSite {
+    grid-area: ads;
+    background-color: rgba(133, 128, 238, 0.195);
+}
+
+.FooterSite {
+    grid-area: footer;
+    background-color: rgba(133, 128, 238, 0.195);
+}

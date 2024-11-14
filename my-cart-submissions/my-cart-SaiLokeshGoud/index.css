@@ -1,0 +1,140 @@
+.body{
+    text-align: center;
+    background-color: rgb(209, 250, 255);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin: 0px;
+    padding: 0px;
+}
+.header{
+    margin: 0;
+    padding: 0;
+    padding:15px ;
+    color: white;
+    background-color: rgb(85, 166, 199);
+    font-size: xx-large;
+    font-weight: 500;
+}
+.navigation{
+    background-color: rgb(178, 221, 250);
+    padding: 15px; 
+}
+.navigation a{
+    padding-inline: 15px;  
+    text-emphasis-color: whiteS; 
+    text-decoration: none;
+    color: black;
+    font-size: larger;    
+}
+.navigation a:hover{    
+    background-color: rgb(222, 244, 252);
+    padding: 15px;
+}
+.nav-product{
+   
+}
+.nav-product a{
+    padding: 10px;
+    text-decoration: none;color: black;
+    border-radius: 10px;
+    border-color: black;
+    border:1px solid;
+    color: black;
+    font-size: 12px;
+    background-color: rgb(218, 250, 246);    
+}
+.nav-product a:hover{
+    background-color: rgb(251, 255, 190);
+    padding-top: 12px;
+    padding-bottom: 12px;
+}
+.category{
+    font-size: x-large;
+}
+.products img{
+    margin-top: 25px;
+    height: 300px;
+}
+.product-name{
+    font-size: 16px;  
+    font-family: Verdana, Geneva, Tahoma, sans-serif;  
+    font-weight: bold;
+}
+.description{
+    font-size: 13px;
+}
+.footer{
+    background-color: rgb(182, 239, 223);
+}
+.homepage{
+    height: 640px;
+    margin: 0;
+    border-radius: 10px;
+}
+.signup{
+  margin-top: 15px;
+}
+.profile{
+    margin-bottom:15px;
+    font-size: 14px;
+}
+.profile p {
+    margin: 0;
+    padding: 0;
+}
+.user-info{
+    border: 1px solid black;
+    width: 500px;
+    border-radius: 15px;
+    background-color: rgb(184, 241, 255);
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+.user-info img{
+    height: 250px;
+    margin-bottom: 15px;
+}
+.details{
+    display: flex;
+   justify-content:  center;
+}
+.sign-in button{
+    margin-bottom: 15px;
+    background-color: rgb(182, 239, 223);
+    border: 1px solid black;
+    border-radius: 5px;
+}
+.sign-in a{
+    text-decoration: none;
+    color: black;
+}
+.text-pass{
+    margin-left: 77px;
+}
+.text-box{
+    border: 1px solid black;
+    border-radius: 5px;
+}
+.f-name{
+    margin-left: 73px;
+}
+.gender{
+    margin-left: 4px;
+}
+.email{
+    margin-left: 114px;
+}                    
+.num{
+    margin-left: 107px;
+}                                                                   
+.choose{
+    margin-left: 95px;
+    font-size: 15px;
+}
+.text-pass1{
+    margin-left: 78px;
+}
+.margin{
+   width: 1095px;
+    border-bottom: 1px solid black;
+
+}

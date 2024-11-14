@@ -1,0 +1,91 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: black;
+}
+
+.box{
+    height: 900px;
+    aspect-ratio: 1;
+    margin-left: 100px;
+}
+
+.container{
+    border: 2px solid red;
+}
+
+.container img{
+    height: 40px;
+}
+
+.pokemon{
+    position: absolute;
+}
+
+.container-one{
+    height: 700px;
+    width: 700px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.container-two{
+    width: calc(100% - 100px);
+    height: calc(100% - 100px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.container-three{
+    width: calc(100% - 100px);
+    height: calc(100% - 100px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.container-four{
+    width: calc(100% - 100px);
+    height: calc(100% - 100px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.one{
+    top:0;
+    left: 0;
+}
+
+.two{
+    top: 0;
+    right: 0;
+}
+
+.three{
+    right: 0;
+    bottom: 0;
+}
+
+.four{
+    left: 0;
+    bottom: 0;
+}
+
+.five{
+    margin: auto;
+}
+
+.container-four .img-outside{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    
+}

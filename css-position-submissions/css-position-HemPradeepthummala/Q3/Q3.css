@@ -1,0 +1,52 @@
+.box {
+    width: 800px;
+    aspect-ratio: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+body {
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    border: 1px solid red;
+    width: 80%;
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.one {
+    top: 0%;
+    left: 0%;
+}
+
+.two {
+    right: 0%;
+    top: 0%;
+}
+
+.three {
+    right: 0%;
+    bottom: 0%;
+}
+
+.four {
+    bottom: 0%;
+    left: 0%;
+}
+img {
+    width: 50px;
+    height: 50px;
+}
+
+.pokemon {
+    position: absolute;
+}

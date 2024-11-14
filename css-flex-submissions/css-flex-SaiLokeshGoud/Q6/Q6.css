@@ -1,0 +1,37 @@
+.body{
+    background-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+.container{
+    border: 2px solid white;
+    display: flex;
+    flex-direction: column;
+    width: 475px;
+    height: 475px;    
+    justify-content: space-between;
+}
+.box{
+    border: 2px solid red;
+    color: white;
+    width: 80px;
+    height: 80px;
+    font-size: x-large;
+}
+.start{
+    display: flex;
+    justify-content: space-between;
+}
+.middle{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.end{
+    display: flex;
+    justify-content: space-between;
+}

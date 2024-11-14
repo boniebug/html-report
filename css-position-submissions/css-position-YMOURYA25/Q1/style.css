@@ -1,0 +1,31 @@
+body{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+
+}
+
+.imcont{
+    
+    height: 100px;
+    width: 1050px;
+    border:1px solid red;
+
+}
+.imcont img{
+       height: 100px;
+    aspect-ratio: 1;
+  
+}
+.top{
+    position:relative;
+    
+    bottom: 100px;
+}
+.bottem{
+    position: relative;
+    top:100px
+}
+

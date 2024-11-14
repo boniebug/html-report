@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Question 6</title>
+  <style>
+    body{
+      background-color: black;
+      color: white;
+    }
+    .sec{
+      margin: 5rem auto;
+      width: 600px;
+      aspect-ratio: 1;
+      border: 2px solid white;
+      display: flex;
+      justify-content: space-between;
+    }
+    .box{
+      width: 100px;
+      aspect-ratio: 1;
+      border: 1px solid red;
+    }
+    .corner{
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .sec .box{
+      align-self: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="sec">
+    <div class="corner">
+      <div class="box">Box</div>
+      <div class="box">Box</div>
+    </div>
+    <div class="box">Box</div>
+    <div class="corner">
+      <div class="box">Box</div>
+      <div class="box">Box</div>
+    </div>  
+  </div>
+</body>
+</html>

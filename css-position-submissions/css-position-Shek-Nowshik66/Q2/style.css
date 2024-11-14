@@ -1,0 +1,31 @@
+.container{
+    width: 1400px;
+    height: 1000px;
+    margin: 50px;
+}
+
+p{
+    font-size: 40px;
+    float: left;
+    width: 75%;
+    height: 100%;
+}
+
+img{
+    width: 100%;
+    aspect-ratio: 1;
+}
+
+.image_container{
+    width:20%;
+    aspect-ratio: 1;
+    float: right;
+    margin-top:120px;
+    padding-left: 20px;
+    position: sticky;
+    top: 10px;
+}
+
+.page_para{
+    margin-top: -15px;
+}

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Question 5</title>
+  <style>
+    body{
+      background-color: black;
+    }
+    .outer1{
+      display: flex;
+      height:300px;
+      aspect-ratio: 1;
+      border: 2px solid white;
+      justify-content: center;
+      align-items: center;
+    }
+    .inner1{
+      height:50px;
+      aspect-ratio: 1;
+      border: 1px solid red;
+      color: white; 
+    }
+    #box1{
+      align-self: end;
+    }
+  </style>
+</head>
+<body>
+  <div class="outer1">
+     <div class="inner1">Box</div>
+     <div class="inner1">Box</div>
+     <div class="inner1" id="box1">Box</div>
+     <div class="inner1">Box</div>
+     <div class="inner1">Box</div>
+  </div>
+  </body>
+
+</html>

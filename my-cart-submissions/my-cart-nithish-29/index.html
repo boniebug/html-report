@@ -1,0 +1,262 @@
+<html>
+    <head><title>My Cart</title>
+    <style>
+        body{
+            background:white;
+            color:black;
+            font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+       
+        }
+        img{
+            align-items: flex-end;
+            text-align: center;
+            background-attachment:local;
+           
+        }
+        header{
+            background: black;
+          background: url("/OIP.jpeg");
+          position: sticky;
+         
+           
+        }
+      
+        svg{
+            background-position: center;
+            background-image:url("pro.jpg");
+          
+            box-shadow:  0 0 20 px solid lightblue ;
+            border-radius: 100px;
+        }
+        
+        #head{
+           width: 100%;
+            position: relative;
+            align-content: top;
+            background: rgb(101, 100, 100);
+            box-shadow: 0 0 3px skyblue;
+            overflow: hidden;
+           color: yellow;
+        }
+        button{
+            background: rgb(101, 100, 100);
+            color: white;
+            border-radius: 10px;
+            margin:5px;
+            padding: 8px;
+            font:bold;
+            border: none;
+            box-shadow: 0 0 50px black;
+            font-size: 95%;
+        }
+        button:hover{
+            border: 1px solid white;
+        }
+        select
+        {
+            background: transparent;
+            font-size: 100%;
+            color:white;
+            border:none;
+            text-align: center;
+            font:100px;
+            gap:150px;
+            width: 100px;
+        }
+        select:focus{
+            box-shadow: 0 0 25 solid black;
+        }
+        option{
+            background:blue;
+            font-size: 15px;
+            size: 30px;
+            width: 50px;
+            height: 25px;
+            padding: 50px;
+            box-shadow: 0 0 40px solid lightblue;
+            font-size: 100%;
+            box-sizing: 200px;
+         border-bottom: 10px;
+
+        }
+        #box1,#box3{
+            border:10px inset black ;
+            background:  rgb(101, 100, 100);
+           padding: 40px;
+            margin: 10px;
+            box-shadow: 0 0 50px solid black;
+            border-radius: 20px;
+            color:white;
+            font-size: 20px;
+            text-align: left;
+        }
+        #box2{
+            border:10px outset black;
+            background: rgb(101, 100, 100);
+            padding: 40px;
+            margin: 10px;
+            box-shadow: 0 0 50px solid lightblue;
+            border-radius: 20px;
+            color:white;
+            text-align: left;
+            font-size: 18px;
+        }
+        #categories{
+         display: flex;
+        }
+        #categories h1{
+            text-align: center;
+            color:yellowgreen
+            
+        }
+      nav{
+        display:flex;
+        justify-content: space-between;
+        border: 5px inset darkblue;
+        text-align: center;
+        
+        padding-left: 10px;
+        padding-right: 10px;
+        background:  rgb(101, 100, 100);
+        border: 2px solid white;
+      }
+      nav a{
+        text-align: center;
+        color: darkblue;
+        text-align: center;
+       
+        font-size: 15px;
+        text-decoration: none;
+      }
+      nav a:hover{
+        background-color: rgb(154, 149, 149);
+      }
+    
+    
+  
+    footer{
+        border:10px solid white;
+        font-size: 20px;
+        color:white;
+        background-color: rgb(101, 100, 100);
+        text-align: center;
+    }
+    #books img,#ect img,#fas img,#fun img,#lap img,#mob img,#ty img,#beaty img{
+        align-items:center;
+        border: 10px solid white;
+        border-radius:50px;
+        
+    }
+    #up{
+        height: 50px;
+        width: 50px;
+        text-align: center;
+        font-size: 25px ;
+        color: white;
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        border: 10px solid black;
+        border-radius: 70px;
+        justify-content: center;
+        align-items: center;
+       align-items: right;
+        position: sticky;
+        bottom: 0%;
+        right: 0%;
+        color: white;
+        background-color: yellowgreen;
+        margin-left: 95%;
+    }
+    #up a{
+        color:orange;
+    }
+    .display img{
+        height: 150px;
+    }
+    img{
+        background: url("bg.jpg");
+    }
+    
+    </style>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    </head>
+    <body bgcolor="lightblue">
+        <header>
+    <a href="profile.html"><img src="assets/profile-pic-boy.png" style="border-radius: 100px; height: 150px;"> </a>
+    
+
+        <center>
+        <header>
+        <marquee bgcolor="rgb(101, 100, 100)" color="darkblue" height="75px"  width="100%"scrolldelay="1" id="head" ><h1>Welcome to <span class="material-symbols-outlined">
+            shopping_cart
+            </span> My Cart </h1></marquee> 
+        
+    
+     
+        <nav>
+            
+            <a href="beauty.html"><h3>Beauty</h3></a></li>
+            <a href="books.html"><h3>Books</h3></a></li>
+            <a href="electronics.html"><h3>Electronics</h3></a>
+            <a href="fashion.html"><h3>Fashion</h3></a>
+            <a href="furniture.html"><h3>Furniture</h3></a>
+            <a href="laptop.html"><h3>Laptop</h3></a>
+            <a href="moblies.html"><h3>Mobiles</h3></a>
+            <a href="toys.html"><h3>Toys</h3></a>
+            <a href="#con"><h3>Contect info</h3></a>
+        </ul>
+        </nav>
+        
+       
+        </header>
+         
+         
+        <center>
+        <img src="assets\shopping.png" height="35%" width="25%" aline="center">
+        </center>
+        <section id="box1">
+       <h1> Welcome to My Cart - Your Ultimate Shopping Destination</h1>
+
+        <strong>a world of endless possibilities with My Cart shopping website</strong>. Whether you're searching for the latest fashion trends, upgrading your tech gadgets, or exploring unique gifts for loved ones,<strong>we've got you covered.</strong> Our curated selection of products ensures that you find exactly what you need, all in one convenient place.
+        </section>
+        <section id="box2">
+<h1 style="text-align: center;">Why Shop With Us?</h1>
+<p><b>Wide Selection:</b>     fashion to electronics, home decor to personal care, our diverse range of products caters to every taste and need.</li></p>
+<p><b>Quality Assurance:</b>    source our products from trusted brands and suppliers to guarantee reliability and<em> satisfaction.</em></li></p>
+<p><b>Convenience:</b>shopping from the <strong>of your home</strong>, with easy navigation and secure checkout.</li></p>
+<p><b>Fast Shipping:</b> your items delivered swiftly to your doorstep with our efficient <b>shipping partners.</b></li></p>
+<p><b>Customer Support:</b> dedicated support team is here to assist you every step of the way, ensuring <strong> seamless shopping experience.</strong></li></p>
+</section>
+<section id="box3">
+    <h1 style="text-align: center;">How It Works:</h1>
+
+<li><strong>Browse & Discover:</strong><em>our categories </em>or use our search feature to find your desired products.</li>
+<li><b>Add to Cart:</b>items you wish to purchase and <em>add them to your shopping cart.</em></li>
+<li><b>Checkout:</b>to checkout, where you can review your order, enter shipping details, and select payment method.</li>
+<li><b>Confirm & Enjoy:</b> your order is confirmed, <b>sit back and relax while we prepare your items for shipping.</b></li>
+<li><b>Special Offers & Deals:</b>
+Keep an eye out for our special promotions and discounts throughout the year. Sign up for our newsletter to stay updated on the latest offers and exclusive deals.</li>
+</section> 
+        </p>
+        
+        
+        <h1>Categories</h1>
+        <div id="categories" bgcolor="yellow" style="display: flex; background: url(bg.jpg); justify-content: space-around;"></div>
+           
+        <img src="assets\profile-pic-boy.png" height="25%" width="15%" name="men">
+        
+        <img src="assets\profile-pic-girl.png" height="25%" width="15%" name="women">
+       
+        </div>
+       
+      
+       
+        
+       
+        <footer id="con">
+            <h1>Contect information</h1>
+           <p><b>PHONE:</b>0123456789 </p>
+           <p><b>E_Mail:</b>Mycart@gamil.com</p>
+        </footer>
+   
+    </body>
+</html>

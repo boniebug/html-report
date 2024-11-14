@@ -1,0 +1,131 @@
+
+<!-- @solution 1 
+in this solution i have divided five items into three groups -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Question 6</title>
+  <style>
+    body {
+      background-color: black;
+      padding: 50px;
+      height: 80vh;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    section {
+      border: 2px solid white;
+      height: 700px;
+      width: 700px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .items {
+      height: 100px;
+      width: 200px;
+      border: 2px solid red;
+    }
+
+    .three {
+      align-self: center;
+    }
+
+    .group {
+      display: flex;
+      justify-content: space-between;
+    }
+  </style>
+</head>
+
+<body>
+  <section>
+    <div class="top group">
+      <div class="items one">Box</div>
+      <div class="items two">Box</div>
+    </div>
+    <div class="items three">Box</div>
+    <div class="bottom group">
+      <div class="items four">Box</div>
+      <div class="items five">Box</div>
+    </div>
+  </section>
+</body>
+
+</html>
+<!-- @solution 2
+
+tryed to achieve without groups. 
+when i use align-content:center; in container align-self is not working in items
+so the second item is not perfectly centered
+**i used same class for both solution ** -->
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Question 6</title>
+  <style>
+    body {
+      background-color: black;
+      padding: 50px;
+      height: 80vh;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    section {
+      border: 2px solid white;
+      height: 700px;
+      width: 700px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .items {
+      height: 100px;
+      width: 200px;
+      border: 2px solid red;
+    }
+
+    .one {
+      align-self: flex-start;
+    }
+
+    .two {
+      align-self: flex-end;
+    }
+
+    .three {
+      align-self: flex-start;
+    }
+
+    .four,
+    .five {
+      align-self: flex-end;
+    }
+  </style>
+</head>
+
+<body>
+  <section>
+    <div class="items one">Box</div>
+    <div class="items two">Box</div>
+    <div class="items three">Box</div>
+    <div class="items four">Box</div>
+    <div class="items five">Box</div>
+  </section>
+</body>
+
+</html> -->

@@ -1,0 +1,128 @@
+nav{
+    color: black;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-style: oblique;
+    position: sticky;
+    border: 5px;
+
+}
+nav a{
+    border: 2px;
+    text-decoration: none; 
+    color: black;
+}
+nav a:hover{
+    color: rgb(216, 100, 28);
+    text-shadow:5px black;
+}
+
+#myc {
+    font-family:Arial, Helvetica, sans-serif;
+    font-size: larger;
+    color: lightcoral;
+}
+a{
+    text-decoration: none;
+}
+body{
+    background:radial-gradient(cornsilk,#de9156ee,rgb(26, 183, 183));
+}
+#contactinfo{
+    color: rgb(16, 107, 188);
+    align-items: center;
+    text-align: center;
+
+}
+#contactinfo h4{
+    color: chocolate;
+    font-size: 25px ;
+    text-align: center;
+}
+button{
+    color: darkgoldenrod;
+}
+#userinfo{
+    margin-left: 32%;
+   /* float: right;*/
+    
+    border: 7px solid grey;
+    padding: 21px;
+    box-sizing: border-box;
+}
+img{
+    border: 5px;
+}
+div{
+    text-align: center;
+}
+.info{
+ font-family:Arial, Helvetica, sans-serif;
+margin-left:40%;
+text-align: left;
+padding: 20px;
+padding-right: 20px;
+margin-right:40%;
+}
+.info b{
+    margin-right: 30px;
+    margin-bottom: 6px;
+}
+
+tr{
+    text-align: left;
+}
+#signup{
+   padding:4.1%;
+   box-sizing: border-box;
+   border: 5px;
+   border-style: groove;
+   margin-left: 500px;
+   margin-right: 500px;
+   margin-top: 100px;
+   text-decoration:dotted;
+}
+input:hover{
+    background-color: burlywood;
+    box-shadow: 5px;
+    cursor:pointer;
+    
+}
+.info {
+    
+    box-sizing: border-box;
+    border: 5px solid black;
+    border-radius: 5px;
+    margin-bottom: 50px;
+}
+
+.info:hover{
+   border-color: rgb(237, 89, 89);
+  
+ 
+}
+#userinfo:hover{
+    border-color: rgb(44, 197, 169);
+    border-radius: 50%;
+    border-left: #000000ee;
+}
+#signin{
+    box-sizing: border-box;
+    border: 5px;
+    border-style: groove;
+    margin-left: 500px;
+    margin-right: 500px;
+    margin-top: 100px;
+    text-decoration:underline;
+}
+a{
+    color: rgb(255, 255, 255);
+}
+section a:hover{
+    color: black;
+    text-decoration: dotted;
+    font-size: 20px;
+}
+section{
+    text-align: center;
+}
+

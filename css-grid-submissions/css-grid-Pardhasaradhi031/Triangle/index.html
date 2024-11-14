@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .grid-container {
+        height: 97vh;
+        width: 98vw;
+        box-sizing: border-box;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr;
+        gap: 6px;
+      }
+      .items{
+        background-color: #E6E6FB;
+        color: black;
+        text-align: center;
+        padding: 71px;
+        font-size: 28px;
+        font-weight: bolder;
+      }
+      #item-I {
+        grid-column-start: 1;
+        grid-column-end: 9;
+      }
+      #item-II {
+        grid-column-start: 1;
+        grid-column-end: 5;
+        grid-row-start: 2;
+      }
+      #item-III {
+        grid-column-start: 5;
+        grid-column-end: 9;
+        grid-row-start: 2;
+      }
+      #item-IV {
+        grid-column-start: 1;
+        grid-column-end: 4;
+        grid-row-start: 3;
+      }
+      #item-V {
+        grid-column-start: 4;
+        grid-column-end: 7;
+        grid-row-start: 3;
+      }
+      #item-VI {
+        grid-column-start: 7;
+        grid-column-end: 9; 
+        grid-row-start: 3; 
+      }
+      #item-VII {
+        grid-column-start: 1;
+        grid-column-end: 3;
+        grid-row-start: 4;
+      }
+      #item-VIII {
+        grid-column-start: 3;
+        grid-column-end: 5;
+        grid-row-start: 4;
+      }
+      #item-IX {
+        grid-column-start: 5;
+        grid-column-end: 7;
+        grid-row-start: 4;
+      }
+      #item-X {
+        grid-column-start: 7;
+        grid-column-end: 9;
+        grid-row-start: 4;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="grid-container">
+      <div id="item-I" class="items">1</div>
+      <div id="item-II" class="items">2</div>
+      <div id="item-III" class="items">3</div>
+      <div id="item-IV" class="items">4</div>
+      <div id="item-V" class="items">5</div>
+      <div id="item-VI" class="items">6</div>
+      <div id="item-VII" class="items">7</div>
+      <div id="item-VIII" class="items">8</div>
+      <div id="item-IX" class="items">9</div>
+      <div id="item-X" class="items">10</div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,182 @@
+body {
+    background-color: #ffffff;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+}
+
+h2 {
+    color: #4CAF50;
+    margin: 20px 0;
+}
+
+a {
+    text-transform: capitalize;
+}
+
+header {
+    background-color: rgb(73, 184, 138);
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+header a {
+    color: white;
+    text-decoration: none;
+    padding: 18px;
+    display: inline-block;
+}
+
+header h1 {
+    color: white;
+    margin: 0;
+    background-color: orange;
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 8px;
+}
+
+header a:hover {
+    font-size: 15px;
+    background-color: white;
+    color: red;
+    
+}
+
+nav {
+    flex-grow: 1;
+    text-align: center;
+}
+
+main {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.items {
+    display: flex;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.items a {
+    display: inline-block;
+    margin: 5px;
+    padding: 10px;
+    color: #333;
+    background-color: #f9f9f9;
+    text-decoration: none;
+    border-radius: 5px;
+    border: 1px solid #ddd; 
+    font-size: 14px;
+    text-align: center;
+}
+
+
+.items a:hover {
+    background-color: aliceblue;
+    color: black;
+} 
+
+section.product {
+    margin: 40px 0;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    margin: 20px 0;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    width: 100%;
+    margin-top: auto;
+}
+
+form {
+    width: 300px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    text-align: left;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.pro h3 {
+    color: #4CAF50;
+}
+
+input {
+    width: 90%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    margin-bottom: 10px;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border-style: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #3e8e41;
+}
+
+input[type="radio"] {
+    margin-right: 5px;
+}
+
+.radio-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.radio-group label {
+    margin-right: 15px;
+    font-weight: normal;
+}
+.products {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 29px;
+    border-radius: 5px;
+    height: 50%;
+    width: 50%;
+}
+.pro img{
+    border: 2px black solid ;
+  margin-right: 30px;
+  border-radius: 130px;
+  
+}
+.pro{
+    display: inline-flex;
+    margin: 20px;
+    text-align: left;
+}

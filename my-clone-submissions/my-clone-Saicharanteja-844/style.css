@@ -1,0 +1,566 @@
+@import url();
+*{
+    padding: 0;
+    box-sizing: border-box;
+    font-family:sans-serif,'poppins';
+}
+
+
+#hnav a img{
+   object-fit: cover;
+}
+#hnav{
+   
+    font-family: 'Courier New', Courier, monospace;
+    font-size:15px;
+    align-items: center;
+    justify-content:center;
+    background-color: white;
+}
+ 
+
+#hnav a,i{
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+  margin-left: 15px;
+      font-weight:700;
+     
+
+}
+#hnav a:hover{
+   color: rgb(85, 155, 220);
+}
+a#consales{
+    color: white;
+
+  padding: 15px 40px;
+  margin-left: 50px;
+  background-color:rgb(55, 134, 208);
+  border-radius: 50px;
+
+}
+#hnav input{
+    margin-left: 20px;
+}
+.theme h1{
+    font-size: 75px;
+    color: white;
+    margin-top: 15%;
+}
+video{
+    position: absolute;
+  right: 0;
+  bottom: 0;
+  top: 15%;
+  z-index: -1;
+
+}
+
+@media(min-aspect-ratio:16/9){
+    video{
+        width:100%;
+        height: auto;
+    }
+}
+
+@media(max-aspect-ratio:16/9){
+    video{
+        width:auto;
+        height: 100%;
+    }
+}
+.theme h4{
+    color: white;
+    font-size: 25px;
+    width: 600px;
+    height: 108px;
+}
+.theme{
+    margin-left: 5%;
+}
+.theme a{
+    color: white;
+    font-size: 25px;
+    text-decoration: none;
+    
+}
+.theme a:hover{
+    padding: 15px;
+    border-radius: 25px;
+    background-color: white;
+    color: black;
+    transition: 1s ease-out;
+
+}
+.blvid{
+    margin-top: 300px;
+  /*  border: 2px solid black;*/
+    width: 100%;
+   
+    text-align: center;
+}
+.blvid strong{
+    text-align: center;
+    font-size: 20px;
+    font-weight:700;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.blvid-2{
+    display: flexbox;
+}
+.blvid-2 img{
+    height: 35px;
+    width: 100px; 
+    margin:30px;
+   object-fit:fill;
+}
+.spot{
+    margin-left: 5%;
+}
+.spot h1{
+    font-size: 75px;
+    width: 1000px;
+}
+.spot  #spt1{
+    float: left;
+    font-size: 23px;
+  font-weight: 0;
+    color: rgb(130, 134, 154);
+    width: 360px;
+    line-height: 28px;
+}
+.spot #spt2{
+    float: right;
+    margin-right: 8%;
+    position: sticky;
+}
+.spot #spt1 a{
+    font-size: 25px;
+    color: black;
+    text-decoration: none;
+    padding: 15px;
+    padding-left: 0;
+}
+.spot #spt1 a:hover{
+    border-radius: 25px;
+    background-color:  rgb(55, 137, 214);
+    transition: 1s ease-out;
+    color: white;
+    padding-right: 25px;
+    padding-left: 10px;
+}
+.stretch{
+    margin-top: 450px;
+    height: 965px;
+    width: 100%;
+   background:linear-gradient(-45deg, rgb(3, 17, 29), rgb(7, 42, 72)
+   ,rgb(42, 115, 173) ,rgb(46, 111, 178),rgb(42, 115, 173), rgb(7, 42, 72),rgb(3, 17, 29));
+  backface-visibility: blur('2px');
+  
+    
+}
+.stretch #stch1 img{
+    float: left;
+    width: 605px;
+    height: 650px;
+    position: relative;
+    margin-top:120px;
+    margin-left: 5%;
+}
+.stretch #stch2{
+    float: right;
+    font-size: 23px;
+    font-weight: 50;
+    margin-top:60px;
+    margin-left: 9%;
+    margin-right: 15%;
+    color: rgb(255, 255, 255);
+}
+.stretch #stch2 h1{
+    width: 422px;
+}
+.stretch #stch2 p{
+    width: 350px;
+    line-height: 1cm;
+}
+
+.stretch #stch2 a{
+    font-size: 25px;
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    padding: 15px;
+    padding-left: 0;
+}
+.stretch #stch2 a:hover{
+    border-radius: 25px;
+    background-color:  rgb(255, 255, 255);
+    transition: 1s ease-out;
+    color: rgb(0, 0, 0);
+    padding-right: 25px;
+    padding-left: 10px;
+}
+.solutions{
+ 
+    width: 100%;
+ height: max-content;
+
+}
+.solutions h1{
+    margin-top: 150px;
+    font-size: 60px;
+    margin-left: 5%;
+}
+.solutions p{
+    margin-left: 5%;
+    font-size: 23px;
+    font-weight: 50;
+      color: rgb(130, 134, 154);
+      width: 60%;
+    
+
+}
+.sol-grid{
+    margin-left: 5%;
+    display:grid;
+    grid-template-columns: repeat(3,1fr);
+}
+.sol-grid section{
+    width: 450px;
+    height: 550px;
+    padding: 10px;
+    box-sizing: border-box;
+   
+}
+.sol-grid section img{
+    width: 420px;
+    height: 300px;
+ 
+}
+.sol-grid section h3{
+    font-size: 40px;
+    width: 15%;
+}
+.sol-grid section a{
+    font-size: 25px;
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    padding: 15px;
+    padding-left: 0;
+}
+.sol-grid section a:hover{
+
+   
+    transition: 0.4s ease-out;
+    color: rgb(43, 175, 196);
+    padding-right: 25px;
+}
+ #spc{
+    width: 450px;
+    height: 520px;
+    margin-top: 10px;
+ background-color: #0009;
+ background-image: url('assets/grid6.jpg');
+ background-blend-mode:darken;
+ color: white;
+ 
+}
+#spc h3{
+    margin-left: 5%;
+    margin-top: 220px;
+}
+#spc p{
+    color: white;
+    font-size: 20px;
+  width: 80%;
+}
+#spc a{
+    margin-left: 5%;
+    color: white;
+}
+#spc a:hover{
+    border-radius: 25px;
+    background-color:  rgb(255, 255, 255);
+    transition: 1s ease-out;
+    color: rgb(0, 0, 0);
+    padding-left: 10px;
+    padding-right: 25px;
+    
+}
+.aiws{
+    height:max-content;
+    width: 86%;
+    margin: 7%;
+    background-color: rgb(206, 233, 249);
+   
+}
+.aiws #aiws1{
+    padding: 5%;
+    padding-top: 4%;
+   
+    
+}
+.aiws #aiws1 h1{
+  font-size: 40px;
+  width: 70%;
+}
+.aiws #aiws1 article{
+    width: 75%;
+    font-size: 23px;
+    font-weight: 50;
+      color: rgb(130, 134, 154);
+      
+      
+}
+.aiws #aiws1 aside{
+    float: right;
+    margin: 50px;
+}
+.aiws #aiws1 aside a{
+    font-size: 22px;
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+}
+.aiws #aiws1 aside a:hover{
+    border-radius: 25px;
+    background-color:  rgb(41, 165, 190);
+    transition: 0.5s ease-out;
+    color: rgb(255, 255, 255);
+    padding: 7px;
+    padding-right: 25px;
+    padding-left: 10px;
+   
+}
+.atlas{
+     width: 100%;
+    height:auto;
+    background-color: #0009;
+    background-image:url('assets/atlas.jpg');
+
+    background-repeat: no-repeat; 
+    background-size: cover;
+  background-blend-mode:darken;
+   
+
+}
+.atlas #atlas1{
+    margin-left: 50%;
+    /* margin-top: 300px; */
+    padding-top: 40px;
+    padding-right: 120px;
+    padding-bottom: 70px;
+}
+.atlas #atlas1 h1{
+    font-size: 65px;
+    color: white;
+    width: 90%;
+}
+.atlas #atlas1  article{
+    padding-top: 0px;
+    width: 90%;
+    font-size: 20px;
+    font-weight: 50;
+    margin-bottom: 30px;
+      color: rgb(255, 255, 255);
+     line-height: 0.8cm;
+}
+.atlas #atlas1 a{
+    
+    font-size: 22px;
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    
+}
+.atlas #atlas1 a:hover{
+    border-radius: 25px;
+    background-color:  rgb(255, 255, 255);
+    transition: 0.5s ease-out;
+    color: rgb(0, 0, 0);
+    padding: 7px;
+    padding-right: 25px;
+    padding-left: 10px;
+   
+}
+#frs {
+    margin-top: 40px;
+}
+#frs #frsa{
+    float: right;
+    font-size: 22px;
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    margin-top: 25px;
+    margin-right: 8%;
+  padding-right: 30px;
+  padding-top: 5px;
+} 
+ #frs #frsa:hover{
+    border-radius: 25px;
+    background-color: rgb(55, 137, 214);
+    transition: 0.5s ease-in-out;
+    color: rgb(255, 255, 255);
+    padding: 7px;
+    padding-right: 25px;
+    padding-left: 10px;
+   
+}
+#frs h1{
+    margin-left: 5%;
+    margin-top: 25px;
+    font-size: 45px;
+}
+#frs .frsflex{
+    display: flex;
+   
+
+}
+#frs .frsflex section{
+    height: 450;
+    width: 500;
+    margin-left: 25px;
+    box-sizing: border-box;
+
+}
+#frs .frsflex section  img{
+    height: 280px;
+    width: 450px;
+}
+#frs .frsflex section  a{
+   float: left;
+   color:  rgb(55, 137, 214);
+   text-decoration: none;
+   font-weight: 700;
+}
+.blog-in h3{
+    font-size: 25px;
+    color: black;
+}
+.blog-in h3:hover{
+    color: rgb(55, 137, 214) ;
+    transition: 0.3s ease-in-out;
+}
+#spotevo{
+    background-image:linear-gradient(-50deg, rgb(3, 17, 29), rgb(7, 42, 72)
+    ,rgb(42, 115, 173) ,rgb(46, 111, 178),rgb(42, 115, 173), rgb(7, 42, 72),rgb(3, 17, 29)); ;
+    width: 86%;
+    height: 500px;
+    margin: 7%;
+ 
+}
+#spotevo img{
+    position: relative;
+    top: 50px;
+}
+#spotevo aside {
+    float: right;
+    color: white;
+    margin-right:150px ;
+    margin: 75px;
+    padding-top: 50px;
+    
+}
+#spotevo aside h3{
+    font-size: 25px;
+    width: 65%;
+}
+#spotevo aside a{
+    font-size: 22px;
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+}
+#spotevo aside a:hover{
+    border-radius: 25px;
+    background-color:  rgb(255, 255, 255);
+    transition: 0.5s ease-out;
+    color: rgb(0, 0, 0);
+    padding: 7px;
+    padding-right: 25px;
+    padding-left: 10px;
+   
+}
+#spotevo aside p{
+    font-size: 20px;
+    word-spacing: 3px;
+    font-weight: 100;
+    width: 65%;
+}
+#foot{
+    margin-top: 100px;
+    /* background-color: aqua; */
+    width:100%;
+    height: max-content;
+}
+
+#footnav{
+   
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    margin-left: 42%;
+    margin-bottom: 30px;
+}
+#footnav div{
+    margin-left: 5%;
+}
+
+#footnav li{
+    list-style:none;
+    
+    margin-right: 100px;
+    line-height: 35px;
+    font-size: small;
+    font-weight: 600;
+    color: rgb(80, 134, 185);
+}
+.navflist{
+    font-size: 15px;
+    color: rgb(83, 83, 83);
+    font-weight: 100;
+    text-decoration: none;
+}
+.navflist:hover{
+    transition: 0.3 ease-out;
+    color: rgb(65, 163, 255);
+}
+#divline{
+    height: 0.002%;
+    width: 90%;
+    border: 1px solid rgb(145, 137, 137);
+ margin-left: 5%;
+ margin-right: 5%;
+}
+#foot #endnodes{
+    height: max-content;
+    display: flex;
+}
+#foot #endnodes #socialmedia{
+   
+ margin-left: 5%;
+}
+#foot #endnodes #socialmedia i{
+    margin-left: 20px;
+    margin-top: 45px;
+   
+    color: rgb(65, 163, 255) ;
+    margin-bottom: 30px;
+}
+#foot #endnodes #socialmedia i a{
+    text-decoration: none;
+    height: 30px;
+    width: 30px;
+}
+#foot #endnodes p{
+    margin-left: 21.5%;
+    color: rgb(87, 85, 85);
+    font-size: small;
+    margin-right: 10%;
+    margin-top: 30px;
+}
+
+#foot #endnodes  .linkft{
+    text-decoration: none;
+    color:  rgb(65, 163, 254);float: right;
+    margin-left: 40px;
+    font-size: small;
+    margin-top: 45px;
+    margin-bottom: 30px;
+}

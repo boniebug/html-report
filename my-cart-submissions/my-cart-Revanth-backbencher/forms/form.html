@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        ul
+        {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <form id="form">
+        <input type="text" title="name" id="name" name='N1' value="" required>
+        <input title="phone" type="tel" name="phone" name="P1" id="phone" required value="">
+        <button title="first click for save second for display" id="save">save</button>
+    </form>
+    <ul id="ul">
+        <li><p id="an" >name</p></li>
+        <li><p id="ap" >phone</p></li>
+    </ul>
+    <script>
+        var form=document.getElementById("form");
+        var name=document.getElementById("name").value;
+        var phone=document.getElementById("phone").value;
+        var ul=document.getElementById("ul");
+        var ap=document.getElementById("ap");
+        var an=document.getElementById("an")
+        var save=document.getElementById("save").addEventListener("click",()=>
+    {
+        form.style.display="none";
+        ul.style.display="block"
+    });
+    an.addEventListener("click",()=>  {
+an.innerHTML=name;
+})
+        
+    </script>
+</body>
+</html>

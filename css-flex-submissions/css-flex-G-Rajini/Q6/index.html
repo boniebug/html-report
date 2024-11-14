@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Question 6</title>
+  <style>
+    *{
+      box-sizing: border-box;
+      padding:0;
+      margin:0;
+      text-transform:capitalize;
+      font-size:30px;
+    }
+    #outerbox{
+      background-color:black;
+      width:700px;
+      height:600px;
+      padding:30px;
+      margin:auto;
+      left:0;
+      right:0;
+      top: 0;
+      bottom:0;
+      position:absolute;
+    } 
+  #innerbox{
+  width:600px;
+  height:500px;
+  border:2px solid white;
+  color:white;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+
+  }
+  .one{
+    display:flex;
+justify-content:space-between;
+  }
+  .box1{
+    height:100px;
+  width:100px;
+  border:2px solid red;
+}
+.three{
+  align-self: center;
+}
+.box3{
+height:100px;
+width:100px;
+border:2px solid red;
+}
+.two{
+  display:flex;
+  justify-content:space-between;
+}
+.box2{
+height:100px;
+width:100px;
+border:2px solid red;
+}
+
+  </style>
+  </head>
+  <body>
+    <section id="outerbox">
+<div id="innerbox">
+        <div class="one">
+<div class="box1">box</div>
+    <div class="box1">box</div>
+        </div>
+        <div class="three">
+          <div class="box3">box</div>
+          </div>
+    <div class="two">
+      <div class="box2">box</div>
+          <div class="box2">box</div>
+          </div>
+    </div>
+    </section>
+    </body>
+    </html>
+  
+

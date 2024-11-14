@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="my-cart.css">
+</head>
+
+<body>
+    <div id="top">
+        <div></div>
+        <div>
+            <h1 id="title">My Cart</h1>
+        </div>
+        <div><a href="profile.htm"><img src="assets/profile/profile-pic-boy.png" alt="profile" id="profile"></img></a>
+        </div>
+    </div>
+    <center>
+        <div id="nav">
+            <!-- <a href="..\login\login.htm" class="nav">Login</a>&nbsp;&nbsp; -->
+            <a href="index.htm" class="navi">Home</a>
+            <a href="beauty.htm" class="navi">Beauty</a>
+            <a href="books.htm" class="navi">Books</a>
+            <a href="electronics.htm" class="navi">Electronics</a>
+            <a href="fashion.htm" class="navi">Fashion</a>
+            <a href="furniture.htm" class="navi">Furniture</a>
+            <a href="laptop.htm" class="navi">Laptops</a>
+            <a href="mobiles.htm" class="navi">Mobiles</a>
+            <a href="toys.htm" class="navi">Toys</a>
+            <!-- <a href="..\profile\profile.htm" class="nav">Profile</a><br><br> -->
+    </center>
+    <div id="signupform">
+        <center>
+            <form action="index.htm">
+                <div>
+                    <h2>Sign Up</h2>
+                </div>
+                <br>
+                <label for="image">Choose Profile pic</label>
+                <input type="file" name="image" class="please fill out this field" required><br><br>
+                <label for="username">Username</label>
+                <input type="name" name="username" class="please fill out this field" required><br><br>
+                <label for="name">Full Name</label>
+                <input type="name" name="name" id="" class="please fill out this field" required><br><br>
+                <label for="gender">Select your Gender</label>
+                <select name="gender" id="" class="please fill out this field" required>
+                    <option value="">Select</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="others">Others</option>
+                </select><br><br>
+                <label for="email">Email</label>
+                <input type="email" name="email" id="" class="please fill out this field" required><br><br>
+                <label for="number">Contact Number</label>
+                <input type="number" name="number" class="please fill out this field" required min="10000000000"
+                    max="9999999999"><br><br>
+                <label for="password">Password</label>
+                <input type="password" name="password" class="please fill out this field" required><br><br>
+                <label for="membership">Do you want premium membership?</label>
+                <input type="radio" name="membership" class="please fill out this field" value="yee" required>
+                <label for="yes" class="radio">Yes</label>
+                <input type="radio" name="membership" class="please fill out this field" value="no" required>
+                <label for="no" class="radio">No</label><br><br>
+                <button>Sign up</button><br><br>
+                Or <br><br>
+                <a href="login.htm"><button type="button">Sign in</button></a>
+            </form>
+        </center>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+</body>
+<footer id="signupfooter">
+    Contact us at +91 98XXXXXXXX or demo@gmail.com
+</footer>
+
+</html>
